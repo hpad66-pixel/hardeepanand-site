@@ -1,0 +1,101 @@
+---
+import Base from '../layouts/Base.astro';
+import { copy as c } from '../data/copy.js';
+// Copy lives in src/data/copy.js (editable inline). Hero portrait shows the photo
+// uploaded in the admin (localStorage ha-photo), with an HA monogram fallback.
+---
+<Base
+  title="Hardeep Anand"
+  active="/"
+  description="Hardeep Anand. I make the invisible system legible. The Systems Lens, the OneWater Lexicon, and the OneWater Minute."
+>
+  <section class="hero">
+    <div class="hero-inner hero-grid">
+      <div class="hero-copy">
+        <span class="meta-label" data-edit="home.metaLabel">{c['home.metaLabel']}</span>
+        <h1><span data-edit="home.headline">{c['home.headline']}</span> <span class="g" data-edit="home.headlineAccent">{c['home.headlineAccent']}</span></h1>
+        <p class="sub" data-edit="home.lede">{c['home.lede']}</p>
+        <div class="cta-row">
+          <a class="btn solid" href="/writing/" data-edit="home.cta1">{c['home.cta1']}</a>
+          <a class="btn ghost" href="/about/" data-edit="home.cta2">{c['home.cta2']}</a>
+        </div>
+      </div>
+      <figure class="hero-portrait">
+        <div class="hp-card">
+          <div class="hp-frame" id="hpFrame"><span class="hp-grid"></span><span class="hp-mono">HA</span></div>
+          <div class="hp-row"><span class="hp-name"><span class="hp-dot"></span>Hardeep Anand · Your photo</span><span class="hp-pe">P.E.</span></div>
+        </div>
+      </figure>
+    </div>
+  </section>
+
+  <section class="proof">
+    <div class="proof-grid">
+      <div class="stat"><div class="k" data-edit="home.stat1k">{c['home.stat1k']}</div><div class="v" data-edit="home.stat1v">{c['home.stat1v']}</div></div>
+      <div class="stat"><div class="k" data-edit="home.stat2k">{c['home.stat2k']}</div><div class="v" data-edit="home.stat2v">{c['home.stat2v']}</div></div>
+      <div class="stat"><div class="k" data-edit="home.stat3k">{c['home.stat3k']}</div><div class="v" data-edit="home.stat3v">{c['home.stat3v']}</div></div>
+      <div class="stat"><div class="k" data-edit="home.stat4k">{c['home.stat4k']}</div><div class="v" data-edit="home.stat4v">{c['home.stat4v']}</div></div>
+    </div>
+  </section>
+
+  <section class="featured">
+    <div class="k" data-edit="home.featLabel">{c['home.featLabel']}</div>
+    <div class="row"><span>AWWA</span><span>WEFTEC</span><span>US Water Alliance</span><span>Smart Water</span></div>
+    <div class="ph">Placeholders. Your real publications, stages, and logos go here.</div>
+  </section>
+
+  <section class="filmband">
+    <div class="filmband-inner">
+      <p class="kicker">The one-minute version</p>
+      <video class="vsl-video" src="/vsl.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Hardeep Anand brand film"></video>
+    </div>
+  </section>
+
+  <section class="doors">
+    <h2 data-edit="home.doorsHeading">{c['home.doorsHeading']}</h2>
+    <div class="door-grid">
+      <a class="door" href="/lexicon/">
+        <span class="d-k" data-edit="home.door1.k">{c['home.door1.k']}</span>
+        <h3 data-edit="home.door1.h">{c['home.door1.h']}</h3>
+        <p data-edit="home.door1.p">{c['home.door1.p']}</p>
+      </a>
+      <a class="door" href="/minute/">
+        <span class="d-k" data-edit="home.door2.k">{c['home.door2.k']}</span>
+        <h3 data-edit="home.door2.h">{c['home.door2.h']}</h3>
+        <p data-edit="home.door2.p">{c['home.door2.p']}</p>
+      </a>
+      <a class="door" href="/writing/">
+        <span class="d-k" data-edit="home.door3.k">{c['home.door3.k']}</span>
+        <h3 data-edit="home.door3.h">{c['home.door3.h']}</h3>
+        <p data-edit="home.door3.p">{c['home.door3.p']}</p>
+      </a>
+    </div>
+  </section>
+
+  <section class="newsletter" id="newsletter">
+    <div class="nl-card">
+      <div>
+        <div class="k" data-edit="home.nlKicker">{c['home.nlKicker']}</div>
+        <h2 data-edit="home.nlHeading">{c['home.nlHeading']}</h2>
+        <p data-edit="home.nlText">{c['home.nlText']}</p>
+      </div>
+      <div>
+        <form class="nl-form" onsubmit="return false;">
+          <input type="email" placeholder="you@utility.org" aria-label="Email address" />
+          <button type="submit" data-edit="home.nlButton">{c['home.nlButton']}</button>
+        </form>
+        <p class="nl-note">Connects to your newsletter at activation. No spam, unsubscribe anytime.</p>
+      </div>
+    </div>
+  </section>
+
+  <script is:inline>
+    (function () {
+      try {
+        var p = localStorage.getItem('ha-photo');
+        var f = document.getElementById('hpFrame');
+        if (p && f) { f.classList.add('has-photo'); f.style.backgroundImage = 'url(' + p + ')'; }
+      } catch (e) {}
+    })();
+  </script>
+</Base>

@@ -1,0 +1,64 @@
+---
+import AdminBase from '../../layouts/AdminBase.astro';
+---
+<AdminBase title="Profile & photo" active="profile">
+  <div class="admin-top">
+    <div>
+      <h1>Profile &amp; photo</h1>
+      <div class="sub">Your portrait shows in the admin sidebar now, and will feed the site hero and About once wired. Saved in your browser; export to commit it for good.</div>
+    </div>
+  </div>
+
+  <div class="profile-grid">
+    <div class="photo-card">
+      <div class="photo-preview" id="photoPreview">HA</div>
+      <label class="abtn primary" style="display:inline-block;cursor:pointer">
+        Upload photo
+        <input type="file" id="photoInput" accept="image/*" style="display:none" />
+      </label>
+      <button class="abtn" id="photoClear" style="margin-top:8px">Remove</button>
+      <p style="font-size:12px;color:var(--text-dim);margin-top:12px">Square images look best. Stored locally for preview.</p>
+    </div>
+
+    <div class="panel">
+      <div class="panel-h"><h2>Details</h2></div>
+      <div class="panel-b">
+        <div class="field"><label>Name</label><input id="pf-name" type="text" value="Hardeep Anand" style="background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:8px 10px;min-width:240px" /></div>
+        <div class="field"><label>Title</label><input id="pf-title" type="text" value="Professional Engineer" style="background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:8px 10px;min-width:240px" /></div>
+        <div class="field" style="align-items:flex-start"><label style="padding-top:8px">One-liner</label><textarea id="pf-line" style="background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:8px 10px;min-width:300px;min-height:70px">I make the invisible system legible.</textarea></div>
+        <button class="abtn primary" id="pf-save" style="margin-top:10px">Save details</button>
+        <p style="font-size:12px;color:var(--text-dim);margin-top:10px">Saved in your browser for now. The next phase commits these to the repo so they drive the live hero and About.</p>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var prev = document.getElementById('photoPreview');
+      var input = document.getElementById('photoInput');
+      function render() {
+        try {
+          var p = localStorage.getItem('ha-photo');
+          if (p) { prev.textContent = ''; prev.style.backgroundImage = 'url(' + p + ')'; prev.style.backgroundSize = 'cover'; prev.style.backgroundPosition = 'center'; }
+          else { prev.textContent = 'HA'; prev.style.backgroundImage = ''; }
+        } catch (e) {}
+      }
+      input.addEventListener('change', function () {
+        var f = input.files && input.files[0]; if (!f) return;
+        var r = new FileReader();
+        r.onload = function () { try { localStorage.setItem('ha-photo', r.result); } catch (e) {} render(); };
+        r.readAsDataURL(f);
+      });
+      document.getElementById('photoClear').addEventListener('click', function () { try { localStorage.removeItem('ha-photo'); } catch (e) {} render(); });
+      ['name', 'title', 'line'].forEach(function (k) {
+        var el = document.getElementById('pf-' + k); if (!el) return;
+        try { var v = localStorage.getItem('ha-pf-' + k); if (v) el.value = v; } catch (e) {}
+      });
+      document.getElementById('pf-save').addEventListener('click', function () {
+        ['name', 'title', 'line'].forEach(function (k) { try { localStorage.setItem('ha-pf-' + k, document.getElementById('pf-' + k).value); } catch (e) {} });
+        var b = document.getElementById('pf-save'); b.textContent = 'Saved ✓'; setTimeout(function () { b.textContent = 'Save details'; }, 1400);
+      });
+      render();
+    })();
+  </script>
+</AdminBase>

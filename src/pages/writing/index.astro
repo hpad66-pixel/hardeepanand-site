@@ -1,0 +1,33 @@
+---
+import Base from '../../layouts/Base.astro';
+import { readArticles, isVisible } from '../../lib/content.js';
+const isProd = import.meta.env.PROD;
+const posts = readArticles(['substack/2026', 'linkedin/2026']).filter((p) => isVisible(p.status, isProd));
+---
+<Base
+  title="Writing"
+  active="/writing/"
+  description="The Systems Lens. Essays on reading infrastructure like a living system."
+>
+  <section class="page-head">
+    <p class="kicker">The Systems Lens</p>
+    <h1>Writing</h1>
+    <p class="lede">Essays on reading infrastructure like a living system. Long-form, every claim sourced.</p>
+  </section>
+
+  <ul class="post-list">
+    {posts.map((p) => (
+      <li class="post-row">
+        <a href={`/writing/${p.slug}/`}>
+          <span class="post-meta">
+            <time>{p.date}</time>
+            {!isProd && p.status !== 'PUBLISHED' && <span class="ribbon">{p.status}</span>}
+          </span>
+          <span class="post-title">{p.title}</span>
+          {p.description && <span class="post-desc">{p.description}</span>}
+        </a>
+      </li>
+    ))}
+  </ul>
+  {posts.length === 0 && <p class="empty">No published essays yet. Mark an article PUBLISHED to see it here.</p>}
+</Base>

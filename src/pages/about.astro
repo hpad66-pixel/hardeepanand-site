@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import { copy as c } from '../data/copy.js';
+// Editable inline via the visual editor; copy lives in src/data/copy.js.
+---
+<Base
+  title="About"
+  active="/about/"
+  description="Hardeep Anand. Three decades inside water infrastructure, now building the intelligence layer it was missing."
+>
+  <section class="page-head">
+    <p class="kicker" data-edit="about.kicker">{c['about.kicker']}</p>
+    <h1 data-edit="about.h1">{c['about.h1']}</h1>
+    <p class="lede" data-edit="about.lede">{c['about.lede']}</p>
+  </section>
+
+  <div class="post"><div class="prose">
+    <p data-edit="about.p1">{c['about.p1']}</p>
+    <p data-edit="about.p2">{c['about.p2']}</p>
+    <p data-edit="about.p3">{c['about.p3']}</p>
+    <p data-edit="about.p4">{c['about.p4']}</p>
+    <p data-edit="about.p5">{c['about.p5']}</p>
+  </div></div>
+</Base>

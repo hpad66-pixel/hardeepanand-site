@@ -1,0 +1,165 @@
+---
+import '../styles/tokens.css';
+import { NAV } from '../lib/content.js';
+const { title = 'Hardeep Anand', active = '/', description = '' } = Astro.props;
+const isProd = import.meta.env.PROD;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title === 'Hardeep Anand' ? title : `${title} · Hardeep Anand`}</title>
+    {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={new URL(Astro.url.pathname, 'https://hardeepanand.com').href} />
+    <link rel="alternate" type="application/rss+xml" title="The Systems Lens" href="/rss.xml" />
+    <link rel="alternate" type="application/feed+json" title="Hardeep Anand" href="/feed.json" />
+    <script is:inline>
+      // No-flash theme: set the saved theme + any Theme Studio overrides before first paint.
+      (function () {
+        try {
+          document.documentElement.dataset.theme = localStorage.getItem('ha-theme') || 'operator';
+          var c = localStorage.getItem('ha-custom');
+          if (c) { var o = JSON.parse(c); for (var k in o) document.documentElement.style.setProperty(k, o[k]); }
+        } catch (e) { document.documentElement.dataset.theme = 'operator'; }
+      })();
+    </script>
+  </head>
+  <body>
+    {!isProd && (
+      <div class="dev-note">
+        PREVIEW BUILD · drafts are visible here · only PUBLISHED ships to production
+      </div>
+    )}
+    <nav class="ha-nav">
+      <a class="ha-brand" href="/">Hardeep<b>.</b>Anand</a>
+      <div class="ha-links">
+        {NAV.map((n) => (
+          <a href={n.href} aria-current={active === n.href ? 'page' : undefined}>{n.label}</a>
+        ))}
+        <a class="nav-cta" href="/#newsletter">Subscribe</a>
+      </div>
+    </nav>
+    <main>
+      <slot />
+    </main>
+    <footer class="ha-foot">
+      <div class="ha-foot-inner">
+        <div>
+          <div class="fbrand">Hardeep Anand</div>
+          <p class="ftag">I make the invisible system legible. Water, infrastructure, and the intelligence layer it was missing.</p>
+          <div class="fsocial">
+            <a href="https://www.linkedin.com/">LinkedIn</a>
+            <a href="https://substack.com/">Substack</a>
+            <a href="https://x.com/">X</a>
+            <a href="https://youtube.com/">YouTube</a>
+          </div>
+        </div>
+        <div class="fcol">
+          <h4>Read</h4>
+          <a href="/writing/">The Systems Lens</a>
+          <a href="/lexicon/">OneWater Lexicon</a>
+          <a href="/minute/">OneWater Minute</a>
+        </div>
+        <div class="fcol">
+          <h4>More</h4>
+          <a href="/about/">About</a>
+          <a href="/#newsletter">Subscribe</a>
+          <a href="/rss.xml">RSS feed</a>
+        </div>
+      </div>
+      <div class="fbottom">
+        <span>© 2026 Hardeep Anand</span>
+        <span class="fbottom-r">The Systems Lens · Every claim sourced<a class="fadmin" href="/admin/" aria-label="Admin studio">· Admin</a></span>
+      </div>
+    </footer>
+    <script is:inline>
+      // Tag long-form article prose blocks as editable fields, then apply any saved
+      // inline-editor overrides on every page: copy fields as text, article blocks as
+      // rich HTML (so inline bold/links survive). Runs before the editor binds.
+      (function () {
+        function tagProse() {
+          var pr = document.querySelector('.prose'); if (!pr) return;
+          var m = location.pathname.match(/\/writing\/([^\/]+)/);
+          var slug = m ? m[1] : 'page';
+          pr.querySelectorAll('p, h2, h3, h4, h5, li, figcaption').forEach(function (b, i) {
+            if (!b.dataset.edit) { b.dataset.edit = 'article:' + slug + ':' + i; b.dataset.rich = '1'; }
+          });
+        }
+        try {
+          tagProse();
+          var o = JSON.parse(localStorage.getItem('ha-copy') || '{}');
+          for (var k in o) {
+            document.querySelectorAll('[data-edit="' + k + '"]').forEach(function (el) {
+              if (el.dataset.rich) el.innerHTML = o[k]; else el.textContent = o[k];
+            });
+          }
+        } catch (e) {}
+      })();
+    </script>
+    <script is:inline>
+      // Visual editor: enabled by ?edit=1 (sticky) or localStorage ha-edit=1.
+      (function () {
+        var on = false;
+        try {
+          if (location.search.indexOf('edit=1') > -1) { localStorage.setItem('ha-edit', '1'); on = true; }
+          else if (localStorage.getItem('ha-edit') === '1') { on = true; }
+        } catch (e) {}
+        if (!on) return;
+        var saved = {};
+        try { saved = JSON.parse(localStorage.getItem('ha-copy') || '{}'); } catch (e) {}
+        document.documentElement.classList.add('is-editing');
+        // Stop clicks inside editable regions from navigating.
+        document.addEventListener('click', function (ev) { if (ev.target.closest('[data-edit]')) ev.preventDefault(); }, true);
+        document.querySelectorAll('[data-edit]').forEach(function (el) {
+          el.setAttribute('contenteditable', 'true');
+          el.setAttribute('spellcheck', 'true');
+          el.addEventListener('input', function () {
+            saved[el.dataset.edit] = el.dataset.rich
+              ? el.innerHTML.trim()
+              : el.textContent.replace(/\s+/g, ' ').trim();
+            try { localStorage.setItem('ha-copy', JSON.stringify(saved)); } catch (e) {}
+            var s = document.getElementById('ebStatus'); if (s) s.textContent = 'saved in browser';
+          });
+        });
+        var bar = document.createElement('div');
+        bar.className = 'edit-bar';
+        bar.innerHTML = '<span class="eb-dot"></span><b>Editing</b>'
+          + '<span class="eb-status" id="ebStatus">click any text to edit</span>'
+          + '<button id="ebPublish">Publish</button>'
+          + '<button id="ebExport">Export changes</button>'
+          + '<button id="ebReset">Discard</button>'
+          + '<button id="ebDone">Done</button>';
+        document.body.appendChild(bar);
+        document.getElementById('ebPublish').onclick = async function () {
+          // Commit the edits to the repo via the admin backend (E4). Falls back to Export
+          // if the backend is not deployed/authorized yet, so editing still works today.
+          var s = document.getElementById('ebStatus');
+          if (s) s.textContent = 'publishing...';
+          try {
+            var r = await fetch('/api/save', {
+              method: 'POST',
+              headers: { 'content-type': 'application/json' },
+              body: JSON.stringify({ action: 'copy', payload: saved }),
+            });
+            if (r.ok) { if (s) s.textContent = 'published. The site redeploys in a moment.'; return; }
+            if (s) s.textContent = (r.status === 403)
+              ? 'sign in to the admin (Cloudflare Access) to publish'
+              : 'backend not ready yet. Use Export changes instead.';
+          } catch (e) {
+            if (s) s.textContent = 'backend not reachable. Use Export changes instead.';
+          }
+        };
+        document.getElementById('ebDone').onclick = function () { try { localStorage.removeItem('ha-edit'); } catch (e) {} location.href = location.pathname; };
+        document.getElementById('ebReset').onclick = function () { if (confirm('Discard your local edits on every page?')) { try { localStorage.removeItem('ha-copy'); } catch (e) {} location.href = location.pathname; } };
+        document.getElementById('ebExport').onclick = function () {
+          var ta = document.getElementById('ebOut');
+          if (!ta) { ta = document.createElement('textarea'); ta.id = 'ebOut'; ta.className = 'eb-out'; ta.readOnly = true; document.body.appendChild(ta); }
+          ta.value = JSON.stringify(saved, null, 2); ta.style.display = 'block'; ta.select();
+          try { document.execCommand('copy'); } catch (e) {}
+          var s = document.getElementById('ebStatus'); if (s) s.textContent = 'copied JSON (paste to me or the backend commits it)';
+        };
+      })();
+    </script>
+  </body>
+</html>

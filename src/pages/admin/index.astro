@@ -1,0 +1,72 @@
+---
+import AdminBase from '../../layouts/AdminBase.astro';
+import { readArticles, readHtmlCollection } from '../../lib/content.js';
+
+// The admin sees everything (drafts included), unlike the public site.
+const notArchived = (it) => it.status !== 'ARCHIVED';
+const items = [
+  ...readArticles(['substack/2026', 'linkedin/2026']).filter(notArchived).map((p) => ({
+    title: p.title, type: 'Article', status: p.status, channel: 'Site · Substack · LinkedIn',
+  })),
+  ...readHtmlCollection('lexicon').filter(notArchived).map((t) => ({
+    title: t.title, type: 'Lexicon', status: t.status, channel: 'Site',
+  })),
+  ...readHtmlCollection('minutes/2026').filter(notArchived).map((m) => ({
+    title: m.title, type: 'Minute', status: m.status, channel: 'Site',
+  })),
+];
+const count = (s) => items.filter((i) => i.status === s).length;
+const published = count('PUBLISHED');
+const drafts = count('DRAFT');
+const approved = count('APPROVED');
+const action = (s) => (s === 'PUBLISHED' ? 'Open' : s === 'APPROVED' ? 'Ship' : 'Review');
+const pillClass = (s) => (s === 'PUBLISHED' ? 'pub' : s === 'APPROVED' ? 'app' : 'draft');
+---
+<AdminBase title="Dashboard" active="dashboard">
+  <div class="admin-top">
+    <div>
+      <h1>Welcome back, Hardeep</h1>
+      <div class="sub">{drafts} drafts · {approved} ready to ship · {published} live · <span class="priv" style="margin-left:8px">PRIVATE</span></div>
+    </div>
+    <div class="actions">
+      <a class="abtn" href="/" target="_blank">View site ↗</a>
+      <button class="abtn" id="editSiteBtn">Edit site ✎</button>
+      <button class="abtn primary">Publish &amp; deploy ↗</button>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="k">READS / 7D</div><div class="v">··</div><div class="d">connect analytics</div></div>
+    <div class="stat"><div class="k">SUBSCRIBERS</div><div class="v">··</div><div class="d">connect Substack</div></div>
+    <div class="stat"><div class="k">PUBLISHED</div><div class="v">{published}</div><div class="d">of {items.length} assets</div></div>
+    <div class="stat"><div class="k">NEEDS YOU</div><div class="v">{drafts + approved}</div><div class="d">{approved} approved · {drafts} draft</div></div>
+  </div>
+
+  <div class="panel" id="content">
+    <div class="panel-h"><h2>Content</h2><span class="lk">{items.length} assets · live from your repo</span></div>
+    <table class="admin-tbl">
+      <thead><tr><th>Asset</th><th>Type</th><th>Status</th><th>Channel</th><th></th></tr></thead>
+      <tbody>
+        {items.map((i) => (
+          <tr>
+            <td>{i.title}</td>
+            <td class="ch">{i.type}</td>
+            <td><span class={`pill ${pillClass(i.status)}`}>{i.status}</span></td>
+            <td class="ch">{i.channel}</td>
+            <td><button class="rowact">{action(i.status)}</button></td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  </div>
+
+  <p style="color:var(--text-dim);font-size:13px;max-width:70ch">
+    This table reads live from your repo. Ship, Review, and Publish actions become functional once
+    the admin backend (a small Worker behind Cloudflare Access) is wired in the next phase. For now,
+    the Theme Studio and the visual editor are fully live.
+  </p>
+  <script is:inline>
+    var eb = document.getElementById('editSiteBtn');
+    if (eb) eb.onclick = function () { try { localStorage.setItem('ha-edit', '1'); } catch (e) {} window.open('/', '_blank'); };
+  </script>
+</AdminBase>

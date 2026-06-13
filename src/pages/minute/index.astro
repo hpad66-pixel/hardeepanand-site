@@ -1,0 +1,28 @@
+---
+import Base from '../../layouts/Base.astro';
+import { readHtmlCollection, isVisible } from '../../lib/content.js';
+const isProd = import.meta.env.PROD;
+const items = readHtmlCollection('minutes/2026').filter((it) => isVisible(it.status, isProd));
+---
+<Base
+  title="OneWater Minute"
+  active="/minute/"
+  description="The OneWater Minute. One idea, one minute."
+>
+  <section class="page-head">
+    <p class="kicker">OneWater Minute</p>
+    <h1>One idea, one minute</h1>
+    <p class="lede">The smallest useful unit of the work. A single concept, made plain, in the time it takes to read it.</p>
+  </section>
+  <ul class="card-grid">
+    {items.map((it) => (
+      <li class="card">
+        <a href={`/minute/${it.slug}.html`}>
+          <span class="card-title">{it.title}</span>
+          {!isProd && it.status !== 'PUBLISHED' && <span class="ribbon">{it.status}</span>}
+        </a>
+      </li>
+    ))}
+  </ul>
+  {items.length === 0 && <p class="empty">No published Minutes yet.</p>}
+</Base>

@@ -1,0 +1,168 @@
+---
+import AdminBase from '../../layouts/AdminBase.astro';
+---
+<AdminBase title="Theme Studio" active="theme">
+  <div class="admin-top">
+    <div>
+      <h1>Theme Studio</h1>
+      <div class="sub">Tune fonts, accents, colors, and corners. Changes apply live across the whole site and save in your browser. Export to make them permanent for every visitor.</div>
+    </div>
+    <div class="actions">
+      <a class="abtn" href="/" target="_blank">View site ↗</a>
+    </div>
+  </div>
+
+  <div class="studio">
+    <div class="controls">
+      <div class="cgroup">
+        <h3>Base theme</h3>
+        <div class="basebtns" id="basebtns">
+          <button class="basebtn" data-base="obsidian">Obsidian</button>
+          <button class="basebtn" data-base="editorial">Editorial</button>
+          <button class="basebtn" data-base="executive">Executive</button>
+          <button class="basebtn" data-base="monument">Monument</button>
+        </div>
+        <p style="font-size:12px;color:var(--text-dim);margin-top:8px">Pick a starting point, then tune below. Obsidian is your locked default.</p>
+      </div>
+
+      <div class="cgroup">
+        <h3>Color</h3>
+        <div class="field"><label>Accent (focal)</label><input type="color" data-var="--accent"></div>
+        <div class="field"><label>Accent bright</label><input type="color" data-var="--accent-2"></div>
+        <div class="field"><label>Page background</label><input type="color" data-var="--bg"></div>
+        <div class="field"><label>Surface / cards</label><input type="color" data-var="--surface"></div>
+        <div class="field"><label>Text</label><input type="color" data-var="--text"></div>
+        <div class="field"><label>Hero background</label><input type="color" data-var="--hero-bg"></div>
+        <div class="field"><label>Hero text</label><input type="color" data-var="--hero-fg"></div>
+        <div class="field"><label>Hero accent</label><input type="color" data-var="--hero-accent"></div>
+      </div>
+
+      <div class="cgroup">
+        <h3>Typography</h3>
+        <div class="field"><label>Display / headlines</label><select data-var="--font-display" data-kind="font"></select></div>
+        <div class="field"><label>Body</label><select data-var="--font-body" data-kind="font"></select></div>
+        <div class="field"><label>Serif / quotes</label><select data-var="--font-serif" data-kind="font"></select></div>
+        <div class="field"><label>Labels / mono</label><select data-var="--font-label" data-kind="font"></select></div>
+      </div>
+
+      <div class="cgroup">
+        <h3>Shape</h3>
+        <div class="field"><label>Corner radius</label><input type="range" data-var="--radius" data-kind="px" min="0" max="20" step="1"></div>
+      </div>
+
+      <div class="cactions">
+        <button class="abtn" id="resetBtn">Reset to base</button>
+        <button class="abtn primary" id="exportBtn">Export CSS</button>
+        <button class="abtn" id="copyBtn">Copy</button>
+      </div>
+      <textarea class="export-out" id="exportOut" readonly></textarea>
+    </div>
+
+    <div class="preview">
+      <div class="pv-hero">
+        <div class="pv-kicker">Water · Infrastructure · Intelligence</div>
+        <h2>Hardeep Anand</h2>
+        <div class="pv-sub">I make the invisible system legible.</div>
+        <div class="pv-btns">
+          <a class="btn solid">The story</a>
+          <a class="btn ghost">Read</a>
+        </div>
+      </div>
+      <div class="pv-body">
+        <div class="pv-card">
+          <div class="t">OneWater Lexicon</div>
+          <p>The language of water, defined. Every claim sourced. This card previews surfaces, accents, and corners.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script is:inline>
+    (function () {
+      var FONTS = [
+        ["Bebas Neue", "'Bebas Neue', Impact, sans-serif"],
+        ["Bricolage Grotesque", "'Bricolage Grotesque', system-ui, sans-serif"],
+        ["Space Grotesk", "'Space Grotesk', system-ui, sans-serif"],
+        ["Fraunces", "'Fraunces', Georgia, serif"],
+        ["Libre Baskerville", "'Libre Baskerville', Georgia, serif"],
+        ["EB Garamond", "'EB Garamond', Georgia, serif"],
+        ["Newsreader", "'Newsreader', Georgia, serif"],
+        ["Inter", "'Inter', system-ui, sans-serif"],
+        ["Barlow", "'Barlow', system-ui, sans-serif"],
+        ["Space Mono", "'Space Mono', monospace"],
+        ["JetBrains Mono", "'JetBrains Mono', monospace"]
+      ];
+      var root = document.documentElement;
+      var custom = {};
+      try { custom = JSON.parse(localStorage.getItem('ha-custom') || '{}'); } catch (e) { custom = {}; }
+      function base() { try { return localStorage.getItem('ha-theme') || 'obsidian'; } catch (e) { return 'obsidian'; } }
+      function saveCustom() { try { localStorage.setItem('ha-custom', JSON.stringify(custom)); } catch (e) {} }
+
+      // populate font selects
+      document.querySelectorAll('select[data-kind=font]').forEach(function (sel) {
+        FONTS.forEach(function (f) { var o = document.createElement('option'); o.value = f[1]; o.textContent = f[0]; sel.appendChild(o); });
+      });
+
+      function firstFam(v) { return (v || '').split(',')[0].replace(/['"]/g, '').trim().toLowerCase(); }
+      function toHex(v) { v = (v || '').trim(); return v[0] === '#' ? v : '#000000'; }
+
+      function syncControls() {
+        var cs = getComputedStyle(root);
+        document.querySelectorAll('[data-var]').forEach(function (el) {
+          var cur = cs.getPropertyValue(el.dataset.var).trim();
+          if (el.dataset.kind === 'font') {
+            var want = firstFam(cur), match = null;
+            FONTS.forEach(function (f) { if (firstFam(f[1]) === want) match = f[1]; });
+            if (match) el.value = match;
+          } else if (el.dataset.kind === 'px') { el.value = parseInt(cur, 10) || 0; }
+          else { el.value = toHex(cur); }
+        });
+        document.querySelectorAll('.basebtn').forEach(function (b) { b.classList.toggle('on', b.dataset.base === base()); });
+      }
+
+      function applyVar(k, v) { root.style.setProperty(k, v); custom[k] = v; saveCustom(); }
+
+      document.querySelectorAll('[data-var]').forEach(function (el) {
+        el.addEventListener('input', function () {
+          var v = el.value; if (el.dataset.kind === 'px') v = v + 'px';
+          applyVar(el.dataset.var, v);
+        });
+      });
+
+      document.querySelectorAll('.basebtn').forEach(function (b) {
+        b.addEventListener('click', function () {
+          var id = b.dataset.base;
+          // clear overrides, set base
+          Object.keys(custom).forEach(function (k) { root.style.removeProperty(k); });
+          custom = {};
+          try { localStorage.setItem('ha-theme', id); localStorage.removeItem('ha-custom'); } catch (e) {}
+          root.dataset.theme = id;
+          syncControls();
+        });
+      });
+
+      document.getElementById('resetBtn').addEventListener('click', function () {
+        Object.keys(custom).forEach(function (k) { root.style.removeProperty(k); });
+        custom = {}; try { localStorage.removeItem('ha-custom'); } catch (e) {}
+        syncControls();
+      });
+
+      function exportCSS() {
+        var keys = Object.keys(custom);
+        if (!keys.length) return "/* No custom overrides yet. Tune some controls, then export. */";
+        var body = keys.map(function (k) { return '  ' + k + ': ' + custom[k] + ';'; }).join('\n');
+        return "/* Paste into site/src/styles/tokens.css inside the base block to make permanent. */\n[data-theme='" + base() + "'] {\n" + body + "\n}";
+      }
+      var out = document.getElementById('exportOut');
+      document.getElementById('exportBtn').addEventListener('click', function () {
+        out.value = exportCSS(); out.style.display = 'block';
+      });
+      document.getElementById('copyBtn').addEventListener('click', function () {
+        out.value = exportCSS(); out.style.display = 'block';
+        out.select(); try { document.execCommand('copy'); } catch (e) {}
+      });
+
+      syncControls();
+    })();
+  </script>
+</AdminBase>

@@ -1,0 +1,31 @@
+---
+import Base from '../../layouts/Base.astro';
+import { readHtmlCollection, isVisible } from '../../lib/content.js';
+const isProd = import.meta.env.PROD;
+const items = readHtmlCollection('lexicon').filter((it) => isVisible(it.status, isProd));
+---
+<Base
+  title="OneWater Lexicon"
+  active="/lexicon/"
+  description="The OneWater Lexicon. The language of water, defined, every claim sourced."
+>
+  <section class="page-head">
+    <p class="kicker">OneWater Lexicon</p>
+    <h1>The language of water</h1>
+    <p class="lede">
+      Evergreen terms, every claim sourced. Each entry carries a body twin and a utility landing,
+      so an abstraction always lands somewhere you can touch.
+    </p>
+  </section>
+  <ul class="card-grid">
+    {items.map((it) => (
+      <li class="card">
+        <a href={`/lexicon/${it.slug}.html`}>
+          <span class="card-title">{it.title}</span>
+          {!isProd && it.status !== 'PUBLISHED' && <span class="ribbon">{it.status}</span>}
+        </a>
+      </li>
+    ))}
+  </ul>
+  {items.length === 0 && <p class="empty">No published terms yet. Mark a Lexicon page PUBLISHED to see it here.</p>}
+</Base>

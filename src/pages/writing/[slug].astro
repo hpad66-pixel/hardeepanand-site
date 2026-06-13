@@ -1,0 +1,43 @@
+---
+import Base from '../../layouts/Base.astro';
+import { readArticles, isVisible, renderMarkdown } from '../../lib/content.js';
+
+const isProd = import.meta.env.PROD;
+
+export function getStaticPaths() {
+  const prod = import.meta.env.PROD;
+  return readArticles(['substack/2026', 'linkedin/2026'])
+    .filter((p) => isVisible(p.status, prod))
+    .map((p) => ({ params: { slug: p.slug }, props: { post: p } }));
+}
+
+const { post } = Astro.props;
+// Drop cap on the first paragraph; the prose styles handle pull quotes and sources.
+const html = renderMarkdown(post.body).replace('<p>', '<p class="first">');
+const words = (post.body || '').split(/\s+/).filter(Boolean).length;
+const readMin = Math.max(1, Math.round(words / 220));
+---
+<Base title={post.title} active="/writing/" description={post.description}>
+  <article class="post">
+    <header class="post-head">
+      <span class="kicker">// The Systems Lens</span>
+      <h1>{post.title}</h1>
+      <p class="post-byline">
+        <span class="av">HA</span>
+        <span>Hardeep Anand · {post.date} · {readMin} min read</span>
+        {!isProd && post.status !== 'PUBLISHED' && <span class="ribbon">{post.status}</span>}
+      </p>
+    </header>
+    <div class="prose" set:html={html} />
+  </article>
+  <section class="post-end">
+    <div class="author">
+      <span class="av">HA</span>
+      <div>
+        <div class="nm">Hardeep Anand</div>
+        <p>Thirty years inside water infrastructure, now building the intelligence layer it was missing. The Systems Lens is where the thinking lives, in plain language, every claim sourced.</p>
+        <p style="margin-top:14px"><a class="btn solid" href="/#newsletter" style="display:inline-block">Subscribe to The Systems Lens</a></p>
+      </div>
+    </div>
+  </section>
+</Base>
