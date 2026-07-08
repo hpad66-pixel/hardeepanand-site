@@ -33,7 +33,7 @@ export const NAV = [
   { label: 'Lexicon', href: '/lexicon/' },
   { label: 'OneWater Minute', href: '/minute/' },
   { label: 'Writing', href: '/writing/' },
-  { label: 'Living Brain', href: 'https://brain.hardeepanand.com' },
+  { label: 'SelfOS', href: 'https://brain.hardeepanand.com' },
 ];
 
 const STATES = ['DRAFT', 'APPROVED', 'PUBLISHED', 'ARCHIVED'];
