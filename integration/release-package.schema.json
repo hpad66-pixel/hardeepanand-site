@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://owos.ai/contracts/release-package/v1",
+  "title": "OWOS Release Package",
+  "type": "object",
+  "required": ["schema_version", "package_type", "content_id", "canonical_owner", "source_repo", "source_commit", "title", "visibility", "status", "content_type", "generated_at"],
+  "properties": {
+    "schema_version": {"const": "1.0"},
+    "package_type": {"enum": ["author-package", "public-release"]},
+    "content_id": {"type": "string", "minLength": 3},
+    "canonical_owner": {"enum": ["onewater-os", "hardeep-author"]},
+    "source_repo": {"type": "string", "minLength": 3},
+    "source_commit": {"type": "string", "minLength": 7},
+    "title": {"type": "string", "minLength": 1},
+    "visibility": {"enum": ["public", "internal"]},
+    "status": {"enum": ["DRAFT", "APPROVED", "PUBLISHED"]},
+    "content_type": {"enum": ["author-package", "article", "video", "book-excerpt", "course", "minute", "graph-page"]},
+    "approved_by": {"type": "string"},
+    "approved_at": {"type": "string"},
+    "generated_at": {"type": "string"},
+    "canonical_url": {"type": "string"},
+    "sources": {"type": "array", "items": {"type": "string"}},
+    "content": {"type": "object"}
+  }
+}
