@@ -46,6 +46,8 @@ if (pkg.visibility !== 'public') fail('private or internal content cannot enter 
 if (!['APPROVED', 'PUBLISHED'].includes(pkg.status)) fail('package is not approved for public release');
 if (pkg.content_type !== 'article') fail('this importer currently accepts articles only');
 if (!pkg.content.body_markdown) fail('article package has no Markdown body');
+const lane = pkg.content.lane || (pkg.canonical_owner === 'hardeep-author' ? 'bubble' : 'water');
+if (!['water', 'bubble'].includes(lane)) fail('article lane must be water or bubble');
 
 const owner = pkg.canonical_owner === 'onewater-os' ? 'owos' : 'author';
 const date = String(pkg.approved_at).slice(0, 10);
@@ -68,6 +70,7 @@ const frontmatter = [
   `canonical_url: ${quote(pkg.canonical_url)}`,
   `approved_by: ${quote(pkg.approved_by)}`,
   `approved_at: ${quote(pkg.approved_at)}`,
+  `lane: ${lane}`,
   `seo_description: ${quote(pkg.content.description || '')}`,
   '---',
   ''

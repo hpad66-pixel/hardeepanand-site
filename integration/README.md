@@ -4,7 +4,7 @@ This repository is a public author-site deploy mirror. It accepts only approved 
 from One Water OS or the Hardeep Author Studio. It never reads a source repository, raw transcript, private
 wiki page, internal graph, or unpublished draft during a public build.
 
-Use `scripts/import-release-package.mjs` to place one approved public article in the appropriate content
+Use `scripts/import-release-package.mjs` to place one approved public Water or Bubble article in the appropriate content
 collection. The importer records source repository, source commit, canonical URL, status, and approval in
 the Markdown frontmatter. The Writing pages render these imported collections alongside local published work.
 
