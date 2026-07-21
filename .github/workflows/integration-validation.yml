@@ -1,0 +1,18 @@
+name: Integration validation
+
+on:
+  pull_request:
+  push:
+    branches: ["codex/**"]
+
+jobs:
+  public-import-contract:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node --check scripts/import-release-package.mjs
+      - run: node --check src/lib/content.js
+      - run: python3 -m json.tool integration/release-package.schema.json > /dev/null

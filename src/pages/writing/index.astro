@@ -2,7 +2,7 @@
 import Base from '../../layouts/Base.astro';
 import { readArticles, isVisible } from '../../lib/content.js';
 const isProd = import.meta.env.PROD;
-const posts = readArticles(['substack/2026', 'linkedin/2026']).filter((p) => isVisible(p.status, isProd));
+const posts = readArticles(['substack/2026', 'linkedin/2026', 'owos/2026', 'author/2026']).filter((p) => isVisible(p.status, isProd));
 ---
 <Base
   title="Writing"

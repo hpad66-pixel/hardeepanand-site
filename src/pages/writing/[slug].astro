@@ -6,7 +6,7 @@ const isProd = import.meta.env.PROD;
 
 export function getStaticPaths() {
   const prod = import.meta.env.PROD;
-  return readArticles(['substack/2026', 'linkedin/2026'])
+  return readArticles(['substack/2026', 'linkedin/2026', 'owos/2026', 'author/2026'])
     .filter((p) => isVisible(p.status, prod))
     .map((p) => ({ params: { slug: p.slug }, props: { post: p } }));
 }
