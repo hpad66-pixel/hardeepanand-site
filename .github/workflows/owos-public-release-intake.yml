@@ -1,0 +1,49 @@
+name: Intake approved OWOS public article
+
+on:
+  repository_dispatch:
+    types: [owos_public_release]
+  workflow_dispatch:
+    inputs:
+      package_json:
+        description: Approved public-release/1.0 JSON
+        required: true
+        type: string
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  intake:
+    runs-on: ubuntu-latest
+    env:
+      PACKAGE_JSON: ${{ github.event.client_payload.package_json || inputs.package_json }}
+      RELEASE_ID: ${{ github.event.client_payload.release_id || 'manual-release' }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - name: Preserve the release package
+        run: node -e "require('node:fs').writeFileSync('/tmp/public-release.json', process.env.PACKAGE_JSON)"
+      - name: Validate and import the approved article
+        run: node scripts/import-release-package.mjs --package /tmp/public-release.json
+      - name: Verify the public build
+        run: |
+          npm ci
+          npm run build
+          git diff --check
+      - name: Open a public publication pull request
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          branch="owos-public-intake/${RELEASE_ID}-${GITHUB_RUN_ID}"
+          git config user.name "owos-author-studio[bot]"
+          git config user.email "owos-author-studio[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add content
+          git commit -m "intake: ${RELEASE_ID}"
+          git push origin HEAD
+          gh pr create --title "Public article intake: ${RELEASE_ID}" --body "Approved OWOS Author Studio article. Review its attribution, source commit, canonical URL, and rendered page before merge. Nothing publishes without this repository review."
