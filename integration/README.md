@@ -15,3 +15,19 @@ node scripts/import-release-package.mjs --package /path/to/public-release.json
 Only `visibility: public`, `status: APPROVED|PUBLISHED`, and `content_type: article` are accepted in this
 first integration pass. Other public package types will get dedicated pages after their presentation and
 metadata contract is approved.
+
+## Automated OWOS intake
+
+One Water OS sends an approved article only after Hardeep explicitly chooses **Send to public-site review**.
+The `owos_public_release` repository dispatch starts `.github/workflows/owos-public-release-intake.yml`.
+That workflow validates the package, imports the article, builds the site, and opens a pull request. It never
+merges or publishes the article automatically.
+
+The Cloudflare secret used by OWOS must be a fine-grained GitHub token restricted to these repositories:
+
+- `hpad66-pixel/2-brain`
+- `hpad66-pixel/hardeep-soul`
+- `hpad66-pixel/hardeepanand-site`
+
+The token needs only **Contents: Read and write**. The workflow uses its own short-lived GitHub Actions token
+to create the publication pull request.
