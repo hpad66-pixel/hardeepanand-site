@@ -6,13 +6,13 @@ import { readArticles, readHtmlCollection } from '../../lib/content.js';
 const notArchived = (it) => it.status !== 'ARCHIVED';
 const items = [
   ...readArticles(['substack/2026', 'linkedin/2026']).filter(notArchived).map((p) => ({
-    title: p.title, type: 'Article', status: p.status, channel: 'Site · Substack · LinkedIn',
+    href: `/writing/${p.slug}/`, title: p.title, type: 'Article', status: p.status, channel: 'Site · Substack · LinkedIn',
   })),
   ...readHtmlCollection('lexicon').filter(notArchived).map((t) => ({
-    title: t.title, type: 'Lexicon', status: t.status, channel: 'Site',
+    href: `/lexicon/${t.slug}.html`, title: t.title, type: 'Lexicon', status: t.status, channel: 'Site',
   })),
   ...readHtmlCollection('minutes/2026').filter(notArchived).map((m) => ({
-    title: m.title, type: 'Minute', status: m.status, channel: 'Site',
+    href: `/minute/${m.slug}.html`, title: m.title, type: 'Minute', status: m.status, channel: 'Site',
   })),
 ];
 const count = (s) => items.filter((i) => i.status === s).length;
@@ -31,7 +31,7 @@ const pillClass = (s) => (s === 'PUBLISHED' ? 'pub' : s === 'APPROVED' ? 'app' :
     <div class="actions">
       <a class="abtn" href="/" target="_blank">View site ↗</a>
       <button class="abtn" id="editSiteBtn">Edit site ✎</button>
-      <button class="abtn primary">Publish &amp; deploy ↗</button>
+      <a class="abtn primary" href="https://dash.cloudflare.com/b244e6a53cfdb5f8917deb5d03d69b2c/pages/view/hardeepanand" target="_blank" rel="noopener">Deployment dashboard ↗</a>
     </div>
   </div>
 
@@ -53,7 +53,7 @@ const pillClass = (s) => (s === 'PUBLISHED' ? 'pub' : s === 'APPROVED' ? 'app' :
             <td class="ch">{i.type}</td>
             <td><span class={`pill ${pillClass(i.status)}`}>{i.status}</span></td>
             <td class="ch">{i.channel}</td>
-            <td><button class="rowact">{action(i.status)}</button></td>
+            <td><a class="rowact" href={i.href}>Open ↗</a></td>
           </tr>
         ))}
       </tbody>
@@ -61,9 +61,7 @@ const pillClass = (s) => (s === 'PUBLISHED' ? 'pub' : s === 'APPROVED' ? 'app' :
   </div>
 
   <p style="color:var(--text-dim);font-size:13px;max-width:70ch">
-    This table reads live from your repo. Ship, Review, and Publish actions become functional once
-    the admin backend (a small Worker behind Cloudflare Access) is wired in the next phase. For now,
-    the Theme Studio and the visual editor are fully live.
+    This table shows the content in this build. The editor can save named site copy to GitHub; deploy the updated source to make changes public. Theme and profile adjustments are local previews until exported.
   </p>
   <script is:inline>
     var eb = document.getElementById('editSiteBtn');

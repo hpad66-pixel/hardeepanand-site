@@ -7,11 +7,12 @@ const { title = 'Dashboard', active = 'dashboard' } = Astro.props;
 const isProd = import.meta.env.PROD;
 const items = [
   { id: 'dashboard', label: 'Dashboard', href: '/admin/' },
+  { id: 'ideas', label: 'Private idea library', href: '/admin/ideas/' },
   { id: 'content', label: 'Content', href: '/admin/#content' },
   { id: 'theme', label: 'Theme Studio', href: '/admin/theme/' },
   { id: 'profile', label: 'Profile & photo', href: '/admin/profile/' },
 ];
-const future = ['Publish queue', 'Analytics', 'Comments', 'Settings'];
+const future = [];
 ---
 <!doctype html>
 <html lang="en">
@@ -80,7 +81,7 @@ const future = ['Publish queue', 'Analytics', 'Comments', 'Settings'];
           ))}
         </nav>
         <div class="foot">
-          hardeepanand.com<br />gate with Cloudflare Access before deploy
+          hardeepanand.com<br />protected by Cloudflare Access
           <br /><button class="admin-signout" id="adminSignout">Sign out</button>
         </div>
       </aside>
@@ -123,7 +124,7 @@ const future = ['Publish queue', 'Analytics', 'Comments', 'Settings'];
           if (p && a) { a.textContent = ''; a.style.backgroundImage = 'url(' + p + ')'; a.style.backgroundSize = 'cover'; a.style.backgroundPosition = 'center'; }
         } catch (e) {}
         var so = document.getElementById('adminSignout');
-        if (so) so.onclick = function () { try { sessionStorage.removeItem('ha-admin-session'); } catch (e) {} location.reload(); };
+        if (so) so.onclick = function () { try { sessionStorage.removeItem('ha-admin-session'); } catch (e) {} location.href = '/cdn-cgi/access/logout'; };
       })();
     </script>
   </body>

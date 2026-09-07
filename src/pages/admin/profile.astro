@@ -5,7 +5,7 @@ import AdminBase from '../../layouts/AdminBase.astro';
   <div class="admin-top">
     <div>
       <h1>Profile &amp; photo</h1>
-      <div class="sub">Your portrait shows in the admin sidebar now, and will feed the site hero and About once wired. Saved in your browser; export to commit it for good.</div>
+      <div class="sub">Preview your profile on this device. Export the profile to apply it to the published source.</div>
     </div>
   </div>
 
@@ -26,8 +26,8 @@ import AdminBase from '../../layouts/AdminBase.astro';
         <div class="field"><label>Name</label><input id="pf-name" type="text" value="Hardeep Anand" style="background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:8px 10px;min-width:240px" /></div>
         <div class="field"><label>Title</label><input id="pf-title" type="text" value="Professional Engineer" style="background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:8px 10px;min-width:240px" /></div>
         <div class="field" style="align-items:flex-start"><label style="padding-top:8px">One-liner</label><textarea id="pf-line" style="background:var(--bg);color:var(--text);border:1px solid var(--line);border-radius:6px;padding:8px 10px;min-width:300px;min-height:70px">I make the invisible system legible.</textarea></div>
-        <button class="abtn primary" id="pf-save" style="margin-top:10px">Save details</button>
-        <p style="font-size:12px;color:var(--text-dim);margin-top:10px">Saved in your browser for now. The next phase commits these to the repo so they drive the live hero and About.</p>
+        <button class="abtn primary" id="pf-save" style="margin-top:10px">Save preview</button><button class="abtn" id="pf-export">Export profile</button>
+        <p style="font-size:12px;color:var(--text-dim);margin-top:10px">Saved on this device. Export to apply these details to the published source.</p>
       </div>
     </div>
   </div>
@@ -58,6 +58,11 @@ import AdminBase from '../../layouts/AdminBase.astro';
         ['name', 'title', 'line'].forEach(function (k) { try { localStorage.setItem('ha-pf-' + k, document.getElementById('pf-' + k).value); } catch (e) {} });
         var b = document.getElementById('pf-save'); b.textContent = 'Saved ✓'; setTimeout(function () { b.textContent = 'Save details'; }, 1400);
       });
+      document.getElementById('pf-export').onclick = function () {
+        const profile = { name: document.getElementById('pf-name').value, title: document.getElementById('pf-title').value, line: document.getElementById('pf-line').value, photo: localStorage.getItem('ha-photo') };
+        const url = URL.createObjectURL(new Blob([JSON.stringify(profile, null, 2)], {type:'application/json'}));
+        const a = document.createElement('a'); a.href = url; a.download = 'hardeep-profile.json'; a.click(); setTimeout(() => URL.revokeObjectURL(url), 1000);
+      };
       render();
     })();
   </script>

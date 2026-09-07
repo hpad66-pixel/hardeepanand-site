@@ -1,101 +1,32 @@
 ---
 import Base from '../layouts/Base.astro';
 import { copy as c } from '../data/copy.js';
-// Copy lives in src/data/copy.js (editable inline). Hero portrait shows the photo
-// uploaded in the admin (localStorage ha-photo), with an HA monogram fallback.
+import { readArticles, isVisible } from '../lib/content.js';
+const posts = readArticles(['substack/2026', 'linkedin/2026', 'owos/2026', 'author/2026']).filter(p => isVisible(p.status, import.meta.env.PROD));
+const featured = posts.find(p => p.slug === 'vital-signs') || posts[0];
 ---
-<Base
-  title="Hardeep Anand"
-  active="/"
-  description="Hardeep Anand. I make the invisible system legible. The Systems Lens, the OneWater Lexicon, and the OneWater Minute."
->
+<Base title="Hardeep Anand" active="/" description="Three decades inside water infrastructure. A new lens on its future. Explore Hardeep Anand’s essays on water, systems thinking, and artificial intelligence.">
   <section class="hero">
     <div class="hero-inner hero-grid">
       <div class="hero-copy">
-        <span class="meta-label" data-edit="home.metaLabel">{c['home.metaLabel']}</span>
-        <h1><span data-edit="home.headline">{c['home.headline']}</span> <span class="g" data-edit="home.headlineAccent">{c['home.headlineAccent']}</span></h1>
+        <p class="meta-label"><span class="small-rule"></span> THE OPERATOR’S PERSPECTIVE</p>
+        <h1><span data-edit="home.headline">{c['home.headline']}</span><br/><em data-edit="home.headlineAccent">{c['home.headlineAccent']}</em></h1>
         <p class="sub" data-edit="home.lede">{c['home.lede']}</p>
-        <div class="cta-row">
-          <a class="btn solid" href="/writing/" data-edit="home.cta1">{c['home.cta1']}</a>
-          <a class="btn ghost" href="/about/" data-edit="home.cta2">{c['home.cta2']}</a>
-        </div>
+        <div class="cta-row"><a class="btn solid" href="/writing/">Explore the writing <span aria-hidden="true">↗</span></a><a class="text-link" href="/about/">Meet Hardeep <span aria-hidden="true">→</span></a></div>
+        <div class="hero-author"><img src="/portrait.jpg" alt="Hardeep Anand" width="48" height="48"/><div><strong>Hardeep Anand, P.E.</strong><span>Operator. Builder. Systems thinker.</span></div></div>
       </div>
-      <figure class="hero-portrait">
-        <div class="hp-card">
-          <div class="hp-frame" id="hpFrame"><span class="hp-grid"></span><span class="hp-mono">HA</span></div>
-          <div class="hp-row"><span class="hp-name"><span class="hp-dot"></span>Hardeep Anand · Your photo</span><span class="hp-pe">P.E.</span></div>
-        </div>
-      </figure>
+      <figure class="hero-art"><img src="/images/estuary.webp" alt="Conceptual aerial artwork of branching waterways, echoing the connections in a living system" width="1100" height="1375" fetchpriority="high"/><div class="art-top"><span>FIELD OF VIEW / 001</span><span aria-hidden="true">↗</span></div><figcaption><span>Everything is connected.</span><span>Start seeing the system.</span></figcaption></figure>
+    </div>
+    <div class="hero-bottom"><span>WATER. INFRASTRUCTURE. INTELLIGENCE.</span><a href="#perspective">A different perspective <span aria-hidden="true">↓</span></a></div>
+  </section>
+  <section class="perspective wrap" id="perspective">
+    <div class="section-label"><span class="index">01 /</span> THE THROUGH LINE</div>
+    <div><h2>Thirty years inside the system.<br/><em>A new lens on what comes next.</em></h2><p class="section-intro">Water doesn’t move in silos. Neither should the knowledge we use to manage it. My work connects the operator’s experience with the possibilities of AI, grounded in a simple conviction: <strong>data ready before AI ready.</strong></p>
+      <div class="proof-grid"><div class="stat"><span class="v">30<span> years</span></span><span class="k">Inside water infrastructure</span></div><div class="stat"><span class="v">~$1B<span> / yr</span></span><span class="k">Capital program experience</span></div><div class="stat"><span class="v">P.E.</span><span class="k">Professional engineer</span></div></div>
     </div>
   </section>
-
-  <section class="proof">
-    <div class="proof-grid">
-      <div class="stat"><div class="k" data-edit="home.stat1k">{c['home.stat1k']}</div><div class="v" data-edit="home.stat1v">{c['home.stat1v']}</div></div>
-      <div class="stat"><div class="k" data-edit="home.stat2k">{c['home.stat2k']}</div><div class="v" data-edit="home.stat2v">{c['home.stat2v']}</div></div>
-      <div class="stat"><div class="k" data-edit="home.stat3k">{c['home.stat3k']}</div><div class="v" data-edit="home.stat3v">{c['home.stat3v']}</div></div>
-      <div class="stat"><div class="k" data-edit="home.stat4k">{c['home.stat4k']}</div><div class="v" data-edit="home.stat4v">{c['home.stat4v']}</div></div>
-    </div>
-  </section>
-
-  <section class="featured">
-    <div class="k" data-edit="home.featLabel">{c['home.featLabel']}</div>
-    <div class="row"><span>AWWA</span><span>WEFTEC</span><span>US Water Alliance</span><span>Smart Water</span></div>
-    <div class="ph">Placeholders. Your real publications, stages, and logos go here.</div>
-  </section>
-
-  <section class="filmband">
-    <div class="filmband-inner">
-      <p class="kicker">The one-minute version</p>
-      <video class="vsl-video" src="/vsl.mp4" autoplay muted loop playsinline preload="metadata" aria-label="Hardeep Anand brand film"></video>
-    </div>
-  </section>
-
-  <section class="doors">
-    <h2 data-edit="home.doorsHeading">{c['home.doorsHeading']}</h2>
-    <div class="door-grid">
-      <a class="door" href="/lexicon/">
-        <span class="d-k" data-edit="home.door1.k">{c['home.door1.k']}</span>
-        <h3 data-edit="home.door1.h">{c['home.door1.h']}</h3>
-        <p data-edit="home.door1.p">{c['home.door1.p']}</p>
-      </a>
-      <a class="door" href="/minute/">
-        <span class="d-k" data-edit="home.door2.k">{c['home.door2.k']}</span>
-        <h3 data-edit="home.door2.h">{c['home.door2.h']}</h3>
-        <p data-edit="home.door2.p">{c['home.door2.p']}</p>
-      </a>
-      <a class="door" href="/writing/">
-        <span class="d-k" data-edit="home.door3.k">{c['home.door3.k']}</span>
-        <h3 data-edit="home.door3.h">{c['home.door3.h']}</h3>
-        <p data-edit="home.door3.p">{c['home.door3.p']}</p>
-      </a>
-    </div>
-  </section>
-
-  <section class="newsletter" id="newsletter">
-    <div class="nl-card">
-      <div>
-        <div class="k" data-edit="home.nlKicker">{c['home.nlKicker']}</div>
-        <h2 data-edit="home.nlHeading">{c['home.nlHeading']}</h2>
-        <p data-edit="home.nlText">{c['home.nlText']}</p>
-      </div>
-      <div>
-        <form class="nl-form" onsubmit="return false;">
-          <input type="email" placeholder="you@utility.org" aria-label="Email address" />
-          <button type="submit" data-edit="home.nlButton">{c['home.nlButton']}</button>
-        </form>
-        <p class="nl-note">Connects to your newsletter at activation. No spam, unsubscribe anytime.</p>
-      </div>
-    </div>
-  </section>
-
-  <script is:inline>
-    (function () {
-      try {
-        var p = localStorage.getItem('ha-photo');
-        var f = document.getElementById('hpFrame');
-        if (p && f) { f.classList.add('has-photo'); f.style.backgroundImage = 'url(' + p + ')'; }
-      } catch (e) {}
-    })();
-  </script>
+  {featured && <section class="featured-essay wrap"><div class="section-heading"><p class="section-label"><span class="index">02 /</span> THE SYSTEMS LENS</p><a class="text-link" href="/writing/">All writing <span aria-hidden="true">↗</span></a></div><a class="essay-feature" href={`/writing/${featured.slug}/`}><div class="essay-plate"><span class="meta-label">A QUESTION WORTH ASKING</span><blockquote>Did the system<br/>get <em>healthier?</em></blockquote><span class="plate-foot">THE CURVE TEST <span aria-hidden="true">↗</span></span></div><div class="essay-copy"><div class="post-meta"><span>FEATURED ESSAY</span><span>·</span><span>{Math.max(1, Math.round(featured.body.split(/\s+/).length / 220))} MIN READ</span></div><h2>{featured.title}</h2><p>{featured.description}</p><span class="text-link">Read the essay <span aria-hidden="true">↗</span></span></div></a></section>}
+  <section class="doors wrap"><div class="section-heading"><p class="section-label"><span class="index">03 /</span> EXPLORE THE IDEAS</p><span class="quiet">Different depths. One connected view.</span></div><div class="door-grid"><a class="door" href="/writing/"><span class="door-top">ESSAYS & PERSPECTIVES <span aria-hidden="true">↗</span></span><h3>The Systems<br/><em>Lens.</em></h3><p>Read infrastructure like a living system. Long-form thinking, grounded in the operator’s experience.</p><span class="door-bottom">Go deeper <span aria-hidden="true">→</span></span></a><a class="door" href="/lexicon/"><span class="door-top">THE LANGUAGE OF WATER <span aria-hidden="true">↗</span></span><h3>OneWater<br/><em>Lexicon.</em></h3><p>Make the technical tangible. Water concepts explained through the systems we already understand.</p><span class="door-bottom">Find clarity <span aria-hidden="true">→</span></span></a><a class="door" href="/minute/"><span class="door-top">ONE IDEA. ONE MINUTE. <span aria-hidden="true">↗</span></span><h3>OneWater<br/><em>Minute.</em></h3><p>A short read that changes how you see the bigger picture. The smallest useful unit of the work.</p><span class="door-bottom">Take a minute <span aria-hidden="true">→</span></span></a></div></section>
+  <section class="film-section wrap"><div class="film-copy"><p class="section-label"><span class="index">04 /</span> IN MOTION</p><h2>The invisible,<br/><em>made visible.</em></h2><p>A short introduction to the work and the perspective behind it.</p><span class="quiet">00:34 · Brand film · No audio</span></div><video class="vsl-video" src="/vsl.mp4" controls playsinline preload="metadata" aria-label="Hardeep Anand brand film, 34 seconds, no audio"></video></section>
+  <section class="newsletter wrap" id="newsletter"><div class="nl-card"><div><p class="section-label">LET’S KEEP THINKING</p><h2>A clearer view.<br/><em>Delivered.</em></h2><p>The Systems Lens brings together water, infrastructure, and intelligence. Read the next essay in your inbox.</p></div><div class="nl-action"><form class="nl-form" action="https://www.thesystemslens.com/subscribe" method="get"><label for="newsletter-email">Your email address</label><div class="nl-input-row"><input id="newsletter-email" type="email" name="email" placeholder="you@example.com" autocomplete="email" required/><button type="submit" aria-label="Continue to subscribe">Subscribe <span aria-hidden="true">↗</span></button></div></form><p class="nl-note">Continue to The Systems Lens to confirm your subscription.<br/>Prefer a reader? <a href="/rss.xml">Follow the RSS feed.</a></p></div></div></section>
 </Base>

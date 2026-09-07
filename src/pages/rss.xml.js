@@ -1,6 +1,7 @@
 // The Systems Lens RSS feed. Published essays only, always (a feed is a published-content
 // concept, so it ignores the dev preview and lists only status: PUBLISHED).
 import { readArticles } from '../lib/content.js';
+import { publicPages } from '../lib/published.js';
 
 function esc(s = '') {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -12,7 +13,7 @@ function rfc822(d) {
 
 export function GET(context) {
   const site = context.site?.href || 'https://hardeepanand.com/';
-  const posts = readArticles(['substack/2026', 'linkedin/2026']).filter((p) => p.status === 'PUBLISHED');
+  const posts = [...readArticles(['substack/2026', 'linkedin/2026', 'owos/2026', 'author/2026']).filter((p) => p.status === 'PUBLISHED'), ...publicPages.filter(p => p.path.startsWith('writing/')).map(p=>({...p,slug:p.path.split('/')[1]}))].sort((a,b)=>b.date.localeCompare(a.date));
   const items = posts
     .map(
       (p) => `    <item>

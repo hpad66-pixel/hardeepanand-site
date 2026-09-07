@@ -28,12 +28,10 @@ function resolveOutputs() {
 const OUTPUTS = resolveOutputs();
 
 export const NAV = [
-  { label: 'Home', href: '/' },
-  { label: 'About', href: '/about/' },
+  { label: 'Writing', href: '/writing/' },
   { label: 'Lexicon', href: '/lexicon/' },
   { label: 'OneWater Minute', href: '/minute/' },
-  { label: 'Writing', href: '/writing/' },
-  { label: 'SelfOS', href: 'https://brain.hardeepanand.com' },
+  { label: 'About', href: '/about/' },
 ];
 
 const STATES = ['DRAFT', 'APPROVED', 'PUBLISHED', 'ARCHIVED'];

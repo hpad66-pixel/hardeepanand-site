@@ -1,0 +1,7 @@
+---
+const {label='Search this collection'}=Astro.props;
+---
+<div class="collection-search wrap"><label for="collection-search">{label}</label><input type="search" id="collection-search" placeholder="Search by title or idea…" autocomplete="off"/><p class="search-status" id="search-status" role="status" aria-live="polite"></p></div>
+<script is:inline>
+ document.addEventListener('DOMContentLoaded',()=>{const input=document.getElementById('collection-search');const status=document.getElementById('search-status');const items=[...document.querySelectorAll('[data-search]')];if(!input)return;input.addEventListener('input',()=>{const q=input.value.trim().toLocaleLowerCase();let count=0;items.forEach(item=>{const show=item.textContent.toLocaleLowerCase().includes(q);item.hidden=!show;if(show)count++;});status.textContent=q?(count?`${count} result${count===1?'':'s'}`:'No matches. Try a different word.'):'';});});
+</script>

@@ -1,7 +1,7 @@
 ---
 import '../styles/tokens.css';
 import { NAV } from '../lib/content.js';
-const { title = 'Hardeep Anand', active = '/', description = '' } = Astro.props;
+const { title = 'Hardeep Anand', active = '/', description = 'Water, infrastructure, and intelligence. Essays and ideas from Hardeep Anand, an operator building a more connected future.' } = Astro.props;
 const isProd = import.meta.env.PROD;
 ---
 <!doctype html>
@@ -11,6 +11,14 @@ const isProd = import.meta.env.PROD;
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>{title === 'Hardeep Anand' ? title : `${title} · Hardeep Anand`}</title>
     {description && <meta name="description" content={description} />}
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://hardeepanand.com/og/og-default.png" />
+    <meta name="twitter:card" content="summary_large_image" />
     <link rel="canonical" href={new URL(Astro.url.pathname, 'https://hardeepanand.com').href} />
     <link rel="alternate" type="application/rss+xml" title="The Systems Lens" href="/rss.xml" />
     <link rel="alternate" type="application/feed+json" title="Hardeep Anand" href="/feed.json" />
@@ -31,28 +39,30 @@ const isProd = import.meta.env.PROD;
         PREVIEW BUILD · drafts are visible here · only PUBLISHED ships to production
       </div>
     )}
-    <nav class="ha-nav">
-      <a class="ha-brand" href="/">Hardeep<b>.</b>Anand</a>
-      <div class="ha-links">
+    <a class="skip-link" href="#main">Skip to content</a>
+    <nav class="ha-nav" aria-label="Main navigation">
+      <a class="ha-brand" href="/" aria-label="Hardeep Anand home"><span class="brand-mark" aria-hidden="true">ha.</span><span>Hardeep Anand<span class="brand-sub">WATER · INFRASTRUCTURE · INTELLIGENCE</span></span></a>
+      <button class="menu-toggle" aria-expanded="false" aria-controls="main-links">Menu <span aria-hidden="true">+</span></button>
+      <div class="ha-links" id="main-links">
         {NAV.map((n) => (
           <a href={n.href} aria-current={active === n.href ? 'page' : undefined}>{n.label}</a>
         ))}
-        <a class="nav-cta" href="/#newsletter">Subscribe</a>
+        <a href="/work/">Work with me</a>
+        <a class="nav-cta" href="/#newsletter">Subscribe <span aria-hidden="true">↗</span></a>
       </div>
     </nav>
-    <main>
+    <main id="main">
       <slot />
     </main>
     <footer class="ha-foot">
       <div class="ha-foot-inner">
         <div>
-          <div class="fbrand">Hardeep Anand</div>
-          <p class="ftag">I make the invisible system legible. Water, infrastructure, and the intelligence layer it was missing.</p>
+          <div class="fbrand">A more connected<br/><em>way of seeing.</em></div>
+          <p class="ftag">An operator’s perspective on water, infrastructure, and the intelligence that connects them.</p>
           <div class="fsocial">
-            <a href="https://www.linkedin.com/">LinkedIn</a>
-            <a href="https://substack.com/">Substack</a>
-            <a href="https://x.com/">X</a>
-            <a href="https://youtube.com/">YouTube</a>
+            <a href="https://www.linkedin.com/in/hardeepanand/">LinkedIn</a>
+            <a href="https://www.thesystemslens.com/">Substack</a>
+
           </div>
         </div>
         <div class="fcol">
@@ -65,15 +75,32 @@ const isProd = import.meta.env.PROD;
         <div class="fcol">
           <h4>More</h4>
           <a href="/about/">About</a>
+          <a href="/climb/">The Second Climb</a>
+          <a href="/case-studies/">Case Studies</a>
+          <a href="/ai-watch/">AI Watch</a>
+          <a href="/summits/">Summits &amp; Stage</a>
+          <a href="/work/">Work with me</a>
           <a href="/#newsletter">Subscribe</a>
           <a href="/rss.xml">RSS feed</a>
         </div>
       </div>
       <div class="fbottom">
         <span>© 2026 Hardeep Anand</span>
-        <span class="fbottom-r">The Systems Lens · Every claim sourced<a class="fadmin" href="/admin/" aria-label="Admin studio">· Admin</a></span>
+        <span class="fbottom-r">Water · Infrastructure · Intelligence</span>
       </div>
     </footer>
+    <script is:inline>
+      try {
+        const photo = localStorage.getItem('ha-photo');
+        if (photo && /^data:image\/(jpeg|png|webp);base64,/.test(photo)) document.querySelectorAll('img[src="/portrait.jpg"]').forEach(img => { img.src = photo; });
+      } catch {}
+      const toggle = document.querySelector('.menu-toggle');
+      const links = document.getElementById('main-links');
+      function closeMenu() { toggle.setAttribute('aria-expanded', 'false'); links.classList.remove('open'); }
+      toggle.addEventListener('click', () => { const open = toggle.getAttribute('aria-expanded') !== 'true'; toggle.setAttribute('aria-expanded', String(open)); links.classList.toggle('open', open); });
+      links.addEventListener('click', (event) => { if (event.target.closest('a')) closeMenu(); });
+      document.addEventListener('keydown', (event) => { if (event.key === 'Escape' && toggle.getAttribute('aria-expanded') === 'true') { closeMenu(); toggle.focus(); } });
+    </script>
     <script is:inline>
       // Tag long-form article prose blocks as editable fields, then apply any saved
       // inline-editor overrides on every page: copy fields as text, article blocks as
@@ -127,7 +154,7 @@ const isProd = import.meta.env.PROD;
         bar.className = 'edit-bar';
         bar.innerHTML = '<span class="eb-dot"></span><b>Editing</b>'
           + '<span class="eb-status" id="ebStatus">click any text to edit</span>'
-          + '<button id="ebPublish">Publish</button>'
+          + '<button id="ebPublish">Save copy to GitHub</button>'
           + '<button id="ebExport">Export changes</button>'
           + '<button id="ebReset">Discard</button>'
           + '<button id="ebDone">Done</button>';
@@ -136,15 +163,15 @@ const isProd = import.meta.env.PROD;
           // Commit the edits to the repo via the admin backend (E4). Falls back to Export
           // if the backend is not deployed/authorized yet, so editing still works today.
           var s = document.getElementById('ebStatus');
-          if (s) s.textContent = 'publishing...';
+          if (s) s.textContent = 'saving copy...';
           try {
             var r = await fetch('/api/save', {
               method: 'POST',
               headers: { 'content-type': 'application/json' },
               body: JSON.stringify({ action: 'copy', payload: saved }),
             });
-            if (r.ok) { if (s) s.textContent = 'published. The site redeploys in a moment.'; return; }
-            if (s) s.textContent = (r.status === 403)
+            if (r.ok) { if (s) s.textContent = 'copy saved to GitHub. Deploy the updated source to publish.'; return; }
+            if (s) s.textContent = (r.status === 400) ? 'Export article edits; only named site copy can be saved here.' : (r.status === 403)
               ? 'sign in to the admin (Cloudflare Access) to publish'
               : 'backend not ready yet. Use Export changes instead.';
           } catch (e) {

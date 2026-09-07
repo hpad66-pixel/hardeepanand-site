@@ -1,7 +1,7 @@
 ---
 import AdminBase from '../../layouts/AdminBase.astro';
 ---
-<AdminBase title="Theme Studio" active="theme">
+<AdminBase title="Theme Studio" active="theme"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bebas+Neue&amp;family=Bricolage+Grotesque:wght@400;700&amp;family=Space+Grotesk:wght@400;700&amp;family=Fraunces:wght@400;700&amp;family=Libre+Baskerville&amp;family=EB+Garamond&amp;family=Barlow&amp;family=Space+Mono&amp;family=JetBrains+Mono&amp;display=swap"/>
   <div class="admin-top">
     <div>
       <h1>Theme Studio</h1>
@@ -19,10 +19,10 @@ import AdminBase from '../../layouts/AdminBase.astro';
         <div class="basebtns" id="basebtns">
           <button class="basebtn" data-base="obsidian">Obsidian</button>
           <button class="basebtn" data-base="editorial">Editorial</button>
-          <button class="basebtn" data-base="executive">Executive</button>
+          <button class="basebtn" data-base="operator">Systems Lens</button>
           <button class="basebtn" data-base="monument">Monument</button>
         </div>
-        <p style="font-size:12px;color:var(--text-dim);margin-top:8px">Pick a starting point, then tune below. Obsidian is your locked default.</p>
+        <p style="font-size:12px;color:var(--text-dim);margin-top:8px">Pick a starting point, then tune below. Systems Lens is the current site default.</p>
       </div>
 
       <div class="cgroup">
@@ -95,7 +95,7 @@ import AdminBase from '../../layouts/AdminBase.astro';
       var root = document.documentElement;
       var custom = {};
       try { custom = JSON.parse(localStorage.getItem('ha-custom') || '{}'); } catch (e) { custom = {}; }
-      function base() { try { return localStorage.getItem('ha-theme') || 'obsidian'; } catch (e) { return 'obsidian'; } }
+      function base() { try { return localStorage.getItem('ha-theme') || 'operator'; } catch (e) { return 'operator'; } }
       function saveCustom() { try { localStorage.setItem('ha-custom', JSON.stringify(custom)); } catch (e) {} }
 
       // populate font selects

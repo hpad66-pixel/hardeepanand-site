@@ -5,7 +5,10 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build",
-    "preview": "astro preview"
+    "preview": "astro preview",
+    "test": "node --test tests/*.test.mjs",
+    "verify": "node scripts/verify-site.mjs",
+    "deploy": "npm run build && npm run test && npm run verify && wrangler pages deploy dist --project-name hardeepanand --branch main"
   },
   "dependencies": {
     "astro": "^5.0.0",

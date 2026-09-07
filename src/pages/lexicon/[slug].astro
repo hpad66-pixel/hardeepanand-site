@@ -1,0 +1,7 @@
+---
+import Base from '../../layouts/Base.astro';
+import { terms } from '../../data/lexicon.js';
+export function getStaticPaths(){return terms.map(term=>({params:{slug:term.slug},props:{term}}));}
+const {term}=Astro.props;
+---
+<Base title={`${term.title} · OneWater Lexicon`} active="/lexicon/" description={term.description}><article class="post"><header class="post-head"><a class="kicker" href="/lexicon/">OneWater Lexicon / {term.category}</a><h1>{term.title}</h1><p class="lede" style="margin-bottom:35px">{term.description}</p></header><div class="prose"><h2>In plain language</h2><p>{term.definition}</p><h2>The body connection</h2><p>{term.body}</p><h2>At the utility</h2><p>{term.utility}</p><blockquote>{term.question}</blockquote><h2>Source &amp; further reading</h2><p><a href={term.source}>{term.sourceName} ↗</a></p><p class="source-note">The definition is grounded in the source above. The body and utility examples are explanatory analogies.</p></div></article><section class="post-end"><a class="text-link" href="/lexicon/">← All terms</a><a class="text-link" href="/writing/vital-signs/" style="display:flex;margin-top:20px">Explore the idea: The Curve Test →</a></section></Base>
