@@ -17,13 +17,18 @@ for(const file of html){
   const url=new URL(value,`https://hardeepanand.com/${route}`);
   let target=path.join(root,decodeURIComponent(url.pathname));
   const candidates=[target,path.join(target,'index.html')];
+  candidates.push(path.resolve('functions', `.${url.pathname}.js`));
   if(target.endsWith('.html'))candidates.push(path.join(target.slice(0,-5),'index.html'));
   const found=candidates.find(c=>existsSync(c)&&!c.endsWith(path.sep));
   if(!found)problems.push(`${route}: missing ${value}`);
  }
 }
 const feed=JSON.parse(readFileSync(path.join(root,'feed.json'),'utf8'));
-assert(feed.items.length>=10);for(const item of feed.items)assert(item.content_html||item.content_text,`Feed item lacks content: ${item.url}`);
+assert(feed.items.length>0);for(const item of feed.items)assert(item.content_html||item.content_text,`Feed item lacks content: ${item.url}`);
+const sitemap=readFileSync(path.join(root,'sitemap.xml'),'utf8');
+for(const [,url] of sitemap.matchAll(/<loc>(https:\/\/hardeepanand.com\/(?:writing|climb)\/[^/]+\/)<\/loc>/g))assert(feed.items.some(item=>item.url===url),`Published essay missing from feed: ${url}`);
+assert(!sitemap.includes('/lexicon/')&&!sitemap.includes('/minute/'));
+assert(!feed.items.some(item=>/\/(lexicon|minute)\//.test(item.url)));
 assert.equal(new Set(feed.items.map(i=>i.id)).size,feed.items.length,'Duplicate feed IDs');
 assert(!readFileSync(path.join(root,'sitemap.xml'),'utf8').includes('/admin/'));
 if(problems.length){console.error(problems.join('\n'));process.exit(1);}

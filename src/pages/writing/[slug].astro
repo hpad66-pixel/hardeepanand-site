@@ -1,6 +1,12 @@
 ---
+import EditorialInteractions from '../../components/EditorialInteractions.astro';
+import ApasSignature from '../../components/ApasSignature.astro';
 import Base from '../../layouts/Base.astro';
+import '../../styles/illustrated-essay.css';
 import { readArticles, isVisible, renderMarkdown } from '../../lib/content.js';
+import { inlineVitalSignsFigures } from '../../lib/illustrated-figures.js';
+import { addTakeawayActions } from '../../lib/takeaway-actions.js';
+import ArticleDiscussion from '../../components/ArticleDiscussion.astro';
 
 const isProd = import.meta.env.PROD;
 
@@ -13,12 +19,13 @@ export function getStaticPaths() {
 
 const { post } = Astro.props;
 // Drop cap on the first paragraph; the prose styles handle pull quotes and sources.
-const html = renderMarkdown(post.body).replace('<p>', '<p class="first">');
+const prose = renderMarkdown(post.body).replace('<p>', '<p class="first">');
+const html = post.slug === 'vital-signs' ? addTakeawayActions(inlineVitalSignsFigures(prose), post.title, new URL(`/writing/${post.slug}/`, Astro.site).href) : prose;
 const words = (post.body || '').split(/\s+/).filter(Boolean).length;
 const readMin = Math.max(1, Math.round(words / 220));
 ---
 <Base title={post.title} active="/writing/" description={post.description}>
-  <article class="post">
+  <article class:list={['post', { 'illustrated-essay': post.slug === 'vital-signs' }]}>
     <header class="post-head">
       <span class="kicker">// The Systems Lens</span>
       <h1>{post.title}</h1>
@@ -29,6 +36,8 @@ const readMin = Math.max(1, Math.round(words / 220));
       </p>
     </header>
     <div class="prose" set:html={html} />
+    <ApasSignature article={post.title} path={`writing/${post.slug}`} />
+    {post.slug === 'vital-signs' && <ArticleDiscussion slug={post.slug} />}
   </article>
   <section class="post-end">
     <div class="author">
@@ -41,3 +50,5 @@ const readMin = Math.max(1, Math.round(words / 220));
     </div>
   </section>
 </Base>
+
+<EditorialInteractions />

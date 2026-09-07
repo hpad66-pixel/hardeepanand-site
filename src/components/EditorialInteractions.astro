@@ -1,0 +1,33 @@
+<script>
+  document.querySelectorAll<HTMLButtonElement>('[data-print-takeaways]').forEach(button => {
+    button.hidden = false;
+    button.addEventListener('click', () => {
+      document.body.classList.add('print-takeaways');
+      window.print();
+    });
+  });
+  window.addEventListener('afterprint', () => document.body.classList.remove('print-takeaways'));
+  const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const stages = document.querySelectorAll<HTMLElement>('.diagram-stage');
+  const observer = new IntersectionObserver((entries) => {
+    for (const entry of entries) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('is-visible');
+        observer.unobserve(entry.target);
+      }
+    }
+  }, { threshold: 0.15 });
+  stages.forEach((stage) => {
+    observer.observe(stage);
+    const replay = stage.nextElementSibling as HTMLButtonElement;
+    replay.hidden = reducedMotion.matches;
+    reducedMotion.addEventListener('change', () => { replay.hidden = reducedMotion.matches; });
+    replay.addEventListener('click', () => {
+      if (reducedMotion.matches) return;
+      stage.classList.add('is-visible', 'is-resetting');
+      // Reset the CSS timeline without rebuilding the SVG or its accessible text.
+      void stage.offsetWidth;
+      stage.classList.remove('is-resetting');
+    });
+  });
+</script>

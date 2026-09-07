@@ -1,0 +1,146 @@
+{
+  "data-governance": [
+    [
+      "Make knowledge discoverable",
+      [
+        "A question",
+        "A shared catalog",
+        "An accountable owner"
+      ],
+      [
+        "Find the dataset",
+        "Read meaning and access rules",
+        "Resolve uncertainty"
+      ],
+      "A catalog preserves the route to knowledge; it does not replace the people responsible for it."
+    ],
+    [
+      "Connect the systems through meaning",
+      [
+        "Operational systems",
+        "Shared descriptions",
+        "Traceable decisions"
+      ],
+      [
+        "Historian · GIS · meters",
+        "Identity · ownership · freshness",
+        "Know which records were used"
+      ],
+      "The governance layer connects descriptions and responsibilities across systems. It does not require moving every record into one database."
+    ],
+    [
+      "Turn documentation into a working practice",
+      [
+        "Describe",
+        "Detect a change",
+        "Review and update"
+      ],
+      [
+        "Record the starting state",
+        "Monitor critical pipelines",
+        "Keep owners in the loop"
+      ],
+      "Automation can surface change. Accountable people still decide what the change means and which controls need updating."
+    ],
+    [
+      "One foundation, several uses",
+      [
+        "Governed records",
+        "Evidence and lineage",
+        "Reviewable outcomes"
+      ],
+      [
+        "Known source and owner",
+        "Follow data into a decision",
+        "Audit · collaboration · AI"
+      ],
+      "A common evidence foundation supports these uses. Each still has its own requirements; a catalog alone does not establish compliance."
+    ],
+    [
+      "Build capability in a useful order",
+      [
+        "Diagnose one use case",
+        "Govern its critical data",
+        "Extend into AI"
+      ],
+      [
+        "Expose the actual gaps",
+        "Catalog · lineage · controls",
+        "Validate before expanding"
+      ],
+      "Start with one consequential decision. Prove that its data can be found, understood, and traced before widening the program."
+    ]
+  ],
+  "fifty-steps-back": [
+    [
+      "Read the pressures together",
+      [
+        "Investment needs",
+        "Operating obligations",
+        "Knowledge continuity"
+      ],
+      [
+        "Long-lived infrastructure",
+        "Daily service and new demands",
+        "Capture what people know"
+      ],
+      "These pressures interact. This is a conceptual map, not a quantified forecast or a ranking of risks."
+    ],
+    [
+      "Make quiet expertise durable",
+      [
+        "Operator experience",
+        "A shared record",
+        "A stronger next decision"
+      ],
+      [
+        "What changed and why",
+        "Context · asset · response",
+        "Learn without starting over"
+      ],
+      "Capture the reasoning behind a repair or operating adjustment, not just the fact that work was completed."
+    ],
+    [
+      "Understand before handing over control",
+      [
+        "Learn the tool",
+        "Test with people",
+        "Expand within limits"
+      ],
+      [
+        "Know what it can miss",
+        "Check outputs against reality",
+        "Retain oversight and rollback"
+      ],
+      "A supervised pilot can expose data gaps. Expanding autonomy requires evidence that the process and its limits are understood."
+    ],
+    [
+      "Identity comes before prediction",
+      [
+        "Different local names",
+        "Verified asset identities",
+        "Comparable histories"
+      ],
+      [
+        "Pump 3A · P-03 · local tags",
+        "Unique asset + model + location",
+        "Join the right maintenance records"
+      ],
+      "Two pumps of the same model remain separate assets. Standard names and verified identities prevent their histories from being confused."
+    ],
+    [
+      "The step back makes progress possible",
+      [
+        "Find your footing",
+        "Test one improvement",
+        "Carry the learning forward"
+      ],
+      [
+        "Agree on records and meaning",
+        "Measure against a baseline",
+        "Repeat with a stronger foundation"
+      ],
+      "Fifty and five hundred are metaphors for readiness and progress, not a promised tenfold return."
+    ]
+  ]
+}

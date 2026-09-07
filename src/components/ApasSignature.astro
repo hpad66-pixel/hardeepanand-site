@@ -1,0 +1,86 @@
+---
+const { article = '', path = '' } = Astro.props;
+const offers = {
+  'writing/fifty-steps-back': ['Make your first step back count.', 'Before the next AI investment, choose one decision your team needs to make better. We can examine the records behind it, expose the gaps, and map a practical route to readiness.'],
+  'writing/data-governance': ['Could your team trace one important decision?', 'From the source record to the report or model, find out where ownership, meaning, and evidence are missing—and what it would take to connect them.'],
+  'writing/vital-signs': ['Which result should your next investment change?', 'Start with one operational question. We can assess whether your existing records support a credible baseline and identify what needs to improve before you trust the curve.'],
+};
+const utility = path.startsWith('writing/');
+const [heading, intro] = offers[path] || ['Turn perspective into a practical next step.', 'If this way of thinking resonates with a challenge in your organization, let’s discuss where experience, better information, and a clearer decision could help.'];
+const subject = utility ? 'APAS Data Readiness Diagnostic' : 'APAS advisory conversation';
+const body = `I read “${article}”.\n\nThe decision or challenge I want to work on:\n\nThe records or systems involved:\n\nWhat is getting in the way:\n`;
+const inquiry = `mailto:hardeep@apas.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+---
+<aside class="apas-signature" id="connect" aria-label="Connect with APAS Consulting">
+  <div class="apas-heading"><a class="apas-wordmark" href="https://apas.ai/">APAS<span>CONSULTING</span></a><span class="apas-label">FROM INSIGHT TO ACTION</span></div>
+  <div class="apas-layout">
+    <div class="apas-story">
+      <h2>{heading}</h2><p class="apas-intro">{intro}</p>
+      {utility && <div class="apas-offer"><p class="apas-label">A FOCUSED FIRST ENGAGEMENT</p><h3>Data Readiness<br/><em>Diagnostic</em></h3><ol><li><span>01</span><div><strong>Find the foundation</strong><p>Sources, definitions, and the people accountable for them.</p></div></li><li><span>02</span><div><strong>Follow the evidence</strong><p>Provenance, lineage, and quality gaps that deserve investigation.</p></div></li><li><span>03</span><div><strong>Choose the next move</strong><p>A prioritized readiness plan around one important decision.</p></div></li></ol></div>}
+      <p class="apas-person">Hardeep Anand<span>Water infrastructure experience.<br/>Data foundations. Practical AI.</span></p>
+    </div>
+    <div class="apas-note">
+      <span class="apas-note-icon" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 7h22v16H13l-6 5v-5H5z"/><path d="M10 12h12M10 17h8"/></svg></span>
+      <h3>What’s on your mind?</h3><p>A question, a stuck decision, or an idea worth exploring. Start with a short note.</p>
+      <form class="apas-contact-form" data-article-path={`/${path}/`}>
+        <div class="apas-field-pair"><label>Your name<input name="name" autocomplete="name" maxlength="100" required placeholder="Full name" /></label><label>Work email<input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@organization.com" /></label></div>
+        <label><span>Organization <span class="apas-optional">optional</span></span><input name="company" autocomplete="organization" maxlength="150" placeholder="Where you work" /></label>
+        <label>Your note<textarea name="message" rows="4" maxlength="4000" required placeholder="What decision are you trying to make—and what’s getting in the way?"></textarea></label>
+        <label class="apas-trap" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off" /></label>
+        <label class="apas-consent"><input type="checkbox" name="consent" required /><span>APAS may store this note and my contact details to respond to my inquiry.</span></label>
+        <button type="submit" disabled>Send your note <span aria-hidden="true">↗</span></button>
+        <p class="apas-form-status" role="status" aria-live="polite">{import.meta.env.DEV ? 'Preview: CRM connection is being configured. You can email Hardeep below.' : 'Checking secure delivery…'}</p>
+      </form>
+      <a class="apas-email" href={inquiry}>Prefer email? hardeep@apas.ai ↗</a>
+    </div>
+  </div>
+  <div class="apas-foot"><span>One conversation. A clearer next step.</span><a href="https://apas.ai/">Explore APAS.ai ↗</a></div>
+</aside>
+<script>
+ document.querySelectorAll<HTMLFormElement>('.apas-contact-form').forEach(async form=>{
+  const button=form.querySelector<HTMLButtonElement>('button')!;
+  const status=form.querySelector<HTMLElement>('.apas-form-status')!;
+  let submissionId:string|undefined;
+  form.addEventListener('input',()=>{submissionId=undefined;});
+  if(import.meta.env.DEV)return;
+  try{const r=await fetch('/api/inquiries');const data=await r.json();if(!r.ok||!data.ready)throw new Error();button.disabled=false;status.textContent='Your note is private. It will go to APAS for follow-up.';}catch{status.textContent='Online delivery is unavailable right now. Please use the email link below.';return;}
+  form.addEventListener('submit',async event=>{
+   event.preventDefault();if(!form.reportValidity())return;
+   button.disabled=true;status.textContent='Sending your note…';submissionId??=crypto.randomUUID();
+   const data=new FormData(form);
+   try{const response=await fetch('/api/inquiries',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:submissionId,name:data.get('name'),email:data.get('email'),company:data.get('company'),message:data.get('message'),website:data.get('website'),consent:data.get('consent')==='on',articlePath:form.dataset.articlePath})});
+    const result=await response.json();if(!response.ok||!result.accepted)throw new Error(result.error||'Delivery was not confirmed. Please try again.');
+    form.reset();submissionId=undefined;status.textContent='Thank you. Your note has reached APAS for review and follow-up.';
+   }catch(error){status.textContent=error instanceof Error?error.message:'Unable to confirm delivery. Please try again.';}finally{button.disabled=false;}
+  });
+ });
+</script>
+<style>
+.apas-signature{--contact-blue:#174bc5;margin:72px auto 0;padding:32px 0 0;border-top:1px solid var(--line);color:var(--text);scroll-margin-top:120px}
+[data-theme='obsidian'] .apas-signature{--contact-blue:#91b3ff}
+.apas-heading{display:flex;align-items:center;justify-content:space-between;gap:20px;padding-bottom:30px}
+.apas-wordmark{font:500 30px/1 var(--font-body);letter-spacing:-.055em;text-decoration:none;color:var(--text)}
+.apas-wordmark span{display:block;font:500 8px/1.6 var(--font-label);letter-spacing:.22em;margin-top:7px}
+.apas-label{font:500 10px/1.6 var(--font-label);letter-spacing:.14em;color:var(--contact-blue)}
+.apas-layout{display:grid;grid-template-columns:minmax(0,.9fr) minmax(0,1.1fr);gap:40px;align-items:start}
+.apas-story h2{font:400 clamp(32px,3.1vw,43px)/1.06 var(--font-display);letter-spacing:-.025em;margin:0 0 20px;text-wrap:balance}
+.apas-intro{font:15px/1.75 var(--font-body);color:var(--text-dim);margin:0}
+.apas-offer{margin-top:32px;padding-top:24px;border-top:1px solid var(--line)}
+.apas-offer h3{font:400 27px/1.15 var(--font-display);margin:10px 0 22px}.apas-offer h3 em{color:var(--contact-blue)}
+.apas-offer ol{list-style:none;padding:0;margin:0;display:grid;gap:20px}.apas-offer li{display:flex;gap:14px}.apas-offer li>span{font:12px/1.8 var(--font-body);color:var(--contact-blue)}
+.apas-offer strong{font:500 13px/1.5 var(--font-body)}.apas-offer li p{font:13px/1.6 var(--font-body);color:var(--text-dim);margin:5px 0 0}
+.apas-person{font:italic 23px/1.2 var(--font-display);margin-top:30px}.apas-person span{display:block;font:12px/1.6 var(--font-body);color:var(--text-dim);margin-top:10px}
+.apas-note{padding:26px;border:1px solid var(--line);border-top:3px solid var(--contact-blue);border-radius:3px;background:var(--bg)}
+.apas-note-icon{color:var(--contact-blue);display:block;margin-bottom:14px}.apas-note h3{font:400 29px/1.1 var(--font-display);margin:0 0 12px}.apas-note>p{font:14px/1.65 var(--font-body);color:var(--text-dim);margin:0 0 24px}
+.apas-contact-form{display:grid;gap:16px}.apas-contact-form label{display:grid;gap:7px;font:500 12px/1.5 var(--font-body)}
+.apas-field-pair{display:grid;gap:16px}.apas-optional{font-weight:400;color:var(--text-dim);display:inline}
+.apas-contact-form input:not([type=checkbox]),.apas-contact-form textarea{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:3px;background:var(--bg);color:var(--text);padding:11px 12px;font:14px/1.5 var(--font-body);min-width:0}.apas-contact-form textarea{resize:vertical}
+.apas-contact-form input:focus-visible,.apas-contact-form textarea:focus-visible{outline:2px solid var(--contact-blue);outline-offset:2px}
+.apas-contact-form .apas-consent{display:flex;align-items:flex-start;gap:10px;font-weight:400;color:var(--text-dim);font-size:11px}.apas-consent input{flex:0 0 auto;margin-top:3px;accent-color:var(--contact-blue)}
+.apas-contact-form .apas-trap{position:absolute;left:-10000px;width:1px;height:1px;overflow:hidden}
+.apas-contact-form button{display:flex;justify-content:space-between;align-items:center;padding:13px 16px;border:0;border-radius:3px;background:var(--contact-blue);color:#fff;font:500 14px/1.5 var(--font-body);cursor:pointer}.apas-contact-form button:disabled{opacity:.5;cursor:not-allowed}
+.apas-contact-form .apas-form-status{font:12px/1.55 var(--font-body);color:var(--text-dim);margin:0}.apas-email{display:block;font:12px/1.6 var(--font-body);color:var(--text);margin-top:16px;text-underline-offset:4px}
+.apas-foot{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap;margin-top:30px;padding:20px 0;border-top:1px solid var(--line);font:12px/1.6 var(--font-body);color:var(--text-dim)}.apas-foot a{color:var(--text);text-underline-offset:4px}
+@media(max-width:680px){.apas-layout{grid-template-columns:1fr;gap:25px}.apas-note{padding:22px}.apas-heading>.apas-label{max-width:14ch;text-align:right}.apas-signature{margin-top:45px}}
+@media print{.apas-note{display:none}.apas-layout{display:block}.apas-signature{break-inside:avoid}}
+</style>

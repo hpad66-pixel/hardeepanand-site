@@ -29,8 +29,6 @@ const OUTPUTS = resolveOutputs();
 
 export const NAV = [
   { label: 'Writing', href: '/writing/' },
-  { label: 'Lexicon', href: '/lexicon/' },
-  { label: 'OneWater Minute', href: '/minute/' },
   { label: 'About', href: '/about/' },
 ];
 

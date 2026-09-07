@@ -1,0 +1,94 @@
+---
+const { slug } = Astro.props;
+const localPreview = import.meta.env.DEV;
+---
+<section class="article-discussion" id="comments" aria-labelledby="comments-title" data-article={slug} data-local-preview={String(localPreview)}>
+  <span class="kicker">The conversation continues</span>
+  <h2 id="comments-title">What are you seeing in your system?</h2>
+  <p>Share an example, ask a question, or offer another perspective.</p>
+  <div class="discussion-signin" data-comment-signin hidden>
+    <a class="takeaway-action" href={`/community/login?article=${encodeURIComponent(slug)}`}>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
+      Sign in to comment
+    </a>
+    <p>Use your verified email. Your email address will not be displayed.</p>
+  </div>
+  <form data-comment-form hidden>
+    <label for="comment-name">Display name</label>
+    <input id="comment-name" name="name" autocomplete="nickname" maxlength="60" required />
+    <label for="comment-body">Your comment</label>
+    <textarea id="comment-body" name="body" rows="5" maxlength="2000" required></textarea>
+    <p class="comment-note">Your name and comment will be public. Up to 2,000 characters.</p>
+    <button class="takeaway-action" type="submit">Post comment</button>
+  </form>
+  <p data-comment-status role="status" aria-live="polite">Loading the conversation…</p>
+  <ol class="comment-list" data-comment-list aria-label="Reader comments"></ol>
+  <button type="button" class="takeaway-action" data-comment-more hidden>More comments</button>
+  <noscript><p>Enable JavaScript to read and post comments.</p></noscript>
+</section>
+
+<script>
+  const discussion = document.querySelector<HTMLElement>('.article-discussion');
+  if (discussion) {
+    const article = discussion.dataset.article!;
+    const status = discussion.querySelector<HTMLElement>('[data-comment-status]')!;
+    const list = discussion.querySelector<HTMLOListElement>('[data-comment-list]')!;
+    const form = discussion.querySelector<HTMLFormElement>('[data-comment-form]')!;
+    const signin = discussion.querySelector<HTMLElement>('[data-comment-signin]')!;
+    const more = discussion.querySelector<HTMLButtonElement>('[data-comment-more]')!;
+    let cursor: string | null = null;
+    const seen = new Set<string>();
+    function render(comment: {id:string;name:string;body:string;createdAt:string}, prepend = false) {
+      if (seen.has(comment.id)) return;
+      seen.add(comment.id);
+      const item = document.createElement('li');
+      const header = document.createElement('div'); header.className = 'comment-byline';
+      const name = document.createElement('strong'); name.textContent = comment.name;
+      const time = document.createElement('time'); time.dateTime = comment.createdAt;
+      time.textContent = new Date(comment.createdAt).toLocaleDateString(undefined, {year:'numeric',month:'short',day:'numeric'});
+      const body = document.createElement('p'); body.textContent = comment.body;
+      header.append(name, time); item.append(header, body);
+      prepend ? list.prepend(item) : list.append(item);
+    }
+    async function load() {
+      more.disabled = true;
+      try {
+        const response = await fetch(`/api/comments?article=${encodeURIComponent(article)}${cursor?`&cursor=${encodeURIComponent(cursor)}`:''}`, {cache:'no-store'});
+        if (!response.ok) throw new Error('The conversation is not available yet. Please check back later.');
+        const data = await response.json();
+        data.comments.forEach((comment: Parameters<typeof render>[0]) => render(comment));
+        cursor = data.cursor; more.hidden = !cursor;
+        status.textContent = seen.size ? '' : 'No comments yet. Add the first perspective.';
+        const session = await fetch('/community/session', {redirect:'manual',cache:'no-store'});
+        const authenticated = session.ok && (await session.json()).authenticated;
+        form.hidden = !authenticated; signin.hidden = Boolean(authenticated);
+      } catch (error) { status.textContent = (error as Error).message; }
+      finally { more.disabled = false; }
+    }
+    more.addEventListener('click', load);
+    form.addEventListener('submit', async event => {
+      event.preventDefault();
+      const submit = form.querySelector<HTMLButtonElement>('button')!;
+      submit.disabled = true; status.textContent = 'Posting your comment…';
+      const values = new FormData(form);
+      try {
+        const response = await fetch('/community/comments', {method:'POST',redirect:'manual',headers:{'Content-Type':'application/json'},body:JSON.stringify({article,name:values.get('name'),body:values.get('body')})});
+        if (response.type === 'opaqueredirect' || response.status === 401) {
+          form.hidden = true; signin.hidden = false; throw new Error('Your session has expired. Sign in again to post. Your draft is still here.');
+        }
+        const data = await response.json();
+        if (!response.ok) throw new Error(data.error || 'Your comment could not be saved. Please try again.');
+        render(data.comment, true);
+        form.querySelector<HTMLTextAreaElement>('textarea')!.value = '';
+        status.textContent = 'Your comment is posted.';
+      } catch (error) { status.textContent = (error as Error).message; }
+      finally { submit.disabled = false; }
+    });
+    if (discussion.dataset.localPreview === 'true') {
+      signin.hidden = false;
+      const link = signin.querySelector('a')!;
+      link.removeAttribute('href'); link.setAttribute('aria-disabled', 'true');
+      status.textContent = 'Reader sign-in and comments will be available after the discussion service is connected for publication.';
+    } else { load(); }
+  }
+</script>

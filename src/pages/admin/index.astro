@@ -8,12 +8,6 @@ const items = [
   ...readArticles(['substack/2026', 'linkedin/2026']).filter(notArchived).map((p) => ({
     href: `/writing/${p.slug}/`, title: p.title, type: 'Article', status: p.status, channel: 'Site · Substack · LinkedIn',
   })),
-  ...readHtmlCollection('lexicon').filter(notArchived).map((t) => ({
-    href: `/lexicon/${t.slug}.html`, title: t.title, type: 'Lexicon', status: t.status, channel: 'Site',
-  })),
-  ...readHtmlCollection('minutes/2026').filter(notArchived).map((m) => ({
-    href: `/minute/${m.slug}.html`, title: m.title, type: 'Minute', status: m.status, channel: 'Site',
-  })),
 ];
 const count = (s) => items.filter((i) => i.status === s).length;
 const published = count('PUBLISHED');

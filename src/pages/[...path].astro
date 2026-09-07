@@ -1,4 +1,8 @@
 ---
+import '../styles/illustrated-essay.css';
+import EditorialInteractions from '../components/EditorialInteractions.astro';
+import { illustrateCompanion } from '../lib/companion-articles.js';
+import ApasSignature from '../components/ApasSignature.astro';
 import Base from '../layouts/Base.astro';
 import { publicPages } from '../lib/published.js';
 export function getStaticPaths() { return publicPages.map(post => ({params:{path:post.path},props:{post}})); }
@@ -7,4 +11,6 @@ const group=post.path.startsWith('climb/')?'The Second Climb':'The Systems Lens'
 const active=post.path.startsWith('climb/')?'/climb/':'/writing/';
 const readMin=Math.max(1,Math.round(post.body.replace(/<[^>]+>/g,' ').split(/\s+/).length/220));
 ---
-<Base title={post.title} description={post.description} active={active}><article class="post"><header class="post-head"><a class="kicker" href={active}>{group}</a><h1>{post.title}</h1><p class="post-byline"><span class="av">HA</span><span>Hardeep Anand · <time datetime={post.date}>{post.date}</time> · {readMin} min read</span></p></header><div class="prose" set:html={post.body}/></article><section class="post-end"><a class="text-link" href={active}>← Back to {group}</a><div class="author" style="margin-top:28px"><span class="av">HA</span><div><div class="nm">Hardeep Anand</div><p>Water, infrastructure, and the intelligence that connects them.</p><a class="text-link" href="/#newsletter">Subscribe to The Systems Lens ↗</a></div></div></section></Base>
+<Base title={post.title} description={post.description} active={active}><article class:list={['post', {'illustrated-essay': ['writing/data-governance','writing/fifty-steps-back'].includes(post.path)}]}><header class="post-head"><a class="kicker" href={active}>{group}</a><h1>{post.title}</h1><p class="post-byline"><span class="av">HA</span><span>Hardeep Anand · <time datetime={post.date}>{post.date}</time> · {readMin} min read</span></p></header><div class="prose" set:html={illustrateCompanion(post)}/><ApasSignature article={post.title} path={post.path} /></article><section class="post-end"><a class="text-link" href={active}>← Back to {group}</a><div class="author" style="margin-top:28px"><span class="av">HA</span><div><div class="nm">Hardeep Anand</div><p>Water, infrastructure, and the intelligence that connects them.</p><a class="text-link" href="/#newsletter">Subscribe to The Systems Lens ↗</a></div></div></section></Base>
+
+<EditorialInteractions />
