@@ -16,7 +16,7 @@ Desktop and phone illustrations may be different SVGs. Editing one does not auto
 
 Local Astro development saves to `content/editor-drafts/<collection>--<slug>.json`. This directory is ignored by Git and never copied into public assets. Keep a backup using Export draft. Local write requests require the loopback host and matching origin.
 
-The production adapter saves under `visual-drafts/v1/` in the private `IDEAS` R2 bucket. It requires a valid Cloudflare Access JWT for `IDEAS_OWNER_EMAIL`, even if the endpoint is reached directly. Do not bypass Access for `/api/editor/drafts`. Deploying and verifying the hosted adapter is separate from testing the local editor; the September 8 implementation is currently a local preview.
+The production adapter saves under `visual-drafts/v1/` in the private `IDEAS` R2 bucket. It requires a valid Cloudflare Access JWT for `IDEAS_OWNER_EMAIL`, even if the endpoint is reached directly. Do not bypass Access for `/api/editor/drafts`. Deployed to https://hardeepanand.com on September 8, 2026. Open `/admin/#content`, sign in as `hardeep@apas.ai`, and select **Edit visually**. Production requests without a session redirect to Cloudflare Access; authenticated save/reload verification is pending the owner’s renewed sign-in. Local save/reload and real R2 conditional-write tests pass.
 
 Saves are explicit, not automatic. Unsaved edits prompt before leaving. If another tab saves first, the older tab cannot overwrite it: export its draft as a backup, then close/reopen or reload to retrieve the latest saved copy. R2 writes also use conditional ETags so simultaneous requests cannot both win.
 
@@ -29,3 +29,7 @@ Save draft does not change public HTML or canonical source. Review the saved dra
 ## Verification
 
 Browser checks cover in-place text editing, SVG label/font/color edits, dragging, undo, save/reload persistence, and competing-tab conflict rejection. Automated tests cover schema bounds, owner authorization, same-origin writes, request size, stale revisions, and simultaneous saves against the real local R2 runtime.
+
+## September 8 release verification
+
+All 45 local tests passed; 18 production pages, internal links/assets, five feed entries, and sitemap exclusions verified. Live homepage and published article routes return 200 with the new editor included; the unpublished governance article returns 404. CRM inquiry and subscription readiness endpoints return `ready: true`. Both studio and draft API requests without a session redirect to Access. The repository is public, so unpublished author manuscripts, research notes, and private visual draft files are excluded from Git.
