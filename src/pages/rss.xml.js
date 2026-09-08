@@ -1,7 +1,6 @@
 // The Systems Lens RSS feed. Published essays only, always (a feed is a published-content
 // concept, so it ignores the dev preview and lists only status: PUBLISHED).
-import { readArticles } from '../lib/content.js';
-import { publicPages } from '../lib/published.js';
+import { readingLibrary } from '../lib/reading-library.js';
 
 function esc(s = '') {
   return String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
@@ -13,13 +12,13 @@ function rfc822(d) {
 
 export function GET(context) {
   const site = context.site?.href || 'https://hardeepanand.com/';
-  const posts = [...readArticles(['substack/2026', 'linkedin/2026', 'owos/2026', 'author/2026']).filter((p) => p.status === 'PUBLISHED'), ...publicPages.filter(p => p.path.startsWith('writing/')).map(p=>({...p,slug:p.path.split('/')[1]}))].sort((a,b)=>b.date.localeCompare(a.date));
+  const posts = readingLibrary(true);
   const items = posts
     .map(
       (p) => `    <item>
       <title>${esc(p.title)}</title>
-      <link>${site}writing/${p.slug}/</link>
-      <guid isPermaLink="true">${site}writing/${p.slug}/</guid>
+      <link>${new URL(p.href,site).href}</link>
+      <guid isPermaLink="true">${new URL(p.href,site).href}</guid>
       ${p.date ? `<pubDate>${rfc822(p.date)}</pubDate>` : ''}
       <description>${esc(p.description)}</description>
     </item>`
@@ -32,7 +31,7 @@ export function GET(context) {
     <title>The Systems Lens · Hardeep Anand</title>
     <link>${site}writing/</link>
     <atom:link href="${site}rss.xml" rel="self" type="application/rss+xml" />
-    <description>Essays on reading infrastructure like a living system. Every claim sourced.</description>
+    <description>Essays on water, AI, and lifelong learning. Useful perspectives to put into practice.</description>
     <language>en-us</language>
 ${items}
   </channel>

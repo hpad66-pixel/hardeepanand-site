@@ -1,0 +1,32 @@
+---
+const { variant = 'connections' } = Astro.props;
+---
+<div class={`essay-artwork art-${variant}`} aria-hidden="true">
+<svg viewBox="0 0 600 290" fill="none" xmlns="http://www.w3.org/2000/svg">
+{variant === 'curve' ? <>
+  <path d="M48 236H555M48 236V48" class="art-grid"/><path d="M50 86C95 87 105 140 154 119S214 90 250 145S295 112 331 171S378 172 415 205S485 214 550 220" class="art-line"/>
+  <path d="M340 40V245" class="art-grid" stroke-dasharray="4 7"/><circle cx="415" cy="205" r="7" class="art-dot"/><circle cx="550" cy="220" r="7" class="art-dot"/>
+</> : variant === 'weave' ? <>
+  <path d="M-20 62C120 62 130 232 295 232S440 62 620 62M-20 228C120 228 130 58 295 58S440 228 620 228" class="art-line"/><path d="M-20 145C140 145 167 145 295 145S450 145 620 145" class="art-fine"/>
+  <circle cx="295" cy="145" r="10" class="art-dot"/><circle cx="295" cy="145" r="33" class="art-grid"/>
+</> : variant === 'loop' ? <>
+  <path d="M256 99A78 78 0 1 0 268 170" class="art-fine"/><path d="M251 84A101 101 0 1 0 290 172" class="art-grid"/>
+  <path d="M195 144H491M471 124L491 144L471 164" class="art-line"/><circle cx="195" cy="144" r="10" class="art-dot"/>
+</> : variant === 'steps' ? <>
+  <path d="M48 239H150V199H252V156H354V109H456V61H560" class="art-line"/>
+  <path d="M48 260H560M48 217H560M48 174H560M48 131H560M48 88H560M48 45H560" class="art-grid" stroke-dasharray="2 9"/>
+  <circle cx="252" cy="199" r="9" class="art-dot"/><path d="M252 199L221 167M221 167V188M221 167H242" class="art-fine"/>
+</> : variant === 'governance' ? <>
+  <rect x="77" y="90" width="181" height="85" rx="42.5" transform="rotate(20 168 132)" class="art-line"/>
+  <path d="M290 90H331A42 42 0 0 1 331 175H237A42 42 0 0 1 237 90H264" transform="rotate(-20 284 132)" class="art-line"/>
+  <rect x="324" y="90" width="181" height="85" rx="42.5" transform="rotate(20 415 132)" class="art-fine"/>
+  <path d="M298 225V197" class="art-grid"/><circle cx="298" cy="233" r="5" class="art-dot"/>
+</> : <>
+  <path d="M76 61H199L300 145H492M76 229H199L300 145M76 145H492" class="art-fine"/>
+  {[61,145,229].map(y=><circle cx="76" cy={y} r="17" class="art-line"/>)}<circle cx="300" cy="145" r="36" class="art-line"/><circle cx="492" cy="145" r="17" class="art-line"/><circle cx="300" cy="145" r="7" class="art-dot"/>
+</>}
+</svg>
+</div>
+<style>
+.essay-artwork{overflow:hidden;color:var(--editorial-blue,#174bc5);background:transparent;aspect-ratio:600/290}.essay-artwork svg{display:block;width:100%;height:100%}.art-line{stroke:currentColor;stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.art-fine{stroke:var(--text);stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round;opacity:.65}.art-grid{stroke:var(--text);stroke-width:1;opacity:.17}.art-dot{fill:currentColor}.art-weave{background:transparent}.art-loop{background:transparent}.art-governance{background:transparent}
+</style>

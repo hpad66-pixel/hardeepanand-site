@@ -21,3 +21,45 @@ test('CRM redirects do not produce success and saved notes can retry',async()=>{
  const {env,stored}=setup();assert.equal((await submitInquiry({env,request:req()},async()=>new Response(null,{status:302}))).status,502);assert.equal(stored.size,1);
  assert.equal((await submitInquiry({env,request:req()},async()=>new Response(JSON.stringify({data:{candidateId:'receipt'}}),{status:202}))).status,202);
 });
+
+test('academy inquiries retain learning intent and article context',async()=>{
+ const {env}=setup();let payload;
+ const response=await submitInquiry({env,request:req({...data,articlePath:'/climb/adapt-dont-pivot/',interest:'advisory'})},async(url,options)=>{payload=JSON.parse(options.body);return new Response(JSON.stringify({data:{candidateId:'academy-test'}}),{status:202});});
+ assert.equal(response.status,202);
+ assert.equal(payload.metadata.interest,'academy-learning');
+ assert.equal(payload.context.campaign,'/climb/adapt-dont-pivot/');
+ assert.equal(payload.metadata.message,data.message);
+});
+
+test('governance article inquiries retain the broader implementation interest',async()=>{
+ const {env}=setup();let payload;
+ const response=await submitInquiry({env,request:req({...data,articlePath:'/writing/governance-at-operating-speed/'})},async(url,options)=>{payload=JSON.parse(options.body);return new Response(JSON.stringify({data:{candidateId:'governance-test'}}),{status:202});});
+ assert.equal(response.status,202);
+ assert.equal(payload.metadata.interest,'governance-implementation');
+ assert.equal(payload.context.campaign,'/writing/governance-at-operating-speed/');
+ assert.equal(payload.metadata.message,data.message);
+});
+
+import {submitSubscription} from '../src/server/inquiries.js';
+test('reader opt-in is consented CRM staging, never claimed as a confirmed Substack subscription',async()=>{
+ const {env}=setup();let payload,calls=0;
+ const reader={...data,articlePath:'/',message:'must not override server intent'};
+ const fetcher=async(url,options)=>{calls++;payload=JSON.parse(options.body);return new Response(JSON.stringify({data:{candidateId:'reader-test'}}),{status:202});};
+ assert.equal((await submitSubscription({env,request:req({...reader,consent:false})},fetcher)).status,400);
+ assert.equal(calls,0);
+ assert.equal((await submitSubscription({env,request:req(reader)},fetcher)).status,202);
+ assert.equal(payload.metadata.form,'systems-lens-reader');
+ assert.equal(payload.metadata.interest,'reader-connection');
+ assert.equal(payload.metadata.subscriptionStatus,'unconfirmed');
+ assert.match(payload.consent.reference,/Substack subscription not confirmed/);
+ assert.equal(payload.context.campaign,'/');
+ assert(!payload.metadata.message.includes('must not override'));
+ assert.equal((await submitSubscription({env,request:req(reader)},fetcher)).status,202);
+ assert.equal(calls,1);
+ assert.equal((await submitInquiry({env,request:req(reader)},fetcher)).status,400);
+});
+test('reader signups do not claim success for CRM redirects or missing credentials',async()=>{
+ const {env}=setup();const reader={...data,articlePath:'/'};
+ assert.equal((await submitSubscription({env:{},request:req(reader)})).status,503);
+ assert.equal((await submitSubscription({env,request:req(reader)},async()=>new Response(null,{status:302}))).status,502);
+});

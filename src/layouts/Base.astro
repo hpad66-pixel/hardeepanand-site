@@ -41,7 +41,7 @@ const isProd = import.meta.env.PROD;
     )}
     <a class="skip-link" href="#main">Skip to content</a>
     <nav class="ha-nav" aria-label="Main navigation">
-      <a class="ha-brand" href="/" aria-label="Hardeep Anand home"><span class="brand-mark" aria-hidden="true">ha.</span><span>Hardeep Anand<span class="brand-sub">WATER · INFRASTRUCTURE · INTELLIGENCE</span></span></a>
+      <a class="ha-brand publication-brand" href="/" aria-label="The Systems Lens home"><span class="publication-name">The Systems Lens<span class="publication-author">By Hardeep Anand</span></span></a>
       <button class="menu-toggle" aria-expanded="false" aria-controls="main-links">Menu <span aria-hidden="true">+</span></button>
       <div class="ha-links" id="main-links">
         {NAV.map((n) => (
@@ -67,18 +67,15 @@ const isProd = import.meta.env.PROD;
         </div>
         <div class="fcol">
           <h4>Read</h4>
-          <a href="/writing/">The Systems Lens</a>
+          <a href="/writing/">All essays</a>
+          <a href="/#newsletter">Subscribe</a>
+          <a href="/rss.xml">RSS feed</a>
         </div>
         <div class="fcol">
           <h4>More</h4>
           <a href="/about/">About</a>
-          <a href="/climb/">The Second Climb</a>
-          <a href="/case-studies/">Case Studies</a>
-          <a href="/ai-watch/">AI Watch</a>
-          <a href="/summits/">Summits &amp; Stage</a>
           <a href="/work/">Work with me</a>
-          <a href="/#newsletter">Subscribe</a>
-          <a href="/rss.xml">RSS feed</a>
+          <a href="https://apas.ai/">APAS Consulting</a>
         </div>
       </div>
       <div class="fbottom">
@@ -112,9 +109,10 @@ const isProd = import.meta.env.PROD;
           });
         }
         try {
-          tagProse();
+          // Article drafts are handled by the dedicated visual editor.
           var o = JSON.parse(localStorage.getItem('ha-copy') || '{}');
           for (var k in o) {
+            if (k.indexOf('article:') === 0) continue;
             document.querySelectorAll('[data-edit="' + k + '"]').forEach(function (el) {
               if (el.dataset.rich) el.innerHTML = o[k]; else el.textContent = o[k];
             });
@@ -125,6 +123,7 @@ const isProd = import.meta.env.PROD;
     <script is:inline>
       // Visual editor: enabled by ?edit=1 (sticky) or localStorage ha-edit=1.
       (function () {
+        if (document.querySelector('[data-visual-editor]')) return;
         var on = false;
         try {
           if (location.search.indexOf('edit=1') > -1) { localStorage.setItem('ha-edit', '1'); on = true; }

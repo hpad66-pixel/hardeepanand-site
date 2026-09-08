@@ -1,0 +1,24 @@
+---
+import '../styles/visual-editor.css';
+const {path} = Astro.props;
+---
+<div data-visual-editor data-article-path={`/${path.replace(/^\/+|\/+$/g,'')}/`} data-local={String(import.meta.env.DEV)}>
+ {import.meta.env.DEV&&<a class="ve-entry" href="?edit=1">✎ Edit this article</a>}
+ <div class="ve-toolbar" role="region" aria-label="Article editor" hidden>
+  <div class="ve-brand"><strong>The Systems Lens <span>STUDIO</span></strong><small data-ve-status role="status">Opening your draft…</small></div>
+  <div class="ve-actions"><button data-ve-undo disabled title="Undo (Ctrl/Cmd+Z)">Undo</button><button data-ve-redo disabled>Redo</button><button data-ve-preview>Preview</button><button data-ve-export>Export draft</button><button data-ve-save class="ve-save" disabled>Save draft</button><button data-ve-close>Close</button></div>
+ </div>
+ <aside class="ve-inspector" aria-label="Diagram editor" hidden>
+  <div class="ve-panel-head"><span>DIAGRAM STUDIO</span><button data-ve-deselect aria-label="Close diagram controls">×</button></div>
+  <h2 data-ve-selection>Select a diagram element</h2><p class="ve-tip">Click a label or shape. Drag to move it, or use arrow keys for precision.</p>
+  <label data-ve-label-wrap>Label text<textarea data-ve-label rows="3" maxlength="2000"></textarea></label>
+  <div class="ve-property-grid"><label>Move X<input data-ve-prop="dx" type="number" step="1" min="-2000" max="2000"/></label><label>Move Y<input data-ve-prop="dy" type="number" step="1" min="-2000" max="2000"/></label><label>Scale<input data-ve-prop="scale" type="number" step=".05" min=".1" max="5"/></label><label data-ve-font-wrap>Text size<input data-ve-prop="fontSize" type="number" min="6" max="120"/></label><label>Fill<input data-ve-prop="fill" type="color"/></label><label>Stroke<input data-ve-prop="stroke" type="color"/></label><label>Fill hex<input data-ve-prop="fill" type="text" pattern="#[a-fA-F0-9]{6}|none" maxlength="7"/></label><label>Stroke hex<input data-ve-prop="stroke" type="text" pattern="#[a-fA-F0-9]{6}|none" maxlength="7"/></label></div>
+  <div class="ve-panel-actions"><button data-ve-parent>Select parent group</button><button data-ve-reset>Reset element</button><button data-ve-svg>Download SVG</button></div>
+  <p class="ve-note">You’re editing this layout. Phone and desktop diagrams are separate; check both before publishing.</p>
+ </aside>
+ <div class="ve-help" hidden><strong>Click the words. Shape the diagram.</strong><p>Edit article text in place. Select an SVG label or shape for drawing controls. Saving creates a private draft; your live article stays unchanged.</p><button data-ve-help-close>Start editing</button></div>
+</div>
+<script>
+ import {startVisualEditor} from '../editor/visual-editor.js';
+ document.querySelectorAll('[data-visual-editor]').forEach(root=>startVisualEditor(root));
+</script>

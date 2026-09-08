@@ -1,6 +1,7 @@
 import { verifyAccess } from './access.js';
 
-const articles = new Set(['vital-signs']);
+const articlePaths = { 'vital-signs':'/writing/vital-signs/', 'data-governance':'/writing/data-governance/', 'fifty-steps-back':'/writing/fifty-steps-back/', 'adapt-dont-pivot':'/climb/adapt-dont-pivot/', 'in-your-head':'/climb/in-your-head/' };
+const articles = new Set(Object.keys(articlePaths));
 const json = (body, status = 200) => Response.json(body, { status, headers: { 'Cache-Control': 'no-store', 'X-Content-Type-Options': 'nosniff' } });
 const publicComment = ({id, name, body, createdAt}) => ({id, name, body, createdAt});
 const configured = env => Boolean(env.ENGAGE && env.COMMENTS_ACCESS_AUD);
@@ -43,7 +44,7 @@ export async function readerLogin(context, fetcher = fetch) {
   if (!response.ok) return response;
   const article = new URL(context.request.url).searchParams.get('article');
   if (!articles.has(article)) return json({ error: 'Article not found.' }, 404);
-  return new Response(null, { status: 303, headers: { Location: `/writing/${article}/#comments`, 'Cache-Control': 'no-store' } });
+  return new Response(null, { status: 303, headers: { Location: `${articlePaths[article]}#comments`, 'Cache-Control': 'no-store' } });
 }
 
 export async function postComment({ request, env }, fetcher = fetch) {

@@ -4,8 +4,9 @@ const localPreview = import.meta.env.DEV;
 ---
 <section class="article-discussion" id="comments" aria-labelledby="comments-title" data-article={slug} data-local-preview={String(localPreview)}>
   <span class="kicker">The conversation continues</span>
-  <h2 id="comments-title">What are you seeing in your system?</h2>
+  <h2 id="comments-title">What does this bring to mind?</h2>
   <p>Share an example, ask a question, or offer another perspective.</p>
+  <p data-discussion-email hidden><a href={`mailto:hardeep@apas.ai?subject=${encodeURIComponent(`A perspective on ${slug}`)}`}>Send Hardeep a note ↗</a></p>
   <div class="discussion-signin" data-comment-signin hidden>
     <a class="takeaway-action" href={`/community/login?article=${encodeURIComponent(slug)}`}>
       <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" aria-hidden="true"><rect x="5" y="10" width="14" height="11" rx="2"/><path d="M8 10V7a4 4 0 0 1 8 0v3"/></svg>
@@ -62,7 +63,7 @@ const localPreview = import.meta.env.DEV;
         const session = await fetch('/community/session', {redirect:'manual',cache:'no-store'});
         const authenticated = session.ok && (await session.json()).authenticated;
         form.hidden = !authenticated; signin.hidden = Boolean(authenticated);
-      } catch (error) { status.textContent = (error as Error).message; }
+      } catch { status.textContent = 'You can share your perspective directly by email.'; discussion!.querySelector<HTMLElement>('[data-discussion-email]')!.hidden=false; }
       finally { more.disabled = false; }
     }
     more.addEventListener('click', load);
@@ -85,10 +86,8 @@ const localPreview = import.meta.env.DEV;
       finally { submit.disabled = false; }
     });
     if (discussion.dataset.localPreview === 'true') {
-      signin.hidden = false;
-      const link = signin.querySelector('a')!;
-      link.removeAttribute('href'); link.setAttribute('aria-disabled', 'true');
-      status.textContent = 'Reader sign-in and comments will be available after the discussion service is connected for publication.';
+      status.textContent = 'You can share your perspective directly by email.';
+      discussion.querySelector<HTMLElement>('[data-discussion-email]')!.hidden=false;
     } else { load(); }
   }
 </script>

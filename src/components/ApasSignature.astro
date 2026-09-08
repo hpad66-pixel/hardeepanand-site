@@ -1,40 +1,54 @@
 ---
 const { article = '', path = '' } = Astro.props;
 const offers = {
+  'writing/governance-at-operating-speed': ['Let’s make it work, together.', 'Bring one service or workflow. APAS can work alongside your team to connect data governance, AI governance, lineage, consulting, and learning to a practical implementation.'],
+  'climb/adapt-dont-pivot': ['Your experience. Your next chapter.', 'Bring what you know to what you learn next. Tell us where you are starting and what you want to be able to do. Ask about the One Water AI Academy and find a useful next step.'],
+  'climb/in-your-head': ['Turn a recurring question into a next step.', 'If your team keeps circling the same decision, a fresh perspective can help clarify the problem, its owner, and a practical way forward. Let’s talk about the question you are carrying.'],
   'writing/fifty-steps-back': ['Make your first step back count.', 'Before the next AI investment, choose one decision your team needs to make better. We can examine the records behind it, expose the gaps, and map a practical route to readiness.'],
   'writing/data-governance': ['Could your team trace one important decision?', 'From the source record to the report or model, find out where ownership, meaning, and evidence are missing—and what it would take to connect them.'],
   'writing/vital-signs': ['Which result should your next investment change?', 'Start with one operational question. We can assess whether your existing records support a credible baseline and identify what needs to improve before you trust the curve.'],
 };
-const utility = path.startsWith('writing/');
+const governance = path === 'writing/governance-at-operating-speed';
+const academy = ['climb/adapt-dont-pivot','writing/governance-at-operating-speed'].includes(path);
+const utility = path.startsWith('writing/') && !academy;
 const [heading, intro] = offers[path] || ['Turn perspective into a practical next step.', 'If this way of thinking resonates with a challenge in your organization, let’s discuss where experience, better information, and a clearer decision could help.'];
-const subject = utility ? 'APAS Data Readiness Diagnostic' : 'APAS advisory conversation';
-const body = `I read “${article}”.\n\nThe decision or challenge I want to work on:\n\nThe records or systems involved:\n\nWhat is getting in the way:\n`;
+const subject = governance ? `APAS governance and implementation inquiry — ${article}` : academy ? `Academy learning inquiry — ${article}` : utility ? 'APAS Data Readiness Diagnostic' : 'APAS advisory conversation';
+const body = governance ? `I read “${article}” and would like to work with APAS.\n\nOur service or workflow:\n\nWhere we need support (data / AI governance, lineage, implementation, or learning):\n\nWhat we would like our team to be able to do:\n` : academy ? `I read “${article}” and would like to explore the academy.\n\nMy experience or background:\n\nWhat I would like to learn or build:\n\nWhere I need guidance:\n` : `I read “${article}”.\n\nThe decision or challenge I want to work on:\n\nThe records or systems involved:\n\nWhat is getting in the way:\n`;
 const inquiry = `mailto:hardeep@apas.ai?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
 ---
-<aside class="apas-signature" id="connect" aria-label="Connect with APAS Consulting">
-  <div class="apas-heading"><a class="apas-wordmark" href="https://apas.ai/">APAS<span>CONSULTING</span></a><span class="apas-label">FROM INSIGHT TO ACTION</span></div>
+<aside class="apas-signature" id="connect" aria-label={governance ? "Build operating capability with APAS" : academy ? "Explore learning with APAS" : "Connect with APAS Consulting"}>
+  <div class="apas-heading"><a class="apas-wordmark" href="https://apas.ai/">APAS<span>CONSULTING</span></a><span class="apas-label">{governance ? "SHARED KNOWLEDGE. PRACTICAL PROGRESS." : academy ? "EXPERIENCE MEETS POSSIBILITY" : "FROM INSIGHT TO ACTION"}</span></div>
   <div class="apas-layout">
     <div class="apas-story">
       <h2>{heading}</h2><p class="apas-intro">{intro}</p>
       {utility && <div class="apas-offer"><p class="apas-label">A FOCUSED FIRST ENGAGEMENT</p><h3>Data Readiness<br/><em>Diagnostic</em></h3><ol><li><span>01</span><div><strong>Find the foundation</strong><p>Sources, definitions, and the people accountable for them.</p></div></li><li><span>02</span><div><strong>Follow the evidence</strong><p>Provenance, lineage, and quality gaps that deserve investigation.</p></div></li><li><span>03</span><div><strong>Choose the next move</strong><p>A prioritized readiness plan around one important decision.</p></div></li></ol></div>}
+      {governance && <div class="apas-offer"><p class="apas-label">FROM FOUNDATION TO DAILY PRACTICE</p><h3>A working foundation.<br/><em>A capable team.</em></h3><ol><li><span>01</span><div><strong>Connect the foundations</strong><p>Source maps, lineage, data ownership, and AI permissions grounded in your workflow.</p></div></li><li><span>02</span><div><strong>Build what can be used</strong><p>Prioritized work, agreed resources, decision records, and acceptance checks.</p></div></li><li><span>03</span><div><strong>Practice and sustain it</strong><p>Training, development, and One Water AI Academy learning alongside implementation support.</p></div></li></ol></div>}
+      {academy && !governance && <div class="apas-academy">
+        <p class="apas-label">LEARNING NEVER STOPS</p>
+        <h3>Build your<br/><em>next capability.</em></h3>
+        <p>Start with a question from your own work. Learn what helps. Connect it to a workflow. Then keep practicing.</p>
+        <a class="apas-academy-link" href={inquiry}>Ask about the academy <span aria-hidden="true">↗</span></a>
+        <span class="apas-academy-domain">One Water AI Academy · APAS</span>
+      </div>}
       <p class="apas-person">Hardeep Anand<span>Water infrastructure experience.<br/>Data foundations. Practical AI.</span></p>
     </div>
     <div class="apas-note">
       <span class="apas-note-icon" aria-hidden="true"><svg width="30" height="30" viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.4"><path d="M5 7h22v16H13l-6 5v-5H5z"/><path d="M10 12h12M10 17h8"/></svg></span>
-      <h3>What’s on your mind?</h3><p>A question, a stuck decision, or an idea worth exploring. Start with a short note.</p>
-      <form class="apas-contact-form" data-article-path={`/${path}/`}>
-        <div class="apas-field-pair"><label>Your name<input name="name" autocomplete="name" maxlength="100" required placeholder="Full name" /></label><label>Work email<input name="email" type="email" autocomplete="email" maxlength="254" required placeholder="you@organization.com" /></label></div>
+      <h3>{governance ? "What can we strengthen together?" : academy ? "What would you like to learn?" : "What’s on your mind?"}</h3><p>{governance ? "Tell us what your team wants to make possible. We can scope the practical work and learning together." : academy ? "You don’t need a finished plan. Tell us about your experience, what you want to do next, and where you need a little guidance." : "A question, a stuck decision, or an idea worth exploring. Start with a short note."}</p>
+      <p class="apas-contact-fallback">Send a note by email. Include what you’d like to explore, and we can take it from there.</p>
+      <form class="apas-contact-form" hidden data-article-path={`/${path}/`}>
+        <div class="apas-field-pair"><label>Your name<input name="name" autocomplete="name" maxlength="100" required placeholder="Full name" /></label><label>{academy ? "Your email" : "Work email"}<input name="email" type="email" autocomplete="email" maxlength="254" required placeholder={academy ? "you@example.com" : "you@organization.com"} /></label></div>
         <label><span>Organization <span class="apas-optional">optional</span></span><input name="company" autocomplete="organization" maxlength="150" placeholder="Where you work" /></label>
-        <label>Your note<textarea name="message" rows="4" maxlength="4000" required placeholder="What decision are you trying to make—and what’s getting in the way?"></textarea></label>
+        <label>Your note<textarea name="message" rows="4" maxlength="4000" required placeholder={governance ? "Our team wants to… We need support with…" : academy ? "My background is… I’d like to learn how to…" : "What decision are you trying to make—and what’s getting in the way?"}></textarea></label>
         <label class="apas-trap" aria-hidden="true">Website<input name="website" tabindex="-1" autocomplete="off" /></label>
         <label class="apas-consent"><input type="checkbox" name="consent" required /><span>APAS may store this note and my contact details to respond to my inquiry.</span></label>
         <button type="submit" disabled>Send your note <span aria-hidden="true">↗</span></button>
-        <p class="apas-form-status" role="status" aria-live="polite">{import.meta.env.DEV ? 'Preview: CRM connection is being configured. You can email Hardeep below.' : 'Checking secure delivery…'}</p>
+        <p class="apas-form-status" role="status" aria-live="polite">Your note is private. APAS will use your details to respond.</p>
       </form>
-      <a class="apas-email" href={inquiry}>Prefer email? hardeep@apas.ai ↗</a>
+      <a class="apas-email" href={inquiry}>Email your note ↗</a>
     </div>
   </div>
-  <div class="apas-foot"><span>One conversation. A clearer next step.</span><a href="https://apas.ai/">Explore APAS.ai ↗</a></div>
+  <div class="apas-foot"><span>{academy ? "Stay curious. Build on what you know." : "One conversation. A clearer next step."}</span><a href="https://apas.ai/">Explore APAS.ai ↗</a></div>
 </aside>
 <script>
  document.querySelectorAll<HTMLFormElement>('.apas-contact-form').forEach(async form=>{
@@ -42,16 +56,21 @@ const inquiry = `mailto:hardeep@apas.ai?subject=${encodeURIComponent(subject)}&b
   const status=form.querySelector<HTMLElement>('.apas-form-status')!;
   let submissionId:string|undefined;
   form.addEventListener('input',()=>{submissionId=undefined;});
-  if(import.meta.env.DEV)return;
-  try{const r=await fetch('/api/inquiries');const data=await r.json();if(!r.ok||!data.ready)throw new Error();button.disabled=false;status.textContent='Your note is private. It will go to APAS for follow-up.';}catch{status.textContent='Online delivery is unavailable right now. Please use the email link below.';return;}
+  const fallback=form.parentElement!.querySelector<HTMLElement>('.apas-contact-fallback')!;
+  const email=form.parentElement!.querySelector<HTMLAnchorElement>('.apas-email')!;
+  try{
+   const r=await fetch('/api/inquiries',{redirect:'error',signal:AbortSignal.timeout(8000)});
+   const data=await r.json();if(!r.ok||data.ready!==true)return;
+   button.disabled=false;form.hidden=false;fallback.hidden=true;email.textContent='Prefer email? hardeep@apas.ai ↗';
+  }catch{return;}
   form.addEventListener('submit',async event=>{
    event.preventDefault();if(!form.reportValidity())return;
    button.disabled=true;status.textContent='Sending your note…';submissionId??=crypto.randomUUID();
    const data=new FormData(form);
-   try{const response=await fetch('/api/inquiries',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({id:submissionId,name:data.get('name'),email:data.get('email'),company:data.get('company'),message:data.get('message'),website:data.get('website'),consent:data.get('consent')==='on',articlePath:form.dataset.articlePath})});
+   try{const response=await fetch('/api/inquiries',{method:'POST',redirect:'error',signal:AbortSignal.timeout(20000),headers:{'Content-Type':'application/json'},body:JSON.stringify({id:submissionId,name:data.get('name'),email:data.get('email'),company:data.get('company'),message:data.get('message'),website:data.get('website'),consent:data.get('consent')==='on',articlePath:form.dataset.articlePath})});
     const result=await response.json();if(!response.ok||!result.accepted)throw new Error(result.error||'Delivery was not confirmed. Please try again.');
     form.reset();submissionId=undefined;status.textContent='Thank you. Your note has reached APAS for review and follow-up.';
-   }catch(error){status.textContent=error instanceof Error?error.message:'Unable to confirm delivery. Please try again.';}finally{button.disabled=false;}
+   }catch(error){status.textContent=error instanceof Error?error.message:'Unable to confirm delivery. Please try again or use the email link.';}finally{button.disabled=false;}
   });
  });
 </script>
@@ -69,10 +88,11 @@ const inquiry = `mailto:hardeep@apas.ai?subject=${encodeURIComponent(subject)}&b
 .apas-offer h3{font:400 27px/1.15 var(--font-display);margin:10px 0 22px}.apas-offer h3 em{color:var(--contact-blue)}
 .apas-offer ol{list-style:none;padding:0;margin:0;display:grid;gap:20px}.apas-offer li{display:flex;gap:14px}.apas-offer li>span{font:12px/1.8 var(--font-body);color:var(--contact-blue)}
 .apas-offer strong{font:500 13px/1.5 var(--font-body)}.apas-offer li p{font:13px/1.6 var(--font-body);color:var(--text-dim);margin:5px 0 0}
+.apas-academy{margin-top:30px;padding-top:24px;border-top:1px solid var(--line)}.apas-academy h3{font:400 34px/1.08 var(--font-display);margin:12px 0 16px}.apas-academy h3 em{color:var(--contact-blue)}.apas-academy>p:not(.apas-label){font:14px/1.7 var(--font-body);color:var(--text-dim)}.apas-academy-link{display:flex;align-items:center;justify-content:space-between;gap:24px;padding:13px 0;border-bottom:1px solid var(--contact-blue);font:500 14px/1.5 var(--font-body);color:var(--contact-blue);text-decoration:none}.apas-academy-link:hover{text-decoration:underline;text-underline-offset:4px}.apas-academy-domain{display:block;margin-top:9px;font:11px/1.6 var(--font-body);color:var(--text-dim)}
 .apas-person{font:italic 23px/1.2 var(--font-display);margin-top:30px}.apas-person span{display:block;font:12px/1.6 var(--font-body);color:var(--text-dim);margin-top:10px}
 .apas-note{padding:26px;border:1px solid var(--line);border-top:3px solid var(--contact-blue);border-radius:3px;background:var(--bg)}
 .apas-note-icon{color:var(--contact-blue);display:block;margin-bottom:14px}.apas-note h3{font:400 29px/1.1 var(--font-display);margin:0 0 12px}.apas-note>p{font:14px/1.65 var(--font-body);color:var(--text-dim);margin:0 0 24px}
-.apas-contact-form{display:grid;gap:16px}.apas-contact-form label{display:grid;gap:7px;font:500 12px/1.5 var(--font-body)}
+.apas-contact-form[hidden],.apas-contact-fallback[hidden]{display:none}.apas-contact-form{display:grid;gap:16px}.apas-contact-form label{display:grid;gap:7px;font:500 12px/1.5 var(--font-body)}
 .apas-field-pair{display:grid;gap:16px}.apas-optional{font-weight:400;color:var(--text-dim);display:inline}
 .apas-contact-form input:not([type=checkbox]),.apas-contact-form textarea{width:100%;box-sizing:border-box;border:1px solid var(--line);border-radius:3px;background:var(--bg);color:var(--text);padding:11px 12px;font:14px/1.5 var(--font-body);min-width:0}.apas-contact-form textarea{resize:vertical}
 .apas-contact-form input:focus-visible,.apas-contact-form textarea:focus-visible{outline:2px solid var(--contact-blue);outline-offset:2px}

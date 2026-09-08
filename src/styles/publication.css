@@ -1,0 +1,27 @@
+/* The publication leads; the author remains its signature. */
+.editorial-home .editorial-intro h1.publication-masthead {
+  color: var(--publication-gold);
+  font: 500 clamp(58px, 6.6vw, 88px)/.99 var(--font-display);
+  letter-spacing: -.04em;
+  margin: 0;
+  text-wrap: balance;
+}
+.editorial-home .masthead-byline {
+  font: italic 24px/1.4 var(--font-display);
+  margin: 16px 0 0;
+  color: var(--text);
+}
+.editorial-home .masthead-promise {
+  font: 12px/1.7 var(--font-body);
+  color: var(--text-dim);
+  letter-spacing: .02em;
+  margin: 22px 0 0;
+  padding-top: 16px;
+  border-top: 1px solid var(--publication-gold);
+  max-width: 440px;
+}
+@media(max-width:750px) {
+  .editorial-home .editorial-intro h1.publication-masthead {font-size:58px;}
+  .editorial-home .masthead-byline {font-size:22px;margin-top:12px;}
+  .editorial-home .masthead-promise {margin-top:18px;padding-top:12px;}
+}

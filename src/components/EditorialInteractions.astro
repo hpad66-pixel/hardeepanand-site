@@ -19,7 +19,9 @@
   }, { threshold: 0.15 });
   stages.forEach((stage) => {
     observer.observe(stage);
-    const replay = stage.nextElementSibling as HTMLButtonElement;
+    const replay = stage.nextElementSibling;
+    // Evidence charts are static and do not have a replay control.
+    if (!(replay instanceof HTMLButtonElement) || !replay.classList.contains('figure-replay')) return;
     replay.hidden = reducedMotion.matches;
     reducedMotion.addEventListener('change', () => { replay.hidden = reducedMotion.matches; });
     replay.addEventListener('click', () => {

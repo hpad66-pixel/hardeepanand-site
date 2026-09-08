@@ -1,8 +1,11 @@
 ---
+import ReadingRoom from '../components/ReadingRoom.astro';
+import {readingLibrary} from '../lib/reading-library.js';
 import Base from '../layouts/Base.astro';
 import { publicPages, collectionInfo } from '../lib/published.js';
 export function getStaticPaths() { return Object.entries(collectionInfo).map(([collection,info])=>({params:{collection},props:{info,collection}})); }
 const { info, collection }=Astro.props;
 const posts=publicPages.filter(p=>p.path.startsWith(collection==='climb'?'climb/':'writing/'));
 ---
-<Base title={info.title} description={info.description} active={`/${collection}/`}><section class="page-head"><p class="kicker">{info.title}</p><h1>{info.headline}</h1><p class="lede">{info.description}</p></section>{collection!=='climb' && <p class="wrap quiet" style="margin-bottom:25px">From The Systems Lens</p>}<ul class="post-list">{posts.map(p=><li class="post-row"><a href={`/${p.path}/`}><span class="post-meta"><time datetime={p.date}>{p.date}</time></span><span class="post-title">{p.title} ↗</span><span class="post-desc">{p.description}</span></a></li>)}</ul>{collection==='case-studies' && <div class="wrap"><a class="text-link" href="/writing/vital-signs/">The Curve Test: evaluate a capital program →</a></div>}</Base>
+{collection==='climb' ? <Base title="Writing" active="/writing/" description="All the writing in one place: water, AI, and lifelong learning."><div style="padding-top:48px"><ReadingRoom posts={readingLibrary(import.meta.env.PROD)}/></div></Base> : <Base title={info.title} description={info.description} active={`/${collection}/`}><section class="page-head"><p class="kicker">{info.title}</p><h1>{info.headline}</h1><p class="lede">{info.description}</p></section>{collection!=='climb' && <p class="wrap quiet" style="margin-bottom:25px">From The Systems Lens</p>}<ul class="post-list">{posts.map(p=><li class="post-row"><a href={`/${p.path}/`}><span class="post-meta"><time datetime={p.date}>{p.date}</time></span><span class="post-title">{p.title} ↗</span><span class="post-desc">{p.description}</span></a></li>)}</ul>{collection==='case-studies' && <div class="wrap"><a class="text-link" href="/writing/vital-signs/">The Curve Test: evaluate a capital program →</a></div>}</Base>
+}

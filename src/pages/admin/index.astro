@@ -1,14 +1,7 @@
 ---
 import AdminBase from '../../layouts/AdminBase.astro';
-import { readArticles, readHtmlCollection } from '../../lib/content.js';
-
-// The admin sees everything (drafts included), unlike the public site.
-const notArchived = (it) => it.status !== 'ARCHIVED';
-const items = [
-  ...readArticles(['substack/2026', 'linkedin/2026']).filter(notArchived).map((p) => ({
-    href: `/writing/${p.slug}/`, title: p.title, type: 'Article', status: p.status, channel: 'Site · Substack · LinkedIn',
-  })),
-];
+import {readingLibrary} from '../../lib/reading-library.js';
+const items=readingLibrary(import.meta.env.PROD).map(p=>({href:p.href,title:p.title,type:'Article',status:p.status,channel:'The Systems Lens'}));
 const count = (s) => items.filter((i) => i.status === s).length;
 const published = count('PUBLISHED');
 const drafts = count('DRAFT');
@@ -47,7 +40,7 @@ const pillClass = (s) => (s === 'PUBLISHED' ? 'pub' : s === 'APPROVED' ? 'app' :
             <td class="ch">{i.type}</td>
             <td><span class={`pill ${pillClass(i.status)}`}>{i.status}</span></td>
             <td class="ch">{i.channel}</td>
-            <td><a class="rowact" href={i.href}>Open ↗</a></td>
+            <td><a class="rowact" href={`${i.href}?edit=1`}>Edit visually ✎</a> · <a class="rowact" href={i.href}>Read ↗</a></td>
           </tr>
         ))}
       </tbody>
@@ -55,7 +48,7 @@ const pillClass = (s) => (s === 'PUBLISHED' ? 'pub' : s === 'APPROVED' ? 'app' :
   </div>
 
   <p style="color:var(--text-dim);font-size:13px;max-width:70ch">
-    This table shows the content in this build. The editor can save named site copy to GitHub; deploy the updated source to make changes public. Theme and profile adjustments are local previews until exported.
+    Open an article to edit its text and SVG diagrams directly. Save a visual draft, review the result, and publish separately. Drafts are stored in private studio storage on the live site or in project files during local preview.
   </p>
   <script is:inline>
     var eb = document.getElementById('editSiteBtn');

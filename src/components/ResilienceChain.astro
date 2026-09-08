@@ -1,0 +1,40 @@
+---
+import { readFileSync } from 'node:fs';
+const read = (suffix = '') => readFileSync(`public/images/articles/governance-at-operating-speed/resilience-chain${suffix}.svg`, 'utf8');
+---
+<figure class="resilience-chain" id="figure-3" data-chain>
+  <header><p class="chain-eyebrow">03 / Stronger together</p><h2>Every link deserves<br /><em>our attention.</em></h2></header>
+  <div class="chain-art" id="chain-art"><div class="chain-wide" set:html={read()} /><div class="chain-mobile" set:html={read('-mobile')} /></div>
+  <div class="chain-observation" aria-live="polite" aria-atomic="true">
+    <p data-chain-heading>A change is complete. The shared check is still missing.</p>
+    <p data-chain-detail>The vendor has finished. Operations needs an agreed owner and time to witness the result. That handoff is something we can strengthen together.</p>
+  </div>
+  <button class="chain-toggle" type="button" hidden aria-pressed="false" aria-controls="chain-art">Show a supported handoff <span aria-hidden="true">↗</span></button>
+  <blockquote><span class="chain-quote-mark" aria-hidden="true">“</span><p>Resilience is only as strong as the weakest link in the chain.</p><footer><span>Hardeep Anand</span><small>The Systems Lens · APAS Consulting</small></footer></blockquote>
+  <figcaption>A conceptual view of shared dependencies. The highlighted gap is in the handoff, not in a person. Supporting that connection helps the whole team; it does not certify every other link.</figcaption>
+</figure>
+<script>
+  document.querySelectorAll<HTMLElement>('[data-chain]').forEach(figure => {
+    const button = figure.querySelector<HTMLButtonElement>('.chain-toggle')!;
+    button.hidden = false;
+    button.addEventListener('click', () => {
+      const supported = button.getAttribute('aria-pressed') !== 'true';
+      button.setAttribute('aria-pressed', String(supported));
+      figure.classList.toggle('chain-supported', supported);
+      button.innerHTML = supported ? 'Review the original gap <span aria-hidden="true">↶</span>' : 'Show a supported handoff <span aria-hidden="true">↗</span>';
+      figure.querySelector('[data-chain-heading]')!.textContent = supported ? 'A named owner. A shared check. Evidence everyone can use.' : 'A change is complete. The shared check is still missing.';
+      figure.querySelector('[data-chain-detail]')!.textContent = supported ? 'Operations and the vendor agree who checks the work, reserve a safe window, and record the result for the sponsor. Responsibility now has a usable handoff.' : 'The vendor has finished. Operations needs an agreed owner and time to witness the result. That handoff is something we can strengthen together.';
+    });
+  });
+</script>
+<style>
+.resilience-chain{--chain-blue:#174bc5;margin:64px -48px;width:calc(100% + 96px);padding:38px 0;border-block:1px solid var(--line);color:var(--text);scroll-margin-top:120px}
+:global([data-theme='obsidian']) .resilience-chain{--chain-blue:#91b3ff}
+.resilience-chain header{text-align:center}.chain-eyebrow{font:600 11px/1.5 var(--font-body);letter-spacing:.12em;text-transform:uppercase;color:var(--chain-blue);margin:0 0 18px}.resilience-chain h2{font:400 clamp(34px,4vw,44px)/1.06 var(--font-display);letter-spacing:-.025em;margin:0}.resilience-chain h2 em{color:var(--chain-blue)}.chain-art{margin:28px auto 12px}.chain-art :global(svg){display:block;width:100%;height:auto;overflow:visible}.chain-mobile{display:none}.chain-art :global(.chain-repair){stroke-dasharray:1;stroke-dashoffset:1;opacity:0}.chain-art :global(.chain-beyond){opacity:.4}.chain-supported .chain-art :global(.chain-repair){opacity:1;stroke-dashoffset:0;animation:join-link 1.3s ease-out both}.chain-supported .chain-art :global(.chain-beyond){opacity:1;animation:share-strength 2.4s ease-out both}.chain-supported .chain-art :global(.chain-beyond:nth-of-type(9)){animation-delay:.2s}
+@keyframes join-link{from{stroke-dashoffset:1}to{stroke-dashoffset:0}}@keyframes share-strength{0%,45%{opacity:.4}100%{opacity:1}}
+.chain-observation{max-width:540px;margin:18px auto 0;text-align:center}.chain-observation p:first-child{font:500 15px/1.5 var(--font-body);color:var(--chain-blue);margin:0 0 10px}.chain-observation p:last-child{font:13px/1.8 var(--font-body);color:var(--text-dim);margin:0}.chain-toggle{display:flex;gap:28px;align-items:center;justify-content:space-between;margin:22px auto 0;padding:12px 16px;border:1px solid var(--chain-blue);border-radius:4px;color:var(--chain-blue);background:var(--bg);font:500 12px/1.5 var(--font-body);cursor:pointer}.chain-toggle:hover{background:var(--surface)}.chain-toggle:focus-visible{outline:3px solid var(--chain-blue);outline-offset:4px}
+.resilience-chain blockquote{text-align:center;position:relative;margin:40px auto 24px;padding:30px 24px 0;max-width:660px;border-top:1px solid var(--line)}.chain-quote-mark{display:block;color:var(--chain-blue);font:66px/.8 var(--font-display);height:42px;opacity:.65}.resilience-chain blockquote>p{font:400 clamp(29px,3.3vw,36px)/1.2 var(--font-display);letter-spacing:-.02em;margin:0 0 20px}.resilience-chain blockquote footer>span{display:block;font:italic 25px/1.3 var(--font-display)}.resilience-chain blockquote footer small{display:block;font:10px/1.6 var(--font-body);letter-spacing:.1em;text-transform:uppercase;color:var(--chain-blue);margin-top:7px}.resilience-chain figcaption{max-width:570px;margin:25px auto 0;text-align:center;font:11px/1.75 var(--font-body);color:var(--text-dim)}
+@media(max-width:1000px){.resilience-chain{width:100%;margin:48px 0}}@media(max-width:600px){.chain-wide{display:none}.chain-mobile{display:block}.chain-art{margin:24px auto 0;max-width:360px}.resilience-chain{padding:30px 0}.chain-observation{text-align:left}.chain-observation p:first-child{font-size:15px}.chain-observation p:last-child{font-size:13px}.resilience-chain blockquote{padding:28px 0 0}.resilience-chain figcaption{font-size:12px}.chain-toggle{width:100%;font-size:13px}}
+@media(prefers-reduced-motion:reduce){.chain-art :global(*){animation:none!important}}
+@media print{.chain-toggle{display:none!important}.resilience-chain{width:100%;margin:30px 0;break-inside:avoid}.chain-wide{display:block}.chain-mobile{display:none}.chain-art :global(*){animation:none!important}}
+</style>

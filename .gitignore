@@ -3,3 +3,10 @@ dist/
 .astro/
 .wrangler/
 .DS_Store
+
+# Private visual edits stay outside Git and published assets.
+content/editor-drafts/
+
+# Unpublished writing and working research are private in this public repository.
+content/author/
+docs/editorial/
