@@ -4,14 +4,10 @@ const envelope = icon('<rect x="3" y="5" width="18" height="14" rx="2"/><path d=
 const linkedin = icon('<rect x="3" y="3" width="18" height="18" rx="3"/><path d="M7 10v7m0-10v.01M11 17v-7m0 3c0-4 6-4 6 0v4"/>');
 const plain = s => s.replace(/<[^>]*>/g, '').replaceAll('&amp;', '&').replaceAll('&quot;', '"').trim();
 
-<<<<<<< HEAD
 export function addTakeawayActions(html, title, canonical, publicationOrOptions = 'The Systems Lens') {
   const options = typeof publicationOrOptions === 'object' ? publicationOrOptions : {};
   const publication = typeof publicationOrOptions === 'string' ? publicationOrOptions : (options.publication || 'The Systems Lens');
   const published = options.published ?? true;
-=======
-export function addTakeawayActions(html, title, canonical, { published = true } = {}) {
->>>>>>> 98e76a5 (Add civic curriculum and waste systems essays)
   return html.replace(/<section class="article-takeaways"[\s\S]*?<\/section>/, section => {
     const points = [...section.matchAll(/<li>([\s\S]*?)<\/li>/g)].map((m,i) => `${i+1}. ${plain(m[1])}`);
     const question = section.match(/<p class="takeaways-question">([\s\S]*?)<\/p>/)?.[1] || '';
@@ -19,13 +15,7 @@ export function addTakeawayActions(html, title, canonical, { published = true } 
     const mailto = `mailto:?subject=${encodeURIComponent(`Takeaways: ${title}`)}&amp;body=${encodeURIComponent(body)}`;
     const tools = `<div class="takeaway-actions" aria-label="Save or share these takeaways"><button type="button" class="takeaway-action" data-print-takeaways hidden>${printer}<span>Print takeaways</span></button><a class="takeaway-action" href="${mailto}">${envelope}<span>Email takeaways</span></a><a class="takeaway-action" href="https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(canonical)}" target="_blank" rel="noopener noreferrer">${linkedin}<span>Share on LinkedIn</span></a></div>`;
     const draftTools = `<div class="takeaway-actions" aria-label="Save these takeaways"><button type="button" class="takeaway-action" data-print-takeaways hidden>${printer}<span>Print takeaways</span></button></div>`;
-<<<<<<< HEAD
     const attribution = `<p class="takeaways-attribution">${title}<br>Hardeep Anand · ${publication}<br>${published ? canonical : 'Draft for review'}</p>`;
     return section.replace('<ol class="takeaways-list">', `${published ? tools : draftTools}<ol class="takeaways-list">`).replace('</section>', `${attribution}</section>`);
-=======
-    const draftTools = `<div class="takeaway-actions" aria-label="Save these takeaways"><button type="button" class="takeaway-action" data-print-takeaways hidden>${printer}<span>Print takeaways</span></button></div>`;
-    const attribution = `<p class="takeaways-attribution">${title}<br>Hardeep Anand · The Systems Lens<br>${published ? canonical : 'Draft for review'}</p>`;
-    return section.replace('<ol class="takeaways-list">', `${published ? tools : draftTools}<ol class="takeaways-list">`).replace('</section>', `${attribution}</section>`);
->>>>>>> 98e76a5 (Add civic curriculum and waste systems essays)
   });
 }
