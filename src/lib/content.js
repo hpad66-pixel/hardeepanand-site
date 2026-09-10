@@ -133,6 +133,8 @@ export function readArticles(subdirs) {
         date: dateMatch ? dateMatch[1] : '',
         status: normalizeStatus(data.status),
         description: data.seo_description || '',
+        presentation: data.presentation || '',
+        subtitle: data.subtitle || '',
         body,
       });
     }

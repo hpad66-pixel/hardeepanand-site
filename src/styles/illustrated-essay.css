@@ -1,4 +1,29 @@
 .post.illustrated-essay { max-width: 800px; }
+.illustrated-essay .editorial-sketch { width: calc(100% + 96px); margin: 48px -48px; }
+.editorial-sketch picture, .editorial-sketch img { display: block; width: 100%; }
+.editorial-sketch img { height: auto; }
+.illustrated-essay .editorial-sketch figcaption { max-width: 58ch; margin: 18px auto 0; padding-inline: 24px; color: var(--text-dim); text-align: center; font: 18px/1.55 var(--font-display); }
+.editorial-sketch .sketch-note { display: block; margin-top: 8px; font: 12px/1.6 var(--font-body); }
+@media (max-width: 1000px) {
+  .illustrated-essay .editorial-sketch { width: 100%; margin: 38px 0; }
+}
+.illustrated-essay .post-subtitle { margin-top: 22px; color: var(--text-dim); font: italic 28px/1.4 var(--font-display); }
+.civic-figure .civic-flow { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 24px; list-style: none; padding: 0; margin: 34px 0 0; }
+.civic-figure .civic-loop { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.civic-figure .civic-flow li { position: relative; margin: 0; padding: 18px 0; border-top: 2px solid var(--figure-accent); }
+.civic-flow li:not(:last-child)::after { content: '→'; position: absolute; top: -20px; right: -18px; color: var(--figure-accent); font: 25px/1.4 var(--font-body); }
+.civic-flow .civic-step { display: block; color: var(--figure-accent); font: 500 14px/1.5 var(--font-label); }
+.civic-flow strong { display: block; margin-block: 12px 10px; font: 500 25px/1.2 var(--font-display); }
+.civic-flow li > span:last-child { display: block; color: var(--text-dim); font: 16px/1.6 var(--font-body); }
+.civic-foundation { padding: 20px; border-block: 1px solid var(--line); text-align: center; }
+.civic-foundation strong { display: block; font: 500 21px/1.4 var(--font-display); }
+.civic-foundation > span { display: block; margin-top: 8px; color: var(--text-dim); font: 14px/1.6 var(--font-body); }
+@media (max-width: 700px) {
+  .civic-figure .civic-flow { grid-template-columns: 1fr; gap: 12px; }
+  .civic-flow li:not(:last-child)::after { content: '↓'; top: auto; bottom: -19px; right: 12px; }
+  .civic-figure .civic-flow li { padding-block: 18px 26px; }
+  .civic-foundation { margin-top: 16px; }
+}
 .illustrated-essay .post-head { padding-bottom: 10px; }
 .illustrated-essay .post-head h1 { font-size: clamp(46px, 5.6vw, 74px); line-height: 1.03; letter-spacing: -.04em; }
 .illustrated-essay .kicker { font-family: var(--font-label); font-size: 12px; letter-spacing: .12em; }

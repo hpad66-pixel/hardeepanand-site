@@ -7,6 +7,7 @@ import EditorialInteractions from '../../components/EditorialInteractions.astro'
 import ApasSignature from '../../components/ApasSignature.astro';
 import Base from '../../layouts/Base.astro';
 import '../../styles/illustrated-essay.css';
+import '../../styles/waste-essay.css';
 import { readArticles, isVisible, renderMarkdown } from '../../lib/content.js';
 import { inlineVitalSignsFigures } from '../../lib/illustrated-figures.js';
 import { addTakeawayActions } from '../../lib/takeaway-actions.js';
@@ -25,9 +26,10 @@ const { post } = Astro.props;
 // Drop cap on the first paragraph; the prose styles handle pull quotes and sources.
 const prose = renderMarkdown(post.body).replace('<p>', '<p class="first">');
 const isGovernance = post.slug === 'governance-at-operating-speed';
-const illustrated = post.slug === 'vital-signs' || isGovernance;
+const illustrated = post.slug === 'vital-signs' || isGovernance || post.presentation === 'illustrated';
 const governanceBody = isGovernance ? prose.replace(/<picture>[\s\S]*?<\/picture>/, `<div class="diagram-stage"><div class="diagram-wide">${readFileSync('public/images/articles/governance-at-operating-speed/disclosures.svg','utf8')}</div><div class="diagram-mobile">${readFileSync('public/images/articles/governance-at-operating-speed/disclosures-mobile.svg','utf8')}</div></div>`) : prose;
-const html = isGovernance ? addTakeawayActions(governanceBody, post.title, new URL(`/writing/${post.slug}/`, Astro.site).href) : post.slug === 'vital-signs' ? addTakeawayActions(inlineVitalSignsFigures(prose), post.title, new URL(`/writing/${post.slug}/`, Astro.site).href) : prose;
+const illustratedProse = post.slug === 'vital-signs' ? inlineVitalSignsFigures(governanceBody) : governanceBody;
+const html = illustrated ? addTakeawayActions(illustratedProse, post.title, new URL(`/writing/${post.slug}/`, Astro.site).href, { published: post.status === 'PUBLISHED' }) : prose;
 const dashboardParts = isGovernance ? html.split(/(<!-- (?:resilience-dashboard|resilience-chain) -->)/) : [html];
 const words = (post.body || '').split(/\s+/).filter(Boolean).length;
 const readMin = Math.max(1, Math.round(words / 220));
@@ -37,6 +39,7 @@ const readMin = Math.max(1, Math.round(words / 220));
     <header class="post-head">
       <a class="kicker" href="/writing/">The Systems Lens</a>
       <h1>{post.title}</h1>
+      {post.subtitle && <p class="post-subtitle">{post.subtitle}</p>}
       <p class="post-byline">
         <span class="av">HA</span>
         <span>Hardeep Anand · {post.date} · {readMin} min read</span>
