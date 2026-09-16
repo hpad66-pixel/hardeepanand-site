@@ -48,7 +48,7 @@ const readMin = Math.max(1, Math.round(words / 220));
     </header>
     {dashboardParts.map(part => part === '<!-- resilience-dashboard -->' ? <ResilienceDashboard /> : part === '<!-- resilience-chain -->' ? <ResilienceChain /> : <div class="prose" set:html={part} />)}
     <ApasSignature article={post.title} path={`writing/${post.slug}`} />
-    <SubstackDiscussion />
+    <SubstackDiscussion substackUrl={post.substackUrl} />
   </article>
   <section class="post-end">
     <div class="author">

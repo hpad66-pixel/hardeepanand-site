@@ -135,6 +135,7 @@ export function readArticles(subdirs) {
         description: data.seo_description || '',
         presentation: data.presentation || '',
         subtitle: data.subtitle || '',
+        substackUrl: data.substack_url || data.substack || '',
         body,
       });
     }

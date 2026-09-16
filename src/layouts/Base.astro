@@ -1,6 +1,7 @@
 ---
 import '../styles/tokens.css';
 import { NAV } from '../lib/content.js';
+import { SUBSTACK } from '../lib/substack.js';
 const { title = 'Hardeep Anand', active = '/', description = 'Water, infrastructure, and intelligence. Essays and ideas from Hardeep Anand, an operator building a more connected future.' } = Astro.props;
 const isProd = import.meta.env.PROD;
 ---
@@ -22,6 +23,7 @@ const isProd = import.meta.env.PROD;
     <link rel="canonical" href={new URL(Astro.url.pathname, 'https://hardeepanand.com').href} />
     <link rel="alternate" type="application/rss+xml" title="The Systems Lens" href="/rss.xml" />
     <link rel="alternate" type="application/feed+json" title="Hardeep Anand" href="/feed.json" />
+    <link rel="me" href={SUBSTACK.profileUrl} />
     <script is:inline>
       // No-flash theme: set the saved theme + any Theme Studio overrides before first paint.
       (function () {
@@ -61,7 +63,8 @@ const isProd = import.meta.env.PROD;
           <p class="ftag">An operator’s perspective on water, infrastructure, and the intelligence that connects them.</p>
           <div class="fsocial">
             <a href="https://www.linkedin.com/in/hardeepanand/">LinkedIn</a>
-            <a href="https://www.thesystemslens.com/">Substack</a>
+            <a href={SUBSTACK.publicationUrl}>Substack</a>
+            <a href={SUBSTACK.profileUrl}>Profile</a>
 
           </div>
         </div>
@@ -69,6 +72,7 @@ const isProd = import.meta.env.PROD;
           <h4>Read</h4>
           <a href="/writing/">All essays</a>
           <a href="/#newsletter">Subscribe</a>
+          <a href={SUBSTACK.publicationUrl}>Substack home</a>
           <a href="/rss.xml">RSS feed</a>
         </div>
         <div class="fcol">
