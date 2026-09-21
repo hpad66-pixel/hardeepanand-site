@@ -127,6 +127,7 @@ const searchText = p => `${p.title} ${p.summary||''} ${p.topic} ${p.takeaway}`;
 .room-count,.room-results,.entry-number,.reading-meta,.visual-parent{font-size:13px}
 .room-modes a{font-size:15px;color:var(--room-ink)}
 .room-tools input,.room-tools select{font-size:16px}
+.room-tools select{height:44px}
 .room-tools button,.room-more button{font-size:14px}
 .reading-entry{grid-template-columns:32px minmax(0,1.6fr) minmax(0,1fr)}
 .reading-entry h3{font-size:32px;line-height:1.18}
@@ -136,4 +137,5 @@ const searchText = p => `${p.title} ${p.summary||''} ${p.topic} ${p.takeaway}`;
 :global([data-theme='obsidian']) .reading-room{--room-muted:#c5d0d8}
 @media(max-width:750px){.reading-entry{grid-template-columns:24px minmax(0,1fr)}.reading-entry h3{font-size:29px}.reading-summary,.reading-value p,.reader-route p,.visual-entry p{font-size:15px}.reading-meta,.room-count{font-size:12px}.room-modes{gap:18px}.room-modes a{font-size:14px}}
 @media(max-width:360px){.room-modes{gap:14px}.room-modes a{font-size:13px}.reading-entry h3{font-size:27px}}
+@media(max-width:1000px){.reading-value .read-link,.reading-connection a,.visual-parent{display:inline-flex;align-items:center;min-height:44px}.reading-connection summary{min-height:44px;align-content:center}.reader-route h5 a{display:block;min-height:44px;align-content:center}}
 </style>

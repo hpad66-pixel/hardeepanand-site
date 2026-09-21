@@ -1,6 +1,6 @@
 import fs from 'node:fs';
 const ink='var(--text,#092b3e)',blue='var(--figure-accent,#174bc5)',muted='var(--text-dim,#52616a)',rule='var(--line,#d4d9d7)',paper='var(--bg,#f5f3ed)';
-const text=(x,y,s,size=17,color=ink)=>`<text x="${x}" y="${y}" text-anchor="middle" font-size="${size}" fill="${color}" style="font-family:var(--font-display,Georgia,serif)">${s}</text>`;
+const label=(x,y,s,size=17,color=ink)=>`<text x="${x}" y="${y}" text-anchor="middle" font-size="${size}" fill="${color}" style="font-family:var(--font-display,Georgia,serif)">${s}</text>`;
 const path=(d,color=ink,width=2,extra='')=>`<path d="${d}" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round" ${extra}/>`;
 const draw=(d,delay=0)=>path(d,rule,2)+path(d,blue,3,`pathLength="1" class="vs-motion sc-draw" style="animation-delay:${delay}s"`);
 const reveal=(s,delay)=>`<g class="vs-motion sc-reveal" style="animation-delay:${delay}s">${s}</g>`;
@@ -14,6 +14,7 @@ const specs=[
 ];
 function compose(kind,m){
  const w=m?380:820;let h=400,b='';
+ const text=(x,y,s,size=17,color=ink)=>label(x,y,s,m?Math.max(size,16):size,color);
  if(kind==='carry-the-map'){
   h=m?470:415;
   const ridge=m?'M12 328 L67 217 L109 259 L200 91 L245 163 L289 126 L369 302':'M20 310 L165 172 L238 223 L429 48 L505 134 L574 93 L800 306';

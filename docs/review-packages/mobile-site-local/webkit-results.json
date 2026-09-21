@@ -1,0 +1,2465 @@
+{
+  "base": "http://127.0.0.1:4395",
+  "engine": "webkit",
+  "widths": [
+    430,
+    390,
+    375,
+    320,
+    768
+  ],
+  "routes": [
+    {
+      "path": "/",
+      "status": 200,
+      "finalPath": "/",
+      "title": "The Systems Lens · Hardeep Anand"
+    },
+    {
+      "path": "/about/",
+      "status": 200,
+      "finalPath": "/about/",
+      "title": "About · Hardeep Anand"
+    },
+    {
+      "path": "/writing/",
+      "status": 200,
+      "finalPath": "/writing/",
+      "title": "Writing · Hardeep Anand"
+    },
+    {
+      "path": "/case-studies/",
+      "status": 200,
+      "finalPath": "/case-studies/",
+      "title": "Case Studies · Hardeep Anand"
+    },
+    {
+      "path": "/ai-watch/",
+      "status": 200,
+      "finalPath": "/ai-watch/",
+      "title": "AI Watch · Hardeep Anand"
+    },
+    {
+      "path": "/summits/",
+      "status": 200,
+      "finalPath": "/summits/",
+      "title": "Summits & Stage · Hardeep Anand"
+    },
+    {
+      "path": "/work/",
+      "status": 200,
+      "finalPath": "/work/",
+      "title": "Work with me · Hardeep Anand"
+    },
+    {
+      "path": "/climb/adapt-dont-pivot/",
+      "status": 200,
+      "finalPath": "/climb/adapt-dont-pivot/",
+      "title": "Adapt, Don't Pivot · Hardeep Anand"
+    },
+    {
+      "path": "/climb/in-your-head/",
+      "status": 200,
+      "finalPath": "/climb/in-your-head/",
+      "title": "If You're In Your Head, You're Dead · Hardeep Anand"
+    },
+    {
+      "path": "/writing/data-governance/",
+      "status": 200,
+      "finalPath": "/writing/data-governance/",
+      "title": "Your Utility Has Been Doing Data Governance Wrong · Hardeep Anand"
+    },
+    {
+      "path": "/writing/fifty-steps-back/",
+      "status": 200,
+      "finalPath": "/writing/fifty-steps-back/",
+      "title": "Fifty Steps Back, Five Hundred Steps Forward · Hardeep Anand"
+    },
+    {
+      "path": "/writing/nature-already-has-the-math/",
+      "status": 200,
+      "finalPath": "/writing/nature-already-has-the-math/",
+      "title": "Nature Already Has the Math · Hardeep Anand"
+    },
+    {
+      "path": "/writing/vital-signs/",
+      "status": 200,
+      "finalPath": "/writing/vital-signs/",
+      "title": "Your Capital Plan Needs a Glucose Monitor · Hardeep Anand"
+    }
+  ],
+  "resources": [
+    {
+      "path": "/rss.xml",
+      "status": 200,
+      "type": "text/xml",
+      "bytes": 3373,
+      "draftExcluded": true
+    },
+    {
+      "path": "/feed.json",
+      "status": 200,
+      "type": "application/json",
+      "bytes": 68860,
+      "draftExcluded": true
+    },
+    {
+      "path": "/sitemap.xml",
+      "status": 200,
+      "type": "text/xml",
+      "bytes": 914,
+      "draftExcluded": true
+    }
+  ],
+  "layouts": [
+    {
+      "path": "/",
+      "status": 200,
+      "width": 430,
+      "documentWidth": 430,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": [
+        {
+          "tag": "VIDEO",
+          "id": "",
+          "class": "",
+          "text": "",
+          "width": 390
+        }
+      ]
+    },
+    {
+      "path": "/about/",
+      "status": 200,
+      "width": 430,
+      "documentWidth": 430,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/",
+      "status": 200,
+      "width": 430,
+      "documentWidth": 430,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/case-studies/",
+      "status": 200,
+      "width": 430,
+      "documentWidth": 430,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/ai-watch/",
+      "status": 200,
+      "width": 430,
+      "documentWidth": 430,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/summits/",
+      "status": 200,
+      "width": 430,
+      "documentWidth": 430,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/work/",
+      "status": 200,
+      "width": 430,
+      "documentWidth": 430,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/climb/adapt-dont-pivot/",
+      "status": 200,
+      "width": 430,
+      "documentWidth": 430,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 5,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 8,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/climb/in-your-head/",
+      "status": 200,
+      "width": 430,
+      "documentWidth": 430,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 2,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 3,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/data-governance/",
+      "status": 200,
+      "width": 430,
+      "documentWidth": 430,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 14,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 12,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 13,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/fifty-steps-back/",
+      "status": 200,
+      "width": 430,
+      "documentWidth": 430,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 7,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 10,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 16,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 4,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/nature-already-has-the-math/",
+      "status": 200,
+      "width": 430,
+      "documentWidth": 430,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "fig-hydrologic",
+          "labels": 13,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-storm",
+          "labels": 18,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-algae",
+          "labels": 17,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-ai-test",
+          "labels": 15,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-framework",
+          "labels": 17,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/vital-signs/",
+      "status": 200,
+      "width": 430,
+      "documentWidth": 430,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 12,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 8,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 16,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 7,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 10,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/missing-mobile-audit-page/",
+      "status": 404,
+      "width": 430,
+      "documentWidth": 430,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": [
+        {
+          "tag": "VIDEO",
+          "id": "",
+          "class": "",
+          "text": "",
+          "width": 350
+        }
+      ]
+    },
+    {
+      "path": "/about/",
+      "status": 200,
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/",
+      "status": 200,
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/case-studies/",
+      "status": 200,
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/ai-watch/",
+      "status": 200,
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/summits/",
+      "status": 200,
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/work/",
+      "status": 200,
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/climb/adapt-dont-pivot/",
+      "status": 200,
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 5,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 8,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/climb/in-your-head/",
+      "status": 200,
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 2,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 3,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/data-governance/",
+      "status": 200,
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 14,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 12,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 13,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/fifty-steps-back/",
+      "status": 200,
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 7,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 10,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 16,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 4,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/nature-already-has-the-math/",
+      "status": 200,
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "fig-hydrologic",
+          "labels": 13,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-storm",
+          "labels": 18,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-algae",
+          "labels": 17,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-ai-test",
+          "labels": 15,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-framework",
+          "labels": 17,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/vital-signs/",
+      "status": 200,
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 12,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 8,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 16,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 7,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 10,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/missing-mobile-audit-page/",
+      "status": 404,
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "width": 375,
+      "documentWidth": 375,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": [
+        {
+          "tag": "VIDEO",
+          "id": "",
+          "class": "",
+          "text": "",
+          "width": 335
+        }
+      ]
+    },
+    {
+      "path": "/about/",
+      "status": 200,
+      "width": 375,
+      "documentWidth": 375,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/",
+      "status": 200,
+      "width": 375,
+      "documentWidth": 375,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/case-studies/",
+      "status": 200,
+      "width": 375,
+      "documentWidth": 375,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/ai-watch/",
+      "status": 200,
+      "width": 375,
+      "documentWidth": 375,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/summits/",
+      "status": 200,
+      "width": 375,
+      "documentWidth": 375,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/work/",
+      "status": 200,
+      "width": 375,
+      "documentWidth": 375,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/climb/adapt-dont-pivot/",
+      "status": 200,
+      "width": 375,
+      "documentWidth": 375,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 5,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 8,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/climb/in-your-head/",
+      "status": 200,
+      "width": 375,
+      "documentWidth": 375,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 2,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 3,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/data-governance/",
+      "status": 200,
+      "width": 375,
+      "documentWidth": 375,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 14,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 12,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 13,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/fifty-steps-back/",
+      "status": 200,
+      "width": 375,
+      "documentWidth": 375,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 7,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 10,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 16,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 4,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/nature-already-has-the-math/",
+      "status": 200,
+      "width": 375,
+      "documentWidth": 375,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "fig-hydrologic",
+          "labels": 13,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-storm",
+          "labels": 18,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-algae",
+          "labels": 17,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-ai-test",
+          "labels": 15,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-framework",
+          "labels": 17,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/vital-signs/",
+      "status": 200,
+      "width": 375,
+      "documentWidth": 375,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 12,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 8,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 16,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 7,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 10,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/missing-mobile-audit-page/",
+      "status": 404,
+      "width": 375,
+      "documentWidth": 375,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": [
+        {
+          "tag": "VIDEO",
+          "id": "",
+          "class": "",
+          "text": "",
+          "width": 280
+        }
+      ]
+    },
+    {
+      "path": "/about/",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/case-studies/",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/ai-watch/",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/summits/",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/work/",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/climb/adapt-dont-pivot/",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 5,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 8,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/climb/in-your-head/",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 2,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 3,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/data-governance/",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 14,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 12,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 13,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/fifty-steps-back/",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 7,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 10,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 16,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 4,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/nature-already-has-the-math/",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "fig-hydrologic",
+          "labels": 13,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-storm",
+          "labels": 18,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-algae",
+          "labels": 17,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-ai-test",
+          "labels": 15,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-framework",
+          "labels": 17,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/vital-signs/",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 12,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 8,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 16,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 7,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 10,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/missing-mobile-audit-page/",
+      "status": 404,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/",
+      "status": 200,
+      "width": 768,
+      "documentWidth": 768,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": [
+        {
+          "tag": "VIDEO",
+          "id": "",
+          "class": "",
+          "text": "",
+          "width": 540
+        }
+      ]
+    },
+    {
+      "path": "/about/",
+      "status": 200,
+      "width": 768,
+      "documentWidth": 768,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/",
+      "status": 200,
+      "width": 768,
+      "documentWidth": 768,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/case-studies/",
+      "status": 200,
+      "width": 768,
+      "documentWidth": 768,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/ai-watch/",
+      "status": 200,
+      "width": 768,
+      "documentWidth": 768,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/summits/",
+      "status": 200,
+      "width": 768,
+      "documentWidth": 768,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/work/",
+      "status": 200,
+      "width": 768,
+      "documentWidth": 768,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/climb/adapt-dont-pivot/",
+      "status": 200,
+      "width": 768,
+      "documentWidth": 768,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 5,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 8,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/climb/in-your-head/",
+      "status": 200,
+      "width": 768,
+      "documentWidth": 768,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 2,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 3,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/data-governance/",
+      "status": 200,
+      "width": 768,
+      "documentWidth": 768,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 14,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 12,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 13,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/fifty-steps-back/",
+      "status": 200,
+      "width": 768,
+      "documentWidth": 768,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 7,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 10,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 16,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 4,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/nature-already-has-the-math/",
+      "status": 200,
+      "width": 768,
+      "documentWidth": 768,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "fig-hydrologic",
+          "labels": 13,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-storm",
+          "labels": 18,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-algae",
+          "labels": 17,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-ai-test",
+          "labels": 15,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-framework",
+          "labels": 17,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/vital-signs/",
+      "status": 200,
+      "width": 768,
+      "documentWidth": 768,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 12,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 8,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 16,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 7,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 10,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/missing-mobile-audit-page/",
+      "status": 404,
+      "width": 768,
+      "documentWidth": 768,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/ (introduction expanded)",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": [
+        {
+          "tag": "VIDEO",
+          "id": "",
+          "class": "",
+          "text": "",
+          "width": 280
+        }
+      ]
+    },
+    {
+      "path": "/ (mock-ready form)",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": [
+        {
+          "tag": "VIDEO",
+          "id": "",
+          "class": "",
+          "text": "",
+          "width": 280
+        }
+      ]
+    },
+    {
+      "path": "/writing/data-governance/ (mock-ready form)",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 14,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 12,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 13,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/ (obsidian/reduced-motion)",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": [
+        {
+          "tag": "VIDEO",
+          "id": "",
+          "class": "",
+          "text": "",
+          "width": 280
+        }
+      ]
+    },
+    {
+      "path": "/about/ (obsidian/reduced-motion)",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/ (obsidian/reduced-motion)",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/case-studies/ (obsidian/reduced-motion)",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/ai-watch/ (obsidian/reduced-motion)",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/summits/ (obsidian/reduced-motion)",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/work/ (obsidian/reduced-motion)",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/climb/adapt-dont-pivot/ (obsidian/reduced-motion)",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 5,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 8,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/climb/in-your-head/ (obsidian/reduced-motion)",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 2,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 3,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/data-governance/ (obsidian/reduced-motion)",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 14,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 12,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 13,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/fifty-steps-back/ (obsidian/reduced-motion)",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 7,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 10,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 9,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 16,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 4,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/nature-already-has-the-math/ (obsidian/reduced-motion)",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "fig-hydrologic",
+          "labels": 13,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-storm",
+          "labels": 18,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-algae",
+          "labels": 17,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-ai-test",
+          "labels": 15,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "fig-framework",
+          "labels": 17,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/writing/vital-signs/ (obsidian/reduced-motion)",
+      "status": 200,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [
+        {
+          "figure": "figure-1",
+          "labels": 12,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-2",
+          "labels": 8,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-3",
+          "labels": 16,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-4",
+          "labels": 7,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        },
+        {
+          "figure": "figure-5",
+          "labels": 10,
+          "issues": [],
+          "collisions": [],
+          "tiny": []
+        }
+      ],
+      "brokenImages": [],
+      "media": []
+    },
+    {
+      "path": "/missing-mobile-audit-page/ (obsidian/reduced-motion)",
+      "status": 404,
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "clipped": [],
+      "smallTargets": [],
+      "smallInputs": [],
+      "diagrams": [],
+      "brokenImages": [],
+      "media": []
+    }
+  ],
+  "interactions": [
+    {
+      "width": 430,
+      "menu": "open/escape/navigate passed",
+      "discovery": "search/empty/clear/topic/start-here/visual-index/load-more/back passed"
+    },
+    {
+      "width": 390,
+      "menu": "open/escape/navigate passed",
+      "discovery": "search/empty/clear/topic/start-here/visual-index/load-more/back passed"
+    },
+    {
+      "width": 375,
+      "menu": "open/escape/navigate passed",
+      "discovery": "search/empty/clear/topic/start-here/visual-index/load-more/back passed"
+    },
+    {
+      "width": 320,
+      "menu": "open/escape/navigate passed",
+      "discovery": "search/empty/clear/topic/start-here/visual-index/load-more/back passed"
+    },
+    {
+      "width": 768,
+      "menu": "open/escape/navigate passed",
+      "discovery": "search/empty/clear/topic/start-here/visual-index/load-more/back passed"
+    },
+    {
+      "landscape": "844x390 menu scroll and Subscribe navigation passed"
+    },
+    {
+      "nojs": "320px public navigation, six essays and nine diagram links remain visible"
+    },
+    {
+      "signup": "input typing, validity and external form destination checked; nothing submitted"
+    },
+    {
+      "video": {
+        "duration": 34,
+        "width": 1920,
+        "height": 1080,
+        "controls": true,
+        "inline": true
+      }
+    },
+    {
+      "conditionalForms": "320px mocked ready layouts and consent/name disclosure checked; no submission"
+    },
+    {
+      "path": "/climb/adapt-dont-pivot/",
+      "share": "print isolation and article-attributed email checked without sending"
+    },
+    {
+      "path": "/climb/in-your-head/",
+      "share": "print isolation and article-attributed email checked without sending"
+    },
+    {
+      "path": "/writing/data-governance/",
+      "share": "print isolation and article-attributed email checked without sending"
+    },
+    {
+      "path": "/writing/fifty-steps-back/",
+      "share": "print isolation and article-attributed email checked without sending"
+    },
+    {
+      "path": "/writing/nature-already-has-the-math/",
+      "share": "print isolation and article-attributed email checked without sending"
+    },
+    {
+      "path": "/writing/vital-signs/",
+      "share": "print isolation and article-attributed email checked without sending"
+    }
+  ],
+  "boundaries": [],
+  "errors": []
+}

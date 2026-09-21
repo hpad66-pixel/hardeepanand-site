@@ -1,0 +1,668 @@
+{
+  "base": "http://127.0.0.1:4395",
+  "results": [
+    {
+      "width": 1920,
+      "documentWidth": 1920,
+      "banner": false,
+      "statement": "I make invisiblesystems legible.",
+      "copy": {
+        "left": 400,
+        "right": 957.875,
+        "top": 148.109375,
+        "bottom": 698.96875,
+        "width": 557.875,
+        "height": 550.859375
+      },
+      "image": {
+        "left": 1021.875,
+        "right": 1520,
+        "top": 138.546875,
+        "bottom": 708.546875,
+        "width": 498.125,
+        "height": 570
+      },
+      "statementRect": {
+        "left": 400,
+        "right": 957.875,
+        "top": 257.984375,
+        "bottom": 394.578125,
+        "width": 557.875,
+        "height": 136.59375
+      },
+      "background": "rgb(245, 243, 237)",
+      "typography": {
+        ".lens-thesis": {
+          "family": "Newsreader, Georgia, serif",
+          "size": 69,
+          "color": "rgb(9, 43, 62)"
+        },
+        ".reading-entry h3": {
+          "family": "Newsreader, Georgia, serif",
+          "size": 32,
+          "color": "rgb(21, 46, 64)"
+        },
+        ".reading-summary": {
+          "family": "Inter, sans-serif",
+          "size": 16,
+          "color": "rgb(65, 85, 101)"
+        },
+        ".reading-value p": {
+          "family": "Inter, sans-serif",
+          "size": 16,
+          "color": "rgb(21, 46, 64)"
+        },
+        ".reading-meta": {
+          "family": "Inter, sans-serif",
+          "size": 13,
+          "color": "rgb(65, 85, 101)"
+        },
+        ".ha-links a": {
+          "family": "Inter, sans-serif",
+          "size": 14,
+          "color": "rgb(9, 43, 62)"
+        }
+      },
+      "fonts": [
+        {
+          "family": "Inter",
+          "weight": "400"
+        },
+        {
+          "family": "Inter",
+          "weight": "500"
+        },
+        {
+          "family": "Inter",
+          "weight": "600"
+        },
+        {
+          "family": "Inter",
+          "weight": "700"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "400"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "400"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "500"
+        }
+      ],
+      "navOverflow": false
+    },
+    {
+      "width": 1440,
+      "documentWidth": 1440,
+      "banner": false,
+      "statement": "I make invisiblesystems legible.",
+      "copy": {
+        "left": 160,
+        "right": 717.875,
+        "top": 148.109375,
+        "bottom": 698.96875,
+        "width": 557.875,
+        "height": 550.859375
+      },
+      "image": {
+        "left": 781.875,
+        "right": 1280,
+        "top": 138.546875,
+        "bottom": 708.546875,
+        "width": 498.125,
+        "height": 570
+      },
+      "statementRect": {
+        "left": 160,
+        "right": 717.875,
+        "top": 257.984375,
+        "bottom": 394.578125,
+        "width": 557.875,
+        "height": 136.59375
+      },
+      "background": "rgb(245, 243, 237)",
+      "typography": {
+        ".lens-thesis": {
+          "family": "Newsreader, Georgia, serif",
+          "size": 69,
+          "color": "rgb(9, 43, 62)"
+        },
+        ".reading-entry h3": {
+          "family": "Newsreader, Georgia, serif",
+          "size": 32,
+          "color": "rgb(21, 46, 64)"
+        },
+        ".reading-summary": {
+          "family": "Inter, sans-serif",
+          "size": 16,
+          "color": "rgb(65, 85, 101)"
+        },
+        ".reading-value p": {
+          "family": "Inter, sans-serif",
+          "size": 16,
+          "color": "rgb(21, 46, 64)"
+        },
+        ".reading-meta": {
+          "family": "Inter, sans-serif",
+          "size": 13,
+          "color": "rgb(65, 85, 101)"
+        },
+        ".ha-links a": {
+          "family": "Inter, sans-serif",
+          "size": 14,
+          "color": "rgb(9, 43, 62)"
+        }
+      },
+      "fonts": [
+        {
+          "family": "Inter",
+          "weight": "400"
+        },
+        {
+          "family": "Inter",
+          "weight": "500"
+        },
+        {
+          "family": "Inter",
+          "weight": "600"
+        },
+        {
+          "family": "Inter",
+          "weight": "700"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "400"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "400"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "500"
+        }
+      ],
+      "navOverflow": false
+    },
+    {
+      "width": 1024,
+      "documentWidth": 1024,
+      "banner": false,
+      "statement": "I make invisiblesystems legible.",
+      "copy": {
+        "left": 40,
+        "right": 517.578125,
+        "top": 138.546875,
+        "bottom": 757.703125,
+        "width": 477.578125,
+        "height": 619.15625
+      },
+      "image": {
+        "left": 557.578125,
+        "right": 984,
+        "top": 180.625,
+        "bottom": 715.625,
+        "width": 426.421875,
+        "height": 535
+      },
+      "statementRect": {
+        "left": 40,
+        "right": 517.578125,
+        "top": 248.421875,
+        "bottom": 453.3125,
+        "width": 477.578125,
+        "height": 204.890625
+      },
+      "background": "rgb(245, 243, 237)",
+      "typography": {
+        ".lens-thesis": {
+          "family": "Newsreader, Georgia, serif",
+          "size": 69,
+          "color": "rgb(9, 43, 62)"
+        },
+        ".reading-entry h3": {
+          "family": "Newsreader, Georgia, serif",
+          "size": 32,
+          "color": "rgb(21, 46, 64)"
+        },
+        ".reading-summary": {
+          "family": "Inter, sans-serif",
+          "size": 16,
+          "color": "rgb(65, 85, 101)"
+        },
+        ".reading-value p": {
+          "family": "Inter, sans-serif",
+          "size": 16,
+          "color": "rgb(21, 46, 64)"
+        },
+        ".reading-meta": {
+          "family": "Inter, sans-serif",
+          "size": 13,
+          "color": "rgb(65, 85, 101)"
+        },
+        ".ha-links a": {
+          "family": "Inter, sans-serif",
+          "size": 14,
+          "color": "rgb(9, 43, 62)"
+        }
+      },
+      "fonts": [
+        {
+          "family": "Inter",
+          "weight": "400"
+        },
+        {
+          "family": "Inter",
+          "weight": "500"
+        },
+        {
+          "family": "Inter",
+          "weight": "600"
+        },
+        {
+          "family": "Inter",
+          "weight": "700"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "400"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "400"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "500"
+        }
+      ],
+      "navOverflow": false
+    },
+    {
+      "width": 820,
+      "documentWidth": 820,
+      "banner": false,
+      "statement": "I make invisiblesystems legible.",
+      "copy": {
+        "left": 40,
+        "right": 409.796875,
+        "top": 122.84375,
+        "bottom": 764.828125,
+        "width": 369.796875,
+        "height": 641.984375
+      },
+      "image": {
+        "left": 449.796875,
+        "right": 780,
+        "top": 176.328125,
+        "bottom": 711.328125,
+        "width": 330.203125,
+        "height": 535
+      },
+      "statementRect": {
+        "left": 40,
+        "right": 409.796875,
+        "top": 226.125,
+        "bottom": 392.4375,
+        "width": 369.796875,
+        "height": 166.3125
+      },
+      "background": "rgb(245, 243, 237)",
+      "typography": {
+        ".lens-thesis": {
+          "family": "Newsreader, Georgia, serif",
+          "size": 56,
+          "color": "rgb(9, 43, 62)"
+        },
+        ".reading-entry h3": {
+          "family": "Newsreader, Georgia, serif",
+          "size": 32,
+          "color": "rgb(21, 46, 64)"
+        },
+        ".reading-summary": {
+          "family": "Inter, sans-serif",
+          "size": 16,
+          "color": "rgb(65, 85, 101)"
+        },
+        ".reading-value p": {
+          "family": "Inter, sans-serif",
+          "size": 16,
+          "color": "rgb(21, 46, 64)"
+        },
+        ".reading-meta": {
+          "family": "Inter, sans-serif",
+          "size": 13,
+          "color": "rgb(65, 85, 101)"
+        },
+        ".ha-links a": {
+          "family": "Inter, sans-serif",
+          "size": 16,
+          "color": "rgb(9, 43, 62)"
+        }
+      },
+      "fonts": [
+        {
+          "family": "Inter",
+          "weight": "400"
+        },
+        {
+          "family": "Inter",
+          "weight": "500"
+        },
+        {
+          "family": "Inter",
+          "weight": "600"
+        },
+        {
+          "family": "Inter",
+          "weight": "700"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "400"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "400"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "500"
+        }
+      ],
+      "navOverflow": false
+    },
+    {
+      "width": 650,
+      "documentWidth": 650,
+      "banner": false,
+      "statement": "I make invisiblesystems legible.",
+      "copy": {
+        "left": 24,
+        "right": 626,
+        "top": 108.84375,
+        "bottom": 582.796875,
+        "width": 602,
+        "height": 473.953125
+      },
+      "image": {
+        "left": 24,
+        "right": 626,
+        "top": 610.796875,
+        "bottom": 970.796875,
+        "width": 602,
+        "height": 360
+      },
+      "statementRect": {
+        "left": 24,
+        "right": 409.609375,
+        "top": 200.234375,
+        "bottom": 310.234375,
+        "width": 385.609375,
+        "height": 110
+      },
+      "background": "rgb(245, 243, 237)",
+      "typography": {
+        ".lens-thesis": {
+          "family": "Newsreader, Georgia, serif",
+          "size": 55,
+          "color": "rgb(9, 43, 62)"
+        },
+        ".reading-entry h3": {
+          "family": "Newsreader, Georgia, serif",
+          "size": 29,
+          "color": "rgb(21, 46, 64)"
+        },
+        ".reading-summary": {
+          "family": "Inter, sans-serif",
+          "size": 15,
+          "color": "rgb(65, 85, 101)"
+        },
+        ".reading-value p": {
+          "family": "Inter, sans-serif",
+          "size": 15,
+          "color": "rgb(21, 46, 64)"
+        },
+        ".reading-meta": {
+          "family": "Inter, sans-serif",
+          "size": 12,
+          "color": "rgb(65, 85, 101)"
+        },
+        ".ha-links a": {
+          "family": "Inter, sans-serif",
+          "size": 16,
+          "color": "rgb(9, 43, 62)"
+        }
+      },
+      "fonts": [
+        {
+          "family": "Inter",
+          "weight": "400"
+        },
+        {
+          "family": "Inter",
+          "weight": "500"
+        },
+        {
+          "family": "Inter",
+          "weight": "600"
+        },
+        {
+          "family": "Inter",
+          "weight": "700"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "400"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "400"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "500"
+        }
+      ],
+      "navOverflow": false
+    },
+    {
+      "width": 390,
+      "documentWidth": 390,
+      "banner": false,
+      "statement": "I make invisiblesystems legible.",
+      "copy": {
+        "left": 24,
+        "right": 366,
+        "top": 108.84375,
+        "bottom": 757.796875,
+        "width": 342,
+        "height": 648.953125
+      },
+      "image": {
+        "left": 24,
+        "right": 366,
+        "top": 785.796875,
+        "bottom": 1145.796875,
+        "width": 342,
+        "height": 360
+      },
+      "statementRect": {
+        "left": 24,
+        "right": 366,
+        "top": 200.234375,
+        "bottom": 420.234375,
+        "width": 342,
+        "height": 220
+      },
+      "background": "rgb(245, 243, 237)",
+      "typography": {
+        ".lens-thesis": {
+          "family": "Newsreader, Georgia, serif",
+          "size": 55,
+          "color": "rgb(9, 43, 62)"
+        },
+        ".reading-entry h3": {
+          "family": "Newsreader, Georgia, serif",
+          "size": 29,
+          "color": "rgb(21, 46, 64)"
+        },
+        ".reading-summary": {
+          "family": "Inter, sans-serif",
+          "size": 15,
+          "color": "rgb(65, 85, 101)"
+        },
+        ".reading-value p": {
+          "family": "Inter, sans-serif",
+          "size": 15,
+          "color": "rgb(21, 46, 64)"
+        },
+        ".reading-meta": {
+          "family": "Inter, sans-serif",
+          "size": 12,
+          "color": "rgb(65, 85, 101)"
+        },
+        ".ha-links a": {
+          "family": "Inter, sans-serif",
+          "size": 16,
+          "color": "rgb(9, 43, 62)"
+        }
+      },
+      "fonts": [
+        {
+          "family": "Inter",
+          "weight": "400"
+        },
+        {
+          "family": "Inter",
+          "weight": "500"
+        },
+        {
+          "family": "Inter",
+          "weight": "600"
+        },
+        {
+          "family": "Inter",
+          "weight": "700"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "400"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "400"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "500"
+        }
+      ],
+      "navOverflow": false
+    },
+    {
+      "width": 320,
+      "documentWidth": 320,
+      "banner": false,
+      "statement": "I make invisiblesystems legible.",
+      "copy": {
+        "left": 24,
+        "right": 296,
+        "top": 108,
+        "bottom": 767.609375,
+        "width": 272,
+        "height": 659.609375
+      },
+      "image": {
+        "left": 24,
+        "right": 296,
+        "top": 795.609375,
+        "bottom": 1155.609375,
+        "width": 272,
+        "height": 360
+      },
+      "statementRect": {
+        "left": 24,
+        "right": 296,
+        "top": 197.6875,
+        "bottom": 389.6875,
+        "width": 272,
+        "height": 192
+      },
+      "background": "rgb(245, 243, 237)",
+      "typography": {
+        ".lens-thesis": {
+          "family": "Newsreader, Georgia, serif",
+          "size": 48,
+          "color": "rgb(9, 43, 62)"
+        },
+        ".reading-entry h3": {
+          "family": "Newsreader, Georgia, serif",
+          "size": 27,
+          "color": "rgb(21, 46, 64)"
+        },
+        ".reading-summary": {
+          "family": "Inter, sans-serif",
+          "size": 15,
+          "color": "rgb(65, 85, 101)"
+        },
+        ".reading-value p": {
+          "family": "Inter, sans-serif",
+          "size": 15,
+          "color": "rgb(21, 46, 64)"
+        },
+        ".reading-meta": {
+          "family": "Inter, sans-serif",
+          "size": 12,
+          "color": "rgb(65, 85, 101)"
+        },
+        ".ha-links a": {
+          "family": "Inter, sans-serif",
+          "size": 16,
+          "color": "rgb(9, 43, 62)"
+        }
+      },
+      "fonts": [
+        {
+          "family": "Inter",
+          "weight": "400"
+        },
+        {
+          "family": "Inter",
+          "weight": "500"
+        },
+        {
+          "family": "Inter",
+          "weight": "600"
+        },
+        {
+          "family": "Inter",
+          "weight": "700"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "400"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "400"
+        },
+        {
+          "family": "Newsreader",
+          "weight": "500"
+        }
+      ],
+      "navOverflow": false
+    }
+  ],
+  "dark": {
+    "body": "rgb(16, 24, 32)",
+    "hero": "rgba(0, 0, 0, 0)",
+    "thesis": "rgb(245, 243, 237)"
+  }
+}

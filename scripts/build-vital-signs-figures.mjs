@@ -9,6 +9,8 @@ const C = { paper: 'var(--bg, #f5f3ed)', field: 'var(--bg, #f5f3ed)', ink: 'var(
 const esc = s => String(s).replaceAll('&', '&amp;').replaceAll('<', '&lt;');
 const text = (x,y,s,size=17,color=C.ink,anchor='start',serif=false) => `<text x="${x}" y="${y}" font-size="${size}" fill="${color}" text-anchor="${anchor}" style="font-family:var(${serif ? "--font-display, 'Newsreader', Georgia, serif" : "--font-body, 'Inter', Arial, sans-serif"})">${esc(s)}</text>`;
 const label = (x,y,s,anchor='start',color=C.soft) => `<text x="${x}" y="${y}" fill="${color}" font-size="13" letter-spacing="1.2" text-anchor="${anchor}" style="font-family:var(--font-label, 'Inter', Arial, sans-serif)">${esc(s)}</text>`;
+const textFor = mobile => (x,y,s,size=17,...rest) => text(x,y,s,mobile ? Math.max(size,16) : size,...rest);
+const labelFor = mobile => (x,y,s,anchor='start',color=C.soft) => mobile ? text(x,y,s,16,color,anchor) : label(x,y,s,anchor,color);
 const line = (x1,y1,x2,y2,color=C.rule,width=1,extra='') => `<line x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" stroke="${color}" stroke-width="${width}" ${extra}/>`;
 const curve = (d,color=C.blue,width=2.5,extra='') => `<path d="${d}" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="round" stroke-linejoin="round" ${extra}/>`;
 const circle = (x,y,r,color=C.blue,fill=C.paper,width=2) => `<circle cx="${x}" cy="${y}" r="${r}" fill="${fill}" stroke="${color}" stroke-width="${width}"/>`;
@@ -31,6 +33,7 @@ const traced = (d,color=C.blue) => curve(d,C.rule,1.5)+curve(d,color,2.5,'pathLe
 const signal = d => curve(d,C.ink,3,'pathLength="100" class="vs-motion vs-signal"');
 
 function snapshot(m) {
+  const text=textFor(m), label=labelFor(m);
   const w=m?380:820, panel=m?356:380;
   const snap = label(18,30,'01 / THE SNAPSHOT') + text(18,67,'A reading without a response.',23,C.ink,'start',true)
     + line(24,199,panel-24,199) + line(24,100,24,199)
@@ -52,6 +55,7 @@ function snapshot(m) {
 }
 
 function loop(m) {
+  const text=textFor(m), label=labelFor(m);
   const w=m?380:820, h=m?506:390, cx=w/2, cy=m?245:190, r=m?108:120;
   let b = `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${C.gold}" stroke-width="2"/>`;
   b += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="${C.ink}" stroke-width="4" pathLength="100" class="vs-motion vs-orbit"/>`;
@@ -76,6 +80,7 @@ function loop(m) {
 }
 
 function framework(m) {
+  const text=textFor(m), label=labelFor(m);
   const w=m?380:820,h=m?666:456;
   const steps=[['01','Name the vital sign','Which number should the money move?'],['02','Draw the baseline','Establish the trend before the work.'],['03','Watch for the bend','Read the response after intervention.'],['04','Feed the answer forward','Let the result shape the next decision.']];
   let b='';
@@ -107,17 +112,18 @@ function framework(m) {
 }
 
 function severed(m) {
+  const text=textFor(m), label=labelFor(m);
   const w=m?380:820,h=m?588:358;
   const chart=(x,y,width)=>group(x,y,label(0,0,'THE WARNING')+line(0,106,width,106)+curve(`M0 92 C${width*.2} 95 ${width*.27} 66 ${width*.4} 72 S${width*.7} 33 ${width} 16`,C.blue,3)+text(0,139,'A worsening trend is visible.',16,C.soft));
   let b='';
   if(m) {
     b+=chart(36,36,304)+arrow(190,200,190,239,C.blue);
-    b+=box(72,248,236,71)+text(190,276,'REPORTED',17,C.blue,'middle')+text(190,300,'The dashboard has the signal.',15,C.soft,'middle');
+    b+=box(32,248,316,71)+text(190,276,'REPORTED',17,C.blue,'middle')+text(190,300,'The dashboard has the signal.',16,C.soft,'middle');
     b+=line(190,326,190,350,C.gold,2)+line(190,385,190,409,C.dead,2,'stroke-dasharray="4 4"');
     b+=signal('M190 326 L190 350');
-    b+=text(211,373,'No decision follows.',16,C.gold);
+    b+=text(190,402,'No decision follows.',16,C.gold,'middle');
     b+=line(181,360,198,352,C.gold,2)+line(181,373,198,365,C.gold,2);
-    b+=box(72,421,236,71,C.paper,C.dead)+text(190,449,'UNCHANGED',17,C.soft,'middle')+text(190,473,'The capital plan stays the same.',15,C.soft,'middle');
+    b+=box(32,421,316,71,C.paper,C.dead)+text(190,449,'UNCHANGED',17,C.soft,'middle')+text(190,473,'The capital plan stays the same.',16,C.soft,'middle');
   } else {
     b+=chart(28,70,213);
     b+=arrow(256,143,310,143,C.blue);
@@ -134,6 +140,7 @@ function severed(m) {
 }
 
 function records(m) {
+  const text=textFor(m), label=labelFor(m);
   const w=m?380:820,h=m?710:441;
   const rows=[['SCADA HISTORY','Plant flow + time'],['RAINFALL RECORDS','Storm timing + intensity'],['BILLING + PRODUCTION','Water in + water billed']];
   let b='';

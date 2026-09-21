@@ -3,7 +3,8 @@
 /minute/draft/fifty-steps-back-five-hundred-steps-forward/ /writing/fifty-steps-back/ 301
 /minute/draft/your-utility-has-been-doing-data-governance-wrong/ /writing/data-governance/ 301
 /ai-watch/digest/ /ai-watch/ 302
-/case-studies/* /case-studies/ 302
+/case-studies/:slug /case-studies/ 302
+/case-studies/:slug/* /case-studies/ 302
 /lexicon /writing/ 302
 /lexicon/* /writing/ 302
 /minute /writing/ 302

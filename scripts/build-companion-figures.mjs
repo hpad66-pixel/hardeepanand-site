@@ -17,15 +17,16 @@ const sets = {
 };
 const esc = s => s.replaceAll('&','&amp;').replaceAll('<','&lt;');
 const ink='var(--text,#092b3e)', blue='var(--figure-accent,#174bc5)', muted='var(--text-dim,#52616a)', rule='var(--line,#d4d9d7)', paper='var(--bg,#f5f3ed)';
-const t=(x,y,s,size=16,fill=ink,anchor='middle')=>`<text x="${x}" y="${y}" text-anchor="${anchor}" font-size="${size}" fill="${fill}">${esc(s)}</text>`;
+const text=(x,y,s,size=16,fill=ink,anchor='middle')=>`<text x="${x}" y="${y}" text-anchor="${anchor}" font-size="${size}" fill="${fill}">${s.includes('\n')?s.split('\n').map((line,i,lines)=>`<tspan x="${x}" y="${y+i*20}">${esc(line)}${i<lines.length-1?' ':''}</tspan>`).join(''):esc(s)}</text>`;
 const line=(d,color=rule,width=1,extra='')=>`<path d="${d}" fill="none" stroke="${color}" stroke-width="${width}" stroke-linecap="round" ${extra}/>`;
 const flow=(d,delay=0)=>line(d,rule,2)+line(d,blue,3,`pathLength="1" class="vs-motion sl-flow" style="animation-delay:${delay}s"`);
 const reveal=(body,delay=0)=>`<g class="vs-motion sl-reveal" style="animation-delay:${delay}s">${body}</g>`;
 const ring=(x,y,r=34)=>`<circle cx="${x}" cy="${y}" r="${r}" fill="${paper}" stroke="${blue}" stroke-width="2"/>`;
-const note=(x,y,a,b)=>t(x,y,a,18)+t(x,y+24,b,13,muted);
-const record=(x,y,w,title,sub)=>`<rect x="${x}" y="${y}" width="${w}" height="66" rx="3" fill="${paper}" stroke="${rule}"/>`+t(x+14,y+26,title,16,ink,'start')+t(x+14,y+49,sub,12,muted,'start');
 function compose(slug,i,m){
  const w=m?380:820,c=w/2;let b='',h=400;
+ const t=(x,y,s,size=16,...rest)=>text(x,y,s,m?Math.max(size,16):size,...rest);
+ const note=(x,y,a,b)=>t(x,y,a,18)+t(x,y+24,b,13,muted);
+ const record=(x,y,w,title,sub,height=66)=>`<rect x="${x}" y="${y}" width="${w}" height="${height}" rx="3" fill="${paper}" stroke="${rule}"/>`+t(x+14,y+26,title,16,ink,'start')+t(x+14,y+49,sub,12,muted,'start');
  if(slug==='data-governance'&&i===1){
   h=m?650:410;
   // Compare a human bottleneck with a discoverable network, keeping the expert in both.
@@ -34,29 +35,29 @@ function compose(slug,i,m){
    const xs=[ox+42,mid,ox+pw-42];xs.forEach((x,n)=>{s+=flow(`M${x} ${oy+75} Q${x} ${oy+135} ${mid} ${oy+151}`,n*.3);s+=ring(x,oy+63,16)+t(x,oy+68,['Ops','IT','AI'][n],10);});
    s+=ring(mid,oy+182,31)+t(mid,oy+188,connected?'Catalog':'Sarah',14);
    s+=t(mid,oy+241,connected?'Meaning · source · owner':'Every question waits here',14,muted);
-   if(connected){s+=flow(`M${mid} ${oy+214} V${oy+273}`,1.4)+reveal(t(mid,oy+295,'Sarah maintains the knowledge.',13),1.7);}else{s+=t(mid,oy+276,'When she leaves, the map leaves.',13,muted);}
+   if(connected){s+=flow(`M${mid} ${oy+214} V${oy+220} M${mid} ${oy+250} V${oy+273}`,1.4)+reveal(t(mid,oy+295,'Sarah maintains the knowledge.',13),1.7);}else{s+=t(mid,oy+276,'When she leaves, the map leaves.',13,muted);}
    return s;
   };
   b=m?panel(0,0,w,false)+line('M20 317 H360')+panel(0,332,w,true):panel(0,12,390,false)+line('M410 30 V365')+panel(430,12,390,true);
  }else if(slug==='data-governance'&&i===2){
   h=m?520:400;const names=['Historian','GIS','Meters','Work orders'];
   names.forEach((name,n)=>{const x=m?20+(n%2)*180:20+n*200,y=m?20+Math.floor(n/2)*85:24; b+=record(x,y,m?160:180,name,['Time series','Asset location','Usage','Maintenance'][n]);b+=flow(`M${x+(m?80:90)} ${y+66} V${m?235:155} H${c} V${m?269:185}`,n*.3);});
-  const yy=m?270:186;b+=`<rect x="20" y="${yy}" width="${w-40}" height="88" fill="${paper}" stroke="${blue}" stroke-width="2"/>`+t(c,yy+32,'A shared map of the data',m?23:26)+t(c,yy+61,'Meaning · ownership · freshness · access',m?13:16,muted);
+  const yy=m?270:186;b+=`<rect x="20" y="${yy}" width="${w-40}" height="88" fill="${paper}" stroke="${blue}" stroke-width="2"/>`+t(c,yy+32,'A shared map of the data',m?23:26)+t(c,yy+61,'Meaning · ownership · freshness · access',16,muted);
   b+=flow(`M${c} ${yy+88} V${yy+130}`,1.4)+reveal(note(c,yy+156,'One traceable decision','Records stay in their source systems.'),1.8);
  }else if(slug==='data-governance'&&i===3){
   h=m?550:380;const left=m?85:160,right=m?295:650,cy=m?220:180;
-  b+=t(c,25,'A CHANGE SHOULD TRAVEL TO ITS OWNER',12,blue);
+  b+=t(c,25,m?'A CHANGE SHOULD TRAVEL\nTO ITS OWNER':'A CHANGE SHOULD TRAVEL TO ITS OWNER',12,blue);
   b+=flow(`M${left} ${cy} C${left} 55 ${right} 55 ${right} ${cy}`,0)+flow(`M${right} ${cy} C${right} ${cy+155} ${left} ${cy+155} ${left} ${cy}`,1.2);
   b+=ring(left,cy,44)+t(left,cy-3,'Source',17)+t(left,cy+20,'changes',14,muted)+ring(right,cy,44)+t(right,cy-3,'Owner',17)+t(right,cy+20,'reviews',14,muted);
   b+=reveal(t(c,m?95:64,'Detect + notify',16,blue),.5)+reveal(t(c,cy+132,'Update the shared description',m?13:16,blue),1.6);
-  b+=note(c,h-52,'The loop keeps the catalog useful.','A saved spreadsheet cannot close it by itself.');
+  b+=note(c,h-(m?72:52),'The loop keeps the catalog useful.',m?'A saved spreadsheet cannot\nclose it by itself.':'A saved spreadsheet cannot close it by itself.');
  }else if(slug==='data-governance'&&i===4){
   h=m?520:385;const yy=m?315:210;
   b+=`<path d="M25 ${yy} H${w-25} V${yy+80} H25 Z" fill="${paper}" stroke="${blue}" stroke-width="2"/>`+t(c,yy+32,'Governed, traceable records',m?21:26)+t(c,yy+60,'Known source · accountable owner',14,muted);
   ['Audit evidence','Collaboration','AI evaluation'].forEach((s,n)=>{const x=m?c:145+n*265,y=m?35+n*86:62;
    b+=flow(m?`M40 ${yy} V${y+30} H90`:`M${x} ${yy} V${y+56}`,n*.35);
    b+=reveal(record(m?90:x-112,y,m?250:224,s,['Explain a reported result','Reuse data with context','Inspect model inputs'][n]),.6+n*.4);
-  });b+=t(c,h-24,'Shared foundation; separate requirements.',14,muted);
+  });b+=t(c,h-(m?44:24),m?'Shared foundation;\nseparate requirements.':'Shared foundation; separate requirements.',14,muted);
  }else if(slug==='data-governance'&&i===5){
   h=m?535:365;const labels=['Find one critical dataset','Trace its journey','Keep controls current','Extend into a model'];
   labels.forEach((s,n)=>{const x=m?25:30+n*195,y=m?25+n*118:230-n*55;
@@ -71,7 +72,7 @@ function compose(slug,i,m){
   const nodes=m?[[c,45,'Investment needs'],[90,425,'New obligations'],[290,425,'Knowledge loss']]:[[130,65,'Investment needs'],[690,65,'New obligations'],[c,330,'Knowledge loss']];
   nodes.forEach(([x,y,s],n)=>{b+=flow(`M${x} ${y+(y<cy?20:-20)} L${c} ${cy}`,n*.4)+t(x,y,s,m?14:18);});
   b+=ring(c,cy,m?75:85)+t(c,cy-16,'The same',19)+t(c,cy+10,'operating team',19)+t(c,cy+39,'Finite time + attention',12,muted);
-  b+=reveal(t(c,m?510:385,'Pressures converge. Capacity does not automatically grow.',m?11:14,blue),1.4);
+  b+=reveal(t(c,m?478:385,m?'Pressures converge. Capacity\ndoes not automatically grow.':'Pressures converge. Capacity does not automatically grow.',m?16:14,blue),1.4);
  }else if(slug==='fifty-steps-back'&&i===2){
   h=m?560:380;const x=m?c:130,yy=m?65:175;
   b+=ring(x,yy,43)+t(x,yy-3,'Operator',16)+t(x,yy+18,'experience',14,muted);
@@ -90,12 +91,12 @@ function compose(slug,i,m){
   b+=reveal(note(m?c:690,m?510:175,'Expand carefully','Keep the ability to stop.'),2.2);
  }else if(slug==='fifty-steps-back'&&i===4){
   h=m?660:440;const left=m?18:30,right=m?210:485;
-  b+=t(c,24,'LINK ALIASES. DO NOT MERGE DIFFERENT PUMPS.',m?11:14,blue);
+  b+=t(c,24,m?'LINK ALIASES. DO NOT MERGE\nDIFFERENT PUMPS.':'LINK ALIASES. DO NOT MERGE DIFFERENT PUMPS.',m?16:14,blue);
   [['Pump 3A','P-03','Plant A / asset 017'],['Pump B2','PUMP-02','Plant B / asset 042']].forEach((a,n)=>{
-   const y=65+n*(m?280:180);b+=record(left,y,m?155:190,a[0],'Local name')+record(left,y+80,m?155:190,a[1],'Work-order name');
-   b+=flow(`M${left+(m?155:190)} ${y+33} H${right-20} V${y+74} H${right}`,n*.6)+flow(`M${left+(m?155:190)} ${y+113} H${right-20} V${y+74} H${right}`,n*.6+.2);
-   b+=reveal(record(right,y+40,m?155:300,m?`Asset ${n===0?'017':'042'}`:a[2],m?`Plant ${n===0?'A':'B'} · same model`:'Unique identity · same pump model'),.6+n*.6);
-   if(m)b+=t(c,y+210,`Keep plant ${n===0?'A':'B'}’s history attached to its own asset.`,12,muted);
+   const y=65+n*(m?280:180);b+=record(left,y,m?155:190,a[0],'Local name')+record(left,y+(m?100:80),m?155:190,a[1],m?'Work-order\nname':'Work-order name',m?88:66);
+   b+=flow(`M${left+(m?155:190)} ${y+33} H${right-20} V${y+74} H${right}`,n*.6)+flow(`M${left+(m?155:190)} ${y+(m?133:113)} H${right-20} V${y+74} H${right}`,n*.6+.2);
+   b+=reveal(record(right,y+40,m?155:300,m?`Asset ${n===0?'017':'042'}`:a[2],m?`Plant ${n===0?'A':'B'} ·\nsame model`:'Unique identity · same pump model',m?88:66),.6+n*.6);
+   if(m)b+=t(c,y+218,`Keep plant ${n===0?'A':'B'}’s history\nattached to its own asset.`,16,muted);
   });b+=t(c,h-12,'Same model ≠ same physical asset.',m?16:18,blue);
  }else{
   h=m?490:385;const d=m?'M320 65 C150 20 40 125 65 235 S260 420 325 310':'M740 58 C550 10 230 30 115 170 S340 355 520 250 S700 215 775 160';
