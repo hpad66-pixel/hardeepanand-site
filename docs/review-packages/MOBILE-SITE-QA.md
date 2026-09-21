@@ -33,7 +33,7 @@ Also checked the rendered 404 experience, RSS XML, JSON feed and XML sitemap. Fe
 | Short landscape menu, both engines | 844 x 390 | PASS |
 | Restored hero regression | 1920, 1440, 1024, 820, 650, 390, 320 | PASS |
 | Full existing publication regression | 1920, 1440, 1024, 820, 390, 320 | PASS |
-| Production matrix | Same five phone/tablet widths in both engines | Pending deployment verification |
+| Production matrix | Same five phone/tablet widths in both engines | PASS; analytics diagnostic noted below |
 
 Each browser's local report contains 87 measured page/state layouts: 70 primary route/viewport combinations, 14 dark/reduced-motion pages, the expanded introduction, and two mocked ready-form states. All detected overflow, clipping, broken images, undersized tested controls, input font-size and SVG label findings are cleared. All 24 article figures are checked for readable rendered labels, SVG containment, owner-box containment and label collisions. Explicit UI controls target at least 44 CSS pixels; inline prose links are not claimed as 44px buttons.
 
@@ -59,6 +59,12 @@ Evidence: `mobile-site-local/{chromium,webkit}-results.json`, `mobile-site-hero/
 
 ## Release And Limits
 
-Corrective deployment and live verification pending. No local blocker remains.
+**Deployed and live-verified:** code commit `9683d9e`, Cloudflare Pages deployment `https://e6a6aca2.hardeepanand.pages.dev`, serving `https://hardeepanand.com/`. Source is pushed on `codex/systems-lens-publication`, not merged into origin/main. The deployment repeated build/test/verify successfully.
+
+Both production engines pass all 140 primary route/viewport combinations and 30 additional dark/expanded-video states (85 measured layouts per engine). No detected responsive, label-containment, target-size or input-size failures remain. The seven-width live hero regression and independent 390px Back/scroll regression also pass. Live hero and repaired mobile-figure screenshots were visually inspected. Production evidence: `mobile-site-live/{chromium,webkit}-results.json` and `mobile-site-live-hero/hero-checks.json`.
+
+The repaired case-studies index returns HTTP 200 and child aliases redirect without looping. All 13 public pages and the three feed/sitemap resources return HTTP 200. Both unpublished draft URLs return HTTP 404. Admin index, ideas, profile, theme and ideas API requests retain HTTP 302 redirects to Cloudflare Access.
+
+**Residual diagnostic:** live WebKit emitted 32 identical access-check messages for Cloudflare's `/cdn-cgi/rum` analytics request during navigation/history updates. A separate browser trace attributes the exception to `static.cloudflareinsights.com/beacon.min.js`, not article/layout code. The QA harness preserves these exact known diagnostics separately; any other application error still fails the run. Search, navigation, filters and Back state pass with the beacon present. Analytics configuration was not changed, and analytics delivery is not claimed verified. This is not a zero-console-error claim.
 
 This is complete coverage of the discovered public surface at the stated viewport matrix, not a guarantee for every physical device or browser release. Chromium and WebKit were tested; physical iOS/Android hardware, Firefox, screen-reader workflows and third-party Substack/APAS destinations were not audited. Live contact/subscription submissions were deliberately excluded. No change to article arguments or claim/source validation is implied by this presentation pass.
