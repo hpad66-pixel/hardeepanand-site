@@ -18,4 +18,10 @@ Library cleanup: title-leading Newsreader headings, readable Inter summaries/met
 
 ## Deployment
 
-Pending corrective deploy and live checks. A passing local check or Git push is not a live-publication claim. This report will record the deployment URL and public verification after success.
+**LIVE, verified:** corrective code commit `d5ff65d` deployed through the existing `npm run deploy` Cloudflare Pages workflow to `https://e348d567.hardeepanand.pages.dev`, serving `https://hardeepanand.com/`. Source pushed to `codex/systems-lens-publication`; not merged into origin/main. The deployment build/test/verify repeated successfully: 19 pages, 60 tests passed, one existing private-manuscript skip, six feed entries.
+
+Live `hero-correction-live/hero-checks.json` confirms the rejected banner is absent, the vertical side-by-side composition is restored, the 69px desktop statement and library typography are present, and all seven viewport/theme checks pass. Live screenshots of desktop ivory/obsidian and phone library were visually inspected.
+
+Live `hero-correction-live-regression/browser-results.json` records zero browser errors, no detected overflow/broken images, valid article label containment, six essays, six reader routes and nine diagram anchors. Search, topic filtering, clear/empty states, tabs, keyboard, deep links, progressive loading, mobile menu, animation/replay, reduced motion, print/email content and no-JavaScript reading pass. The independent live 390px Back regression also passes for filters, expanded diagrams, search and scroll restoration.
+
+Direct public checks: homepage/library/Nature HTTP 200; AI Jobs draft HTTP 404; private ideas UI and API retain HTTP 302 Cloudflare Access redirects. No remaining release blocker found. Residual coverage limits: browser automation uses Chromium rather than a cross-browser/device lab; contact/subscription submissions were intentionally not exercised. Local screenshot/PDF artifacts remain untracked; structured JSON evidence is versioned.
