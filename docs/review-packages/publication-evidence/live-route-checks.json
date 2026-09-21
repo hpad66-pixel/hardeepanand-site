@@ -1,0 +1,39 @@
+[
+  {
+    "path": "/",
+    "status": 200,
+    "nature": true
+  },
+  {
+    "path": "/writing/",
+    "status": 200
+  },
+  {
+    "path": "/writing/nature-already-has-the-math/",
+    "status": 200,
+    "nature": true
+  },
+  {
+    "path": "/feed.json",
+    "status": 200,
+    "feedCount": 6
+  },
+  {
+    "path": "/writing/the-question-missing-from-the-ai-jobs-debate/",
+    "status": 404
+  },
+  {
+    "path": "/writing/governance-must-live-inside-the-work/",
+    "status": 404
+  },
+  {
+    "path": "/admin/ideas/",
+    "status": 302,
+    "location": "https://apascorp.cloudflareaccess.com/cdn-cgi/access/login/hardeepanand.com"
+  },
+  {
+    "path": "/api/ideas",
+    "status": 302,
+    "location": "https://apascorp.cloudflareaccess.com/cdn-cgi/access/login/hardeepanand.com"
+  }
+]

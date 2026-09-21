@@ -2,7 +2,7 @@
 
 Article: Nature Already Has the Math. Integration revision: 2026-09-21.
 
-Status: publication authorized; final integrated local release checks PASS. Deployment and live verification are recorded separately below.
+Status: PUBLISHED on 2026-09-21. Final integrated local and live-domain release checks PASS. Deployment and live verification are recorded below.
 
 ## Authority and exact parity
 
@@ -104,4 +104,10 @@ Publication approval applies only to Nature and this discovery redesign. Other d
 
 ## Deployment
 
-Pending successful Pages upload and public verification. Authentication and the existing APAS Pages project `hardeepanand`, mapped to `hardeepanand.com`, have been verified. Existing Functions and storage bindings are preserved.
+Published through the existing APAS Pages project `hardeepanand` on 2026-09-21 using the documented `npm run deploy` command. Release source commit: `299a51c` on `codex/systems-lens-publication`, pushed to origin. Pages production target: `main`. This direct Pages deployment does not merge the Git branch into origin/main.
+
+Deployment: `https://6dfd12c8.hardeepanand.pages.dev`. Wrangler compiled/uploaded the existing Functions bundle, `_headers`, `_redirects` and `_routes.json`; 44 files uploaded, 116 unchanged. Existing storage bindings were preserved. The dirty-worktree warning concerned local QA screenshots/PDFs outside `dist`, not additional public source changes.
+
+Fresh `https://hardeepanand.com/` and `/writing/nature-already-has-the-math/` requests return 200 with the new homepage and five Nature figures. Feed contains six entries. AI Jobs and governance-work drafts return 404. Unauthenticated private ideas page/API still redirect to Cloudflare Access.
+
+The complete browser suite also PASSed against `https://hardeepanand.com`: all six viewport sizes, zero detected overflow/broken images/JavaScript errors, diagram containment/collisions/connectors, replay, reduced motion, saved obsidian theme, search/filter/clear/tabs/expansion, nine diagram anchors, no-JavaScript content and print/email controls. Live evidence: `live-publication-evidence/browser-results.json`; route/security checks: `publication-evidence/live-route-checks.json`. Original background colors remain ivory `#f5f3ed` and obsidian `#101820`.

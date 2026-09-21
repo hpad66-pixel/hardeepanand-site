@@ -1,6 +1,6 @@
 # Systems Lens Discovery Release
 
-Date: 2026-09-21. Local release QA: PASS. User authorized production release in the originating voice task. Article-specific review is in `US-CONTENT-008-RELEASE-QAQC.md`.
+Date: 2026-09-21. Local and live release QA: PASS. Published with user authorization. Article-specific review is in `US-CONTENT-008-RELEASE-QAQC.md`.
 
 ## Outcome
 
@@ -33,3 +33,9 @@ Evidence lives in `publication-evidence/`. Reproduce with `npm run build`, a pro
 | `src/lib/discovery.js` | `a3d6d1e1384bdb0988894995507e6824de12112505c0224bda0b3b72ef9b8b93` |
 
 Isolated source branch: `codex/systems-lens-publication`, based on `a82aa1653beb148ac96376812f89d9548fe08d54`. The saved workspace's unrelated draft changes were not copied, reverted or shipped. Git source delivery and Pages publication are recorded separately.
+
+## Published Result
+
+Release code commit `299a51c` was pushed to the named source branch and deployed to the existing Pages production target, with deployment URL `https://6dfd12c8.hardeepanand.pages.dev`. It is live at `https://hardeepanand.com/`. The Git branch has not been merged into origin/main.
+
+The full six-viewport browser suite passes on the real public domain. Direct live checks confirm six feed entries, Nature HTTP 200, unrelated draft HTTP 404, and preserved Cloudflare Access redirects for private routes. Original ivory `#f5f3ed` and obsidian `#101820` backgrounds match measured pre-release values. Live evidence is in `live-publication-evidence/browser-results.json`; screenshots remain local review artifacts.

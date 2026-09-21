@@ -1,0 +1,457 @@
+{
+  "base": "https://hardeepanand.com",
+  "layouts": [
+    {
+      "name": "home",
+      "width": 1920,
+      "documentWidth": 1920,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true,
+      "featuredTop": 494.4375
+    },
+    {
+      "name": "library",
+      "width": 1920,
+      "documentWidth": 1920,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "nature",
+      "width": 1920,
+      "documentWidth": 1920,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "home",
+      "width": 1440,
+      "documentWidth": 1440,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true,
+      "featuredTop": 504.4375
+    },
+    {
+      "name": "library",
+      "width": 1440,
+      "documentWidth": 1440,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "nature",
+      "width": 1440,
+      "documentWidth": 1440,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "home",
+      "width": 1024,
+      "documentWidth": 1024,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true,
+      "featuredTop": 478.140625
+    },
+    {
+      "name": "library",
+      "width": 1024,
+      "documentWidth": 1024,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "nature",
+      "width": 1024,
+      "documentWidth": 1024,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "home",
+      "width": 820,
+      "documentWidth": 820,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true,
+      "featuredTop": 462.4375
+    },
+    {
+      "name": "library",
+      "width": 820,
+      "documentWidth": 820,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "nature",
+      "width": 820,
+      "documentWidth": 820,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "home",
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true,
+      "featuredTop": 416.4375
+    },
+    {
+      "name": "library",
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "nature",
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "home",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true,
+      "featuredTop": 460.03125
+    },
+    {
+      "name": "library",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "nature",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "/about/",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "/work/",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "/writing/vital-signs/",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "/writing/data-governance/",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "/writing/fifty-steps-back/",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "/climb/adapt-dont-pivot/",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "/climb/in-your-head/",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    }
+  ],
+  "interactions": {
+    "discovery": "6 essays, 6 routes, 9 diagram anchors; search, empty, clear, topic, tabs, keyboard, deep links and load more passed",
+    "mobileMenu": "open and Escape close passed",
+    "motion": [
+      {
+        "width": 1440,
+        "early": [
+          "-51.2189px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-51.2189px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-51.2189px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-51.2189px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-51.2189px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "mid": [
+          "-100px",
+          "-17.5858px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-100px",
+          "-17.5858px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-69.9949px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-90.9586px",
+          "0px",
+          "0px",
+          "0px",
+          "-100px",
+          "-17.5858px",
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "changed": true,
+        "remaining": 0
+      },
+      {
+        "width": 320,
+        "early": [
+          "-50.7219px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-50.7219px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-50.7219px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-50.7219px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-50.7219px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "mid": [
+          "-100px",
+          "-15.3136px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-100px",
+          "-15.3136px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-67.7227px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-88.6864px",
+          "0px",
+          "0px",
+          "0px",
+          "-100px",
+          "-15.3136px",
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "changed": true,
+        "remaining": 0
+      }
+    ],
+    "reducedMotion": {
+      "traces": 0,
+      "replayHidden": true,
+      "bodyBackground": "rgba(0, 0, 0, 0)"
+    },
+    "printControls": 1,
+    "takeaways": "Print isolation and five points, canonical attribution, email content and link verified without sending",
+    "savedDark": {
+      "theme": "obsidian",
+      "text": "rgb(237, 242, 245)",
+      "background": "rgb(16, 24, 32)"
+    },
+    "nojs": {
+      "essays": 6,
+      "routes": 6,
+      "diagrams": 9
+    }
+  },
+  "article": [
+    {
+      "width": 1920,
+      "labels": 97,
+      "issues": [],
+      "collisions": [],
+      "crossings": [],
+      "uniqueIds": true,
+      "figures": 5,
+      "minLabelPixels": 12,
+      "accessible": true
+    },
+    {
+      "width": 1440,
+      "labels": 97,
+      "issues": [],
+      "collisions": [],
+      "crossings": [],
+      "uniqueIds": true,
+      "figures": 5,
+      "minLabelPixels": 12,
+      "accessible": true
+    },
+    {
+      "width": 1024,
+      "labels": 97,
+      "issues": [],
+      "collisions": [],
+      "crossings": [],
+      "uniqueIds": true,
+      "figures": 5,
+      "minLabelPixels": 12,
+      "accessible": true
+    },
+    {
+      "width": 820,
+      "labels": 80,
+      "issues": [],
+      "collisions": [],
+      "crossings": [],
+      "uniqueIds": true,
+      "figures": 5,
+      "minLabelPixels": 17.99983407079646,
+      "accessible": true
+    },
+    {
+      "width": 390,
+      "labels": 80,
+      "issues": [],
+      "collisions": [],
+      "crossings": [],
+      "uniqueIds": true,
+      "figures": 5,
+      "minLabelPixels": 16.499875,
+      "accessible": true
+    },
+    {
+      "width": 320,
+      "labels": 80,
+      "issues": [],
+      "collisions": [],
+      "crossings": [],
+      "uniqueIds": true,
+      "figures": 5,
+      "minLabelPixels": 12.999875,
+      "accessible": true
+    }
+  ],
+  "errors": []
+}
