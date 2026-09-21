@@ -1,0 +1,21 @@
+/* Preserve the approved reading edition inside the shared publication shell. */
+.post.illustrated-essay.nature-article { max-width: 920px; background: var(--bg); color: var(--text); }
+.post.nature-article .post-head h1 { max-width: 10.5ch; font-size: 88px; letter-spacing: 0; }
+.post.nature-article .post-subtitle { max-width: 680px; font-size: 36px; }
+.nature-article .nature-prose { font-family: var(--font-display); }
+.nature-article .nature-prose > p:first-child::first-letter { float: none; font: inherit; margin: 0; padding: 0; }
+.nature-article .figure { scroll-margin-top: 125px; }
+.nature-article .nature-prose blockquote { border: 0; background: var(--deep); color: var(--bg); }
+.nature-article .figure-replay { min-height: 44px; }
+.nature-article .signature a { color: var(--accent); }
+.nature-article .article-takeaways { color: var(--text); }
+.nature-article .takeaway-action { white-space: normal; }
+@media (max-width: 720px) {
+  .post.nature-article .post-head h1 { font-size: 56px; }
+  .post.nature-article .post-subtitle { font-size: 28px; }
+}
+@media (max-width: 380px) { .post.nature-article .post-head h1 { font-size: 48px; } }
+@media print {
+  .nature-article .figure-replay, .nature-article .flow-trace { display: none !important; }
+  body.print-takeaways .nature-article .nature-prose { margin: 0; }
+}

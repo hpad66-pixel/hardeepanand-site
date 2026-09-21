@@ -1,0 +1,65 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 520" role="img" aria-labelledby="fig4-title fig4-desc"><style>.node { fill: #d1d8e7; stroke: #d4d9d7; stroke-width: 1.5; }
+.node-strong { fill: #e1e8f7; stroke: #174bc5; stroke-width: 2; }
+.node-dark { fill: #06283d; }
+.node-warm { fill: #fff4d6; stroke: #d7b453; stroke-width: 1.5; }
+.node-risk { fill: #f7ded7; stroke: #c75a42; stroke-width: 1.5; }
+.label { fill: #092b3e; font: 700 18px 'Inter', Arial, sans-serif; }
+.small { fill: #52616a; font: 500 13px 'Inter', Arial, sans-serif; }
+.tiny { fill: #52616a; font: 500 12px 'Inter', Arial, sans-serif; }
+.on-dark { fill: #f5f3ed; }
+.connector { fill: none; stroke: #174bc5; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+.connector-soft { fill: none; stroke: #d4d9d7; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow-soft); }
+.connector-risk { fill: none; stroke: #c75a42; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow-risk); }
+.water-band { fill: none; stroke: #91d0ea; stroke-width: 18; stroke-linecap: round; opacity: .38; }
+.ring { fill: none; stroke: #174bc5; stroke-width: 2; stroke-dasharray: 7 7; opacity: .7; }</style><defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#174bc5"/></marker>
+              <marker id="arrow-soft" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#d4d9d7"/></marker>
+              <marker id="arrow-risk" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#c75a42"/></marker>
+            </defs>
+            <title id="fig4-title">Fluent answer versus connected answer</title>
+            <desc id="fig4-desc">A split diagram comparing a fluent AI summary with a connected answer that shows sources, relationships, tested consequences, and human decision authority.</desc>
+            <defs>
+              <marker id="arrow4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#174bc5"/></marker>
+              <marker id="arrow4risk" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#c75a42"/></marker>
+            </defs>
+            <rect class="node-dark" x="348" y="16" width="244" height="88" rx="6" />
+            <text class="label on-dark" x="470" y="43" text-anchor="middle">Utility question</text>
+            <text class="small on-dark" x="470" y="67" text-anchor="middle">What is happening?</text>
+            <text class="small on-dark" x="470" y="87" text-anchor="middle">What should we check next?</text>
+
+            <rect class="node-risk" x="94" y="168" width="240" height="88" rx="6" />
+            <text class="label" x="214" y="199" text-anchor="middle">Fluent answer</text>
+            <text class="small" x="214" y="222" text-anchor="middle">clean summary of visible records</text>
+            <text class="small" x="214" y="242" text-anchor="middle">risk: sounds complete too early</text>
+
+            <rect class="node-strong" x="606" y="168" width="240" height="88" rx="6" />
+            <text class="label" x="726" y="199" text-anchor="middle">Connected answer</text>
+            <text class="small" x="726" y="222" text-anchor="middle">source, context, consequence</text>
+            <text class="small" x="726" y="242" text-anchor="middle">human decision authority</text>
+
+            <rect class="node" x="520" y="328" width="154" height="70" rx="6" />
+            <text class="label" x="597" y="356" text-anchor="middle">Sources</text>
+            <text class="small" x="597" y="378" text-anchor="middle">records used</text>
+
+            <rect class="node" x="692" y="328" width="154" height="70" rx="6" />
+            <text class="label" x="769" y="356" text-anchor="middle">Relationships</text>
+            <text class="small" x="769" y="378" text-anchor="middle">what connects</text>
+
+            <rect class="node" x="520" y="424" width="154" height="70" rx="6" />
+            <text class="label" x="597" y="452" text-anchor="middle">Consequences</text>
+            <text class="small" x="597" y="474" text-anchor="middle">what else follows</text>
+
+            <rect class="node" x="692" y="424" width="154" height="70" rx="6" />
+            <text class="label" x="769" y="452" text-anchor="middle">Authority</text>
+            <text class="small" x="769" y="474" text-anchor="middle">people decide</text>
+
+            <text class="small" x="214" y="356" text-anchor="middle">A paragraph can be useful.</text>
+            <text class="small" x="214" y="379" text-anchor="middle">It is not the same as reasoning.</text>
+
+            <path class="connector-risk" style="marker-end:url(#arrow4risk)" d="M392 104 C310 122 248 140 214 168" />
+            <path class="connector" style="marker-end:url(#arrow4)" d="M548 104 C628 122 690 140 726 168" />
+            <path class="connector" style="marker-end:url(#arrow4)" d="M682 256 C650 282 620 304 597 328" />
+            <path class="connector" style="marker-end:url(#arrow4)" d="M726 256 C744 282 758 306 769 328" />
+            <path class="connector" style="marker-end:url(#arrow4)" d="M640 256 L497 292 L497 459 L520 459" />
+            <path class="connector" style="marker-end:url(#arrow4)" d="M811 256 L879 292 L879 459 L846 459" />
+          </svg>

@@ -1,0 +1,559 @@
+
+        <p>Start the morning after a hard rain. The storm is gone. The water is not.</p>
+
+        <p>It is in the streets. It is in the soil. It is in the collection system. It is in pump run time, plant loading, overtime, permit risk, flooded basements, customer calls, and tomorrow's capital argument.</p>
+
+        <p>A storm is not just rain. By morning, it has become a utility system telling the truth about itself.</p>
+
+        <p>Richard Feynman stood at a blackboard in his <a href="https://www.feynmanlectures.caltech.edu/messenger.html">1964 Messenger Lectures</a> and made a point that still lands here. He was talking about nature, gravity, and mathematics. I see a lesson here for utilities and AI.</p>
+
+        <p>He showed how mathematical reasoning connects physical statements. A force directed toward the sun leads to equal areas swept out in equal times. You can describe each statement in words. The reasoning shows how they belong to each other.</p>
+
+        <p>Mathematics gives us that organized reasoning. It is how we connect timing, storage, pressure, flow, and consequence.</p>
+
+        <p>Utilities live in that world every day.</p>
+
+        <p>Water, wastewater, and stormwater systems follow those relationships before anyone opens a spreadsheet or runs a model.</p>
+
+        <p>Operators may not call it math at 2 a.m. when a pump is short cycling. They call it experience. They call it knowing the system. They call it hearing something wrong before the alarm proves it.</p>
+
+        <p>That judgment connects what the instrument reads with what the operator knows: elevation, demand, groundwater, pipe condition, maintenance history, and the people depending on the system.</p>
+
+        <blockquote>
+          <p>Utilities do not manage isolated assets. They manage relationships inside the water cycle.</p>
+          <cite>The Systems Lens</cite>
+        </blockquote>
+
+        <h2>The Blackboard Lesson</h2>
+
+        <p>Feynman gives a warning that every utility leader should recognize. A satisfying explanation still has to survive its consequences.</p>
+
+        <p>That is where weak explanations fail. In the lecture, he walks through a simple story for gravity. Imagine particles hitting objects from all directions. The sun blocks some of those particles, so the earth gets pushed toward the sun. It gives the mind a picture.</p>
+
+        <p>Then the picture breaks. If the earth is moving through those particles, more should hit it from the front than the back. That would create drag. The orbit would slow. The solar system would not behave the way it does.</p>
+
+        <p>That is the first utility lesson: test an explanation against the connected system before relying on it.</p>
+
+        <p>AI has the same problem. A model can explain a pump failure, a billing anomaly, or a compliance trend in fluent language. That does not mean it understood the relationships. It may have written a clean paragraph while missing the thing that matters.</p>
+
+        <p>The test is not, "Did it sound smart?" The test is, "Did it preserve the relationships that decide what happens next?"</p>
+
+        <h2>Nature Already Runs as a System</h2>
+
+        <p>The hydrologic cycle is the original operating system for water.</p>
+
+        <p>Rain falls. Some runs over land. Some enters soil. Some recharges groundwater. Some feeds streams. Some evaporates. Some is taken up by plants. Some returns to the atmosphere. Then it comes back again.</p>
+
+        <p>Nothing in that cycle is separate. Every movement has volume, timing, storage, loss, quality, temperature, direction, and consequence. The cycle is not a school diagram. It is the system utilities are built inside.</p>
+
+        <figure class="figure" id="fig-hydrologic">
+          <div class="figure-label">Figure 01</div>
+          <h3>The water cycle is already a connected system</h3>
+          <div class="diagram-scroll" >
+          <svg class="diagram diagram-desktop" viewBox="0 0 940 520" role="img" aria-labelledby="fig1-title fig1-desc">
+            <title id="fig1-title">Hydrologic cycle and utility intervention</title>
+            <desc id="fig1-desc">A conceptual cycle: rain reaches land, infiltration recharges groundwater, runoff and baseflow feed streams. Utilities withdraw water, supply communities, collect wastewater and return treated flow. Evaporation returns water to the atmosphere.</desc>
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#174bc5"/></marker>
+              <marker id="arrow-soft" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#d4d9d7"/></marker>
+              <marker id="arrow-risk" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#c75a42"/></marker>
+            </defs>
+            <path class="water-band" d="M470 78 C650 78 790 178 790 270 C790 385 655 444 470 444 C285 444 150 385 150 270 C150 178 290 78 470 78" />
+            <path class="ring" d="M470 70 C670 70 820 180 820 270 C820 405 670 470 470 470 C270 470 120 405 120 270 C120 180 270 70 470 70" />
+            <rect class="node" x="378" y="34" width="184" height="66" rx="6" />
+            <text class="label" x="470" y="65" text-anchor="middle">Atmosphere</text>
+            <text class="small" x="470" y="85" text-anchor="middle">rain, snow, evaporation</text>
+
+            <rect class="node" x="90" y="180" width="176" height="74" rx="6" />
+            <text class="label" x="178" y="210" text-anchor="middle">Land surface</text>
+            <text class="small" x="178" y="232" text-anchor="middle">runoff and infiltration</text>
+
+            <rect class="node" x="94" y="326" width="176" height="74" rx="6" />
+            <text class="label" x="182" y="356" text-anchor="middle">Groundwater</text>
+            <text class="small" x="182" y="378" text-anchor="middle">storage and baseflow</text>
+
+            <rect class="node" x="382" y="390" width="176" height="74" rx="6" />
+            <text class="label" x="470" y="420" text-anchor="middle">Streams</text>
+            <text class="small" x="470" y="440" text-anchor="middle">source water</text>
+            <text class="small" x="470" y="456" text-anchor="middle">and receiving water</text>
+
+            <rect class="node-strong" x="674" y="298" width="190" height="82" rx="6" />
+            <text class="label" x="769" y="329" text-anchor="middle">Utility systems</text>
+            <text class="small" x="769" y="351" text-anchor="middle">treat, move, collect, return</text>
+
+            <rect class="node" x="674" y="150" width="190" height="82" rx="6" />
+            <text class="label" x="769" y="181" text-anchor="middle">Community use</text>
+            <text class="small" x="769" y="203" text-anchor="middle">service, trust, demand</text>
+
+            <path class="connector" d="M378 76 C280 88 208 125 178 180" />
+            <text class="small" x="238" y="92" text-anchor="middle">precipitation</text>
+            <path class="connector" d="M790 232 L790 298" />
+            <text class="small" x="804" y="273">collection</text>
+            <path class="connector" d="M178 254 C174 282 176 304 182 326" />
+            <path class="connector" d="M270 364 C310 392 346 414 382 426" />
+            <path class="connector" d="M558 426 C612 408 650 382 674 350" />
+            <path class="connector" d="M730 298 L730 232" />
+            <text class="small" x="711" y="272" text-anchor="end">supply</text>
+            <path class="connector" d="M810 380 C752 469 647 485 558 451" />
+            <text class="small" x="687" y="505" text-anchor="middle">treated return flow</text>
+            <path class="connector" d="M470 390 L470 100" />
+            <text class="small" x="485" y="278">evaporation</text>
+            <path class="connector" d="M266 240 C317 275 350 349 400 390" />
+            <text class="small" x="350" y="287" text-anchor="middle">runoff</text>
+          </svg>
+<svg xmlns="http://www.w3.org/2000/svg" class="diagram diagram-mobile" viewBox="0 0 280 1000" role="img" aria-labelledby="nature-mobile-hydrologic-title nature-mobile-hydrologic-desc" style="width:100%;max-width:none;min-width:0;height:auto;overflow:visible">
+<title id="nature-mobile-hydrologic-title">Water movement and utility intervention</title>
+<desc id="nature-mobile-hydrologic-desc">Rain and snow reach land. Two parallel routes feed streams: surface runoff, and infiltration followed by groundwater baseflow. Streams evaporate to the atmosphere. Utilities withdraw and treat source water, supply communities, collect wastewater, and return treated flow to receiving water. Side arrows close the evaporation, collection, and treated-return loops. Actual sources and return paths vary.</desc>
+<defs><marker id="nature-mobile-hydrologic-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="var(--accent, #174bc5)"/></marker><marker id="nature-mobile-hydrologic-risk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="#c75a42"/></marker></defs>
+<path class="connector" d="M140 105 V146" style="marker-end:url(#nature-mobile-hydrologic-arrow)"><title>Precipitation: rain and snow reach land</title></path>
+<path class="connector" d="M140 235 V280" style="marker-end:url(#nature-mobile-hydrologic-arrow)"><title>Infiltration recharges groundwater</title></path>
+<path class="connector" d="M32 190 H16 V475 H32" style="marker-end:url(#nature-mobile-hydrologic-arrow)"><title>Surface runoff reaches streams without passing through groundwater</title></path>
+<path class="connector" d="M140 369 V430" style="marker-end:url(#nature-mobile-hydrologic-arrow)"><title>Groundwater baseflow feeds streams</title></path>
+<path class="connector" d="M248 465 H272 V60 H248" style="marker-end:url(#nature-mobile-hydrologic-arrow)"><title>Evaporation returns water from streams to the atmosphere</title></path>
+<path class="connector" d="M140 539 V592" style="marker-end:url(#nature-mobile-hydrologic-arrow)"><title>Withdrawal: streams provide source water for utility treatment</title></path>
+<path class="connector" d="M32 648 H16 V511 H32" style="marker-end:url(#nature-mobile-hydrologic-arrow)"><title>Treated return flow goes from utility systems to receiving water</title></path>
+<path class="connector" d="M116 721 V800" style="marker-end:url(#nature-mobile-hydrologic-arrow)"><title>Supply: treated water reaches community users</title></path>
+<path class="connector" d="M248 850 H264 V708 H248" style="marker-end:url(#nature-mobile-hydrologic-arrow)"><title>Collection: community wastewater returns to utility systems</title></path>
+<g data-node="atmosphere" data-padding="8"><rect class="node" x="32" y="16" width="216" height="89" rx="6"/><text class="label" x="140" y="44" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="44">Atmosphere</tspan></text><text class="small" x="140" y="69" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="69">Rain and snow fall;</tspan><tspan x="140" y="89">evaporation returns water.</tspan></text></g>
+<g data-node="land" data-padding="8"><rect class="node" x="32" y="146" width="216" height="89" rx="6"/><text class="label" x="140" y="174" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="174">Land surface</tspan></text><text class="small" x="140" y="199" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="199">Runoff goes to streams;</tspan><tspan x="140" y="219">infiltration enters soil.</tspan></text></g>
+<g data-node="groundwater" data-padding="8"><rect class="node" x="32" y="280" width="216" height="89" rx="6"/><text class="label" x="140" y="308" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="308">Groundwater</tspan></text><text class="small" x="140" y="333" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="333">Recharge and storage;</tspan><tspan x="140" y="353">baseflow feeds streams.</tspan></text></g>
+<g data-node="streams" data-padding="8"><rect class="node" x="32" y="430" width="216" height="109" rx="6"/><text class="label" x="140" y="458" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="458">Streams</tspan></text><text class="small" x="140" y="483" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="483">Source water for utilities;</tspan><tspan x="140" y="503">receiving water for</tspan><tspan x="140" y="523">runoff and treated flow.</tspan></text></g>
+<g data-node="utility" data-padding="8"><rect class="node-strong" x="32" y="592" width="216" height="129" rx="6"/><text class="label" x="140" y="620" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="620">Utility systems</tspan></text><text class="small" x="140" y="645" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="645">Withdraw, treat, move,</tspan><tspan x="140" y="665">store and supply water.</tspan><tspan x="140" y="685">Collect wastewater;</tspan><tspan x="140" y="705">treat and return flow.</tspan></text></g>
+<g data-node="community" data-padding="8"><rect class="node" x="32" y="800" width="216" height="89" rx="6"/><text class="label" x="140" y="828" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="828">Community use</tspan></text><text class="small" x="140" y="853" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="853">Service, trust, demand;</tspan><tspan x="140" y="873">wastewater collection.</tspan></text></g>
+<text class="small" x="140" y="940" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="940">Utilities intervene inside</tspan><tspan x="140" y="960">the cycle. Actual sources</tspan><tspan x="140" y="980">and return pathways vary.</tspan></text>
+</svg>
+          </div>
+          <p class="caption">The utility is not outside nature. It is a public intervention inside nature's water movement. A simplified cycle, not a complete flow model; actual sources and return pathways vary. <a href="https://www.usgs.gov/water-science-school/water-cycle">USGS: the water cycle</a>.</p>
+        </figure>
+
+        <p>We capture water, treat it, move it, store it, use it, collect it, clean it, discharge it, and then nature takes it back into motion.</p>
+
+        <p>This is why utility work is so hard to explain from the outside. Its responsibilities cross asset classes and departments, connecting natural assets, physical infrastructure, and people.</p>
+
+        <h2>A Storm Is Never Just Weather</h2>
+
+        <p>Take one ordinary event. A heavy storm crosses a service area overnight.</p>
+
+        <p>To a resident, it is rain. To a collection system operator, it may be inflow and infiltration. To a treatment plant, it may be hydraulic load. To a pump station, it may be run time and wear. To a compliance officer, it may be permit risk. To a finance director, it may be overtime, emergency repairs, and capital evidence. To a neighborhood, it may be flooded streets and trust lost.</p>
+
+        <p>Same storm. Different consequences. One connected system.</p>
+
+        <figure class="figure" id="fig-storm">
+          <div class="figure-label">Figure 02</div>
+          <h3>One storm becomes many utility consequences</h3>
+          <div class="diagram-scroll" >
+          <svg class="diagram diagram-desktop" viewBox="0 0 940 560" role="img" aria-labelledby="fig2-title fig2-desc">
+            <title id="fig2-title">Storm consequence chain</title>
+            <desc id="fig2-desc">A diagram showing a heavy storm moving through groundwater, runoff, sewer pipes, pump stations, treatment load, permit risk, public trust, operating cost, and capital planning.</desc>
+            <defs>
+              <marker id="arrow2" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#174bc5"/></marker>
+            </defs>
+            <rect class="node-dark" x="360" y="32" width="220" height="76" rx="6" />
+            <text class="label on-dark" x="470" y="64" text-anchor="middle">Heavy storm</text>
+            <text class="small on-dark" x="470" y="86" text-anchor="middle">the visible event</text>
+
+            <rect class="node" x="96" y="160" width="190" height="78" rx="6" />
+            <text class="label" x="191" y="190" text-anchor="middle">Wet ground</text>
+            <text class="small" x="191" y="212" text-anchor="middle">high groundwater</text>
+
+            <rect class="node" x="654" y="160" width="190" height="78" rx="6" />
+            <text class="label" x="749" y="190" text-anchor="middle">Street runoff</text>
+            <text class="small" x="749" y="212" text-anchor="middle">flooding and inflow</text>
+
+            <rect class="node-strong" x="98" y="292" width="190" height="78" rx="6" />
+            <text class="label" x="193" y="322" text-anchor="middle">Sewer pipes</text>
+            <text class="small" x="193" y="344" text-anchor="middle">inflow and infiltration</text>
+
+            <rect class="node-strong" x="376" y="292" width="190" height="78" rx="6" />
+            <text class="label" x="471" y="322" text-anchor="middle">Pump stations</text>
+            <text class="small" x="471" y="344" text-anchor="middle">longer run time, wear</text>
+
+            <rect class="node-strong" x="654" y="292" width="190" height="78" rx="6" />
+            <text class="label" x="749" y="322" text-anchor="middle">Treatment plant</text>
+            <text class="small" x="749" y="344" text-anchor="middle">hydraulic loading</text>
+
+            <rect class="node-risk" x="140" y="430" width="178" height="78" rx="6" />
+            <text class="label" x="229" y="460" text-anchor="middle">Permit risk</text>
+            <text class="small" x="229" y="482" text-anchor="middle">overflow, notice, limits</text>
+
+            <rect class="node-warm" x="382" y="430" width="178" height="78" rx="6" />
+            <text class="label" x="471" y="460" text-anchor="middle">Cost evidence</text>
+            <text class="small" x="471" y="482" text-anchor="middle">overtime and repairs</text>
+            <text class="small" x="471" y="498" text-anchor="middle">renewal evidence</text>
+
+            <rect class="node-risk" x="624" y="430" width="178" height="78" rx="6" />
+            <text class="label" x="713" y="460" text-anchor="middle">Public trust</text>
+            <text class="small" x="713" y="482" text-anchor="middle">flooding and calls</text>
+            <text class="small" x="713" y="498" text-anchor="middle">confidence in service</text>
+
+            <path class="connector" style="marker-end:url(#arrow2)" d="M421 108 C340 128 265 142 207 160" />
+            <path class="connector" style="marker-end:url(#arrow2)" d="M519 108 C594 128 676 142 737 160" />
+            <path class="connector" style="marker-end:url(#arrow2)" d="M191 238 C191 258 192 276 193 292" />
+            <path class="connector" style="marker-end:url(#arrow2)" d="M286 331 L376 331" />
+            <path class="connector" style="marker-end:url(#arrow2)" d="M566 331 L654 331" />
+            <path class="connector" style="marker-end:url(#arrow2)" d="M800 370 C895 395 858 527 700 527 L229 527 L229 508" />
+            <path class="connector" style="marker-end:url(#arrow2)" d="M471 370 L471 430" />
+            <path class="connector" style="marker-end:url(#arrow2)" d="M844 199 C919 235 908 379 802 448" />
+            <path class="connector" style="marker-end:url(#arrow2)" d="M654 224 L600 260 L54 260 L54 325 L98 325" />
+            <text class="small" x="466" y="283" text-anchor="middle">where combined sewers or inflow defects admit runoff</text>
+          </svg>
+<svg xmlns="http://www.w3.org/2000/svg" class="diagram diagram-mobile" viewBox="0 0 280 1200" role="img" aria-labelledby="nature-mobile-storm-title nature-mobile-storm-desc" style="width:100%;max-width:none;min-width:0;height:auto;overflow:visible">
+<title id="nature-mobile-storm-title">One storm, branching utility consequences</title>
+<desc id="nature-mobile-storm-desc">A heavy storm produces wet ground and street runoff in parallel. Groundwater can infiltrate defective sewer pipes. Runoff enters combined sewers or sanitary sewers only through inflow defects; separate storm drains do not normally flow to the wastewater plant. Sewer flow reaches pumps and treatment. Pump operation creates cost evidence, treatment loading creates possible permit risk, and street flooding affects public trust independently of the wastewater path.</desc>
+<defs><marker id="nature-mobile-storm-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="var(--accent, #174bc5)"/></marker><marker id="nature-mobile-storm-risk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="#c75a42"/></marker></defs>
+<path class="connector" d="M110 85 V114 H70 V144" style="marker-end:url(#nature-mobile-storm-arrow)"><title>Rain can raise groundwater</title></path>
+<path class="connector" d="M170 85 V114 H210 V144" style="marker-end:url(#nature-mobile-storm-arrow)"><title>Rain generates street runoff</title></path>
+<path class="connector" d="M70 357 V382 H110 V412" style="marker-end:url(#nature-mobile-storm-arrow)"><title>Groundwater enters sewer pipes through infiltration defects</title></path>
+<path class="connector" d="M210 357 V382 H170 V412" style="marker-end:url(#nature-mobile-storm-arrow)"><title>Runoff enters only where combined sewers or inflow defects admit it</title></path>
+<path class="connector" d="M264 200 H276 V1148 H248" style="marker-end:url(#nature-mobile-storm-arrow)"><title>Street flooding can affect public trust, independently of plant loading</title></path>
+<path class="connector" d="M140 501 V546" style="marker-end:url(#nature-mobile-storm-arrow)"><title>Added sewer flow reaches pump stations</title></path>
+<path class="connector" d="M140 635 V690" style="marker-end:url(#nature-mobile-storm-arrow)"><title>Pumped flow adds hydraulic loading at the treatment plant</title></path>
+<path class="connector" d="M32 590 H12 V1020 H32" style="marker-end:url(#nature-mobile-storm-arrow)"><title>Longer pump operation contributes operating and renewal cost evidence</title></path>
+<path class="connector-risk" d="M140 799 V828" style="marker-end:url(#nature-mobile-storm-risk)"><title>Treatment loading can increase permit risk</title></path>
+<g data-node="storm" data-padding="8"><rect class="node-dark" x="32" y="16" width="216" height="69" rx="6"/><text class="label on-dark" x="140" y="44" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="44">Heavy storm</tspan></text><text class="small on-dark" x="140" y="69" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="69">The visible event</tspan></text></g>
+<g data-node="wet-ground" data-padding="8"><rect class="node" x="8" y="144" width="124" height="213" rx="6"/><text class="label" x="70" y="172" text-anchor="middle" style="font-size:16px;letter-spacing:0"><tspan x="70" y="172">Wet</tspan><tspan x="70" y="195">ground</tspan></text><text class="small" x="70" y="220" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="70" y="220">Groundwater</tspan><tspan x="70" y="240">rises.</tspan><tspan x="70" y="260">Infiltration</tspan><tspan x="70" y="280">through pipe</tspan><tspan x="70" y="300">defects adds</tspan><tspan x="70" y="320">sewer flow.</tspan></text></g>
+<g data-node="runoff" data-padding="8"><rect class="node" x="148" y="144" width="116" height="213" rx="6"/><text class="label" x="206" y="172" text-anchor="middle" style="font-size:16px;letter-spacing:0"><tspan x="206" y="172">Street</tspan><tspan x="206" y="195">runoff</tspan></text><text class="small" x="206" y="220" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="206" y="220">Flooding;</tspan><tspan x="206" y="240">sewer entry</tspan><tspan x="206" y="260">only through</tspan><tspan x="206" y="280">combined</tspan><tspan x="206" y="300">sewers or</tspan><tspan x="206" y="320">inflow defects.</tspan></text></g>
+<g data-node="sewer" data-padding="8"><rect class="node-strong" x="32" y="412" width="216" height="89" rx="6"/><text class="label" x="140" y="440" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="440">Sewer pipes</tspan></text><text class="small" x="140" y="465" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="465">Inflow and infiltration</tspan><tspan x="140" y="485">add to sewer flow.</tspan></text></g>
+<g data-node="pump" data-padding="8"><rect class="node-strong" x="32" y="546" width="216" height="89" rx="6"/><text class="label" x="140" y="574" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="574">Pump stations</tspan></text><text class="small" x="140" y="599" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="599">Longer run time;</tspan><tspan x="140" y="619">more wear.</tspan></text></g>
+<g data-node="plant" data-padding="8"><rect class="node-strong" x="32" y="690" width="216" height="109" rx="6"/><text class="label" x="140" y="718" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="718">Treatment plant</tspan></text><text class="small" x="140" y="743" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="743">Hydraulic loading;</tspan><tspan x="140" y="763">separate storm drains</tspan><tspan x="140" y="783">normally do not feed it.</tspan></text></g>
+<g data-node="permit" data-padding="8"><rect class="node-risk" x="32" y="828" width="216" height="89" rx="6"/><text class="label" x="140" y="856" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="856">Permit risk</tspan></text><text class="small" x="140" y="881" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="881">Possible overflow,</tspan><tspan x="140" y="901">notice and limit issues.</tspan></text></g>
+<g data-node="cost" data-padding="8"><rect class="node-warm" x="32" y="968" width="216" height="109" rx="6"/><text class="label" x="140" y="996" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="996">Cost evidence</tspan></text><text class="small" x="140" y="1021" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="1021">Overtime and repairs;</tspan><tspan x="140" y="1041">renewals and capital</tspan><tspan x="140" y="1061">planning.</tspan></text></g>
+<g data-node="trust" data-padding="8"><rect class="node-risk" x="32" y="1100" width="216" height="89" rx="6"/><text class="label" x="140" y="1128" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="1128">Public trust</tspan></text><text class="small" x="140" y="1153" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="1153">Flooding, customer calls,</tspan><tspan x="140" y="1173">confidence in service.</tspan></text></g>
+</svg>
+          </div>
+          <p class="caption">The rain is gone, but its consequences are still moving through the utility. Conceptual pathways: runoff can enter combined sewers or reach sanitary sewers through inflow defects. Separate storm drains do not normally flow to the wastewater plant. <a href="https://www.epa.gov/npdes/combined-sewer-overflow-basics">EPA: sewer systems</a>.</p>
+        </figure>
+
+        <p>This is the kind of relationship AI must learn to respect. If AI reads the work orders and says, "There were more pump station callouts after the storm," that is a summary. Useful, maybe. But not enough.</p>
+
+        <p>The better question is whether it can help people connect the callouts to rainfall, groundwater, upstream defects, pump age, past maintenance, permit exposure, neighborhood impact, and capital planning.</p>
+
+        <h2>An Algae Bloom Is Not Just a Lake Problem</h2>
+
+        <p>The same pattern shows up when the water is quiet.</p>
+
+        <p>An algae bloom can look like a surface problem. Green water. Odor. Taste complaints. A warning at the reservoir. A headline after a fish kill.</p>
+
+        <p>But the bloom is not a single event either. It may carry a history of nutrients, temperature, sunlight, residence time, runoff, upstream land use, low flow, treatment limits, and public communication. The fish kill may be the visible ending of a chain that started far away from the dead fish.</p>
+
+        <p>Respiration and decomposition can draw down dissolved oxygen enough to stress or kill fish. Not every bloom produces toxins, and not every fish kill comes from a bloom. Sampling and local conditions matter. <a href="https://www.epa.gov/nutrientpollution/effects-dead-zones-and-harmful-algal-blooms">EPA explains these pathways</a>.</p>
+
+        <figure class="figure" id="fig-algae">
+          <div class="figure-label">Figure 03</div>
+          <h3>A fish kill can be the visible end of a longer chain</h3>
+          <div class="diagram-scroll" >
+          <svg class="diagram diagram-desktop" viewBox="0 0 940 560" role="img" aria-labelledby="fig3-title fig3-desc">
+            <title id="fig3-title">Algae bloom and fish kill chain</title>
+            <desc id="fig3-desc">A diagram linking heat, sunlight, nutrients, runoff, low flow, algae bloom, low dissolved oxygen, fish stress, treatment challenges, customer communication, trust, and response choices.</desc>
+            <defs>
+              <marker id="arrow3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#174bc5"/></marker>
+              <marker id="arrow3risk" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#c75a42"/></marker>
+            </defs>
+            <rect class="node" x="82" y="58" width="170" height="72" rx="6" />
+            <text class="label" x="167" y="88" text-anchor="middle">Heat</text>
+            <text class="small" x="167" y="110" text-anchor="middle">sunlight, temperature</text>
+
+            <rect class="node" x="82" y="190" width="170" height="72" rx="6" />
+            <text class="label" x="167" y="216" text-anchor="middle">Nutrients</text>
+            <text class="small" x="167" y="236" text-anchor="middle">runoff and</text>
+            <text class="small" x="167" y="254" text-anchor="middle">upstream land use</text>
+
+            <rect class="node" x="82" y="322" width="170" height="72" rx="6" />
+            <text class="label" x="167" y="352" text-anchor="middle">Low flow</text>
+            <text class="small" x="167" y="374" text-anchor="middle">residence time</text>
+
+            <rect class="node-strong" x="376" y="186" width="190" height="84" rx="6" />
+            <text class="label" x="471" y="218" text-anchor="middle">Algae bloom</text>
+            <text class="small" x="471" y="240" text-anchor="middle">source-water change</text>
+
+            <rect class="node-risk" x="668" y="80" width="190" height="78" rx="6" />
+            <text class="label" x="763" y="110" text-anchor="middle">Low oxygen</text>
+            <text class="small" x="763" y="132" text-anchor="middle">respiration, decomposition</text>
+
+            <rect class="node-risk" x="668" y="206" width="190" height="78" rx="6" />
+            <text class="label" x="763" y="236" text-anchor="middle">Fish stress or kill</text>
+            <text class="small" x="763" y="258" text-anchor="middle">a possible outcome</text>
+
+            <rect class="node-warm" x="668" y="332" width="190" height="78" rx="6" />
+            <text class="label" x="763" y="362" text-anchor="middle">Treatment strain</text>
+            <text class="small" x="763" y="384" text-anchor="middle">taste, odor, sampling</text>
+
+            <rect class="node-dark" x="376" y="436" width="230" height="108" rx="6" />
+            <text class="label on-dark" x="491" y="463" text-anchor="middle">Public response</text>
+            <text class="small on-dark" x="491" y="486" text-anchor="middle">sampling, communication</text>
+            <text class="small on-dark" x="491" y="506" text-anchor="middle">source protection</text>
+            <text class="small on-dark" x="491" y="526" text-anchor="middle">capital choices</text>
+
+            <path class="connector" style="marker-end:url(#arrow3)" d="M252 94 C302 116 342 150 386 186" />
+            <path class="connector" style="marker-end:url(#arrow3)" d="M252 226 L376 226" />
+            <path class="connector" style="marker-end:url(#arrow3)" d="M252 358 C312 332 350 300 386 270" />
+            <path class="connector-risk" style="marker-end:url(#arrow3risk)" d="M566 214 C614 182 640 146 668 119" />
+            <path class="connector-risk" style="marker-end:url(#arrow3risk)" d="M763 158 L763 206" />
+            <path class="connector" style="marker-end:url(#arrow3)" d="M566 242 C612 284 636 330 668 371" />
+            <path class="connector-risk" style="marker-end:url(#arrow3risk)" d="M858 245 L900 245 L900 510 L606 510" />
+            <path class="connector" style="marker-end:url(#arrow3)" d="M668 392 C632 426 612 448 606 474" />
+          </svg>
+<svg xmlns="http://www.w3.org/2000/svg" class="diagram diagram-mobile" viewBox="0 0 280 1190" role="img" aria-labelledby="nature-mobile-algae-title nature-mobile-algae-desc" style="width:100%;max-width:none;min-width:0;height:auto;overflow:visible">
+<title id="nature-mobile-algae-title">Bloom conditions and two consequence pathways</title>
+<desc id="nature-mobile-algae-desc">Heat and sunlight, nutrients from runoff and upstream land use, and low flow with longer residence time are parallel influences on a bloom. A bloom can lower dissolved oxygen through respiration and decomposition, potentially stressing or killing fish. Separately, it can strain treatment through taste, odor and sampling needs. Both pathways inform public response: sampling, customer communication, source protection and capital choices. These are possible pathways, not a diagnosis; not every bloom produces toxins or explains a fish kill.</desc>
+<defs><marker id="nature-mobile-algae-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="var(--accent, #174bc5)"/></marker><marker id="nature-mobile-algae-risk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="#c75a42"/></marker></defs>
+<path class="connector" d="M248 60 H264 V412 H248" style="marker-end:url(#nature-mobile-algae-arrow)"><title>Heat and sunlight can favor a bloom</title></path>
+<path class="connector" d="M248 184 H264 V412 H248" style="marker-end:url(#nature-mobile-algae-arrow)"><title>Nutrient inputs can favor a bloom</title></path>
+<path class="connector" d="M248 308 H264 V412 H248" style="marker-end:url(#nature-mobile-algae-arrow)"><title>Low flow and residence time can favor a bloom</title></path>
+<path class="connector-risk" d="M140 463 V520" style="marker-end:url(#nature-mobile-algae-risk)"><title>Respiration and decomposition can lower dissolved oxygen</title></path>
+<path class="connector" d="M32 410 H12 V830 H32" style="marker-end:url(#nature-mobile-algae-arrow)"><title>A bloom can separately strain treatment</title></path>
+<path class="connector-risk" d="M140 629 V670" style="marker-end:url(#nature-mobile-algae-risk)"><title>Low dissolved oxygen can stress or kill fish</title></path>
+<path class="connector-risk" d="M248 714 H264 V1006 H248" style="marker-end:url(#nature-mobile-algae-risk)"><title>Fish stress or kill informs public response</title></path>
+<path class="connector" d="M140 893 V946" style="marker-end:url(#nature-mobile-algae-arrow)"><title>Treatment strain informs public response</title></path>
+<g data-node="heat" data-padding="8"><rect class="node" x="32" y="16" width="216" height="69" rx="6"/><text class="label" x="140" y="44" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="44">Heat</tspan></text><text class="small" x="140" y="69" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="69">Sunlight and temperature</tspan></text></g>
+<g data-node="nutrients" data-padding="8"><rect class="node" x="32" y="140" width="216" height="89" rx="6"/><text class="label" x="140" y="168" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="168">Nutrients</tspan></text><text class="small" x="140" y="193" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="193">Runoff and upstream</tspan><tspan x="140" y="213">land use</tspan></text></g>
+<g data-node="flow" data-padding="8"><rect class="node" x="32" y="264" width="216" height="69" rx="6"/><text class="label" x="140" y="292" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="292">Low flow</tspan></text><text class="small" x="140" y="317" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="317">Longer residence time</tspan></text></g>
+<g data-node="bloom" data-padding="8"><rect class="node-strong" x="32" y="374" width="216" height="89" rx="6"/><text class="label" x="140" y="402" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="402">Algae bloom</tspan></text><text class="small" x="140" y="427" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="427">Visible change</tspan><tspan x="140" y="447">in source water</tspan></text></g>
+<g data-node="oxygen" data-padding="8"><rect class="node-risk" x="32" y="520" width="216" height="109" rx="6"/><text class="label" x="140" y="548" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="548">Low oxygen</tspan></text><text class="small" x="140" y="573" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="573">Respiration and</tspan><tspan x="140" y="593">decomposition can use</tspan><tspan x="140" y="613">up dissolved oxygen.</tspan></text></g>
+<g data-node="fish" data-padding="8"><rect class="node-risk" x="32" y="670" width="216" height="89" rx="6"/><text class="label" x="140" y="698" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="698">Fish stress or kill</tspan></text><text class="small" x="140" y="723" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="723">A possible outcome;</tspan><tspan x="140" y="743">check local conditions.</tspan></text></g>
+<g data-node="treatment" data-padding="8"><rect class="node-warm" x="32" y="784" width="216" height="109" rx="6"/><text class="label" x="140" y="812" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="812">Treatment strain</tspan></text><text class="small" x="140" y="837" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="837">Taste and odor;</tspan><tspan x="140" y="857">sampling needs and</tspan><tspan x="140" y="877">treatment limits.</tspan></text></g>
+<g data-node="response" data-padding="8"><rect class="node-dark" x="32" y="946" width="216" height="129" rx="6"/><text class="label on-dark" x="140" y="974" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="974">Public response</tspan></text><text class="small on-dark" x="140" y="999" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="999">Sampling; communication</tspan><tspan x="140" y="1019">with customers for trust;</tspan><tspan x="140" y="1039">source protection;</tspan><tspan x="140" y="1059">capital choices.</tspan></text></g>
+<text class="small" x="140" y="1116" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="1116">Possible paths, not a diagnosis.</tspan><tspan x="140" y="1136">Not every bloom makes toxins.</tspan><tspan x="140" y="1156">Not every fish kill is a bloom.</tspan></text>
+</svg>
+          </div>
+          <p class="caption">Nature does not hand us isolated incidents. It hands us relationships with consequences. These are possible pathways, not a diagnosis of a particular bloom or fish kill.</p>
+        </figure>
+
+        <p>A weak answer says, "An algae bloom occurred and water quality declined." A useful answer asks what fed the bloom, what changed in the source water, which records show the sequence, which treatment decisions followed, which customers were affected, which agencies needed notice, and what the next storm or heat wave might do.</p>
+
+        <h2>The Utility Test for AI</h2>
+
+        <p>Before we use an AI answer, we need to know what holds it together.</p>
+
+        <p>Can it show the source record? Can it connect the asset to the event? Can it show who owns the next action? Can it separate evidence from assumption? Can it preserve the operator's judgment instead of flattening it into generic text? Can it explain what would be wrong if the explanation were wrong?</p>
+
+        <figure class="figure" id="fig-ai-test">
+          <div class="figure-label">Figure 04</div>
+          <h3>The answer is not trusted until the relationships survive</h3>
+          <div class="diagram-scroll" >
+          <svg class="diagram diagram-desktop" viewBox="0 0 940 520" role="img" aria-labelledby="fig4-title fig4-desc">
+            <title id="fig4-title">Fluent answer versus connected answer</title>
+            <desc id="fig4-desc">A split diagram comparing a fluent AI summary with a connected answer that shows sources, relationships, tested consequences, and human decision authority.</desc>
+            <defs>
+              <marker id="arrow4" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#174bc5"/></marker>
+              <marker id="arrow4risk" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#c75a42"/></marker>
+            </defs>
+            <rect class="node-dark" x="348" y="16" width="244" height="88" rx="6" />
+            <text class="label on-dark" x="470" y="43" text-anchor="middle">Utility question</text>
+            <text class="small on-dark" x="470" y="67" text-anchor="middle">What is happening?</text>
+            <text class="small on-dark" x="470" y="87" text-anchor="middle">What should we check next?</text>
+
+            <rect class="node-risk" x="94" y="168" width="240" height="88" rx="6" />
+            <text class="label" x="214" y="199" text-anchor="middle">Fluent answer</text>
+            <text class="small" x="214" y="222" text-anchor="middle">clean summary of visible records</text>
+            <text class="small" x="214" y="242" text-anchor="middle">risk: sounds complete too early</text>
+
+            <rect class="node-strong" x="606" y="168" width="240" height="88" rx="6" />
+            <text class="label" x="726" y="199" text-anchor="middle">Connected answer</text>
+            <text class="small" x="726" y="222" text-anchor="middle">source, context, consequence</text>
+            <text class="small" x="726" y="242" text-anchor="middle">human decision authority</text>
+
+            <rect class="node" x="520" y="328" width="154" height="70" rx="6" />
+            <text class="label" x="597" y="356" text-anchor="middle">Sources</text>
+            <text class="small" x="597" y="378" text-anchor="middle">records used</text>
+
+            <rect class="node" x="692" y="328" width="154" height="70" rx="6" />
+            <text class="label" x="769" y="356" text-anchor="middle">Relationships</text>
+            <text class="small" x="769" y="378" text-anchor="middle">what connects</text>
+
+            <rect class="node" x="520" y="424" width="154" height="70" rx="6" />
+            <text class="label" x="597" y="452" text-anchor="middle">Consequences</text>
+            <text class="small" x="597" y="474" text-anchor="middle">what else follows</text>
+
+            <rect class="node" x="692" y="424" width="154" height="70" rx="6" />
+            <text class="label" x="769" y="452" text-anchor="middle">Authority</text>
+            <text class="small" x="769" y="474" text-anchor="middle">people decide</text>
+
+            <text class="small" x="214" y="356" text-anchor="middle">A paragraph can be useful.</text>
+            <text class="small" x="214" y="379" text-anchor="middle">It is not the same as reasoning.</text>
+
+            <path class="connector-risk" style="marker-end:url(#arrow4risk)" d="M392 104 C310 122 248 140 214 168" />
+            <path class="connector" style="marker-end:url(#arrow4)" d="M548 104 C628 122 690 140 726 168" />
+            <path class="connector" style="marker-end:url(#arrow4)" d="M682 256 C650 282 620 304 597 328" />
+            <path class="connector" style="marker-end:url(#arrow4)" d="M726 256 C744 282 758 306 769 328" />
+            <path class="connector" style="marker-end:url(#arrow4)" d="M640 256 L497 292 L497 459 L520 459" />
+            <path class="connector" style="marker-end:url(#arrow4)" d="M811 256 L879 292 L879 459 L846 459" />
+          </svg>
+<svg xmlns="http://www.w3.org/2000/svg" class="diagram diagram-mobile" viewBox="0 0 280 1130" role="img" aria-labelledby="nature-mobile-ai-test-title nature-mobile-ai-test-desc" style="width:100%;max-width:none;min-width:0;height:auto;overflow:visible">
+<title id="nature-mobile-ai-test-title">Two ways to answer a utility question</title>
+<desc id="nature-mobile-ai-test-desc">The utility question branches into two alternatives, not successive stages: a fluent summary and a connected answer. A summary may help but can sound complete too early. A connected answer must independently expose sources, relationships, testable consequences and human authority. The four checks share a branching connector; they are not a causal chain. Validate records, separate evidence from assumption, preserve operator judgment and identify who owns the next action. This is an evaluation framework, not a measured product comparison.</desc>
+<defs><marker id="nature-mobile-ai-test-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="var(--accent, #174bc5)"/></marker><marker id="nature-mobile-ai-test-risk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="#c75a42"/></marker></defs>
+<path class="connector-risk" d="M110 125 V164" style="marker-end:url(#nature-mobile-ai-test-risk)"><title>One possible response is a fluent summary</title></path>
+<path class="connector" d="M248 64 H264 V428 H248" style="marker-end:url(#nature-mobile-ai-test-arrow)"><title>An alternative is a connected answer</title></path>
+<path class="connector" d="M32 428 H16 V577 H32" style="marker-end:url(#nature-mobile-ai-test-arrow)"><title>Connected answer must expose its source records</title></path>
+<path class="connector" d="M16 577 V699 H32" style="marker-end:url(#nature-mobile-ai-test-arrow)"><title>Connected answer must preserve relationships</title></path>
+<path class="connector" d="M16 699 V821 H32" style="marker-end:url(#nature-mobile-ai-test-arrow)"><title>Connected answer must test consequences</title></path>
+<path class="connector" d="M16 821 V963 H32" style="marker-end:url(#nature-mobile-ai-test-arrow)"><title>Connected answer must retain human decision authority</title></path>
+<g data-node="question" data-padding="8"><rect class="node-dark" x="32" y="16" width="216" height="109" rx="6"/><text class="label on-dark" x="140" y="44" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="44">Utility question</tspan></text><text class="small on-dark" x="140" y="69" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="69">What is happening?</tspan><tspan x="140" y="89">What should we</tspan><tspan x="140" y="109">check next?</tspan></text></g>
+<g data-node="fluent" data-padding="8"><rect class="node-risk" x="32" y="164" width="216" height="169" rx="6"/><text class="label" x="140" y="192" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="192">Fluent answer</tspan></text><text class="small" x="140" y="217" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="217">Clean summary of</tspan><tspan x="140" y="237">visible records.</tspan><tspan x="140" y="257">Risk: sounds complete</tspan><tspan x="140" y="277">too early. A paragraph</tspan><tspan x="140" y="297">can help; it does not</tspan><tspan x="140" y="317">establish the reasoning.</tspan></text></g>
+<g data-node="connected" data-padding="8"><rect class="node-strong" x="32" y="374" width="216" height="109" rx="6"/><text class="label" x="140" y="402" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="402">Connected answer</tspan></text><text class="small" x="140" y="427" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="427">Source, context,</tspan><tspan x="140" y="447">consequence and human</tspan><tspan x="140" y="467">decision authority.</tspan></text></g>
+<g data-node="sources" data-padding="8"><rect class="node" x="32" y="532" width="216" height="89" rx="6"/><text class="label" x="140" y="560" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="560">Sources</tspan></text><text class="small" x="140" y="585" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="585">Show the records used.</tspan><tspan x="140" y="605">Validate those records.</tspan></text></g>
+<g data-node="relationships" data-padding="8"><rect class="node" x="32" y="654" width="216" height="109" rx="6"/><text class="label" x="140" y="682" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="682">Relationships</tspan></text><text class="small" x="140" y="707" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="707">Connect assets and events;</tspan><tspan x="140" y="727">separate evidence</tspan><tspan x="140" y="747">from assumption.</tspan></text></g>
+<g data-node="consequences" data-padding="8"><rect class="node" x="32" y="776" width="216" height="109" rx="6"/><text class="label" x="140" y="804" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="804">Consequences</tspan></text><text class="small" x="140" y="829" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="829">What else should follow?</tspan><tspan x="140" y="849">What evidence supports</tspan><tspan x="140" y="869">or weakens the answer?</tspan></text></g>
+<g data-node="authority" data-padding="8"><rect class="node" x="32" y="918" width="216" height="109" rx="6"/><text class="label" x="140" y="946" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="946">Authority</tspan></text><text class="small" x="140" y="971" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="971">Preserve operator judgment.</tspan><tspan x="140" y="991">Name the next action owner.</tspan><tspan x="140" y="1011">People retain the decision.</tspan></text></g>
+<text class="small" x="140" y="1070" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="1070">Check the answer before acting.</tspan><tspan x="140" y="1090">An evaluation framework,</tspan><tspan x="140" y="1110">not a product comparison.</tspan></text>
+</svg>
+          </div>
+          <p class="caption">A connected answer gives a utility more to check before acting. The sources still need validation, and people retain the decision. This is an evaluation framework, not a measured comparison of AI products.</p>
+        </figure>
+
+        <p>If the answer says the likely cause is infiltration, what evidence would support that? What would weaken it? What inspection, sensor, map, complaint, or field note should we check next? Those checks make the reasoning accountable.</p>
+
+        <h2>Operators Already Do This</h2>
+
+        <p>Operators already know the system has memory. They know yesterday's rain can show up in today's flows. They know last month's valve work can explain this week's pressure complaint. They know a pump that technically works can still be telling you it is tired. They know an asset record can be officially complete and operationally useless.</p>
+
+        <p>The problem is that this intelligence often lives in scattered places. Some of it lives in supervisory control and data acquisition (SCADA). Some in geographic information systems (GIS). Some in computerized maintenance management systems (CMMS). Some in lab results. Some in billing. Some in hydraulic models. Some in permit reports. Some in the head of the person who has been answering calls for decades.</p>
+
+        <p>Then we ask AI to help.</p>
+
+        <p>If the data is fragmented, the AI can inherit the fragmentation. If the source record is weak, the answer can become weak. If the relationships are missing, the model may fill the silence with confidence.</p>
+
+        <p>That is why data readiness comes before AI readiness. The utility's reasoning depends on it.</p>
+
+        <h2>Utilities Are Where Nature Becomes Public Responsibility</h2>
+
+        <p>The hydrologic cycle is natural. Utilities make part of that cycle a public promise.</p>
+
+        <p>Safe water at the tap. Wastewater collected and treated. Stormwater moved away from homes and streets. Permits respected. Rates explained. Capital spent wisely. Service restored when something fails.</p>
+
+        <p>That is the civic layer.</p>
+
+        <figure class="figure" id="fig-framework">
+          <div class="figure-label">Figure 05</div>
+          <h3>The Systems Lens for utility AI</h3>
+          <div class="diagram-scroll" >
+          <svg class="diagram diagram-desktop" viewBox="0 0 940 600" role="img" aria-labelledby="fig5-title fig5-desc">
+            <title id="fig5-title">Systems Lens framework for utility AI</title>
+            <desc id="fig5-desc">A layered loop connecting nature, physics, infrastructure, people, records, AI, accountable decisions, and public trust.</desc>
+            <defs>
+              <marker id="arrow5" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#174bc5"/></marker>
+            </defs>
+            <rect class="node" x="78" y="62" width="210" height="78" rx="6" />
+            <text class="label" x="183" y="92" text-anchor="middle">Nature moves</text>
+            <text class="small" x="183" y="114" text-anchor="middle">rain, groundwater, rivers</text>
+
+            <rect class="node" x="365" y="62" width="210" height="78" rx="6" />
+            <text class="label" x="470" y="92" text-anchor="middle">Physics translates</text>
+            <text class="small" x="470" y="114" text-anchor="middle">flow, pressure, decay</text>
+
+            <rect class="node" x="652" y="62" width="210" height="78" rx="6" />
+            <text class="label" x="757" y="92" text-anchor="middle">Assets intervene</text>
+            <text class="small" x="757" y="114" text-anchor="middle">pipes, pumps, plants</text>
+
+            <rect class="node" x="652" y="246" width="210" height="78" rx="6" />
+            <text class="label" x="757" y="276" text-anchor="middle">People interpret</text>
+            <text class="small" x="757" y="298" text-anchor="middle">operators, crews, engineers</text>
+
+            <rect class="node" x="365" y="246" width="210" height="78" rx="6" />
+            <text class="label" x="470" y="276" text-anchor="middle">Records connect</text>
+            <text class="small" x="470" y="298" text-anchor="middle">SCADA, GIS, CMMS, lab</text>
+
+            <rect class="node-strong" x="78" y="246" width="210" height="78" rx="6" />
+            <text class="label" x="183" y="276" text-anchor="middle">AI must preserve</text>
+            <text class="small" x="183" y="298" text-anchor="middle">source, context, consequence</text>
+
+            <rect class="node-dark" x="220" y="430" width="230" height="86" rx="6" />
+            <text class="label on-dark" x="335" y="462" text-anchor="middle">Accountable decisions</text>
+            <text class="small on-dark" x="335" y="486" text-anchor="middle">repair, renew, respond, explain</text>
+
+            <rect class="node-warm" x="490" y="430" width="230" height="86" rx="6" />
+            <text class="label" x="605" y="462" text-anchor="middle">Public trust</text>
+            <text class="small" x="605" y="486" text-anchor="middle">service, permits, rates, confidence</text>
+
+            <path class="connector" style="marker-end:url(#arrow5)" d="M288 101 L365 101" />
+            <path class="connector" style="marker-end:url(#arrow5)" d="M575 101 L652 101" />
+            <path class="connector" style="marker-end:url(#arrow5)" d="M757 140 L757 246" />
+            <path class="connector" style="marker-end:url(#arrow5)" d="M652 285 L575 285" />
+            <path class="connector" style="marker-end:url(#arrow5)" d="M365 285 L288 285" />
+            <path class="connector" style="marker-end:url(#arrow5)" d="M183 324 C200 386 250 418 302 430" />
+            <path class="connector" style="marker-end:url(#arrow5)" d="M450 473 L490 473" />
+            <path class="connector" style="marker-end:url(#arrow5)" d="M720 473 L900 473 L900 285 L862 285" />
+            <text class="small" x="896" y="380" text-anchor="end">community feedback</text>
+            <path class="connector" style="marker-end:url(#arrow5)" d="M220 473 L38 473 L38 101 L78 101" />
+            <text class="small" x="59" y="395">human interventions</text>
+            <text class="tiny" x="470" y="558" text-anchor="middle">The standard is not fluent answers. The standard is connected reasoning with evidence people can check.</text>
+          </svg>
+<svg xmlns="http://www.w3.org/2000/svg" class="diagram diagram-mobile" viewBox="0 0 280 1190" role="img" aria-labelledby="nature-mobile-framework-title nature-mobile-framework-desc" style="width:100%;max-width:none;min-width:0;height:auto;overflow:visible">
+<title id="nature-mobile-framework-title">Connected reasoning with two feedback loops</title>
+<desc id="nature-mobile-framework-desc">Nature moves, physics translates, assets intervene, people interpret, records connect and AI must preserve sources, context and consequences. People make accountable decisions that bear on public trust. Two separate feedback loops remain visible: human interventions return from decisions to nature on the left, and community feedback returns from public trust to people on the right. This conceptual framework shows responsibilities, not automatic causation or guaranteed trust.</desc>
+<defs><marker id="nature-mobile-framework-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="var(--accent, #174bc5)"/></marker><marker id="nature-mobile-framework-risk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="#c75a42"/></marker></defs>
+<path class="connector" d="M140 85 V126" style="marker-end:url(#nature-mobile-framework-arrow)"><title>Natural movement has physical relationships</title></path>
+<path class="connector" d="M140 195 V236" style="marker-end:url(#nature-mobile-framework-arrow)"><title>Physics informs infrastructure intervention</title></path>
+<path class="connector" d="M140 305 V346" style="marker-end:url(#nature-mobile-framework-arrow)"><title>People interpret asset operation</title></path>
+<path class="connector" d="M140 435 V476" style="marker-end:url(#nature-mobile-framework-arrow)"><title>People connect observations through records</title></path>
+<path class="connector" d="M140 565 V606" style="marker-end:url(#nature-mobile-framework-arrow)"><title>Records provide sources and context for AI</title></path>
+<path class="connector" d="M140 715 V756" style="marker-end:url(#nature-mobile-framework-arrow)"><title>Inspectable evidence supports human decisions</title></path>
+<path class="connector" d="M140 908 V950" style="marker-end:url(#nature-mobile-framework-arrow)"><title>Accountable public service decisions bear on trust</title></path>
+<path class="connector" d="M32 839 H10 V50 H32" style="marker-end:url(#nature-mobile-framework-arrow)"><title>Human interventions return from accountable decisions to nature</title></path>
+<path class="connector" d="M248 1024 H270 V390 H248" style="marker-end:url(#nature-mobile-framework-arrow)"><title>Community feedback returns from public trust to the people interpreting the system</title></path>
+<g data-node="nature" data-padding="8"><rect class="node" x="32" y="16" width="216" height="69" rx="6"/><text class="label" x="140" y="44" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="44">Nature moves</tspan></text><text class="small" x="140" y="69" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="69">Rain, groundwater, rivers</tspan></text></g>
+<g data-node="physics" data-padding="8"><rect class="node" x="32" y="126" width="216" height="69" rx="6"/><text class="label" x="140" y="154" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="154">Physics translates</tspan></text><text class="small" x="140" y="179" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="179">Flow, pressure, decay</tspan></text></g>
+<g data-node="assets" data-padding="8"><rect class="node" x="32" y="236" width="216" height="69" rx="6"/><text class="label" x="140" y="264" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="264">Assets intervene</tspan></text><text class="small" x="140" y="289" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="289">Pipes, pumps, plants</tspan></text></g>
+<g data-node="people" data-padding="8"><rect class="node" x="32" y="346" width="216" height="89" rx="6"/><text class="label" x="140" y="374" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="374">People interpret</tspan></text><text class="small" x="140" y="399" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="399">Operators, crews, engineers;</tspan><tspan x="140" y="419">community feedback.</tspan></text></g>
+<g data-node="records" data-padding="8"><rect class="node" x="32" y="476" width="216" height="89" rx="6"/><text class="label" x="140" y="504" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="504">Records connect</tspan></text><text class="small" x="140" y="529" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="529">SCADA, GIS, CMMS,</tspan><tspan x="140" y="549">lab records</tspan></text></g>
+<g data-node="ai" data-padding="8"><rect class="node-strong" x="32" y="606" width="216" height="109" rx="6"/><text class="label" x="140" y="634" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="634">AI must preserve</tspan></text><text class="small" x="140" y="659" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="659">Sources, context,</tspan><tspan x="140" y="679">consequences and evidence</tspan><tspan x="140" y="699">people can inspect.</tspan></text></g>
+<g data-node="decisions" data-padding="8"><rect class="node-dark" x="32" y="756" width="216" height="152" rx="6"/><text class="label on-dark" x="140" y="784" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="784">Accountable</tspan><tspan x="140" y="807">decisions</tspan></text><text class="small on-dark" x="140" y="832" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="832">People repair, renew,</tspan><tspan x="140" y="852">respond and explain.</tspan><tspan x="140" y="872">Human interventions</tspan><tspan x="140" y="892">return to nature.</tspan></text></g>
+<g data-node="trust" data-padding="8"><rect class="node-warm" x="32" y="950" width="216" height="109" rx="6"/><text class="label" x="140" y="978" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="978">Public trust</tspan></text><text class="small" x="140" y="1003" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="1003">Service, permits, rates,</tspan><tspan x="140" y="1023">confidence; community</tspan><tspan x="140" y="1043">feedback returns to people.</tspan></text></g>
+<text class="small" x="140" y="1100" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="1100">Connected reasoning needs</tspan><tspan x="140" y="1120">evidence people can check.</tspan><tspan x="140" y="1140">Conceptual responsibilities;</tspan><tspan x="140" y="1160">trust is not guaranteed.</tspan></text>
+</svg>
+          </div>
+          <p class="caption">AI is useful when it helps the utility keep nature, physics, infrastructure, records, people, and trust in the same frame. This conceptual loop shows responsibilities and feedback, not automatic causation or guaranteed trust.</p>
+        </figure>
+
+        <p>This is why utility AI cannot be treated like a chatbot bolted onto records. It is entering a public system. The answer affects money, risk, compliance, and trust.</p>
+
+        <p>It may shape which pipe gets inspected, which pump gets replaced, which neighborhood receives attention, or which capital project gets defended. That means the answer has to show its work.</p>
+
+        <h2>The Framework</h2>
+
+        <p>Nature moves. Physics translates the movement. Infrastructure intervenes. People interpret. Records make it computable. AI must preserve the relationships. Decisions become accountable only when the chain can be inspected.</p>
+
+        <p>A pump record becomes useful when a crew can connect it to the work performed, the conditions observed, and the decision now in front of them.</p>
+
+        <h2>Three Utility Examples</h2>
+
+        <p>Consider three illustrative situations.</p>
+
+        <h3>The pressure complaint</h3>
+        <p>A resident reports low pressure. A weak AI answer summarizes the complaint and pulls nearby work orders. A useful answer asks what the complaint is connected to: recent demand, elevation, valve status, hydrant flushing, pump operation, tank level, main breaks, customer history, nearby construction, fire flow needs, meter data, and prior complaints.</p>
+
+        <h3>The plant loading spike</h3>
+        <p>The plant sees a hydraulic loading spike after a storm. A weak AI answer says flow increased after rainfall. Everyone already knew that. A useful answer helps trace the path: which basins responded first, which pump stations ran longer, which older pipe areas correlate with the spike, which manholes have past defects, which neighborhoods saw backups, and which capital projects already touch the same area.</p>
+
+        <h3>The capital plan</h3>
+        <p>A capital plan should not be a spreadsheet of assets waiting their turn. It should be a chain of evidence: service risk, failure history, hydraulic consequence, permit exposure, equity impact, repair feasibility, funding timing, and public explanation. AI can help only if it keeps that chain intact.</p>
+
+        <h2>Connected Reasoning</h2>
+
+        <p>Feynman's lesson comes back to the morning after the storm. The rain gauge, pump log, field note, and customer call each hold part of the explanation. We need to be able to trace the connections and test what they suggest.</p>
+
+        <p>For decisions like these, AI is useful when it helps people see the relationships, check the evidence, and make better decisions together.</p>
+
+        <blockquote>
+          <p>Not fluent answers. Connected reasoning.</p>
+          <cite>The Systems Lens</cite>
+        </blockquote>
+
+        <section class="takeaways">
+          <h2>Practical takeaways</h2>
+          <ol>
+            <li>Ask where the AI answer came from, not only whether it sounds right.</li>
+            <li>Ask what relationships it preserved across nature, assets, records, operations, finance, and trust.</li>
+            <li>Ask what operator knowledge is missing before the answer can be used.</li>
+            <li>Ask whether the output can be traced from event, to source record, to decision.</li>
+            <li>Ask the Feynman question: if this explanation is true, what else should also be true?</li>
+          </ol>
+        </section>
+
+        <section class="signature">
+          <strong>APAS Consulting</strong>
+          <p>For a utility exploring AI, the first practical step is not a demo. It is a readiness map: the decision that matters, the source records behind it, who owns them, what relationships are missing, and what evidence a trusted answer must show.</p>
+          <p>Hardeep Anand | APAS Consulting | <a href="https://apas.ai/">apas.ai</a></p>
+        </section>
+      

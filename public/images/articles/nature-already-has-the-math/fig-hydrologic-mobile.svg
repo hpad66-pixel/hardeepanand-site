@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 1000" role="img" aria-labelledby="nature-mobile-hydrologic-title nature-mobile-hydrologic-desc"><style>.node { fill: #d1d8e7; stroke: #d4d9d7; stroke-width: 1.5; }
+.node-strong { fill: #e1e8f7; stroke: #174bc5; stroke-width: 2; }
+.node-dark { fill: #06283d; }
+.node-warm { fill: #fff4d6; stroke: #d7b453; stroke-width: 1.5; }
+.node-risk { fill: #f7ded7; stroke: #c75a42; stroke-width: 1.5; }
+.label { fill: #092b3e; font: 700 18px 'Inter', Arial, sans-serif; }
+.small { fill: #52616a; font: 500 13px 'Inter', Arial, sans-serif; }
+.tiny { fill: #52616a; font: 500 12px 'Inter', Arial, sans-serif; }
+.on-dark { fill: #f5f3ed; }
+.connector { fill: none; stroke: #174bc5; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+.connector-soft { fill: none; stroke: #d4d9d7; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow-soft); }
+.connector-risk { fill: none; stroke: #c75a42; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow-risk); }
+.water-band { fill: none; stroke: #91d0ea; stroke-width: 18; stroke-linecap: round; opacity: .38; }
+.ring { fill: none; stroke: #174bc5; stroke-width: 2; stroke-dasharray: 7 7; opacity: .7; }</style><defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#174bc5"/></marker>
+              <marker id="arrow-soft" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#d4d9d7"/></marker>
+              <marker id="arrow-risk" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#c75a42"/></marker>
+            </defs>
+<title id="nature-mobile-hydrologic-title">Water movement and utility intervention</title>
+<desc id="nature-mobile-hydrologic-desc">Rain and snow reach land. Two parallel routes feed streams: surface runoff, and infiltration followed by groundwater baseflow. Streams evaporate to the atmosphere. Utilities withdraw and treat source water, supply communities, collect wastewater, and return treated flow to receiving water. Side arrows close the evaporation, collection, and treated-return loops. Actual sources and return paths vary.</desc>
+<defs><marker id="nature-mobile-hydrologic-arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="#174bc5"/></marker><marker id="nature-mobile-hydrologic-risk" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M1 1 L9 5 L1 9 Z" fill="#c75a42"/></marker></defs>
+<path class="connector" d="M140 105 V146" style="marker-end:url(#nature-mobile-hydrologic-arrow)"><title>Precipitation: rain and snow reach land</title></path>
+<path class="connector" d="M140 235 V280" style="marker-end:url(#nature-mobile-hydrologic-arrow)"><title>Infiltration recharges groundwater</title></path>
+<path class="connector" d="M32 190 H16 V475 H32" style="marker-end:url(#nature-mobile-hydrologic-arrow)"><title>Surface runoff reaches streams without passing through groundwater</title></path>
+<path class="connector" d="M140 369 V430" style="marker-end:url(#nature-mobile-hydrologic-arrow)"><title>Groundwater baseflow feeds streams</title></path>
+<path class="connector" d="M248 465 H272 V60 H248" style="marker-end:url(#nature-mobile-hydrologic-arrow)"><title>Evaporation returns water from streams to the atmosphere</title></path>
+<path class="connector" d="M140 539 V592" style="marker-end:url(#nature-mobile-hydrologic-arrow)"><title>Withdrawal: streams provide source water for utility treatment</title></path>
+<path class="connector" d="M32 648 H16 V511 H32" style="marker-end:url(#nature-mobile-hydrologic-arrow)"><title>Treated return flow goes from utility systems to receiving water</title></path>
+<path class="connector" d="M116 721 V800" style="marker-end:url(#nature-mobile-hydrologic-arrow)"><title>Supply: treated water reaches community users</title></path>
+<path class="connector" d="M248 850 H264 V708 H248" style="marker-end:url(#nature-mobile-hydrologic-arrow)"><title>Collection: community wastewater returns to utility systems</title></path>
+<g data-node="atmosphere" data-padding="8"><rect class="node" x="32" y="16" width="216" height="89" rx="6"/><text class="label" x="140" y="44" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="44">Atmosphere</tspan></text><text class="small" x="140" y="69" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="69">Rain and snow fall;</tspan><tspan x="140" y="89">evaporation returns water.</tspan></text></g>
+<g data-node="land" data-padding="8"><rect class="node" x="32" y="146" width="216" height="89" rx="6"/><text class="label" x="140" y="174" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="174">Land surface</tspan></text><text class="small" x="140" y="199" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="199">Runoff goes to streams;</tspan><tspan x="140" y="219">infiltration enters soil.</tspan></text></g>
+<g data-node="groundwater" data-padding="8"><rect class="node" x="32" y="280" width="216" height="89" rx="6"/><text class="label" x="140" y="308" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="308">Groundwater</tspan></text><text class="small" x="140" y="333" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="333">Recharge and storage;</tspan><tspan x="140" y="353">baseflow feeds streams.</tspan></text></g>
+<g data-node="streams" data-padding="8"><rect class="node" x="32" y="430" width="216" height="109" rx="6"/><text class="label" x="140" y="458" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="458">Streams</tspan></text><text class="small" x="140" y="483" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="483">Source water for utilities;</tspan><tspan x="140" y="503">receiving water for</tspan><tspan x="140" y="523">runoff and treated flow.</tspan></text></g>
+<g data-node="utility" data-padding="8"><rect class="node-strong" x="32" y="592" width="216" height="129" rx="6"/><text class="label" x="140" y="620" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="620">Utility systems</tspan></text><text class="small" x="140" y="645" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="645">Withdraw, treat, move,</tspan><tspan x="140" y="665">store and supply water.</tspan><tspan x="140" y="685">Collect wastewater;</tspan><tspan x="140" y="705">treat and return flow.</tspan></text></g>
+<g data-node="community" data-padding="8"><rect class="node" x="32" y="800" width="216" height="89" rx="6"/><text class="label" x="140" y="828" text-anchor="middle" style="font-size:18px;letter-spacing:0"><tspan x="140" y="828">Community use</tspan></text><text class="small" x="140" y="853" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="853">Service, trust, demand;</tspan><tspan x="140" y="873">wastewater collection.</tspan></text></g>
+<text class="small" x="140" y="940" text-anchor="middle" style="font-size:14px;letter-spacing:0"><tspan x="140" y="940">Utilities intervene inside</tspan><tspan x="140" y="960">the cycle. Actual sources</tspan><tspan x="140" y="980">and return pathways vary.</tspan></text>
+</svg>

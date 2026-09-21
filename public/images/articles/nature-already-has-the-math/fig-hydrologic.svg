@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 520" role="img" aria-labelledby="fig1-title fig1-desc"><style>.node { fill: #d1d8e7; stroke: #d4d9d7; stroke-width: 1.5; }
+.node-strong { fill: #e1e8f7; stroke: #174bc5; stroke-width: 2; }
+.node-dark { fill: #06283d; }
+.node-warm { fill: #fff4d6; stroke: #d7b453; stroke-width: 1.5; }
+.node-risk { fill: #f7ded7; stroke: #c75a42; stroke-width: 1.5; }
+.label { fill: #092b3e; font: 700 18px 'Inter', Arial, sans-serif; }
+.small { fill: #52616a; font: 500 13px 'Inter', Arial, sans-serif; }
+.tiny { fill: #52616a; font: 500 12px 'Inter', Arial, sans-serif; }
+.on-dark { fill: #f5f3ed; }
+.connector { fill: none; stroke: #174bc5; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+.connector-soft { fill: none; stroke: #d4d9d7; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow-soft); }
+.connector-risk { fill: none; stroke: #c75a42; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow-risk); }
+.water-band { fill: none; stroke: #91d0ea; stroke-width: 18; stroke-linecap: round; opacity: .38; }
+.ring { fill: none; stroke: #174bc5; stroke-width: 2; stroke-dasharray: 7 7; opacity: .7; }</style>
+            <title id="fig1-title">Hydrologic cycle and utility intervention</title>
+            <desc id="fig1-desc">A conceptual cycle: rain reaches land, infiltration recharges groundwater, runoff and baseflow feed streams. Utilities withdraw water, supply communities, collect wastewater and return treated flow. Evaporation returns water to the atmosphere.</desc>
+            <defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#174bc5"/></marker>
+              <marker id="arrow-soft" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#d4d9d7"/></marker>
+              <marker id="arrow-risk" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#c75a42"/></marker>
+            </defs>
+            <path class="water-band" d="M470 78 C650 78 790 178 790 270 C790 385 655 444 470 444 C285 444 150 385 150 270 C150 178 290 78 470 78" />
+            <path class="ring" d="M470 70 C670 70 820 180 820 270 C820 405 670 470 470 470 C270 470 120 405 120 270 C120 180 270 70 470 70" />
+            <rect class="node" x="378" y="34" width="184" height="66" rx="6" />
+            <text class="label" x="470" y="65" text-anchor="middle">Atmosphere</text>
+            <text class="small" x="470" y="85" text-anchor="middle">rain, snow, evaporation</text>
+
+            <rect class="node" x="90" y="180" width="176" height="74" rx="6" />
+            <text class="label" x="178" y="210" text-anchor="middle">Land surface</text>
+            <text class="small" x="178" y="232" text-anchor="middle">runoff and infiltration</text>
+
+            <rect class="node" x="94" y="326" width="176" height="74" rx="6" />
+            <text class="label" x="182" y="356" text-anchor="middle">Groundwater</text>
+            <text class="small" x="182" y="378" text-anchor="middle">storage and baseflow</text>
+
+            <rect class="node" x="382" y="390" width="176" height="74" rx="6" />
+            <text class="label" x="470" y="420" text-anchor="middle">Streams</text>
+            <text class="small" x="470" y="440" text-anchor="middle">source water</text>
+            <text class="small" x="470" y="456" text-anchor="middle">and receiving water</text>
+
+            <rect class="node-strong" x="674" y="298" width="190" height="82" rx="6" />
+            <text class="label" x="769" y="329" text-anchor="middle">Utility systems</text>
+            <text class="small" x="769" y="351" text-anchor="middle">treat, move, collect, return</text>
+
+            <rect class="node" x="674" y="150" width="190" height="82" rx="6" />
+            <text class="label" x="769" y="181" text-anchor="middle">Community use</text>
+            <text class="small" x="769" y="203" text-anchor="middle">service, trust, demand</text>
+
+            <path class="connector" d="M378 76 C280 88 208 125 178 180" />
+            <text class="small" x="238" y="92" text-anchor="middle">precipitation</text>
+            <path class="connector" d="M790 232 L790 298" />
+            <text class="small" x="804" y="273">collection</text>
+            <path class="connector" d="M178 254 C174 282 176 304 182 326" />
+            <path class="connector" d="M270 364 C310 392 346 414 382 426" />
+            <path class="connector" d="M558 426 C612 408 650 382 674 350" />
+            <path class="connector" d="M730 298 L730 232" />
+            <text class="small" x="711" y="272" text-anchor="end">supply</text>
+            <path class="connector" d="M810 380 C752 469 647 485 558 451" />
+            <text class="small" x="687" y="505" text-anchor="middle">treated return flow</text>
+            <path class="connector" d="M470 390 L470 100" />
+            <text class="small" x="485" y="278">evaporation</text>
+            <path class="connector" d="M266 240 C317 275 350 349 400 390" />
+            <text class="small" x="350" y="287" text-anchor="middle">runoff</text>
+          </svg>

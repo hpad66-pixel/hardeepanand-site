@@ -1,5 +1,6 @@
 ---
 import '../styles/tokens.css';
+import '../styles/notebook-shell.css';
 import { NAV } from '../lib/content.js';
 import { SUBSTACK } from '../lib/substack.js';
 const { title = 'Hardeep Anand', active = '/', description = 'Water, infrastructure, and intelligence. Essays and ideas from Hardeep Anand, an operator building a more connected future.' } = Astro.props;
@@ -49,6 +50,8 @@ const isProd = import.meta.env.PROD;
         {NAV.map((n) => (
           <a href={n.href} aria-current={active === n.href ? 'page' : undefined}>{n.label}</a>
         ))}
+        <a href="/writing/#start-here">Start here</a>
+        <a href="/writing/#visual-index">Visual index</a>
         <a href="/work/">Work with me</a>
         <a class="nav-cta" href="/#newsletter">Subscribe <span aria-hidden="true">↗</span></a>
       </div>

@@ -1,0 +1,198 @@
+
+      .post.nature-article {
+        --bg: #f5f3ed;
+        --surface: #eeece5;
+        --surface-2: #e8edf0;
+        --text: #092b3e;
+        --text-dim: #52616a;
+        --line: #d4d9d7;
+        --accent: #174bc5;
+        --deep: #06283d;
+        --sky: #91d0ea;
+        --gold: #89631f;
+        --white: #fffdf8;
+        --font-display: 'Newsreader', Georgia, serif;
+        --font-body: 'Inter', Arial, sans-serif;
+      }
+
+      .post.nature-article a { color: var(--accent); }
+      .post.nature-article p { margin: 0; text-wrap: pretty; }
+      .post.nature-article p + p { margin-top: 1.1em; }
+
+      .post.nature-article {
+        max-width: 920px;
+        margin: 0 auto;
+        padding: 64px 28px 96px;
+      }
+      .post.nature-article h1, .post.nature-article h2, .post.nature-article h3 {
+        margin: 0;
+        font-family: var(--font-display);
+        font-weight: 400;
+        letter-spacing: 0;
+        line-height: 1.06;
+      }
+      .post.nature-article h1 {
+        max-width: 10.5ch;
+        margin-top: 18px;
+        font-size: 88px;
+      }
+      .post.nature-article .nature-prose {
+        margin-top: 38px;
+        font: 21px/1.78 var(--font-display);
+      }
+      .post.nature-article .nature-prose > p:first-child {
+        font-size: 28px;
+        line-height: 1.45;
+      }
+      .post.nature-article .nature-prose h2 {
+        margin-top: 2.1em;
+        margin-bottom: .55em;
+        color: var(--text);
+        font-size: 48px;
+      }
+      .post.nature-article .nature-prose h3 {
+        margin-top: 1.7em;
+        margin-bottom: .5em;
+        font-size: 30px;
+      }
+      .post.nature-article .nature-prose blockquote {
+        margin: 48px 0;
+        padding: 32px;
+        border: 0;
+        background: var(--deep);
+        color: var(--bg);
+        font: 400 42px/1.15 var(--font-display);
+      }
+      .post.nature-article .nature-prose blockquote cite {
+        display: block;
+        margin-top: 22px;
+        color: #bed0dc;
+        font: 600 11px/1.5 var(--font-body);
+        letter-spacing: 0;
+        text-transform: uppercase;
+        font-style: normal;
+      }
+
+      .post.nature-article .figure {
+        width: min(1080px, calc(100vw - 32px));
+        margin: 64px calc(50% - min(540px, calc(50vw - 16px)));
+        padding: 30px 24px 24px;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: color-mix(in srgb, var(--bg) 80%, white 20%);
+      }
+      .post.nature-article .figure-label {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 14px;
+        color: var(--accent);
+        font: 700 11px/1.5 var(--font-body);
+        letter-spacing: 0;
+        text-transform: uppercase;
+      }
+      .post.nature-article .figure-label::before,
+      .post.nature-article .figure-label::after {
+        content: '';
+        width: 26px;
+        height: 1px;
+        background: currentColor;
+        opacity: .5;
+      }
+      .post.nature-article .figure h3 {
+        max-width: 22ch;
+        margin: 15px auto 0;
+        color: var(--accent);
+        text-align: center;
+        font: italic 400 46px/1.1 var(--font-display);
+      }
+      .post.nature-article .diagram {
+        display: block;
+        width: 100%;
+        max-width: 940px;
+        height: auto;
+        margin: 30px auto 0;
+        overflow: visible;
+      }
+      .post.nature-article .caption {
+        max-width: 62ch;
+        margin: 18px auto 0;
+        color: var(--text-dim);
+        text-align: center;
+        font: 17px/1.55 var(--font-display);
+      }
+      .post.nature-article .diagram-scroll { padding-bottom: 12px; }
+      .post.nature-article .diagram-scroll .diagram { width: 100%; max-width: 940px; }
+      .post.nature-article .diagram-scroll .diagram-mobile { display: none; }
+      @media (max-width: 1000px) {
+        .post.nature-article .diagram-scroll .diagram-desktop { display: none; }
+        .post.nature-article .diagram-scroll .diagram-mobile { display: block; max-width: 360px !important; }
+      }
+      .post.nature-article { overflow-wrap: break-word; }
+      .post.nature-article * { letter-spacing: 0; }
+      .post.nature-article .figure-replay { display: block; margin: 16px auto 0; padding: 6px 12px; border: 1px solid var(--line); background: transparent; color: var(--accent); font: 500 13px var(--font-body); cursor: pointer; }
+      .post.nature-article .figure-replay:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+      .post.nature-article .flow-trace { fill: none; stroke: var(--gold); stroke-width: 4; stroke-linecap: round; pointer-events: none; }
+      @media (prefers-reduced-motion: reduce) { .post.nature-article .figure-replay, .post.nature-article .flow-trace { display: none; } }
+
+      .post.nature-article .node { fill: color-mix(in srgb, var(--bg) 84%, var(--accent) 16%); stroke: var(--line); stroke-width: 1.5; }
+      .post.nature-article .node-strong { fill: color-mix(in srgb, var(--accent) 13%, white 87%); stroke: var(--accent); stroke-width: 2; }
+      .post.nature-article .node-dark { fill: var(--deep); }
+      .post.nature-article .node-warm { fill: #fff4d6; stroke: #d7b453; stroke-width: 1.5; }
+      .post.nature-article .node-risk { fill: #f7ded7; stroke: #c75a42; stroke-width: 1.5; }
+      .post.nature-article .label { fill: var(--text); font: 700 18px var(--font-body); }
+      .post.nature-article .small { fill: var(--text-dim); font: 500 13px var(--font-body); }
+      .post.nature-article .tiny { fill: var(--text-dim); font: 500 12px var(--font-body); }
+      .post.nature-article .on-dark { fill: var(--bg); }
+      .post.nature-article .connector { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+      .post.nature-article .connector-soft { fill: none; stroke: var(--line); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow-soft); }
+      .post.nature-article .connector-risk { fill: none; stroke: #c75a42; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow-risk); }
+      .post.nature-article .water-band { fill: none; stroke: var(--sky); stroke-width: 18; stroke-linecap: round; opacity: .38; }
+      .post.nature-article .ring { fill: none; stroke: var(--accent); stroke-width: 2; stroke-dasharray: 7 7; opacity: .7; }
+
+      .post.nature-article .takeaways {
+        margin-top: 70px;
+        padding: 30px 0;
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+      }
+      .post.nature-article .takeaways h2 { font-size: 42px; }
+      .post.nature-article .takeaways ol {
+        margin: 22px 0 0;
+        padding-left: 1.4em;
+        font: 18px/1.65 var(--font-body);
+      }
+      .post.nature-article .takeaways li + li { margin-top: 16px; }
+      .post.nature-article .signature {
+        margin-top: 48px;
+        padding: 28px;
+        border: 1px solid var(--line);
+        background: var(--surface);
+        font: 16px/1.65 var(--font-body);
+      }
+      .post.nature-article .signature strong { display: block; font: italic 30px/1.15 var(--font-display); }
+      .post.nature-article .signature p { margin-top: 10px; color: var(--text-dim); }
+
+      @media (max-width: 720px) {
+        .post.nature-article { padding-top: 42px; }
+        .post.nature-article h1 { font-size: 56px; }
+        .post.nature-article .nature-prose h2 { font-size: 36px; }
+        .post.nature-article .nature-prose blockquote { padding: 24px; font-size: 32px; }
+        .post.nature-article .nature-prose { font-size: 20px; }
+        .post.nature-article .nature-prose > p:first-child { font-size: 24px; }
+        .post.nature-article .figure { padding-inline: 14px; }
+        .post.nature-article .figure h3 { font-size: 32px; }
+        .post.nature-article .diagram { margin-top: 22px; }
+      }
+      @media (max-width: 380px) { .post.nature-article h1 { font-size: 48px; } }
+      @media print {
+        .post.nature-article { padding: 20px 0; }
+        .post.nature-article .figure { width: 100%; margin: 32px 0; padding: 12px 0; break-inside: avoid; }
+        .post.nature-article .diagram-scroll { overflow: visible; }
+        .post.nature-article .diagram-scroll .diagram { width: 100%; max-width: 100%; }
+        .post.nature-article .diagram-scroll .diagram-mobile { display: none; }
+        .post.nature-article .diagram-scroll .diagram-desktop { display: block; }
+        .post.nature-article .nature-prose blockquote { print-color-adjust: exact; }
+        .post.nature-article .figure-replay, .post.nature-article .flow-trace { display: none; }
+      }
+    

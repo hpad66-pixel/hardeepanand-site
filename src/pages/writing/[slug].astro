@@ -1,5 +1,7 @@
 ---
 import VisualEditor from '../../components/VisualEditor.astro';
+import NatureArticle from '../../components/NatureArticle.astro';
+import RelatedReading from '../../components/RelatedReading.astro';
 import { readFileSync } from 'node:fs';
 import ResilienceChain from '../../components/ResilienceChain.astro';
 import ResilienceDashboard from '../../components/ResilienceDashboard.astro';
@@ -23,6 +25,7 @@ export function getStaticPaths() {
 }
 
 const { post } = Astro.props;
+const isNature = post.slug === 'nature-already-has-the-math';
 // Drop cap on the first paragraph; the prose styles handle pull quotes and sources.
 const prose = renderMarkdown(post.body).replace('<p>', '<p class="first">');
 const isGovernance = post.slug === 'governance-at-operating-speed';
@@ -35,7 +38,7 @@ const words = (post.body || '').split(/\s+/).filter(Boolean).length;
 const readMin = Math.max(1, Math.round(words / 220));
 ---
 <Base title={post.title} active="/writing/" description={post.description}>
-  <article class:list={['post', { 'illustrated-essay': illustrated }]}>
+  <article class:list={['post', { 'illustrated-essay': illustrated, 'nature-article': isNature }]}>
     <header class="post-head">
       <a class="kicker" href="/writing/">The Systems Lens</a>
       <h1>{post.title}</h1>
@@ -46,9 +49,10 @@ const readMin = Math.max(1, Math.round(words / 220));
         {!isProd && post.status !== 'PUBLISHED' && <span class="ribbon">{post.status}</span>}
       </p>
     </header>
-    {dashboardParts.map(part => part === '<!-- resilience-dashboard -->' ? <ResilienceDashboard /> : part === '<!-- resilience-chain -->' ? <ResilienceChain /> : <div class="prose" set:html={part} />)}
-    <ApasSignature article={post.title} path={`writing/${post.slug}`} />
+    {isNature ? <NatureArticle title={post.title} published={post.status === 'PUBLISHED'} /> : dashboardParts.map(part => part === '<!-- resilience-dashboard -->' ? <ResilienceDashboard /> : part === '<!-- resilience-chain -->' ? <ResilienceChain /> : <div class="prose" set:html={part} />)}
+    {!isNature && <ApasSignature article={post.title} path={`writing/${post.slug}`} />}
     <SubstackDiscussion substackUrl={post.substackUrl} />
+    <RelatedReading slug={post.slug} />
   </article>
   <section class="post-end">
     <div class="author">

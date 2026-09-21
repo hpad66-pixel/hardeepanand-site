@@ -1,0 +1,9 @@
+.ha-nav{min-height:90px;background-image:linear-gradient(rgba(31,79,112,.055) 1px,transparent 1px),linear-gradient(90deg,rgba(31,79,112,.055) 1px,transparent 1px);background-size:28px 28px}
+.publication-brand .publication-name{font-size:31px;letter-spacing:0}
+.publication-brand .publication-author{font-size:12px;letter-spacing:0;margin-top:5px}
+.ha-links{gap:22px}
+.ha-links a{font-size:12px;letter-spacing:0}
+.ha-foot h4,.ha-foot .fbrand{letter-spacing:0}
+@media(max-width:1000px){.ha-nav{gap:16px}.ha-links{gap:15px}.ha-links a{font-size:11px}}
+@media(max-width:820px){.ha-nav{min-height:80px}.ha-links a{font-size:16px}.publication-brand .publication-name{font-size:27px}.publication-brand .publication-author{font-size:11px}.menu-toggle{padding:8px 11px;gap:12px}.ha-links{background-image:none}}
+@media(max-width:360px){.publication-brand .publication-name{font-size:24px}.ha-nav{padding-inline:20px}.menu-toggle{font-size:12px;gap:8px}.publication-brand .publication-author{font-size:10px}}

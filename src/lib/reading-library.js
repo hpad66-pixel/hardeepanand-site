@@ -17,7 +17,12 @@ export function readingLibrary(prod = false) {
   if(!isVisible(p.status,prod)||! /^(writing|climb)\//.test(p.path))continue;
   const slug=p.path.split('/').at(-1);
   const words=p.body.replace(/<[^>]*>/g,' ').split(/\s+/).filter(Boolean).length;
-  unique.set(p.path,{...p,slug,href:`/${p.path}/`,readMin:Math.max(1,Math.round(words/220)),topic:p.topic||'Ideas & practice',visual:'connections',takeaway:'Explore the practical questions and next steps in this essay.',summary:p.description,...editorial[slug]});
+  const defaults=editorial[slug]||{};
+  unique.set(p.path,{...p,slug,href:`/${p.path}/`,readMin:Math.max(1,Math.round(words/220)),
+   topic:p.topic||defaults.topic||'Ideas & practice',
+   visual:p.visual||defaults.visual||'connections',
+   takeaway:p.takeaway||defaults.takeaway||'Explore the practical questions and next steps in this essay.',
+   summary:p.summary||defaults.summary||p.description});
  }
  return [...unique.values()].sort((a,b)=>b.date.localeCompare(a.date)||a.title.localeCompare(b.title));
 }

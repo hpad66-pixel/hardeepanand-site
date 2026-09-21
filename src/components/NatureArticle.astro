@@ -1,0 +1,17 @@
+---
+import body from '../assets/nature-already-has-the-math/article.html?raw';
+import '../styles/nature-article.generated.css';
+import '../styles/nature-article.css';
+import { addTakeawayActions } from '../lib/takeaway-actions.js';
+
+const { title, published } = Astro.props;
+const canonical = new URL('/writing/nature-already-has-the-math/', Astro.site).href;
+const html = addTakeawayActions(
+  body.replace('class="takeaways"', 'class="article-takeaways"').replace('<ol>', '<ol class="takeaways-list">'),
+  title, canonical, { published }
+);
+---
+<div class="prose nature-prose" set:html={html} />
+<script>
+  import '../lib/nature-motion.js';
+</script>

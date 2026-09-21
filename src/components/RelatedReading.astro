@@ -1,0 +1,13 @@
+---
+import { readingLibrary } from '../lib/reading-library.js';
+import { relatedReadings } from '../lib/discovery.js';
+const { slug, posts = readingLibrary(import.meta.env.PROD), limit = 2 } = Astro.props;
+const related = relatedReadings(posts, slug, limit);
+---
+{related.length>0&&<aside class="related-reading" aria-label="Connected reading">
+ <h2>Keep the connection going.</h2>
+ <div>{related.map(({post,reason})=><article><span>{post.topic}</span><h3><a href={post.href}>{post.title}</a></h3><p>{reason}</p>{post.status!=='PUBLISHED'&&<small>Draft</small>}</article>)}</div>
+</aside>}
+<style>
+.related-reading{border-top:1px solid #cdd4db;margin-top:32px;padding:24px 0;color:var(--text,#142c3d)}.related-reading h2{font:400 26px/1.2 var(--font-display,serif);margin:0 0 20px;letter-spacing:0}.related-reading>div{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:24px}.related-reading article{min-width:0}.related-reading span,.related-reading small{font:500 11px/1.5 var(--font-body,sans-serif);color:var(--accent,#174bc5)}.related-reading h3{font:400 23px/1.2 var(--font-display,serif);margin:8px 0;letter-spacing:0}.related-reading a{color:inherit;text-decoration-thickness:1px;text-underline-offset:4px}.related-reading p{font:14px/1.6 var(--font-body,sans-serif);margin:0;overflow-wrap:anywhere}.related-reading a:focus-visible{outline:2px solid #174bc5;outline-offset:4px}@media(max-width:600px){.related-reading>div{grid-template-columns:1fr}}
+</style>

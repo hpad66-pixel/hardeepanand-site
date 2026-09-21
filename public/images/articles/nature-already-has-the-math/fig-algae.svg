@@ -1,0 +1,68 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 940 560" role="img" aria-labelledby="fig3-title fig3-desc"><style>.node { fill: #d1d8e7; stroke: #d4d9d7; stroke-width: 1.5; }
+.node-strong { fill: #e1e8f7; stroke: #174bc5; stroke-width: 2; }
+.node-dark { fill: #06283d; }
+.node-warm { fill: #fff4d6; stroke: #d7b453; stroke-width: 1.5; }
+.node-risk { fill: #f7ded7; stroke: #c75a42; stroke-width: 1.5; }
+.label { fill: #092b3e; font: 700 18px 'Inter', Arial, sans-serif; }
+.small { fill: #52616a; font: 500 13px 'Inter', Arial, sans-serif; }
+.tiny { fill: #52616a; font: 500 12px 'Inter', Arial, sans-serif; }
+.on-dark { fill: #f5f3ed; }
+.connector { fill: none; stroke: #174bc5; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow); }
+.connector-soft { fill: none; stroke: #d4d9d7; stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow-soft); }
+.connector-risk { fill: none; stroke: #c75a42; stroke-width: 2.4; stroke-linecap: round; stroke-linejoin: round; marker-end: url(#arrow-risk); }
+.water-band { fill: none; stroke: #91d0ea; stroke-width: 18; stroke-linecap: round; opacity: .38; }
+.ring { fill: none; stroke: #174bc5; stroke-width: 2; stroke-dasharray: 7 7; opacity: .7; }</style><defs>
+              <marker id="arrow" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#174bc5"/></marker>
+              <marker id="arrow-soft" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#d4d9d7"/></marker>
+              <marker id="arrow-risk" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#c75a42"/></marker>
+            </defs>
+            <title id="fig3-title">Algae bloom and fish kill chain</title>
+            <desc id="fig3-desc">A diagram linking heat, sunlight, nutrients, runoff, low flow, algae bloom, low dissolved oxygen, fish stress, treatment challenges, customer communication, trust, and response choices.</desc>
+            <defs>
+              <marker id="arrow3" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#174bc5"/></marker>
+              <marker id="arrow3risk" markerWidth="10" markerHeight="10" refX="8" refY="3" orient="auto" markerUnits="strokeWidth"><path d="M0,0 L0,6 L9,3 z" fill="#c75a42"/></marker>
+            </defs>
+            <rect class="node" x="82" y="58" width="170" height="72" rx="6" />
+            <text class="label" x="167" y="88" text-anchor="middle">Heat</text>
+            <text class="small" x="167" y="110" text-anchor="middle">sunlight, temperature</text>
+
+            <rect class="node" x="82" y="190" width="170" height="72" rx="6" />
+            <text class="label" x="167" y="216" text-anchor="middle">Nutrients</text>
+            <text class="small" x="167" y="236" text-anchor="middle">runoff and</text>
+            <text class="small" x="167" y="254" text-anchor="middle">upstream land use</text>
+
+            <rect class="node" x="82" y="322" width="170" height="72" rx="6" />
+            <text class="label" x="167" y="352" text-anchor="middle">Low flow</text>
+            <text class="small" x="167" y="374" text-anchor="middle">residence time</text>
+
+            <rect class="node-strong" x="376" y="186" width="190" height="84" rx="6" />
+            <text class="label" x="471" y="218" text-anchor="middle">Algae bloom</text>
+            <text class="small" x="471" y="240" text-anchor="middle">source-water change</text>
+
+            <rect class="node-risk" x="668" y="80" width="190" height="78" rx="6" />
+            <text class="label" x="763" y="110" text-anchor="middle">Low oxygen</text>
+            <text class="small" x="763" y="132" text-anchor="middle">respiration, decomposition</text>
+
+            <rect class="node-risk" x="668" y="206" width="190" height="78" rx="6" />
+            <text class="label" x="763" y="236" text-anchor="middle">Fish stress or kill</text>
+            <text class="small" x="763" y="258" text-anchor="middle">a possible outcome</text>
+
+            <rect class="node-warm" x="668" y="332" width="190" height="78" rx="6" />
+            <text class="label" x="763" y="362" text-anchor="middle">Treatment strain</text>
+            <text class="small" x="763" y="384" text-anchor="middle">taste, odor, sampling</text>
+
+            <rect class="node-dark" x="376" y="436" width="230" height="108" rx="6" />
+            <text class="label on-dark" x="491" y="463" text-anchor="middle">Public response</text>
+            <text class="small on-dark" x="491" y="486" text-anchor="middle">sampling, communication</text>
+            <text class="small on-dark" x="491" y="506" text-anchor="middle">source protection</text>
+            <text class="small on-dark" x="491" y="526" text-anchor="middle">capital choices</text>
+
+            <path class="connector" style="marker-end:url(#arrow3)" d="M252 94 C302 116 342 150 386 186" />
+            <path class="connector" style="marker-end:url(#arrow3)" d="M252 226 L376 226" />
+            <path class="connector" style="marker-end:url(#arrow3)" d="M252 358 C312 332 350 300 386 270" />
+            <path class="connector-risk" style="marker-end:url(#arrow3risk)" d="M566 214 C614 182 640 146 668 119" />
+            <path class="connector-risk" style="marker-end:url(#arrow3risk)" d="M763 158 L763 206" />
+            <path class="connector" style="marker-end:url(#arrow3)" d="M566 242 C612 284 636 330 668 371" />
+            <path class="connector-risk" style="marker-end:url(#arrow3risk)" d="M858 245 L900 245 L900 510 L606 510" />
+            <path class="connector" style="marker-end:url(#arrow3)" d="M668 392 C632 426 612 448 606 474" />
+          </svg>

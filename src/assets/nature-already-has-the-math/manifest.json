@@ -1,0 +1,87 @@
+{
+  "sourceHTML": "8f97fbb00a3ba45ec92ad2c83898cf46d286bd6728d1238088bc6ef245546af5",
+  "sourceMarkdown": "5b9fdcec176f3d2ffc285d8dd88228138877e73442d9e13c9e021855f08664b7",
+  "bodySHA256": "426a70d992d0af5fe5a52bb05b4cb544ce2ec578810916ea002c1f23ee5ee3cb",
+  "figures": [
+    {
+      "id": "fig-hydrologic",
+      "composition": "desktop",
+      "sourceSVG": "7f25e72d82841024bb020b24137320185b6ea71a5f9f8826cf320d00c5b5ff7f",
+      "svg": "fig-hydrologic.svg",
+      "png": "fig-hydrologic.png",
+      "exportSHA256": "23e92bf8544bbf34c163496c03bf119362967209ff20ed5c10f4719a6f2de5fc"
+    },
+    {
+      "id": "fig-hydrologic",
+      "composition": "phone",
+      "sourceSVG": "74db37c07badf7cc7ea62f33cdbb35c7a226679b6c473a0d7ced49aff8afb778",
+      "svg": "fig-hydrologic-mobile.svg",
+      "png": "fig-hydrologic-mobile.png",
+      "exportSHA256": "62c7e5cd6efdd1c11b4ce002f0c83db6d37a4019319d1ed518bb5bd4de2ad1e6"
+    },
+    {
+      "id": "fig-storm",
+      "composition": "desktop",
+      "sourceSVG": "cd92fc01b454d8bcba7eb04102dd9124e2d70102e76ea6e963c4ae8bde15b041",
+      "svg": "fig-storm.svg",
+      "png": "fig-storm.png",
+      "exportSHA256": "976da7626e3c40c9cd8c81edd1b8908874d52fd392eac21cb6cc5a09eaf65060"
+    },
+    {
+      "id": "fig-storm",
+      "composition": "phone",
+      "sourceSVG": "def9d3e8252af9b85f5382b915dde263cc2975ec9a0f789e9063606a1d9ecf5e",
+      "svg": "fig-storm-mobile.svg",
+      "png": "fig-storm-mobile.png",
+      "exportSHA256": "da69f470bff6e20c64050cce5c6177972a95673e04ba8c303479d23c0e3befc3"
+    },
+    {
+      "id": "fig-algae",
+      "composition": "desktop",
+      "sourceSVG": "19c2e3abc729eed274eb3c3960d635cfa2f102edf3d1b444d5e6539d800f2882",
+      "svg": "fig-algae.svg",
+      "png": "fig-algae.png",
+      "exportSHA256": "6093650b136710e4f5b37f72961a966cc3121a0456a6d5ccaead95687b59059c"
+    },
+    {
+      "id": "fig-algae",
+      "composition": "phone",
+      "sourceSVG": "0d545334a7913ebfd09896a37c6e7d167601e07e1cacf07193032716e514c807",
+      "svg": "fig-algae-mobile.svg",
+      "png": "fig-algae-mobile.png",
+      "exportSHA256": "90caf0c336cf4e0c0e0a39cd04f6fb77f011375d3a63529a9ac90a93160336be"
+    },
+    {
+      "id": "fig-ai-test",
+      "composition": "desktop",
+      "sourceSVG": "9390191aa1996fb2e95bb0bd86c4c770f9ed9212b7c04258907be7c32a52bd15",
+      "svg": "fig-ai-test.svg",
+      "png": "fig-ai-test.png",
+      "exportSHA256": "af7334293f94a754cebc26586a3c0bd43db1496ab21a8982b82d9a1883a6f3fa"
+    },
+    {
+      "id": "fig-ai-test",
+      "composition": "phone",
+      "sourceSVG": "3226eac466c3ca02e54b647a650de527e4e8c6020d15ef0db56a0b7db5441f08",
+      "svg": "fig-ai-test-mobile.svg",
+      "png": "fig-ai-test-mobile.png",
+      "exportSHA256": "ccb409731a37a7a2e5a3774395e260bc1cf45f5a77fb8f08f1af4739a7ddf0f1"
+    },
+    {
+      "id": "fig-framework",
+      "composition": "desktop",
+      "sourceSVG": "4a6862abadda5be9b8e258e00efe6a6fd9b9afa427410767edecfba17cc13ea3",
+      "svg": "fig-framework.svg",
+      "png": "fig-framework.png",
+      "exportSHA256": "b22291500505775d43d67f18bb093e369715ffa3696dd62065c92b7bfe0ae8b4"
+    },
+    {
+      "id": "fig-framework",
+      "composition": "phone",
+      "sourceSVG": "9f2679946255b319f770ebc6d2b9232df01dfc4702aca09f41da2e068562ede5",
+      "svg": "fig-framework-mobile.svg",
+      "png": "fig-framework-mobile.png",
+      "exportSHA256": "58c5717b7309058204d849f0f398fce1473fbcbb4a84bd90f39628845ca0bde2"
+    }
+  ]
+}

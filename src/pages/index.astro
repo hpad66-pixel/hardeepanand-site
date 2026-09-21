@@ -1,32 +1,61 @@
 ---
-import '../styles/home-editorial.css';
+import '../styles/notebook-home.css';
 import ReaderSignup from '../components/ReaderSignup.astro';
 import Base from '../layouts/Base.astro';
 import ReadingRoom from '../components/ReadingRoom.astro';
 import { readingLibrary } from '../lib/reading-library.js';
-const posts=readingLibrary(import.meta.env.PROD);
+const posts = readingLibrary(true);
+const featured = posts.find(post => post.slug === 'nature-already-has-the-math') || posts[0];
 ---
-<Base title="The Systems Lens" active="/" description="The Systems Lens by Hardeep Anand. Essays on water, AI, and lifelong learning—with useful ideas to put into practice.">
-  <div class="editorial-home">
-    <header class="lens-opening">
-      <div class="lens-opening-copy">
-        <p class="lens-eyebrow"><span></span> WATER · INTELLIGENCE · HUMAN POSSIBILITY</p>
-        <h1>The Systems Lens</h1>
-        <p class="lens-thesis">I make invisible<br/>systems <em>legible.</em></p>
-        <p class="lens-deck">A river. A utility. A life in motion.<br/>Nothing works in isolation. When we see the connections, we can find a better way forward.</p>
-        <div class="lens-opening-actions"><a class="lens-primary" href="#essays">Explore the writing <span aria-hidden="true">↓</span></a><a href="/#newsletter">Join the conversation <span aria-hidden="true">↗</span></a></div>
-        <a class="lens-meet" href="/about/"><img src="/portrait.jpg" width="64" height="64" alt="Hardeep Anand"/><span><strong>Meet Hardeep</strong><small>Engineer. Operator. Lifelong learner.</small></span><span aria-hidden="true">↗</span></a>
+<Base title="The Systems Lens" active="/" description="The Systems Lens by Hardeep Anand. Essays on water, AI, and learning, with useful ideas to put into practice.">
+  <div class="notebook-home">
+    <header class="notebook-opening">
+      <img class="notebook-water" src="/images/estuary.webp" width="1100" height="1375" fetchpriority="high" alt="Illustrative aerial view of connected waterways." />
+      <div class="notebook-opening-inner">
+        <p class="notebook-label">THE SYSTEMS LENS / WATER, AI &amp; LEARNING</p>
+        <h1>Hardeep Anand</h1>
+        <p class="notebook-thesis">I make invisible systems legible.</p>
+        <p class="notebook-connection">Everything is connected.</p>
+        <a href="#essays">Explore the writing <span aria-hidden="true">&#8595;</span></a>
       </div>
-      <figure class="lens-rivers"><img src="/images/estuary.webp" width="1100" height="1375" fetchpriority="high" alt="Branching waterways joining a wider estuary, tracing the connections in a living system."/><div class="river-register" aria-hidden="true"><span>FIELD NOTES / 001</span><svg viewBox="0 0 60 60" fill="none"><circle cx="30" cy="30" r="22"/><path d="M30 0V60M0 30H60"/></svg></div><figcaption><span>Look closer.</span><strong>Everything<br/>is connected.</strong><small>Water makes the invisible visible.</small></figcaption></figure>
+      <span class="notebook-image-note">Connected waterways / illustrative artwork</span>
     </header>
-    <div class="lens-reading-intro"><p>From the systems we build<br/><em>to the people we become.</em></p><span>Read. Reflect. Take something useful with you.</span></div>
-    <ReadingRoom posts={posts}/>
-    <section class="editorial-about" aria-labelledby="about-perspective"><div class="about-note"><span class="edition-label">BEHIND THE WRITING</span><h2 id="about-perspective">Experience is a beginning.<br/><em>Curiosity keeps it useful.</em></h2><p>Three decades inside water infrastructure inform this work. These essays connect that experience with new tools, shared questions, and the practice of learning.</p><a href="/about/">Meet Hardeep <span aria-hidden="true">↗</span></a></div><div class="watch-note"><details><summary><span class="play-mark" aria-hidden="true">▷</span><span><strong>A short introduction</strong><small>Watch the perspective behind the work<br/>34 seconds · no audio</small></span><span class="watch-plus" aria-hidden="true">+</span></summary><video src="/vsl.mp4" controls playsinline preload="none" aria-label="Hardeep Anand introduction, 34 seconds, no audio"></video></details><p>Working on a question of your own?<br/><a href="/work/">Explore working with APAS ↗</a></p></div></section>
+    {featured && <section class="notebook-feature notebook-width" aria-labelledby="featured-title">
+      <div class="notebook-feature-copy">
+        <p class="notebook-label">FEATURED ESSAY <span>{featured.readMin} MIN READ</span></p>
+        <h2 id="featured-title"><a href={featured.href}>{featured.title}</a></h2>
+        <p class="notebook-feature-summary">{featured.summary}</p>
+        <p class="notebook-feature-value"><strong>Take it into your next meeting</strong>{featured.takeaway}</p>
+        <a class="notebook-read" href={featured.href}>Read the essay <span aria-hidden="true">&#8599;</span></a>
+      </div>
+      <figure class="notebook-feature-figure">
+        <a href={`${featured.href}#fig-hydrologic`} aria-label="Read the water cycle diagram in Nature Already Has the Math">
+          <picture>
+            <source media="(max-width: 600px)" srcset="/images/articles/nature-already-has-the-math/fig-hydrologic-mobile.png" />
+            <img src="/images/articles/nature-already-has-the-math/fig-hydrologic.png" width="1440" height="1020" alt="The water cycle connects the utility to land, atmosphere, and receiving waters." />
+          </picture>
+        </a>
+        <figcaption>Inside the essay: follow the water across the utility boundary.</figcaption>
+      </figure>
+    </section>}
+    <ReadingRoom posts={posts} showFeature={false} />
+    <section class="notebook-about" aria-labelledby="notebook-about-title">
+      <div class="notebook-width notebook-about-inner">
+        <img src="/portrait.jpg" width="184" height="220" alt="Hardeep Anand" loading="lazy" />
+        <div>
+          <p class="notebook-label">BEHIND THE WRITING</p>
+          <h2 id="notebook-about-title">Meet Hardeep</h2>
+          <p>Engineer. Operator. Lifelong learner. Three decades inside water infrastructure inform these essays on the systems we build and the people we become.</p>
+          <a href="/about/">The perspective behind the work <span aria-hidden="true">&#8599;</span></a>
+        </div>
+        <div class="notebook-work-note">
+          <h3>A question from your own work?</h3>
+          <p>Bring a decision, a data problem, or a learning challenge.</p>
+          <a href="/work/">Work with APAS <span aria-hidden="true">&#8599;</span></a>
+          <details><summary>A short introduction</summary><video src="/vsl.mp4" controls playsinline preload="none" aria-label="Hardeep Anand introduction, 34 seconds, no audio"></video><p>34 seconds. No audio.</p></details>
+        </div>
+      </div>
+    </section>
     <ReaderSignup />
   </div>
 </Base>
-<style>
-.editorial-home{--editorial-blue:#174bc5}:global([data-theme='obsidian']) .editorial-home{--editorial-blue:#91b3ff}.edition-label{font:600 10px/1.6 var(--font-body);letter-spacing:.15em;color:var(--editorial-blue)}
-.editorial-about{max-width:1120px;margin:70px auto 0;padding:37px 0;border-top:1px solid var(--line);display:grid;grid-template-columns:1.4fr 1fr;gap:90px;align-items:center}.about-note h2{font:400 35px/1.13 var(--font-display);margin:16px 0;letter-spacing:-.02em}.about-note h2 em{color:var(--text-dim)}.about-note>p{font:14px/1.8 var(--font-body);color:var(--text-dim);max-width:52ch;margin-bottom:20px}.about-note>a,.watch-note>p>a{font:500 12px/1.6 var(--font-body);color:var(--text);text-decoration:none}.about-note>a:hover,.watch-note>p>a:hover{text-decoration:underline}.watch-note details{border-block:1px solid var(--line);padding:23px 0}.watch-note summary{display:flex;align-items:center;gap:17px;list-style:none;cursor:pointer}.watch-note summary::-webkit-details-marker{display:none}.play-mark{width:49px;height:49px;border:1px solid var(--editorial-blue);border-radius:50%;color:var(--editorial-blue);display:grid;place-items:center;font-size:23px}.watch-note summary strong{font:500 13px/1.6 var(--font-body);display:block}.watch-note summary small{font:11px/1.6 var(--font-body);color:var(--text-dim);display:block;margin-top:5px}.watch-plus{margin-left:auto;font-size:22px;color:var(--editorial-blue)}.watch-note details[open] .watch-plus{transform:rotate(45deg)}.watch-note video{width:100%;display:block;margin-top:22px}.watch-note>p{font:12px/1.8 var(--font-body);color:var(--text-dim);margin-top:22px}
-@media(max-width:1200px){.editorial-about{margin-inline:40px}}@media(max-width:750px){.editorial-about{margin:44px 24px 0;grid-template-columns:1fr;gap:25px;padding:28px 0}.about-note h2{font-size:32px}}
-</style>

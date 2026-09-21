@@ -1,0 +1,38 @@
+[
+  {
+    "url": "https://hardeepanand.com/",
+    "theme": "operator",
+    "token": "#f5f3ed",
+    "body": "rgb(245, 243, 237)",
+    "main": "rgba(0, 0, 0, 0)",
+    "about": "rgba(0, 0, 0, 0)",
+    "library": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "url": "https://hardeepanand.com/",
+    "theme": "obsidian",
+    "token": "#101820",
+    "body": "rgb(16, 24, 32)",
+    "main": "rgba(0, 0, 0, 0)",
+    "about": "rgba(0, 0, 0, 0)",
+    "library": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "url": "http://127.0.0.1:4395/",
+    "theme": "operator",
+    "token": "#f5f3ed",
+    "body": "rgb(245, 243, 237)",
+    "main": "rgb(245, 243, 237)",
+    "about": "rgb(245, 243, 237)",
+    "library": "rgba(0, 0, 0, 0)"
+  },
+  {
+    "url": "http://127.0.0.1:4395/",
+    "theme": "obsidian",
+    "token": "#101820",
+    "body": "rgb(16, 24, 32)",
+    "main": "rgb(16, 24, 32)",
+    "about": "rgb(16, 24, 32)",
+    "library": "rgba(0, 0, 0, 0)"
+  }
+]
