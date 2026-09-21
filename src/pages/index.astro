@@ -1,5 +1,6 @@
 ---
 import '../styles/notebook-home.css';
+import '../styles/home-editorial.css';
 import ReaderSignup from '../components/ReaderSignup.astro';
 import Base from '../layouts/Base.astro';
 import ReadingRoom from '../components/ReadingRoom.astro';
@@ -9,16 +10,20 @@ const featured = posts.find(post => post.slug === 'nature-already-has-the-math')
 ---
 <Base title="The Systems Lens" active="/" description="The Systems Lens by Hardeep Anand. Essays on water, AI, and learning, with useful ideas to put into practice.">
   <div class="notebook-home">
-    <header class="notebook-opening">
-      <img class="notebook-water" src="/images/estuary.webp" width="1100" height="1375" fetchpriority="high" alt="Illustrative aerial view of connected waterways." />
-      <div class="notebook-opening-inner">
-        <p class="notebook-label">THE SYSTEMS LENS / WATER, AI &amp; LEARNING</p>
-        <h1>Hardeep Anand</h1>
-        <p class="notebook-thesis">I make invisible systems legible.</p>
-        <p class="notebook-connection">Everything is connected.</p>
-        <a href="#essays">Explore the writing <span aria-hidden="true">&#8595;</span></a>
+    <header class="lens-opening">
+      <div class="lens-opening-copy">
+        <p class="lens-eyebrow"><span></span> WATER &middot; INTELLIGENCE &middot; HUMAN POSSIBILITY</p>
+        <h1>The Systems Lens</h1>
+        <p class="lens-thesis">I make invisible<br/>systems <em>legible.</em></p>
+        <p class="lens-deck">A river. A utility. A life in motion.<br/>Nothing works in isolation. When we see the connections, we can find a better way forward.</p>
+        <div class="lens-opening-actions"><a class="lens-primary" href="#essays">Explore the writing <span aria-hidden="true">&#8595;</span></a><a href="/#newsletter">Join the conversation <span aria-hidden="true">&#8599;</span></a></div>
+        <a class="lens-meet" href="/about/"><img src="/portrait.jpg" width="64" height="64" alt="Hardeep Anand"/><span><strong>Meet Hardeep</strong><small>Engineer. Operator. Lifelong learner.</small></span><span aria-hidden="true">&#8599;</span></a>
       </div>
-      <span class="notebook-image-note">Connected waterways / illustrative artwork</span>
+      <figure class="lens-rivers">
+        <img src="/images/estuary.webp" width="1100" height="1375" fetchpriority="high" alt="Illustrative aerial view of branching waterways joining a wider estuary."/>
+        <div class="river-register" aria-hidden="true"><span>FIELD NOTES / 001</span></div>
+        <figcaption><span>Look closer.</span><strong>Everything<br/>is connected.</strong><small>Water makes the invisible visible. Illustrative artwork.</small></figcaption>
+      </figure>
     </header>
     {featured && <section class="notebook-feature notebook-width" aria-labelledby="featured-title">
       <div class="notebook-feature-copy">

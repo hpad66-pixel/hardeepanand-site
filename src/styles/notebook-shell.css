@@ -2,8 +2,9 @@
 .publication-brand .publication-name{font-size:31px;letter-spacing:0}
 .publication-brand .publication-author{font-size:12px;letter-spacing:0;margin-top:5px}
 .ha-links{gap:22px}
-.ha-links a{font-size:12px;letter-spacing:0}
+.ha-links a{font-size:14px;letter-spacing:0;color:var(--text)}
 .ha-foot h4,.ha-foot .fbrand{letter-spacing:0}
-@media(max-width:1000px){.ha-nav{gap:16px}.ha-links{gap:15px}.ha-links a{font-size:11px}}
+@media(max-width:1100px){.ha-nav{gap:16px}.ha-links{gap:14px}}
+@media(min-width:821px) and (max-width:1000px){.menu-toggle{display:flex;align-items:center;gap:12px;background:none;border:1px solid var(--line);padding:9px 14px;color:var(--text)}.ha-links{display:none;position:absolute;left:0;right:0;top:100%;background:var(--bg);border-bottom:1px solid var(--line);padding:20px var(--gutter);align-items:stretch;gap:0}.ha-links.open{display:flex;flex-direction:column}.ha-links a{padding:14px 0;font-size:16px}.ha-links .nav-cta{padding:14px;margin-top:10px}}
 @media(max-width:820px){.ha-nav{min-height:80px}.ha-links a{font-size:16px}.publication-brand .publication-name{font-size:27px}.publication-brand .publication-author{font-size:11px}.menu-toggle{padding:8px 11px;gap:12px}.ha-links{background-image:none}}
 @media(max-width:360px){.publication-brand .publication-name{font-size:24px}.ha-nav{padding-inline:20px}.menu-toggle{font-size:12px;gap:8px}.publication-brand .publication-author{font-size:10px}}

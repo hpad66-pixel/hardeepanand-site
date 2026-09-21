@@ -1,0 +1,457 @@
+{
+  "base": "http://127.0.0.1:4395",
+  "layouts": [
+    {
+      "name": "home",
+      "width": 1920,
+      "documentWidth": 1920,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true,
+      "featuredTop": 853.25
+    },
+    {
+      "name": "library",
+      "width": 1920,
+      "documentWidth": 1920,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "nature",
+      "width": 1920,
+      "documentWidth": 1920,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "home",
+      "width": 1440,
+      "documentWidth": 1440,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true,
+      "featuredTop": 853.25
+    },
+    {
+      "name": "library",
+      "width": 1440,
+      "documentWidth": 1440,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "nature",
+      "width": 1440,
+      "documentWidth": 1440,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "home",
+      "width": 1024,
+      "documentWidth": 1024,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true,
+      "featuredTop": 882.890625
+    },
+    {
+      "name": "library",
+      "width": 1024,
+      "documentWidth": 1024,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "nature",
+      "width": 1024,
+      "documentWidth": 1024,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "home",
+      "width": 820,
+      "documentWidth": 820,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true,
+      "featuredTop": 890.015625
+    },
+    {
+      "name": "library",
+      "width": 820,
+      "documentWidth": 820,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "nature",
+      "width": 820,
+      "documentWidth": 820,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "home",
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true,
+      "featuredTop": 1232.984375
+    },
+    {
+      "name": "library",
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "nature",
+      "width": 390,
+      "documentWidth": 390,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "home",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true,
+      "featuredTop": 1242.796875
+    },
+    {
+      "name": "library",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "nature",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "/about/",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "/work/",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "/writing/vital-signs/",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "/writing/data-governance/",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "/writing/fifty-steps-back/",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "/climb/adapt-dont-pivot/",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    },
+    {
+      "name": "/climb/in-your-head/",
+      "width": 320,
+      "documentWidth": 320,
+      "overflow": [],
+      "brokenImages": [],
+      "fonts": true
+    }
+  ],
+  "interactions": {
+    "discovery": "6 essays, 6 routes, 9 diagram anchors; search, empty, clear, topic, tabs, keyboard, deep links and load more passed",
+    "mobileMenu": "open and Escape close passed",
+    "motion": [
+      {
+        "width": 1440,
+        "early": [
+          "-49.6568px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-49.6568px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-49.6568px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-49.6568px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-49.6568px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "mid": [
+          "-100px",
+          "-14.5562px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-100px",
+          "-14.5562px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-66.9653px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-87.929px",
+          "0px",
+          "0px",
+          "0px",
+          "-100px",
+          "-14.5562px",
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "changed": true,
+        "remaining": 0
+      },
+      {
+        "width": 320,
+        "early": [
+          "-50.6509px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-50.6509px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-50.6509px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-50.6509px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-50.6509px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "mid": [
+          "-100px",
+          "-16.7811px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-100px",
+          "-16.7811px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-69.1902px",
+          "0px",
+          "0px",
+          "0px",
+          "0px",
+          "-90.1538px",
+          "0px",
+          "0px",
+          "0px",
+          "-100px",
+          "-16.7811px",
+          "0px",
+          "0px",
+          "0px",
+          "0px"
+        ],
+        "changed": true,
+        "remaining": 0
+      }
+    ],
+    "reducedMotion": {
+      "traces": 0,
+      "replayHidden": true,
+      "bodyBackground": "rgba(0, 0, 0, 0)"
+    },
+    "printControls": 1,
+    "takeaways": "Print isolation and five points, canonical attribution, email content and link verified without sending",
+    "savedDark": {
+      "theme": "obsidian",
+      "text": "rgb(237, 242, 245)",
+      "background": "rgb(16, 24, 32)"
+    },
+    "nojs": {
+      "essays": 6,
+      "routes": 6,
+      "diagrams": 9
+    }
+  },
+  "article": [
+    {
+      "width": 1920,
+      "labels": 97,
+      "issues": [],
+      "collisions": [],
+      "crossings": [],
+      "uniqueIds": true,
+      "figures": 5,
+      "minLabelPixels": 12,
+      "accessible": true
+    },
+    {
+      "width": 1440,
+      "labels": 97,
+      "issues": [],
+      "collisions": [],
+      "crossings": [],
+      "uniqueIds": true,
+      "figures": 5,
+      "minLabelPixels": 12,
+      "accessible": true
+    },
+    {
+      "width": 1024,
+      "labels": 97,
+      "issues": [],
+      "collisions": [],
+      "crossings": [],
+      "uniqueIds": true,
+      "figures": 5,
+      "minLabelPixels": 12,
+      "accessible": true
+    },
+    {
+      "width": 820,
+      "labels": 80,
+      "issues": [],
+      "collisions": [],
+      "crossings": [],
+      "uniqueIds": true,
+      "figures": 5,
+      "minLabelPixels": 17.99983407079646,
+      "accessible": true
+    },
+    {
+      "width": 390,
+      "labels": 80,
+      "issues": [],
+      "collisions": [],
+      "crossings": [],
+      "uniqueIds": true,
+      "figures": 5,
+      "minLabelPixels": 16.499875,
+      "accessible": true
+    },
+    {
+      "width": 320,
+      "labels": 80,
+      "issues": [],
+      "collisions": [],
+      "crossings": [],
+      "uniqueIds": true,
+      "figures": 5,
+      "minLabelPixels": 12.999875,
+      "accessible": true
+    }
+  ],
+  "errors": []
+}

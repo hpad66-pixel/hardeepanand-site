@@ -122,4 +122,18 @@ const searchText = p => `${p.title} ${p.summary||''} ${p.topic} ${p.takeaway}`;
 :global([data-theme='obsidian']) .reading-room{--room-ink:#edf2f5;--room-muted:#b5c2cc;--room-blue:#91b3ff;--room-line:#40515d;--room-control-bg:#142530;--room-diagram-bg:#142530;--room-hover:#20384b}
 @media(max-width:750px){.reading-room{padding:30px 20px 28px}.room-heading h2{font-size:30px}.room-heading{gap:14px}.room-modes{gap:20px}.room-modes a{font-size:13px}.room-tools{flex-wrap:wrap;gap:12px}.room-search{flex-basis:100%}.room-topic{flex:1}.reading-entry{grid-template-columns:24px minmax(0,1fr);gap:12px;padding:24px 0}.reading-entry h3{font-size:27px}.reading-value{grid-column:2;padding-left:14px;margin-top:8px}.reading-value p{font-size:21px}.reader-route{grid-template-columns:1fr;gap:12px}.reader-route h4{font-size:26px}.visual-grid{grid-template-columns:1fr;gap:28px}.visual-image:has(source){aspect-ratio:4/5}.room-count{font-size:11px}}
 @media(max-width:360px){.room-modes{gap:14px}.room-modes a{font-size:12px}.room-heading{align-items:start}.room-heading h2{font-size:28px}.room-count{padding-top:4px}}
+.reading-room{--room-muted:#415565}
+.room-kicker,.room-tools label>span,.reading-value>span{font-size:12px}
+.room-count,.room-results,.entry-number,.reading-meta,.visual-parent{font-size:13px}
+.room-modes a{font-size:15px;color:var(--room-ink)}
+.room-tools input,.room-tools select{font-size:16px}
+.room-tools button,.room-more button{font-size:14px}
+.reading-entry{grid-template-columns:32px minmax(0,1.6fr) minmax(0,1fr)}
+.reading-entry h3{font-size:32px;line-height:1.18}
+.reading-summary,.reader-route p,.visual-entry p{font-size:16px;line-height:1.65}
+.reading-value p{font:400 16px/1.65 var(--font-body,Inter,sans-serif);margin:10px 0 18px}
+.reading-value .read-link,.reading-connection{font-size:14px}
+:global([data-theme='obsidian']) .reading-room{--room-muted:#c5d0d8}
+@media(max-width:750px){.reading-entry{grid-template-columns:24px minmax(0,1fr)}.reading-entry h3{font-size:29px}.reading-summary,.reading-value p,.reader-route p,.visual-entry p{font-size:15px}.reading-meta,.room-count{font-size:12px}.room-modes{gap:18px}.room-modes a{font-size:14px}}
+@media(max-width:360px){.room-modes{gap:14px}.room-modes a{font-size:13px}.reading-entry h3{font-size:27px}}
 </style>

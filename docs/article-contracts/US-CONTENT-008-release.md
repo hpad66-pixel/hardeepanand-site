@@ -16,6 +16,10 @@ This release extends the earlier local-only contract. It does not change the art
 
 ## Release Authority
 
+### Authorized Hero Correction
+
+Hardeep rejected the banner opening after the initial release and explicitly authorized restoring the prior side-by-side hero: large "I make invisible systems legible" typography, vertical connected-waterways artwork, original supporting copy/actions and Meet Hardeep. Preserve ivory and obsidian backgrounds and the unified discovery library. Limit additional changes to UI typography, contrast and hierarchy. Article prose, arguments and publication states remain unchanged. Deploy this correction through the existing Pages route after checks pass; verify the live result separately. Evidence and outcome: `docs/review-packages/HERO-CORRECTION-QA.md`.
+
 The exact approved Nature fragment and SVG identities are captured in `src/assets/nature-already-has-the-math/manifest.json`. Its release QA report is `docs/review-packages/US-CONTENT-008-RELEASE-QAQC.md`. The site discovery assessment is separate from the article's editorial and visual scores.
 
 Source: isolated worktree from `a82aa1653beb148ac96376812f89d9548fe08d54`, not the saved workspace's unrelated editorial changes. Deployment uses the existing Pages project and bindings. A saved draft, Git push or local preview is not a live-publication claim; the release report must record successful deployment and public-route verification separately.

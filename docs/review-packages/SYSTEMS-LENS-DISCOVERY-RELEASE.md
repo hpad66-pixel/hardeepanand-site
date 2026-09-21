@@ -4,6 +4,8 @@ Date: 2026-09-21. Local and live release QA: PASS. Published with user authoriza
 
 ## Outcome
 
+**Superseded hero assessment:** the owner rejected the banner described below. The authorized correction restores the previous side-by-side hero and improves library typography. The original 93/100 self-assessment is historical, not owner acceptance of that design. See `HERO-CORRECTION-QA.md` for revision-matched corrective checks and live status.
+
 The homepage names Hardeep Anand prominently over the existing connected-waterways artwork, retains The Systems Lens identity, and introduces the featured essay before the library. The engineering-paper treatment is restrained to the shared masthead and author section. Actual writing begins in the first viewport on desktop and phone. The waterways are illustrative artwork, not a documented aerial location.
 
 The owner's final background constraint is applied: page, feature, library and author sections inherit the original theme background, including ivory and obsidian. The grid is an overlay, not a replacement palette. Direct old-live versus release computed-color evidence is recorded in `publication-evidence/background-comparison.json`.
