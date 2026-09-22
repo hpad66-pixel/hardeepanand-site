@@ -40,6 +40,22 @@ test('governance article inquiries retain the broader implementation interest',a
  assert.equal(payload.metadata.message,data.message);
 });
 
+test('AI access article inquiries route to knowledge access',async()=>{
+ const {env}=setup();let payload;
+ const response=await submitInquiry({env,request:req({...data,articlePath:'/writing/the-question-missing-from-the-ai-jobs-debate/'})},async(url,options)=>{payload=JSON.parse(options.body);return new Response(JSON.stringify({data:{candidateId:'knowledge-access-test'}}),{status:202});});
+ assert.equal(response.status,202);
+ assert.equal(payload.metadata.interest,'knowledge-access');
+ assert.equal(payload.context.campaign,'/writing/the-question-missing-from-the-ai-jobs-debate/');
+});
+
+test('vital signs inquiries route to measurement readiness',async()=>{
+ const {env}=setup();let payload;
+ const response=await submitInquiry({env,request:req({...data,articlePath:'/writing/vital-signs/'})},async(url,options)=>{payload=JSON.parse(options.body);return new Response(JSON.stringify({data:{candidateId:'measurement-test'}}),{status:202});});
+ assert.equal(response.status,202);
+ assert.equal(payload.metadata.interest,'measurement-readiness');
+ assert.equal(payload.context.campaign,'/writing/vital-signs/');
+});
+
 import {submitSubscription} from '../src/server/inquiries.js';
 test('reader opt-in is consented CRM staging, never claimed as a confirmed Substack subscription',async()=>{
  const {env}=setup();let payload,calls=0;
