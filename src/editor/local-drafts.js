@@ -4,6 +4,12 @@ import {randomUUID} from 'node:crypto';
 import {MAX_DRAFT_BYTES,validArticlePath,validateDraft} from './draft-schema.js';
 export function localDrafts(){return {name:'systems-lens-local-drafts',configureServer(server){
  server.watcher.unwatch(resolve('content/editor-drafts'));
+ server.middlewares.use('/api/inquiries',async(req,res)=>{
+  const respond=(status,data)=>{res.writeHead(status,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify(data));};
+  const host=req.headers.host||'';if(!/^(localhost|127\.0\.0\.1|\[::1\]):\d+$/.test(host))return respond(403,{error:'Local inquiry preview is available only on this computer.'});
+  if(req.method==='GET')return respond(200,{ready:false,localPreview:true});
+  return respond(503,{error:'Online delivery is unavailable in local preview. Please use the email link.'});
+ });
  server.middlewares.use('/api/editor/drafts',async(req,res)=>{
   const respond=(status,data)=>{res.writeHead(status,{'Content-Type':'application/json','Cache-Control':'no-store'});res.end(JSON.stringify(data));};
   // This development-only route is never included in the Cloudflare deployment.
