@@ -1,0 +1,166 @@
+---
+import AdminBase from '../../../layouts/AdminBase.astro';
+import { readingLibrary } from '../../../lib/reading-library.js';
+import { visualIndex } from '../../../lib/discovery.js';
+import { visualForPost } from '../../../lib/homepage.js';
+
+const siteUrl = 'https://hardeepanand.com';
+const articles = readingLibrary(true);
+const figures = visualIndex(articles);
+
+function fullUrl(path) {
+  return new URL(path, siteUrl).toString();
+}
+
+function shortTopic(topic = '') {
+  if (/water/i.test(topic)) return 'water systems';
+  if (/governance|ai/i.test(topic)) return 'AI governance';
+  if (/life|learning/i.test(topic)) return 'continuous learning';
+  return 'systems thinking';
+}
+
+function xDraft(article) {
+  const text = `${article.title}: ${article.takeaway || article.summary || 'A Systems Lens essay on making complex work clearer.'}`;
+  return text.length > 238 ? `${text.slice(0, 235).trim()}...` : text;
+}
+
+function linkedInDraft(article) {
+  const topic = shortTopic(article.topic);
+  return [
+    `A question worth slowing down for in ${topic}:`,
+    '',
+    article.takeaway || article.summary || `What does "${article.title}" help us see more clearly?`,
+    '',
+    `In this Systems Lens essay, I am trying to make the invisible operating logic easier to see, so leaders, teams, and practitioners can make better decisions together.`,
+    '',
+    `Read the essay: ${fullUrl(article.href)}`,
+  ].join('\n');
+}
+
+const socialRows = articles.map((article) => {
+  const visual = visualForPost(article, figures);
+  const url = fullUrl(article.href);
+  const xText = xDraft(article);
+  const linkedInText = linkedInDraft(article);
+  return {
+    slug: article.slug,
+    title: article.title,
+    topic: article.topic,
+    summary: article.summary,
+    takeaway: article.takeaway,
+    url,
+    visualTitle: visual.title,
+    visualCaption: visual.caption,
+    visualImage: visual.image,
+    visualHref: visual.href ? fullUrl(visual.href) : url,
+    xText,
+    linkedInText,
+    xShare: `https://twitter.com/intent/tweet?text=${encodeURIComponent(xText)}&url=${encodeURIComponent(url)}`,
+    linkedInShare: `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`,
+  };
+});
+---
+<AdminBase title="Social Studio" active="social">
+  <div class="admin-top">
+    <div>
+      <h1>Social studio</h1>
+      <div class="sub">Turn each published essay into reviewed LinkedIn and X/Twitter distribution copy without making the site feel like a social feed.</div>
+    </div>
+    <div class="actions">
+      <a class="abtn" href="/writing/" target="_blank" rel="noopener">Open library</a>
+      <a class="abtn primary" href="/admin/content/">Manage content</a>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="k">ARTICLES</div><div class="v">{socialRows.length}</div><div class="d">ready for review</div></div>
+    <div class="stat"><div class="k">PRIMARY CHANNEL</div><div class="v small">LinkedIn</div><div class="d">thought leadership</div></div>
+    <div class="stat"><div class="k">SECONDARY CHANNEL</div><div class="v small">X / Twitter</div><div class="d">sharp signal posts</div></div>
+    <div class="stat"><div class="k">POSTING MODE</div><div class="v small">Manual</div><div class="d">review before publishing</div></div>
+  </div>
+
+  <section class="panel social-principles">
+    <div class="panel-h"><h2>Distribution rule</h2><span class="lk">premium, not noisy</span></div>
+    <div class="panel-b social-rule-grid">
+      <div>
+        <b>Lead with LinkedIn.</b>
+        <p>Use it for the thoughtful version: a human question, one practical takeaway, and a clean link back to the essay.</p>
+      </div>
+      <div>
+        <b>Use X / Twitter as a signal.</b>
+        <p>Keep it short, useful, and link-backed. No reaction farming, no hot takes, no cheap engagement hooks.</p>
+      </div>
+      <div>
+        <b>Attach the article graphic when it teaches.</b>
+        <p>The suggested visual comes from the essay package. If the diagram does not add clarity, post without it.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="social-board" data-social-board>
+    {socialRows.map((row) => (
+      <article class="social-card" data-article={row.slug}>
+        <div class="social-card-head">
+          <div>
+            <span class="pill">{row.topic}</span>
+            <h2>{row.title}</h2>
+            <p>{row.takeaway || row.summary}</p>
+          </div>
+          <a class="abtn" href={row.url} target="_blank" rel="noopener">Read essay</a>
+        </div>
+
+        <div class="social-asset">
+          <div class="social-thumb">
+            {row.visualImage ? <img src={row.visualImage} alt="" loading="lazy" /> : <span>No article graphic selected yet.</span>}
+          </div>
+          <div>
+            <div class="social-label">Suggested graphic</div>
+            <h3>{row.visualTitle}</h3>
+            <p>{row.visualCaption || 'Use the lead article visual when it helps the post make sense quickly.'}</p>
+            <a href={row.visualHref} target="_blank" rel="noopener">Open visual context</a>
+          </div>
+        </div>
+
+        <div class="social-channels">
+          <section class="social-channel linkedin">
+            <div class="channel-top"><h3>LinkedIn post</h3><span>short-form thought leadership</span></div>
+            <textarea readonly data-copy-source={`li-${row.slug}`}>{row.linkedInText}</textarea>
+            <div class="channel-actions">
+              <button type="button" class="abtn primary" data-copy-target={`li-${row.slug}`}>Copy LinkedIn copy</button>
+              <a class="abtn" href={row.linkedInShare} target="_blank" rel="noopener">Open LinkedIn share</a>
+            </div>
+          </section>
+          <section class="social-channel twitter">
+            <div class="channel-top"><h3>X / Twitter post</h3><span>concise signal</span></div>
+            <textarea readonly data-copy-source={`x-${row.slug}`}>{row.xText}</textarea>
+            <div class="channel-actions">
+              <button type="button" class="abtn primary" data-copy-target={`x-${row.slug}`}>Copy X copy</button>
+              <a class="abtn" href={row.xShare} target="_blank" rel="noopener">Open X share</a>
+            </div>
+          </section>
+        </div>
+      </article>
+    ))}
+  </section>
+
+  <p class="admin-note">Direct posting is intentionally not enabled yet. The safe Version One workflow is review, copy, attach the approved article graphic, and post from your own LinkedIn or X account. API posting can be added later with platform authorization and an approval log.</p>
+
+  <script is:inline>
+    document.addEventListener('click', async function (event) {
+      var button = event.target.closest('[data-copy-target]');
+      if (!button) return;
+      var id = button.getAttribute('data-copy-target');
+      var source = document.querySelector('[data-copy-source="' + id + '"]');
+      if (!source) return;
+      try {
+        await navigator.clipboard.writeText(source.value || source.textContent || '');
+        var old = button.textContent;
+        button.textContent = 'Copied';
+        window.setTimeout(function () { button.textContent = old; }, 1200);
+      } catch (e) {
+        source.focus();
+        source.select();
+      }
+    });
+  </script>
+</AdminBase>
