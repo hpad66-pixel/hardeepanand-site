@@ -16,7 +16,7 @@ import { inlineGovernanceWorkFigures } from '../../lib/governance-work-figures.j
 import { inlineAiAccessFigures } from '../../lib/ai-access-figures.js';
 import { inlineHeadCloudsFigures } from '../../lib/head-clouds-figures.js';
 import { addTakeawayActions } from '../../lib/takeaway-actions.js';
-import SubstackDiscussion from '../../components/SubstackDiscussion.astro';
+import ArticleResponse from '../../components/ArticleResponse.astro';
 
 const isProd = import.meta.env.PROD;
 
@@ -60,7 +60,7 @@ const readMin = Math.max(1, Math.round(words / 220));
     </header>
     {isNature ? <NatureArticle title={post.title} published={post.status === 'PUBLISHED'} /> : dashboardParts.map(part => part === '<!-- resilience-dashboard -->' ? <ResilienceDashboard /> : part === '<!-- resilience-chain -->' ? <ResilienceChain /> : <div class="prose" set:html={part} />)}
     {!isNature && <ApasSignature article={post.title} path={`writing/${post.slug}`} />}
-    <SubstackDiscussion substackUrl={post.substackUrl} />
+    <ArticleResponse />
     <RelatedReading slug={post.slug} />
   </article>
   <section class="post-end">
@@ -69,7 +69,7 @@ const readMin = Math.max(1, Math.round(words / 220));
       <div>
         <div class="nm">Hardeep Anand</div>
         <p>{isGovernanceWork ? 'Hardeep writes about water infrastructure, evidence, and the decisions people make together. The Systems Lens connects those questions to everyday work.' : 'Thirty years inside water infrastructure, now building the intelligence layer it was missing. The Systems Lens is where the thinking lives, in plain language, with the work shown.'}</p>
-        <p style="margin-top:14px"><a class="btn solid" href="/#newsletter" style="display:inline-block">Subscribe to The Systems Lens</a></p>
+        <p style="margin-top:14px"><a class="btn solid" href="/follow/" style="display:inline-block">Follow The Systems Lens</a></p>
       </div>
     </div>
   </section>

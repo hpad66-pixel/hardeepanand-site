@@ -2,7 +2,6 @@
 import '../styles/tokens.css';
 import '../styles/notebook-shell.css';
 import { NAV } from '../lib/content.js';
-import { SUBSTACK } from '../lib/substack.js';
 const {
   title = 'Hardeep Anand',
   active = '/',
@@ -38,7 +37,6 @@ const jsonLd = (Array.isArray(structuredData) ? structuredData : [structuredData
     <link rel="canonical" href={canonical} />
     <link rel="alternate" type="application/rss+xml" title="The Systems Lens" href="/rss.xml" />
     <link rel="alternate" type="application/feed+json" title="Hardeep Anand" href="/feed.json" />
-    <link rel="me" href={SUBSTACK.profileUrl} />
     {jsonLd.map((record) => <script type="application/ld+json" set:html={JSON.stringify(record)} />)}
     <noscript><style is:inline>
       @media(max-width:1000px){.ha-nav{position:static;flex-wrap:wrap}.ha-nav .menu-toggle{display:none}.ha-nav .ha-links{display:flex;position:static;flex-wrap:wrap;flex-basis:100%;padding:8px 0;max-height:none;gap:8px 20px;border-bottom:0}.ha-nav .ha-links a{padding:10px 0;min-height:44px;font-size:14px}.ha-nav .ha-links .nav-cta{margin:0;padding:10px 14px}}
@@ -71,7 +69,7 @@ const jsonLd = (Array.isArray(structuredData) ? structuredData : [structuredData
         <a href="/writing/#start-here">Start here</a>
         <a href="/writing/#visual-index">Visual index</a>
         <a href="/work/">Work with me</a>
-        <a class="nav-cta" href="/#newsletter">Subscribe <span aria-hidden="true">↗</span></a>
+        <a class="nav-cta" href="/follow/">Follow updates <span aria-hidden="true">→</span></a>
       </div>
     </nav>
     <main id="main">
@@ -84,17 +82,15 @@ const jsonLd = (Array.isArray(structuredData) ? structuredData : [structuredData
           <p class="ftag">An operator’s perspective on water, infrastructure, and the intelligence that connects them.</p>
           <div class="fsocial">
             <a href="https://www.linkedin.com/in/hardeepanand/">LinkedIn</a>
-            <a href={SUBSTACK.publicationUrl}>Substack</a>
-            <a href={SUBSTACK.profileUrl}>Profile</a>
+            <a href="mailto:hardeep@apas.ai">Email</a>
 
           </div>
         </div>
         <div class="fcol">
           <h4>Read</h4>
           <a href="/writing/">All essays</a>
-          <a href="/#newsletter">Subscribe</a>
-          <a href={SUBSTACK.publicationUrl}>Substack home</a>
-          <a href="/rss.xml">RSS feed</a>
+          <a href="/follow/">Follow updates</a>
+          <a href="/#newsletter">Reader note</a>
         </div>
         <div class="fcol">
           <h4>More</h4>

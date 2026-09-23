@@ -23,7 +23,7 @@ export async function startVisualEditor(root){
  });
  let svgIndex=0;
  article.querySelectorAll('svg').forEach(svg=>{
-  if(svg.closest('.apas-signature,.substack-discussion,button'))return;
+  if(svg.closest('.apas-signature,.article-response,button'))return;
   svg.querySelectorAll('g,path,rect,circle,ellipse,line,polyline,polygon,text,tspan').forEach(el=>{
    if(el.closest('defs,clipPath,mask,marker,pattern,symbol'))return;
    const id='s'+svgIndex++;el.dataset.veSvg=id;slots.set(id,el);

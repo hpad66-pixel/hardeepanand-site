@@ -57,7 +57,7 @@ test('vital signs inquiries route to measurement readiness',async()=>{
 });
 
 import {submitSubscription} from '../src/server/inquiries.js';
-test('reader opt-in is consented CRM staging, never claimed as a confirmed Substack subscription',async()=>{
+test('reader opt-in is consented CRM staging, never claimed as an external subscription',async()=>{
  const {env}=setup();let payload,calls=0;
  const reader={...data,articlePath:'/',message:'must not override server intent'};
  const fetcher=async(url,options)=>{calls++;payload=JSON.parse(options.body);return new Response(JSON.stringify({data:{candidateId:'reader-test'}}),{status:202});};
@@ -66,8 +66,9 @@ test('reader opt-in is consented CRM staging, never claimed as a confirmed Subst
  assert.equal((await submitSubscription({env,request:req(reader)},fetcher)).status,202);
  assert.equal(payload.metadata.form,'systems-lens-reader');
  assert.equal(payload.metadata.interest,'reader-connection');
- assert.equal(payload.metadata.subscriptionStatus,'unconfirmed');
- assert.match(payload.consent.reference,/Substack subscription not confirmed/);
+ assert.equal(payload.metadata.followStatus,'requested');
+ assert.equal(payload.metadata.followChannel,'apas');
+ assert.match(payload.consent.reference,/Website follow request/);
  assert.equal(payload.context.campaign,'/');
  assert(!payload.metadata.message.includes('must not override'));
  assert.equal((await submitSubscription({env,request:req(reader)},fetcher)).status,202);

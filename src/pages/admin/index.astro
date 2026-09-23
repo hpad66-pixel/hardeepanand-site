@@ -8,6 +8,8 @@ const drafts = count('DRAFT');
 const approved = count('APPROVED');
 const action = (s) => (s === 'PUBLISHED' ? 'Open' : s === 'APPROVED' ? 'Ship' : 'Review');
 const pillClass = (s) => (s === 'PUBLISHED' ? 'pub' : s === 'APPROVED' ? 'app' : 'draft');
+const needsAttention = items.filter((i) => i.status !== 'PUBLISHED');
+const recentLive = items.filter((i) => i.status === 'PUBLISHED').slice(0, 3);
 ---
 <AdminBase title="Dashboard" active="dashboard">
   <div class="admin-top">
@@ -30,26 +32,38 @@ const pillClass = (s) => (s === 'PUBLISHED' ? 'pub' : s === 'APPROVED' ? 'app' :
     <div class="stat"><div class="k">NEEDS YOU</div><div class="v">{drafts + approved}</div><div class="d">{approved} approved · {drafts} draft</div></div>
   </div>
 
-  <div class="panel" id="content">
-    <div class="panel-h"><h2>Content</h2><a class="lk" href="/admin/content/">Open content operations →</a></div>
-    <table class="admin-tbl">
-      <thead><tr><th>Asset</th><th>Type</th><th>Status</th><th>Channel</th><th></th></tr></thead>
-      <tbody>
-        {items.map((i) => (
-          <tr>
-            <td>{i.title}</td>
-            <td class="ch">{i.type}</td>
-            <td><span class={`pill ${pillClass(i.status)}`}>{i.status}</span></td>
-            <td class="ch">{i.channel}</td>
-            <td><a class="rowact" href={`${i.href}?edit=1`}>Edit visually ✎</a> · <a class="rowact" href={i.href}>Read ↗</a></td>
-          </tr>
+  <section class="panel" id="content">
+    <div class="panel-h"><h2>Content attention</h2><a class="lk" href="/admin/content/">Open content operations →</a></div>
+    <div class="panel-b dashboard-content">
+      <div class="attention-card primary">
+        <span class="ch">Needs you</span>
+        <strong>{drafts + approved}</strong>
+        <p>{approved} approved for release · {drafts} draft{drafts === 1 ? '' : 's'} waiting for review.</p>
+        <a class="abtn primary" href="/admin/content/">Go to workbench</a>
+      </div>
+      <div class="attention-list">
+        <h3>Next decisions</h3>
+        {needsAttention.length ? needsAttention.map((i) => (
+          <a class="attention-row" href="/admin/content/">
+            <span><b>{i.title}</b><small>{i.channel}</small></span>
+            <em class={`pill ${pillClass(i.status)}`}>{i.status}</em>
+          </a>
+        )) : <p class="cms-note">No drafts or approved articles need action right now.</p>}
+      </div>
+      <div class="attention-list">
+        <h3>Live snapshot</h3>
+        {recentLive.map((i) => (
+          <a class="attention-row" href={i.href}>
+            <span><b>{i.title}</b><small>{i.type}</small></span>
+            <em class="pill pub">LIVE</em>
+          </a>
         ))}
-      </tbody>
-    </table>
-  </div>
+      </div>
+    </div>
+  </section>
 
-  <p style="color:var(--text-dim);font-size:13px;max-width:70ch">
-    Open an article to edit its text and SVG diagrams directly. Save a visual draft, review the result, and publish separately. Drafts are stored in private studio storage on the live site or in project files during local preview.
+  <p class="admin-note">
+    The dashboard is a command summary: what needs attention, what is live, and where to jump next. Content Operations is the full workbench for publishing, unpublishing, homepage curation, search, filters, and release rules.
   </p>
   <script type="module">
     fetch('/api/admin/analytics?days=7', { credentials: 'same-origin' })
