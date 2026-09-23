@@ -5,10 +5,38 @@ import ReaderSignup from '../components/ReaderSignup.astro';
 import Base from '../layouts/Base.astro';
 import ReadingRoom from '../components/ReadingRoom.astro';
 import { readingLibrary } from '../lib/reading-library.js';
+import { visualIndex } from '../lib/discovery.js';
+import { selectHomepageStories, visualForPost } from '../lib/homepage.js';
 const posts = readingLibrary(true);
-const featured = posts.find(post => post.slug === 'nature-already-has-the-math') || posts[0];
+const figures = visualIndex(posts);
+const homepage = selectHomepageStories(posts);
+const lead = homepage.lead;
+const leadVisual = visualForPost(lead, figures);
+const supportingStories = homepage.supporting.map((post) => ({ post, visual: visualForPost(post, figures) }));
+const evergreenStory = homepage.evergreen ? { post: homepage.evergreen, visual: visualForPost(homepage.evergreen, figures) } : null;
+const structuredData = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'WebSite',
+    name: 'The Systems Lens',
+    url: 'https://hardeepanand.com/',
+    description: 'The Systems Lens by Hardeep Anand. Essays on water, infrastructure, AI, and learning.',
+    author: { '@type': 'Person', name: 'Hardeep Anand', url: 'https://hardeepanand.com/about/' },
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    name: 'Latest Systems Lens writing',
+    itemListElement: [lead, ...homepage.supporting, homepage.evergreen].filter(Boolean).map((post, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      url: new URL(post.href, 'https://hardeepanand.com').href,
+      name: post.title,
+    })),
+  },
+];
 ---
-<Base title="The Systems Lens" active="/" description="The Systems Lens by Hardeep Anand. Essays on water, AI, and learning, with useful ideas to put into practice.">
+<Base title="The Systems Lens" active="/" description="The Systems Lens by Hardeep Anand. Essays on water, AI, and learning, with useful ideas to put into practice." structuredData={structuredData}>
   <div class="notebook-home">
     <header class="lens-opening">
       <div class="lens-opening-copy">
@@ -25,25 +53,64 @@ const featured = posts.find(post => post.slug === 'nature-already-has-the-math')
         <figcaption><span>Look closer.</span><strong>Everything<br/>is connected.</strong><small>Water makes the invisible visible. Illustrative artwork.</small></figcaption>
       </figure>
     </header>
-    {featured && <section class="notebook-feature notebook-width" aria-labelledby="featured-title">
-      <div class="notebook-feature-copy">
-        <p class="notebook-label">FEATURED ESSAY <span>{featured.readMin} MIN READ</span></p>
-        <h2 id="featured-title"><a href={featured.href}>{featured.title}</a></h2>
-        <p class="notebook-feature-summary">{featured.summary}</p>
-        <p class="notebook-feature-value"><strong>Take it into your next meeting</strong>{featured.takeaway}</p>
-        <a class="notebook-read" href={featured.href}>Read the essay <span aria-hidden="true">&#8599;</span></a>
+    {lead && <section class="notebook-latest notebook-width" aria-labelledby="latest-title">
+      <div class="notebook-latest-head">
+        <div>
+          <p class="notebook-label">LATEST WRITING</p>
+          <h2 id="latest-title">The newest three stay on top.</h2>
+        </div>
+        <p>Latest-first by default, with one evergreen slot Hardeep can pin when a cornerstone idea should stay visible.</p>
       </div>
-      <figure class="notebook-feature-figure">
-        <a href={`${featured.href}#fig-hydrologic`} aria-label="Read the water cycle diagram in Nature Already Has the Math">
-          <picture>
-            <source media="(max-width: 600px)" srcset="/images/articles/nature-already-has-the-math/fig-hydrologic-mobile.png" />
-            <img src="/images/articles/nature-already-has-the-math/fig-hydrologic.png" width="1440" height="1020" alt="The water cycle connects the utility to land, atmosphere, and receiving waters." />
-          </picture>
+      <article class="latest-lead" data-content-path={lead.href}>
+        <a class="latest-visual" href={lead.href} aria-label={`Read ${lead.title}`}>
+          {leadVisual.image ? <picture>
+            {leadVisual.mobileImage && <source media="(max-width: 600px)" srcset={leadVisual.mobileImage} />}
+            <img src={leadVisual.image} alt={leadVisual.title} width="900" height="560" loading="lazy" decoding="async" />
+          </picture> : <span>{lead.topic}</span>}
         </a>
-        <figcaption>Inside the essay: follow the water across the utility boundary.</figcaption>
-      </figure>
+        <div class="latest-copy">
+          <p class="notebook-label">NEWEST FEATURE <span>{lead.readMin} MIN READ</span></p>
+          <h3><a href={lead.href}>{lead.title}</a></h3>
+          <p>{lead.summary}</p>
+          <p class="latest-takeaway"><strong>Take this with you</strong>{lead.takeaway}</p>
+          <div class="latest-actions">
+            <a class="lens-primary" href={lead.href}>Read the essay <span aria-hidden="true">&#8599;</span></a>
+            <a href="/writing/">View all writing</a>
+          </div>
+        </div>
+      </article>
+      <div class="latest-supporting" aria-label="Recent and pinned writing">
+        {supportingStories.map(({ post, visual }, index) => <article class="latest-card" data-content-path={post.href}>
+          <span class="latest-card-mark" aria-hidden="true">{visual.image ? <img src={visual.image} alt="" loading="lazy" decoding="async" /> : post.title.slice(0, 1)}</span>
+          <div>
+            <p class="notebook-label">LATEST {String(index + 2).padStart(2, '0')}</p>
+            <h3><a href={post.href}>{post.title}</a></h3>
+            <p>{post.summary}</p>
+          </div>
+        </article>)}
+        {evergreenStory && <article class="latest-card evergreen-card" data-content-path={evergreenStory.post.href}>
+          <span class="latest-card-mark" aria-hidden="true">{evergreenStory.visual.image ? <img src={evergreenStory.visual.image} alt="" loading="lazy" decoding="async" /> : 'E'}</span>
+          <div>
+            <p class="notebook-label">PINNED EVERGREEN</p>
+            <h3><a href={evergreenStory.post.href}>{evergreenStory.post.title}</a></h3>
+            <p>{evergreenStory.post.summary}</p>
+          </div>
+        </article>}
+      </div>
     </section>}
     <ReadingRoom posts={posts} showFeature={false} />
+    <section class="notebook-response notebook-width" aria-labelledby="response-title">
+      <div>
+        <p class="notebook-label">THOUGHTFUL RESPONSE LAYER</p>
+        <h2 id="response-title">Not reactions. Better questions.</h2>
+      </div>
+      <p>No public thumbs, counters, or open comment noise. Readers can share, subscribe, ask a private question, or request a diagnostic when an essay connects to real work.</p>
+      <div class="response-actions">
+        <a href="/#newsletter">Subscribe <span aria-hidden="true">&#8599;</span></a>
+        <a href="/work/">Request a diagnostic <span aria-hidden="true">&#8599;</span></a>
+        <a href="mailto:hardeep@apas.ai?subject=A%20question%20from%20The%20Systems%20Lens">Ask Hardeep a question <span aria-hidden="true">&#8599;</span></a>
+      </div>
+    </section>
     <section class="notebook-about" aria-labelledby="notebook-about-title">
       <div class="notebook-width notebook-about-inner">
         <img src="/portrait.jpg" width="184" height="220" alt="Hardeep Anand" loading="lazy" />

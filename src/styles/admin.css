@@ -96,6 +96,15 @@ table.admin-tbl { width: 100%; border-collapse: collapse; }
 .cms-rules { display: grid; gap: 10px; }
 .cms-rules p { margin: 0; color: var(--text-dim); line-height: 1.6; }
 .cms-rules b { color: var(--text); }
+.cms-homepage { display: grid; gap: 16px; }
+.cms-homepage p { margin: 0; color: var(--text-dim); line-height: 1.6; }
+.cms-homepage-form { display: grid; grid-template-columns: minmax(180px, .7fr) minmax(220px, 1fr) auto; gap: 14px; align-items: end; }
+.cms-homepage-form label { display: grid; gap: 7px; }
+.cms-homepage-form label span { font-family: var(--font-label); font-size: 11px; letter-spacing: .06em; color: var(--text-dim); }
+.cms-homepage-form select {
+  min-height: 42px; border: 1px solid var(--line); border-radius: 6px; background: var(--bg); color: var(--text);
+  font: 14px/1.4 var(--font-ui); padding: 9px 11px;
+}
 
 /* analytics */
 .analytics-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; align-items: start; }
@@ -163,6 +172,7 @@ table.admin-tbl { width: 100%; border-collapse: collapse; }
   .analytics-grid { grid-template-columns: 1fr; }
   .cms-item { grid-template-columns: 1fr; }
   .cms-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .cms-homepage-form { grid-template-columns: 1fr; }
   .studio, .profile-grid { grid-template-columns: 1fr; }
   .admin-main { padding: 20px; }
 }

@@ -1,7 +1,9 @@
 import { verifyAccess } from './access.js';
+import { normalizeHomepageSettings } from '../lib/homepage.js';
 
 export const CMS_STATUSES = ['DRAFT', 'APPROVED', 'PUBLISHED', 'ARCHIVED'];
 export const CMS_OVERRIDES_KEY = 'cms/status-overrides/v1.json';
+export const HOMEPAGE_SETTINGS_KEY = 'cms/homepage-settings/v1.json';
 
 const jsonHeaders = {
   'content-type': 'application/json; charset=utf-8',
@@ -62,6 +64,27 @@ export async function loadContentOverrides(env) {
   }
 }
 
+export async function loadHomepageSettings(env) {
+  if (!env.IDEAS) return normalizeHomepageSettings();
+  const object = await env.IDEAS.get(HOMEPAGE_SETTINGS_KEY);
+  if (!object) return normalizeHomepageSettings();
+  try {
+    return normalizeHomepageSettings(await object.json());
+  } catch {
+    return normalizeHomepageSettings();
+  }
+}
+
+export async function saveHomepageSettings(env, settings, actor = '') {
+  if (!env.IDEAS) return { ok: false, error: 'Private studio storage is unavailable.' };
+  const now = new Date().toISOString();
+  const record = { schema: 1, ...normalizeHomepageSettings(settings), actor: String(actor || '').slice(0, 160), updatedAt: now };
+  await env.IDEAS.put(HOMEPAGE_SETTINGS_KEY, JSON.stringify(record), {
+    httpMetadata: { contentType: 'application/json; charset=utf-8' },
+  });
+  return { ok: true, record };
+}
+
 export function mergeContentState(manifest, controls) {
   const overrides = controls?.items || {};
   return (manifest.items || []).map((item) => {
@@ -109,13 +132,21 @@ export async function contentAdminRequest({ request, env }, authorize = verifyAc
   if (request.method === 'GET') {
     const manifest = await loadContentManifest(request, env);
     const controls = await loadContentOverrides(env);
-    return json({ generatedAt: manifest.generatedAt || null, controlsUpdatedAt: controls.updatedAt, items: mergeContentState(manifest, controls) });
+    const homepageSettings = await loadHomepageSettings(env);
+    return json({ generatedAt: manifest.generatedAt || null, controlsUpdatedAt: controls.updatedAt, homepageSettings, items: mergeContentState(manifest, controls) });
   }
   if (request.method !== 'PUT' && request.method !== 'POST') return json({ error: 'Method not allowed.' }, 405);
   const origin = request.headers.get('Origin');
   if (origin && origin !== new URL(request.url).origin) return json({ error: 'Save from this website.' }, 403);
   let input;
   try { input = await request.json(); } catch { return json({ error: 'Expected JSON.' }, 400); }
+  if (input?.type === 'homepage-settings') {
+    const result = await saveHomepageSettings(env, input.settings || {}, request.headers.get('Cf-Access-Authenticated-User-Email') || '');
+    if (!result.ok) return json({ error: result.error }, 503);
+    const manifest = await loadContentManifest(request, env);
+    const controls = await loadContentOverrides(env);
+    return json({ ok: true, homepageSettings: result.record, items: mergeContentState(manifest, controls) });
+  }
   const path = cleanContentPath(input?.path);
   const status = normalizeCmsStatus(input?.status);
   if (!path || !status) return json({ error: 'Choose a valid article and status.' }, 400);

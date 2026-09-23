@@ -3,28 +3,43 @@ import '../styles/tokens.css';
 import '../styles/notebook-shell.css';
 import { NAV } from '../lib/content.js';
 import { SUBSTACK } from '../lib/substack.js';
-const { title = 'Hardeep Anand', active = '/', description = 'Water, infrastructure, and intelligence. Essays and ideas from Hardeep Anand, an operator building a more connected future.' } = Astro.props;
+const {
+  title = 'Hardeep Anand',
+  active = '/',
+  description = 'Water, infrastructure, and intelligence. Essays and ideas from Hardeep Anand, an operator building a more connected future.',
+  image = 'https://hardeepanand.com/og/og-default.png',
+  type = 'website',
+  structuredData = [],
+} = Astro.props;
 const isProd = import.meta.env.PROD;
+const pageTitle = title === 'Hardeep Anand' ? title : `${title} · Hardeep Anand`;
+const canonical = new URL(Astro.url.pathname, 'https://hardeepanand.com').href;
+const jsonLd = (Array.isArray(structuredData) ? structuredData : [structuredData]).filter(Boolean);
 ---
 <!doctype html>
 <html lang="en">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>{title === 'Hardeep Anand' ? title : `${title} · Hardeep Anand`}</title>
+    <title>{pageTitle}</title>
     {description && <meta name="description" content={description} />}
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <meta property="og:type" content="website" />
-    <meta property="og:title" content={title} />
+    <meta property="og:type" content={type} />
+    <meta property="og:title" content={pageTitle} />
     <meta property="og:description" content={description} />
-    <meta property="og:image" content="https://hardeepanand.com/og/og-default.png" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={image} />
+    <meta name="twitter:title" content={pageTitle} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
     <meta name="twitter:card" content="summary_large_image" />
-    <link rel="canonical" href={new URL(Astro.url.pathname, 'https://hardeepanand.com').href} />
+    <link rel="canonical" href={canonical} />
     <link rel="alternate" type="application/rss+xml" title="The Systems Lens" href="/rss.xml" />
     <link rel="alternate" type="application/feed+json" title="Hardeep Anand" href="/feed.json" />
     <link rel="me" href={SUBSTACK.profileUrl} />
+    {jsonLd.map((record) => <script type="application/ld+json" set:html={JSON.stringify(record)} />)}
     <noscript><style is:inline>
       @media(max-width:1000px){.ha-nav{position:static;flex-wrap:wrap}.ha-nav .menu-toggle{display:none}.ha-nav .ha-links{display:flex;position:static;flex-wrap:wrap;flex-basis:100%;padding:8px 0;max-height:none;gap:8px 20px;border-bottom:0}.ha-nav .ha-links a{padding:10px 0;min-height:44px;font-size:14px}.ha-nav .ha-links .nav-cta{margin:0;padding:10px 14px}}
     </style></noscript>

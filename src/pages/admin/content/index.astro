@@ -21,6 +21,19 @@ import AdminBase from '../../../layouts/AdminBase.astro';
   </div>
 
   <section class="panel">
+    <div class="panel-h"><h2>Homepage curation</h2><span class="lk">Latest-first with one evergreen slot</span></div>
+    <div class="panel-b cms-homepage">
+      <p>Keep the public homepage fresh automatically, while reserving one high-value slot for a cornerstone article. Saving here records the editorial intent; publication still follows the normal source, build, verify, and deploy path.</p>
+      <div class="cms-homepage-form">
+        <label><span>Homepage mode</span><select data-home-mode><option value="latest">Auto: newest lead + latest supports</option><option value="editor">Editor reviewed</option></select></label>
+        <label><span>Pinned evergreen</span><select data-home-evergreen></select></label>
+        <button type="button" class="abtn primary" data-home-save>Save homepage settings</button>
+      </div>
+      <p class="cms-note" data-home-status>Homepage settings load with the content layer.</p>
+    </div>
+  </section>
+
+  <section class="panel">
     <div class="panel-h">
       <h2>Library</h2>
       <span class="lk" data-cms-status>Loading content...</span>
@@ -46,7 +59,12 @@ import AdminBase from '../../../layouts/AdminBase.astro';
     const status = document.querySelector('[data-cms-status]');
     const search = document.querySelector('[data-cms-search]');
     const filter = document.querySelector('[data-cms-filter]');
+    const homeMode = document.querySelector('[data-home-mode]');
+    const homeEvergreen = document.querySelector('[data-home-evergreen]');
+    const homeSave = document.querySelector('[data-home-save]');
+    const homeStatus = document.querySelector('[data-home-status]');
     let items = [];
+    let homepageSettings = { mode: 'latest', evergreenPath: 'writing/data-governance' };
     const statuses = ['PUBLISHED', 'DRAFT', 'APPROVED', 'ARCHIVED'];
     const pillClass = next => next === 'PUBLISHED' ? 'pub' : next === 'APPROVED' ? 'app' : next === 'ARCHIVED' ? 'off' : 'draft';
     function text(tag, value, className) {
@@ -111,6 +129,7 @@ import AdminBase from '../../../layouts/AdminBase.astro';
     }
     function render() {
       countCards();
+      renderHomepageSettings();
       list.replaceChildren();
       const rows = visibleItems();
       if (!rows.length) {
@@ -118,6 +137,19 @@ import AdminBase from '../../../layouts/AdminBase.astro';
         return;
       }
       for (const item of rows) list.append(renderItem(item));
+    }
+    function renderHomepageSettings() {
+      const current = homeEvergreen.value || homepageSettings.evergreenPath;
+      homeMode.value = homepageSettings.mode || 'latest';
+      homeEvergreen.replaceChildren();
+      const published = items.filter(item => item.sourceStatus === 'PUBLISHED');
+      for (const item of published) {
+        const option = document.createElement('option');
+        option.value = item.path;
+        option.textContent = item.title;
+        homeEvergreen.append(option);
+      }
+      homeEvergreen.value = published.some(item => item.path === current) ? current : (published[0]?.path || '');
     }
     async function load() {
       status.textContent = 'Loading content...';
@@ -137,7 +169,23 @@ import AdminBase from '../../../layouts/AdminBase.astro';
       }
       if (data.error) throw new Error(data.error);
       items = data.items || [];
+      homepageSettings = data.homepageSettings || homepageSettings;
       status.textContent = `${items.length} assets - status layer loaded`;
+      render();
+    }
+    async function saveHomepageSettings() {
+      homeStatus.textContent = 'Saving homepage settings...';
+      const response = await fetch('/api/admin/content', {
+        method: 'POST',
+        credentials: 'same-origin',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ type: 'homepage-settings', settings: { mode: homeMode.value, evergreenPath: homeEvergreen.value } }),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || 'Unable to save homepage settings.');
+      homepageSettings = data.homepageSettings || homepageSettings;
+      items = data.items || items;
+      homeStatus.textContent = 'Homepage settings saved for the next release workflow.';
       render();
     }
     async function setStatus(path, nextStatus) {
@@ -164,6 +212,7 @@ import AdminBase from '../../../layouts/AdminBase.astro';
       const button = event.target.closest('button[data-status]');
       if (button) setStatus(button.dataset.path, button.dataset.status).catch(error => { status.textContent = error.message; });
     });
+    homeSave.addEventListener('click', () => saveHomepageSettings().catch(error => { homeStatus.textContent = error.message; }));
     search.addEventListener('input', render);
     filter.addEventListener('change', render);
     load().catch(error => {
