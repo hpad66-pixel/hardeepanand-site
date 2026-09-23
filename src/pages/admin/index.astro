@@ -18,19 +18,20 @@ const pillClass = (s) => (s === 'PUBLISHED' ? 'pub' : s === 'APPROVED' ? 'app' :
     <div class="actions">
       <a class="abtn" href="/" target="_blank">View site ↗</a>
       <button class="abtn" id="editSiteBtn">Edit site ✎</button>
-      <a class="abtn primary" href="https://dash.cloudflare.com/b244e6a53cfdb5f8917deb5d03d69b2c/pages/view/hardeepanand" target="_blank" rel="noopener">Deployment dashboard ↗</a>
+      <a class="abtn" href="/admin/content/">Manage content</a>
+      <a class="abtn primary" href="/admin/analytics/">Analytics</a>
     </div>
   </div>
 
   <div class="stats">
-    <div class="stat"><div class="k">READS / 7D</div><div class="v">··</div><div class="d">connect analytics</div></div>
-    <div class="stat"><div class="k">SUBSCRIBERS</div><div class="v">··</div><div class="d">connect Substack</div></div>
+    <div class="stat"><div class="k">READS / 7D</div><div class="v" data-mini-views>··</div><div class="d">first-party analytics</div></div>
+    <div class="stat"><div class="k">VISITORS</div><div class="v" data-mini-visitors>··</div><div class="d">privacy-safe estimate</div></div>
     <div class="stat"><div class="k">PUBLISHED</div><div class="v">{published}</div><div class="d">of {items.length} assets</div></div>
     <div class="stat"><div class="k">NEEDS YOU</div><div class="v">{drafts + approved}</div><div class="d">{approved} approved · {drafts} draft</div></div>
   </div>
 
   <div class="panel" id="content">
-    <div class="panel-h"><h2>Content</h2><span class="lk">{items.length} assets · live from your repo</span></div>
+    <div class="panel-h"><h2>Content</h2><a class="lk" href="/admin/content/">Open content operations →</a></div>
     <table class="admin-tbl">
       <thead><tr><th>Asset</th><th>Type</th><th>Status</th><th>Channel</th><th></th></tr></thead>
       <tbody>
@@ -50,6 +51,18 @@ const pillClass = (s) => (s === 'PUBLISHED' ? 'pub' : s === 'APPROVED' ? 'app' :
   <p style="color:var(--text-dim);font-size:13px;max-width:70ch">
     Open an article to edit its text and SVG diagrams directly. Save a visual draft, review the result, and publish separately. Drafts are stored in private studio storage on the live site or in project files during local preview.
   </p>
+  <script type="module">
+    fetch('/api/admin/analytics?days=7', { credentials: 'same-origin' })
+      .then(response => response.ok && (response.headers.get('content-type') || '').includes('application/json') ? response.json() : null)
+      .then(data => {
+        if (!data) return;
+        const views = document.querySelector('[data-mini-views]');
+        const visitors = document.querySelector('[data-mini-visitors]');
+        if (views) views.textContent = Intl.NumberFormat().format(data.totals.views || 0);
+        if (visitors) visitors.textContent = Intl.NumberFormat().format(data.totals.visitors || 0);
+      })
+      .catch(() => {});
+  </script>
   <script is:inline>
     var eb = document.getElementById('editSiteBtn');
     if (eb) eb.onclick = function () { try { localStorage.setItem('ha-edit', '1'); } catch (e) {} window.open('/', '_blank'); };

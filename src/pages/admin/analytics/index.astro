@@ -1,0 +1,135 @@
+---
+import AdminBase from '../../../layouts/AdminBase.astro';
+---
+<AdminBase title="Analytics" active="analytics">
+  <div class="admin-top">
+    <div>
+      <h1>Audience analytics</h1>
+      <div class="sub">See where readers come from, which articles pull attention, and which channels deserve marketing follow-up.</div>
+    </div>
+    <div class="actions">
+      <a class="abtn" href="/admin/content/">Manage content</a>
+      <button class="abtn primary" data-refresh>Refresh</button>
+    </div>
+  </div>
+
+  <div class="stats">
+    <div class="stat"><div class="k">PAGEVIEWS</div><div class="v" data-total-views>0</div><div class="d">last 30 days</div></div>
+    <div class="stat"><div class="k">VISITORS</div><div class="v" data-total-visitors>0</div><div class="d">privacy-safe estimate</div></div>
+    <div class="stat"><div class="k">TOP COUNTRY</div><div class="v small" data-top-country>--</div><div class="d">by pageviews</div></div>
+    <div class="stat"><div class="k">TOP SOURCE</div><div class="v small" data-top-source>--</div><div class="d">referrer or campaign</div></div>
+  </div>
+
+  <section class="analytics-grid">
+    <div class="panel">
+      <div class="panel-h"><h2>Traffic trend</h2><span class="lk">30 days</span></div>
+      <div class="panel-b"><div class="bars" data-bars></div></div>
+    </div>
+    <div class="panel">
+      <div class="panel-h"><h2>World signal</h2><span class="lk">country mix</span></div>
+      <div class="panel-b"><div class="world-map" data-world-map aria-label="Reader locations by country"></div></div>
+    </div>
+    <div class="panel"><div class="panel-h"><h2>Top content</h2><span class="lk">what readers choose</span></div><div class="panel-b"><div class="rank-list" data-rank="topPaths"></div></div></div>
+    <div class="panel"><div class="panel-h"><h2>Sources</h2><span class="lk">marketing channels</span></div><div class="panel-b"><div class="rank-list" data-rank="referrers"></div></div></div>
+    <div class="panel"><div class="panel-h"><h2>Campaigns</h2><span class="lk">UTM tags</span></div><div class="panel-b"><div class="rank-list" data-rank="campaigns"></div></div></div>
+    <div class="panel"><div class="panel-h"><h2>Regions</h2><span class="lk">country / region</span></div><div class="panel-b"><div class="rank-list" data-rank="regions"></div></div></div>
+  </section>
+
+  <p class="admin-note">Analytics are first-party and lightweight. The system stores aggregate path, country, referrer, campaign, and device counts in Cloudflare KV without raw IP addresses.</p>
+
+  <script type="module">
+    const fmt = n => Intl.NumberFormat().format(n || 0);
+    const positions = [[50,42], [23,38], [65,36], [44,57], [78,55], [58,25], [30,62], [70,68]];
+    function text(tag, value, className) {
+      const el = document.createElement(tag);
+      if (className) el.className = className;
+      el.textContent = value || '';
+      return el;
+    }
+    function renderRank(container, items) {
+      container.replaceChildren();
+      if (!items || !items.length) {
+        container.append(text('div', 'No traffic recorded yet.', 'cms-empty'));
+        return;
+      }
+      const max = Math.max(1, ...items.map(item => item.value));
+      for (const item of items) {
+        const row = document.createElement('div');
+        row.className = 'rank-row';
+        const label = text('span', item.label);
+        const value = text('b', fmt(item.value));
+        const meter = document.createElement('i');
+        meter.style.setProperty('--w', `${Math.round(item.value / max * 100)}%`);
+        row.append(label, value, meter);
+        container.append(row);
+      }
+    }
+    function renderBars(days) {
+      const bars = document.querySelector('[data-bars]');
+      bars.replaceChildren();
+      const peak = Math.max(1, ...(days || []).map(day => day.views || 0));
+      for (const day of days || []) {
+        const bar = document.createElement('span');
+        bar.style.setProperty('--h', `${Math.max(4, Math.round((day.views || 0) / peak * 100))}%`);
+        bar.title = `${day.day}: ${day.views || 0} views`;
+        bar.append(text('b', String(day.views || 0)));
+        bars.append(bar);
+      }
+    }
+    function renderMap(countries) {
+      const map = document.querySelector('[data-world-map]');
+      map.replaceChildren();
+      const top = (countries || []).slice(0, 8);
+      if (!top.length) {
+        map.append(text('div', 'No location data yet.', 'map-empty'));
+        return;
+      }
+      const frame = document.createElement('div');
+      frame.className = 'map-frame';
+      const max = Math.max(1, ...top.map(item => item.value));
+      top.forEach((item, index) => {
+        const [left, topPos] = positions[index] || [50, 45];
+        const dot = document.createElement('span');
+        dot.className = 'map-dot';
+        const size = 12 + Math.round(item.value / max * 28);
+        dot.style.left = `${left}%`;
+        dot.style.top = `${topPos}%`;
+        dot.style.width = `${size}px`;
+        dot.style.height = `${size}px`;
+        dot.title = `${item.label}: ${item.value}`;
+        frame.append(dot);
+      });
+      const labels = document.createElement('div');
+      labels.className = 'map-labels';
+      top.forEach(item => {
+        const label = text('span', item.label);
+        label.append(text('b', fmt(item.value)));
+        labels.append(label);
+      });
+      frame.append(labels);
+      map.append(frame);
+    }
+    async function load() {
+      const response = await fetch('/api/admin/analytics?days=30', { credentials: 'same-origin' });
+      let data;
+      if (response.ok && (response.headers.get('content-type') || '').includes('application/json')) {
+        data = await response.json();
+      } else {
+        data = { days: Array.from({ length: 30 }, (_, index) => ({ day: String(index + 1), views: 0, visitors: 0 })), totals: { views: 0, visitors: 0 }, topPaths: [], countries: [], referrers: [], campaigns: [], regions: [] };
+      }
+      if (data.error) throw new Error(data.error);
+      document.querySelector('[data-total-views]').textContent = fmt(data.totals.views);
+      document.querySelector('[data-total-visitors]').textContent = fmt(data.totals.visitors);
+      document.querySelector('[data-top-country]').textContent = data.countries?.[0]?.label || '--';
+      document.querySelector('[data-top-source]').textContent = data.referrers?.[0]?.label || data.campaigns?.[0]?.label || '--';
+      renderBars(data.days);
+      renderMap(data.countries);
+      for (const key of ['topPaths', 'referrers', 'campaigns', 'regions']) renderRank(document.querySelector(`[data-rank="${key}"]`), data[key]);
+    }
+    document.querySelector('[data-refresh]').addEventListener('click', () => load());
+    load().catch(error => {
+      const bars = document.querySelector('[data-bars]');
+      bars.replaceChildren(text('div', error.message, 'cms-empty'));
+    });
+  </script>
+</AdminBase>

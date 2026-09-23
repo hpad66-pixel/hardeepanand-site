@@ -7,8 +7,9 @@ const { title = 'Dashboard', active = 'dashboard' } = Astro.props;
 const isProd = import.meta.env.PROD;
 const items = [
   { id: 'dashboard', label: 'Dashboard', href: '/admin/' },
-  { id: 'ideas', label: 'Private idea library', href: '/admin/ideas/' },
-  { id: 'content', label: 'Content', href: '/admin/#content' },
+  { id: 'content', label: 'Content operations', href: '/admin/content/' },
+  { id: 'analytics', label: 'Analytics', href: '/admin/analytics/' },
+  { id: 'ideas', label: 'Brain intake', href: '/admin/ideas/' },
   { id: 'theme', label: 'Theme Studio', href: '/admin/theme/' },
   { id: 'profile', label: 'Profile & photo', href: '/admin/profile/' },
 ];

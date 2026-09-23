@@ -21,7 +21,7 @@ const searchText = p => `${p.title} ${p.summary||''} ${p.topic} ${p.takeaway}`;
  <div class="room-results" hidden data-room-results><span data-room-count role="status" aria-live="polite" aria-atomic="true"></span></div>
  <div id={`${uid}-all`} data-room-panel="all" aria-labelledby={`${uid}-tab-all`}>
   <div class="essay-list">
-   {posts.map((p,i)=>{const related=relatedReadings(posts,p.slug,1);return <article class:list={['reading-entry',{'reading-feature':showFeature&&i===0}]} data-discovery-entry data-entry-id={`all:${p.path}`} data-view="all" data-topic={p.topic} data-search-text={searchText(p)}>
+   {posts.map((p,i)=>{const related=relatedReadings(posts,p.slug,1);return <article class:list={['reading-entry',{'reading-feature':showFeature&&i===0}]} data-content-path={p.href} data-discovery-entry data-entry-id={`all:${p.path}`} data-view="all" data-topic={p.topic} data-search-text={searchText(p)}>
     <span class="entry-number" aria-hidden="true">{String(i+1).padStart(2,'0')}</span>
     <div class="entry-copy"><div class="reading-meta"><span>{p.topic}</span><span>{p.readMin} min read</span>{p.status!=='PUBLISHED'&&<span>Draft</span>}</div><h3><a href={p.href}>{p.title}</a></h3><p class="reading-summary">{p.summary}</p>
      {related.map(({post,reason})=><details class="reading-connection"><summary>Follow the connection</summary><p>{reason}</p><a href={post.href}>{post.title} <span aria-hidden="true">↗</span></a></details>)}
@@ -32,14 +32,14 @@ const searchText = p => `${p.title} ${p.summary||''} ${p.topic} ${p.takeaway}`;
  </div>
  <div id={`${uid}-start-here`} data-room-panel="start-here" aria-labelledby={`${uid}-tab-start-here`}>
   <h3 class="mode-heading" id="start-here">A question is a good place to begin.</h3>
-  <div class="route-list">{routes.map(({id,question,reason,post})=><article class="reader-route" data-discovery-entry data-entry-id={`start:${id}`} data-view="start-here" data-topic={post.topic} data-search-text={`${question} ${reason} ${searchText(post)}`}>
+  <div class="route-list">{routes.map(({id,question,reason,post})=><article class="reader-route" data-content-path={post.href} data-discovery-entry data-entry-id={`start:${id}`} data-view="start-here" data-topic={post.topic} data-search-text={`${question} ${reason} ${searchText(post)}`}>
    <div><span class="reading-meta">{post.topic}{post.status!=='PUBLISHED'?' · Draft':''}</span><h4>{question}</h4></div>
    <div><h5><a href={post.href}>{post.title} <span aria-hidden="true">↗</span></a></h5><p>{reason}</p><p class="route-takeaway">{post.takeaway}</p></div>
   </article>)}</div>
  </div>
  <div id={`${uid}-visual-index`} data-room-panel="visual-index" aria-labelledby={`${uid}-tab-visual-index`}>
   <h3 class="mode-heading" id="visual-index">See the relationship.</h3>
-  <div class="visual-grid">{figures.map(figure=><article class="visual-entry" data-discovery-entry data-entry-id={`visual:${figure.post.path}:${figure.anchor}`} data-view="visual-index" data-topic={figure.post.topic} data-search-text={`${figure.title} ${figure.caption} ${searchText(figure.post)}`}>
+  <div class="visual-grid">{figures.map(figure=><article class="visual-entry" data-content-path={figure.post.href} data-discovery-entry data-entry-id={`visual:${figure.post.path}:${figure.anchor}`} data-view="visual-index" data-topic={figure.post.topic} data-search-text={`${figure.title} ${figure.caption} ${searchText(figure.post)}`}>
    <a class="visual-image" href={figure.href} aria-label={`${figure.title} in ${figure.post.title}`}><picture>{figure.mobileImage&&<source media="(max-width: 600px)" srcset={figure.mobileImage}/>}<img src={figure.image} alt={figure.title} loading="lazy" decoding="async" width="900" height="500" /></picture></a>
    <div class="reading-meta"><span>{figure.post.topic}</span>{figure.post.status!=='PUBLISHED'&&<span>Draft</span>}</div><h4><a href={figure.href}>{figure.title} <span aria-hidden="true">↗</span></a></h4><p>{figure.caption}</p><a class="visual-parent" href={figure.post.href}>{figure.post.title}</a>
   </article>)}</div>

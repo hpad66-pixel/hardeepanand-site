@@ -1,0 +1,174 @@
+---
+import AdminBase from '../../../layouts/AdminBase.astro';
+---
+<AdminBase title="Content" active="content">
+  <div class="admin-top">
+    <div>
+      <h1>Content operations</h1>
+      <div class="sub">Review drafts, approve release candidates, publish or unpublish live articles, and keep the release boundary explicit.</div>
+    </div>
+    <div class="actions">
+      <a class="abtn" href="/writing/" target="_blank" rel="noopener">Open public library</a>
+      <a class="abtn primary" href="/admin/analytics/">View analytics</a>
+    </div>
+  </div>
+
+  <div class="stats cms-stats" aria-live="polite">
+    <div class="stat"><div class="k">LIVE NOW</div><div class="v" data-cms-count="PUBLISHED">0</div><div class="d">public routes available</div></div>
+    <div class="stat"><div class="k">DRAFTS</div><div class="v" data-cms-count="DRAFT">0</div><div class="d">private or in review</div></div>
+    <div class="stat"><div class="k">APPROVED</div><div class="v" data-cms-count="APPROVED">0</div><div class="d">ready for release work</div></div>
+    <div class="stat"><div class="k">OFFLINE</div><div class="v" data-cms-count="ARCHIVED">0</div><div class="d">hidden or archived</div></div>
+  </div>
+
+  <section class="panel">
+    <div class="panel-h">
+      <h2>Library</h2>
+      <span class="lk" data-cms-status>Loading content...</span>
+    </div>
+    <div class="panel-b cms-toolbar">
+      <label class="cms-search"><span>Search</span><input type="search" data-cms-search placeholder="Title, topic, or status" /></label>
+      <label><span>Status</span><select data-cms-filter><option value="">All statuses</option><option>PUBLISHED</option><option>DRAFT</option><option>APPROVED</option><option>ARCHIVED</option></select></label>
+    </div>
+    <div class="cms-list" data-cms-list></div>
+  </section>
+
+  <section class="panel">
+    <div class="panel-h"><h2>Release rules</h2><span class="lk">Owner-only controls</span></div>
+    <div class="panel-b cms-rules">
+      <p><b>Unpublish is immediate for built live articles.</b> The public article route returns not found, and the writing index hides the card at the edge.</p>
+      <p><b>Publishing a draft still needs a source release.</b> The portal can mark it approved or requested, but a draft is not placed into production until the canonical article package is committed, built, verified, and deployed.</p>
+      <p><b>Every status change is stored privately.</b> The source repo remains the authority for final public content; the admin override is the operational control layer.</p>
+    </div>
+  </section>
+
+  <script type="module">
+    const list = document.querySelector('[data-cms-list]');
+    const status = document.querySelector('[data-cms-status]');
+    const search = document.querySelector('[data-cms-search]');
+    const filter = document.querySelector('[data-cms-filter]');
+    let items = [];
+    const statuses = ['PUBLISHED', 'DRAFT', 'APPROVED', 'ARCHIVED'];
+    const pillClass = next => next === 'PUBLISHED' ? 'pub' : next === 'APPROVED' ? 'app' : next === 'ARCHIVED' ? 'off' : 'draft';
+    function text(tag, value, className) {
+      const el = document.createElement(tag);
+      if (className) el.className = className;
+      el.textContent = value || '';
+      return el;
+    }
+    function link(label, href) {
+      const el = document.createElement('a');
+      el.className = 'rowact ghost';
+      el.href = href;
+      el.target = '_blank';
+      el.rel = 'noopener';
+      el.textContent = label;
+      return el;
+    }
+    function countCards() {
+      for (const key of statuses) {
+        const el = document.querySelector(`[data-cms-count="${key}"]`);
+        if (!el) continue;
+        el.textContent = String(items.filter(item => item.effectiveStatus === key && (key !== 'PUBLISHED' || item.liveNow)).length);
+      }
+    }
+    function visibleItems() {
+      const query = search.value.trim().toLowerCase();
+      return items.filter(item => {
+        const hay = `${item.title} ${item.topic} ${item.effectiveStatus} ${item.sourceStatus}`.toLowerCase();
+        return (!filter.value || item.effectiveStatus === filter.value) && (!query || hay.includes(query));
+      });
+    }
+    function renderItem(item) {
+      const card = document.createElement('article');
+      card.className = 'cms-item';
+      const copy = document.createElement('div');
+      const meta = document.createElement('div');
+      meta.className = 'reading-meta';
+      meta.append(text('span', item.topic || 'Ideas & practice'), text('span', `${item.readMin || 1} min read`), text('span', `source: ${item.sourceStatus}`));
+      const h = text('h3', item.title);
+      const p = text('p', item.summary || item.takeaway || '');
+      const state = document.createElement('div');
+      state.className = 'cms-state';
+      const pill = text('span', item.effectiveStatus, `pill ${pillClass(item.effectiveStatus)}`);
+      state.append(pill);
+      state.append(text('span', item.override ? `Override saved ${new Date(item.override.updatedAt).toLocaleString()}` : 'No override', 'cms-note'));
+      if (item.requiresDeploy) state.append(text('span', 'Needs source deploy before public route exists', 'cms-warn'));
+      if (item.liveNow) state.append(text('span', 'Public now', 'cms-ok'));
+      copy.append(meta, h, p, state);
+      const actions = document.createElement('div');
+      actions.className = 'cms-actions';
+      actions.append(link('Preview', item.href), link('Edit visually', `${item.href}?edit=1`));
+      for (const next of ['DRAFT', 'APPROVED', 'PUBLISHED', 'ARCHIVED']) {
+        const button = document.createElement('button');
+        button.type = 'button';
+        button.dataset.status = next;
+        button.dataset.path = item.path;
+        button.textContent = next === 'ARCHIVED' ? 'Unpublish' : next.charAt(0) + next.slice(1).toLowerCase();
+        actions.append(button);
+      }
+      card.append(copy, actions);
+      return card;
+    }
+    function render() {
+      countCards();
+      list.replaceChildren();
+      const rows = visibleItems();
+      if (!rows.length) {
+        list.append(text('div', 'No content matches this filter.', 'cms-empty'));
+        return;
+      }
+      for (const item of rows) list.append(renderItem(item));
+    }
+    async function load() {
+      status.textContent = 'Loading content...';
+      let data;
+      const response = await fetch('/api/admin/content', { credentials: 'same-origin' });
+      if (response.ok && (response.headers.get('content-type') || '').includes('application/json')) {
+        data = await response.json();
+      } else {
+        const manifest = await fetch('/admin/content-manifest.json', { credentials: 'same-origin' }).then(next => next.json());
+        data = { items: (manifest.items || []).map(item => ({
+          ...item,
+          effectiveStatus: item.sourceStatus,
+          routeBuilt: item.sourceStatus === 'PUBLISHED',
+          liveNow: item.sourceStatus === 'PUBLISHED',
+          requiresDeploy: false,
+        })) };
+      }
+      if (data.error) throw new Error(data.error);
+      items = data.items || [];
+      status.textContent = `${items.length} assets - status layer loaded`;
+      render();
+    }
+    async function setStatus(path, nextStatus) {
+      const item = items.find(entry => entry.path === path);
+      const verb = nextStatus === 'ARCHIVED' ? 'unpublish' : nextStatus.toLowerCase();
+      if (nextStatus === 'PUBLISHED' && item && !item.routeBuilt) {
+        alert('This draft needs the source article package committed, built, verified, and deployed before the public route can exist. The admin status can be saved, but this is not a production release by itself.');
+      }
+      if (nextStatus === 'ARCHIVED' && !confirm(`Unpublish "${item?.title || path}" from the public site?`)) return;
+      status.textContent = 'Saving status...';
+      const response = await fetch('/api/admin/content', {
+        method: 'PUT',
+        credentials: 'same-origin',
+        headers: { 'content-type': 'application/json' },
+        body: JSON.stringify({ path, status: nextStatus, note: `${verb} from admin portal` }),
+      });
+      const data = await response.json();
+      if (!response.ok) throw new Error(data.error || 'Unable to save status.');
+      items = data.items || items;
+      status.textContent = 'Status saved';
+      render();
+    }
+    list.addEventListener('click', event => {
+      const button = event.target.closest('button[data-status]');
+      if (button) setStatus(button.dataset.path, button.dataset.status).catch(error => { status.textContent = error.message; });
+    });
+    search.addEventListener('input', render);
+    filter.addEventListener('change', render);
+    load().catch(error => {
+      status.textContent = error.message;
+      list.replaceChildren(text('div', error.message, 'cms-empty'));
+    });
+  </script>
+</AdminBase>
