@@ -1,0 +1,74 @@
+[
+  {
+    "file": "fig-00-identity.html",
+    "id": "fig-00",
+    "fig": "FIG. 00 / IDENTITY",
+    "title": "Pipe shop vs one shared picture",
+    "caption": "Left is a civil shop that treats software as support, so the dashboard sits unused. Right is the same pipes, with crews, the control room, and capital looking at one picture.",
+    "note": "Conceptual framework, not a measured comparison of any utility or vendor. NextEra’s capital markets differ from municipal water; the transferable lesson is identity, not scale."
+  },
+  {
+    "file": "fig-01-responsibility-loop.html",
+    "id": "fig-01",
+    "fig": "FIG. 01 / TEAMMATE",
+    "title": "Sense → act → measure → compare",
+    "caption": "Sense, then suggest, then a person decides, then you measure again. The station does not run itself because someone bought a model.",
+    "note": "Conceptual loop, not a control narrative for any plant. Does not imply automatic causation or unmanned operation."
+  },
+  {
+    "file": "fig-02-question-catalog-owner.html",
+    "id": "fig-02",
+    "fig": "FIG. 02 / BUILD VS BUY",
+    "title": "Question → shared catalog → owner",
+    "caption": "The question has to land in a shared catalog with a named owner. Buying the software is the easy part. Owning what the data means is the work.",
+    "note": "Conceptual route, not a product architecture or compliance certification."
+  },
+  {
+    "file": "fig-03-hidden-map.html",
+    "id": "fig-03",
+    "fig": "FIG. 03 / TRIBAL KNOWLEDGE",
+    "title": "Hidden map → shared map",
+    "caption": "Left is what only one operator knows. Right is that same knowledge written down, findable, and owned. A model cannot retrieve what the utility never recorded.",
+    "note": "Conceptual before/after, not a claim that any catalog is complete or that documentation replaces experienced judgment."
+  },
+  {
+    "file": "fig-04-design-for-swap.html",
+    "id": "fig-04",
+    "fig": "FIG. 04 / ARCHITECTURE",
+    "title": "Design for the swap",
+    "caption": "The meaning and the platform rules sit in one place. SCADA, GIS, and the work-order system stay replaceable. If you cannot swap a system, the integration is the risk.",
+    "note": "Illustrative architecture sketch, not a recommendation of specific vendors or a requirement to consolidate all data into one database."
+  },
+  {
+    "file": "fig-05-evidence-gate.html",
+    "id": "fig-05",
+    "fig": "FIG. 05 / TRUST",
+    "title": "Supervised pilot → evidence gate → expansion",
+    "caption": "A supervised pilot, then evidence, then a wider rollout. Nobody gets more autonomy without a named person who can stop it.",
+    "note": "Conceptual control path, not a safety case or regulatory approval process. People retain the decision."
+  },
+  {
+    "file": "fig-06-systems-lens-loop.html",
+    "id": "fig-06",
+    "fig": "FIG. 06 / PLATFORM",
+    "title": "Systems Lens loop for utility AI",
+    "caption": "Identity, meaning, access, and audit are shared. Tuesday’s work stays with the crew that does it.",
+    "note": "Conceptual loop of responsibilities and feedback, not automatic causation or guaranteed trust."
+  },
+  {
+    "file": "fig-07-snapshot-vs-curve.html",
+    "id": "fig-07",
+    "fig": "FIG. 07 / ADOPTION",
+    "title": "Snapshot vs operating curve",
+    "caption": "The flat line is what you spent. The curve is whether anything in the system actually moved after the purchase.",
+    "note": "Conceptual comparison, not a measured utility KPI series, and not proof of causation. Post-intervention change requires evidence and judgment."
+  },
+  {
+    "file": "fig-08-seven-truths-system.html",
+    "id": "fig-08",
+    "fig": "FIG. 08 / SYSTEM",
+    "title": "Seven truths · one operating system",
+    "caption": "Seven truths drawn as one system. Identity sits first. The other six do not hold if that piece is missing.",
+    "note": "Conceptual systems map, not a scored maturity model and not a ranking of utilities or vendors."
+  }
+]
